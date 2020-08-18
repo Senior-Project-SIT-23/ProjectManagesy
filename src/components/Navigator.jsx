@@ -23,20 +23,11 @@ const categories = [
   {
     id: "Develop",
     children: [
-      { id: "Authentication", icon: <PeopleIcon />, active: true },
-      { id: "Database", icon: <DnsRoundedIcon /> },
-      { id: "Storage", icon: <PermMediaOutlinedIcon /> },
-      { id: "Hosting", icon: <PublicIcon /> },
-      { id: "Functions", icon: <SettingsEthernetIcon /> },
-      { id: "ML Kit", icon: <SettingsInputComponentIcon /> },
-    ],
-  },
-  {
-    id: "Quality",
-    children: [
-      { id: "Analytics", icon: <SettingsIcon /> },
-      { id: "Performance", icon: <TimerIcon /> },
-      { id: "Test Lab", icon: <PhonelinkSetupIcon /> },
+      { id: "กิจกรรม", icon: <PeopleIcon />, },
+      { id: "ติดตามนักเรียน", icon: <PeopleIcon />, active: true },
+      { id: "ติดตามนักศึกษา", icon:<PeopleIcon /> },
+      { id: "วิเคราะห์ข้อมูล", icon: <SettingsIcon /> },
+     
     ],
   },
 ];
@@ -91,7 +82,7 @@ function Navigator(props) {
         <ListItem
           className={clsx(classes.firebase, classes.item, classes.itemCategory)}
         >
-          Paperbase
+          Managesy
         </ListItem>
         <ListItem className={clsx(classes.item, classes.itemCategory)}>
           <ListItemIcon className={classes.itemIcon}>
