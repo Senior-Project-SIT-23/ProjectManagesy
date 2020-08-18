@@ -96,7 +96,7 @@ function Header(props) {
                 Authentication
               </Typography>
             </Grid>
-            <Grid item>
+            {/* <Grid item>
               <Button
                 className={classes.button}
                 variant="outlined"
@@ -105,7 +105,7 @@ function Header(props) {
               >
                 Web setup
               </Button>
-            </Grid>
+            </Grid> */}
             <Grid item>
               <Tooltip title="Help">
                 <IconButton color="inherit">

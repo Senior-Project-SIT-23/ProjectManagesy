@@ -16,7 +16,7 @@ import Cookies from "js-cookie";
 import "./style/App.css";
 import "./style/Font.css";
 import MainLayout from "./components/MainLayout";
-import Test from "./pages/Test";
+import Test from "./pages/TrackingStudent";
 import Test2 from "./pages/Test2";
 /**
  |--------------------------------------------------

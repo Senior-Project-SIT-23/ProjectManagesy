@@ -18,6 +18,7 @@ import SettingsInputComponentIcon from "@material-ui/icons/SettingsInputComponen
 import TimerIcon from "@material-ui/icons/Timer";
 import SettingsIcon from "@material-ui/icons/Settings";
 import PhonelinkSetupIcon from "@material-ui/icons/PhonelinkSetup";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const categories = [
   {
@@ -86,14 +87,14 @@ function Navigator(props) {
         </ListItem>
         <ListItem className={clsx(classes.item, classes.itemCategory)}>
           <ListItemIcon className={classes.itemIcon}>
-            <HomeIcon />
+            <AccountCircleIcon />
           </ListItemIcon>
           <ListItemText
             classes={{
               primary: classes.itemPrimary,
             }}
           >
-            Project Overview
+            Name Last
           </ListItemText>
         </ListItem>
         {categories.map(({ id, children }) => (
