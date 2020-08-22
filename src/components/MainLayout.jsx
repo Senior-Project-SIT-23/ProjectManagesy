@@ -155,7 +155,6 @@ const styles = {
   },
   main: {
     flex: 1,
-    padding: theme.spacing(6, 4),
     background: "#eaeff1",
   },
   footer: {
@@ -187,11 +186,11 @@ function MainLayout(props) {
             />
           </Hidden>
           <Hidden xsDown implementation="css">
-            <Navigator PaperProps={{ style: { width: drawerWidth } }} />
+            <Navigator title={props.title} PaperProps={{ style: { width: drawerWidth } }} />
           </Hidden>
         </nav>
         <div className={classes.app}>
-          <Header onDrawerToggle={handleDrawerToggle} />
+          <Header title={props.title}onDrawerToggle={handleDrawerToggle} />
           <main className={classes.main}>
             <Child {...props} />
           </main>

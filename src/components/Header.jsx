@@ -41,6 +41,11 @@ const styles = (theme) => ({
   },
 });
 
+// const handleChangeRoute = (routeName) => {
+//   window.localStorage.setItem("currentRoute", routeName);
+//   window.location.href = routeName;
+// };
+
 function Header(props) {
   const { classes, onDrawerToggle } = props;
 
@@ -93,7 +98,7 @@ function Header(props) {
           <Grid container alignItems="center" spacing={1}>
             <Grid item xs>
               <Typography color="inherit" variant="h5" component="h1">
-                Authentication
+                {props.title}
               </Typography>
             </Grid>
             {/* <Grid item>
@@ -123,11 +128,7 @@ function Header(props) {
         position="static"
         elevation={0}
       >
-        <Tabs value={0} textColor="inherit">
-          <Tab textColor="inherit" label="Tracking นักเรียน" />
-          <Tab textColor="inherit" label="Tracking นักเรียนที่ร่วมกิจกรรม" />
-          <Tab textColor="inherit" label="Tracking นักเรียนที่สมัครสอบ" />
-        </Tabs>
+      
       </AppBar>
     </React.Fragment>
   );
