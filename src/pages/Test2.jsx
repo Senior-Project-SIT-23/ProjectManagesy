@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useCallback, useState } from 'react'
 import CommonCard from '../components/Common/Card'
-import TableActivity from '../components/Activity/TableActivity'
+import TableActivity from '../components/TrackingStudents/TableActivity'
 
 export default function Test(props) {
   return (
