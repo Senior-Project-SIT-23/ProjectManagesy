@@ -53,8 +53,8 @@ export default function CustomizedTables() {
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
-          <TableRow>
-            <StyledTableCell>Activity name</StyledTableCell>
+          <TableRow >
+            <StyledTableCell >Activity name</StyledTableCell>
             <StyledTableCell align="right">File</StyledTableCell>
             <StyledTableCell align="right">Edit</StyledTableCell>
             {/* <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>

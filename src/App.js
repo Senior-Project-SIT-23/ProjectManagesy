@@ -18,6 +18,7 @@ import "./style/Font.css";
 import MainLayout from "./components/MainLayout";
 import Test from "./pages/TrackingStudent";
 import Test2 from "./pages/Test2";
+import TrackingCollegeStudent from "./pages/TrackingCollegeStudent";
 /**
  |--------------------------------------------------
  | BASEUI SETUP
@@ -29,7 +30,7 @@ function App() {
   return (
     <Router>
       <MainLayout title="ติดตามนักเรียน" path="/" component={Test} />
-      <MainLayout title="ติดตามนักศึกษา"path="/3" component={Test2} />
+      <MainLayout title="ติดตามนักศึกษา"path="/3" component={TrackingCollegeStudent} />
       <MainLayout title="กิจกรรม"path="/2" component={Test2} />
       <MainLayout title="วิเคราะห์ข้อมูล"path="/4" component={Test2} />
     </Router>

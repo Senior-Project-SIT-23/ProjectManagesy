@@ -47,3 +47,10 @@
     /* Safari, Android, iOS */ url('../asset/font/sarabun-v7-thai-700italic.svg#Sarabun') format('svg'); /* Legacy iOS */
 }
 
+@font-face {
+  font-family: 'Athiti', sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  src: url('../asset/font/Athiti-Medium.ttf');
+  
+}

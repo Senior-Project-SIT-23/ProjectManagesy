@@ -15,7 +15,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Toolbar from "@material-ui/core/Toolbar";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, createMuiTheme } from "@material-ui/core/styles";
 
 const lightColor = "rgba(255, 255, 255, 0.7)";
 
@@ -39,12 +39,14 @@ const styles = (theme) => ({
   button: {
     borderColor: lightColor,
   },
+
 });
 
-// const handleChangeRoute = (routeName) => {
-//   window.localStorage.setItem("currentRoute", routeName);
-//   window.location.href = routeName;
-// };
+// const theme = createMuiTheme({
+//   typography: {
+//     fontFamily: 'Athiti-Medium'
+//   },
+// });
 
 function Header(props) {
   const { classes, onDrawerToggle } = props;
