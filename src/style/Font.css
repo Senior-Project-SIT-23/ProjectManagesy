@@ -47,10 +47,16 @@
     /* Safari, Android, iOS */ url('../asset/font/sarabun-v7-thai-700italic.svg#Sarabun') format('svg'); /* Legacy iOS */
 }
 
+
 @font-face {
-  font-family: 'Athiti', sans-serif;
+  font-family: 'Athiti';
   font-style: italic;
   font-weight: 700;
-  src: url('../asset/font/Athiti-Medium.ttf');
-  
+  src: url('../asset/font/Athiti-Medium.ttf'); /* IE9 Compat Modes */
+  src: local('Sarabun Bold Italic'), local('Sarabun-BoldItalic'),
+    url('../asset/font/Athiti-Medium.ttf') format('embedded-opentype'),
+    /* IE6-IE8 */ url('../asset/font/Athiti-Medium.ttf') format('woff2'),
+    /* Super Modern Browsers */ url('../asset/font/Athiti-Medium.ttf') format('woff'),
+    /* Modern Browsers */ url('../asset/font/Athiti-Medium.ttf') format('truetype'),
+    /* Safari, Android, iOS */ url('../asset/font/Athiti-Medium.ttf') format('svg'); /* Legacy iOS */
 }

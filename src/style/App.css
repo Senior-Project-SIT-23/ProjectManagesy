@@ -18,6 +18,10 @@
   color: floralwhite;
 }
 
+.font-athiti {
+  font-family: 'Athiti' !important;
+}
+
 .tags-input {
   display: flex;
   align-items: flex-start;
@@ -41,3 +45,4 @@
 .input:focus {
   outline: transparent;
 }
+/*Button upload file in component Dialog*/

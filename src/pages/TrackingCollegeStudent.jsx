@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useCallback, useState } from "react"
-import TableData from "../components/TrackingStudents/TableData"
-import TableActivity from "../components/TrackingStudents/TableActivity"
+import TableData from "../components/TrackingStudents/TableActivity"
+import TableActivity from "../components/TrackingStudents/TableDataOfStudents"
 import Header from "../components/TrackingCollegeStudents/Header"
 export default function TrackingCollageStudent() {
     const [indexTab, setIndexTab] = useState(0)
