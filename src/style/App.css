@@ -46,3 +46,8 @@
   outline: transparent;
 }
 /*Button upload file in component Dialog*/
+#activityName {
+  min-width: 400px;
+  
+}
+

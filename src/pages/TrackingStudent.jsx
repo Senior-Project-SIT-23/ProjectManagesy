@@ -65,8 +65,11 @@ export default function Test(props) {
       {
         activityName: event.target.activityName.value,
         file: event.target.upload_file.files[0],
+        yearofActivity: event.target.yearofActivity.value,
+        major: event.target.major.value,
       },
     ]
+
     setrows(newRow)
     handleClose()
   }

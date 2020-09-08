@@ -22,6 +22,7 @@ import DeleteIcon from "@material-ui/icons/Delete"
 import FilterListIcon from "@material-ui/icons/FilterList"
 import AddBoxIcon from "@material-ui/icons/AddBox"
 import DialogCreateActivity from "./DialogCreateActivity"
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -50,16 +51,11 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  {
-    id: "activityName",
-    numeric: false,
-    disablePadding: true,
-    label: "Activity name",
-  },
+  {id: "activityName",numeric: false,disablePadding: true,label: "Activity name",},
+  {id: "branch", numeric: true, disablePadding: false, label: "สาขา"  },
+  {id: "yearofActivity", numeric: true, disablePadding: false, label: "ปีที่จัดกิจกรรม" },
   { id: "file", numeric: true, disablePadding: false, label: "File" },
   { id: "edit", numeric: true, disablePadding: false, label: "Edit" },
-  // { id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
-  // { id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
 ]
 
 function EnhancedTableHead(props) {
@@ -90,7 +86,8 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "right" : "left"}
+            // align={headCell.numeric ? "right" : "left"}
+            align="left"
             padding={headCell.disablePadding ? "none" : "default"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -164,13 +161,12 @@ const EnhancedTableToolbar = (props) => {
         </Typography>
       ) : (
         <Typography
-          
-          className={classes.title} 
+          className={classes.title}
           variant="h6"
           id="tableTitle"
           component="div"
         >
-          กิจกรรมนักเรียน
+          <div className="font-athiti">กิจกรรมนักเรียน</div>
         </Typography>
       )}
 
@@ -316,14 +312,14 @@ export default function EnhancedTable(props) {
                       >
                         {row.activityName}
                       </TableCell>
-                      <TableCell align="right">{row?.file?.name}</TableCell>
-                      <TableCell align="right">
+                      <TableCell>{row.major}</TableCell>
+                      <TableCell>{row.yearofActivity}</TableCell>
+                      <TableCell >{row?.file?.name}</TableCell>
+                      <TableCell >
                         <button onClick={() => props.handleClickEdit(row)}>
-                          edit
+                        <EditOutlinedIcon/>
                         </button>
                       </TableCell>
-                      {/* <TableCell align="right">{row.carbs}</TableCell>
-                      <TableCell align="right">{row.protein}</TableCell> */}
                     </TableRow>
                   )
                 })}

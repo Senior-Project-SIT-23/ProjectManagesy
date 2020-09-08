@@ -10,11 +10,16 @@ import CloseIcon from "@material-ui/icons/Close"
 import Typography from "@material-ui/core/Typography"
 import TextField from "@material-ui/core/TextField"
 import AddBoxIcon from "@material-ui/icons/AddBox"
+import InputLabel from "@material-ui/core/InputLabel"
+import FormControl from "@material-ui/core/FormControl"
+import Select from "@material-ui/core/Select"
+import { makeStyles } from "@material-ui/core/styles"
 
 const styles = (theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(2),
+    minWidth: "400px",
   },
   closeButton: {
     position: "absolute",
@@ -55,7 +60,35 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions)
 
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    // margin: theme.spacing(1),
+    minWidth: 250,
+    marginTop: theme.spacing(2),
+  },
+  formControl2: {
+    marginTop: theme.spacing(2),
+    marginLeft: "20px",
+    minWidth: 150,
+  },
+}))
+
 export default function CustomizedDialogs(props) {
+  const classes = useStyles()
+  const [state, setState] = React.useState({
+    year: "",
+    major: "",
+  })
+
+  const handleChange = (event) => {
+    const name = event.target.name
+    console.log(name)
+    setState({
+      ...state,
+      [name]: event.target.value,
+    })
+  }
+
   return (
     <div>
       <IconButton aria-label="Add Activity" onClick={props.handleClickOpen}>
@@ -65,6 +98,7 @@ export default function CustomizedDialogs(props) {
         onClose={props.handleClose}
         aria-labelledby="customized-dialog-title"
         open={props.open}
+        minWidth="800"
       >
         <form onSubmit={props.handleSubmit}>
           <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
@@ -79,10 +113,45 @@ export default function CustomizedDialogs(props) {
                 variant="outlined"
               />
             </div>
-            <div className="my-2">
-              
+
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel>สาขาที่จัดกิจกรรม</InputLabel>
+              <Select
+                label="สาขาที่จัดกิจกรรม"
+                native
+                onChange={handleChange}
+                id="ํmajorofActivity"
+                name="major"
+                value={state.major}
+              >
+                <option aria-label="None"  />
+                <option value={"IT"}>เทคโนโลยรสารสนเทศ(IT)</option>
+                <option value={"CS"}>วิทยาการคอมพิวเตอร์(CS)</option>
+                <option value={"DSI"}>นวัตกรรมบริการดิจิตอล(DSI)</option>
+                <option value={"SIT"}>คณะเทคโนโลยีสารสนเทศ(SIT)</option>
+              </Select>
+            </FormControl>
+
+            <FormControl variant="outlined" className={classes.formControl2}>
+              <InputLabel>ปีที่จัดกิจกรรม</InputLabel>
+              <Select
+                native
+                label="ปีที่จัดกิจกรรม"
+                onChange={handleChange}
+                value={state.year}
+                name="year"
+                id="yearofActivity"
+              >
+                <option aria-label="None" value="" />
+                <option value={"2017"}>2017</option>
+                <option value={"2018"}>2018</option>
+                <option value={"2019"}>2019</option>
+                <option value={"2020"}>2020</option>
+              </Select>
+            </FormControl>
+
+            <div className="my-3">
               <input type="file" id="upload_file" />
-              
             </div>
           </DialogContent>
 
