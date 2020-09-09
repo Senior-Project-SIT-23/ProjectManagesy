@@ -68,23 +68,23 @@ function Header(props) {
               </Grid>
             </Hidden>
             <Grid item xs />
-            <Grid item>
+            {/* <Grid item>
               <Link className={classes.link} href="#" variant="body2">
                 Go to docs
               </Link>
-            </Grid>
-            <Grid item>
+            </Grid> */}
+            {/* <Grid item>
               <Tooltip title="Alerts • No alerts">
                 <IconButton color="inherit">
                   <NotificationsIcon />
                 </IconButton>
               </Tooltip>
-            </Grid>
-            <Grid item>
+            </Grid> */}
+            {/* <Grid item>
               <IconButton color="inherit" className={classes.iconButtonAvatar}>
                 <Avatar src="/static/images/avatar/1.jpg" alt="My Avatar" />
               </IconButton>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Toolbar>
       </AppBar>
@@ -117,13 +117,13 @@ function Header(props) {
                 Web setup
               </Button>
             </Grid> */}
-            <Grid item>
+            {/* <Grid item>
               <Tooltip title="Help">
                 <IconButton color="inherit">
                   <HelpIcon />
                 </IconButton>
               </Tooltip>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Toolbar>
       </AppBar>

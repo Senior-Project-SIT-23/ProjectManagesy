@@ -2,6 +2,13 @@ import React, { useContext, useEffect, useCallback, useState } from "react"
 import TableActivity from "../components/TrackingStudents/TableActivity"
 import TableDataOfStudents from "../components/TrackingStudents/TableDataOfStudents"
 import Header from "../components/TrackingStudents/Header"
+import TableAdmission from "../components/TrackingStudents/TableAdmission"
+import {
+  apiCreateActivity,
+  apiFetchActivities,
+  apiEditActivity,
+} from "../service/activity"
+import { getActivityFormData } from "../form/activityHelper"
 
 export default function Test(props) {
   const [indexTab, setIndexTab] = useState(0)
@@ -13,7 +20,7 @@ export default function Test(props) {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.activityName)
+      const newSelecteds = rows.map((n) => n.activity_id)
       setSelected(newSelecteds)
       return
     }
@@ -45,7 +52,7 @@ export default function Test(props) {
   const handleDelete = () => {}
   //Dialog
   const [open, setOpen] = React.useState(false)
-  const [openEdit, setOpenEdit] = React.useState({ activityName: "", file: {} })
+  const [openEdit, setOpenEdit] = React.useState()
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -56,25 +63,37 @@ export default function Test(props) {
   }
   const handleClose = () => {
     setOpen(false)
-    setOpenEdit({ activityName: "", file: {} })
+    setOpenEdit(null)
   }
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    const newRow = [
-      ...rows,
-      {
-        activityName: event.target.activityName.value,
-        file: event.target.upload_file.files[0],
-        yearofActivity: event.target.yearofActivity.value,
-        major: event.target.major.value,
-      },
-    ]
+    const data = {
+      id: event.target.id.value,
+      delete_file_id: event.target.delete_file_id.value,
+      activityName: event.target.activityName.value,
+      year: event.target.yearofActivity.value,
+      major: event.target.major.value,
+      file: event.target.upload_file.files[0],
+    }
+    const formData = getActivityFormData(data)
 
-    setrows(newRow)
+    if (openEdit) {
+      await apiEditActivity(formData)
+    } else {
+      await apiCreateActivity(formData)
+    }
+    fetchActivities()
     handleClose()
   }
 
-  //Dialog
+  const fetchActivities = useCallback(async () => {
+    const response = await apiFetchActivities()
+    setrows(response.data)
+  }, [])
+
+  useEffect(() => {
+    fetchActivities()
+  }, [fetchActivities])
 
   return (
     <>
@@ -97,6 +116,7 @@ export default function Test(props) {
             handleSubmit={handleSubmit}
           />
         )}
+        {indexTab === 2 && <TableAdmission />}
       </div>
     </>
   )

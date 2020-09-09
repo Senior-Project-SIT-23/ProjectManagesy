@@ -1,29 +1,31 @@
-import axios from 'axios'
-import Cookie from 'js-cookie'
+import axios from "axios"
+import Cookie from "js-cookie"
 
 const createInstance = (headers) => {
   return axios.create({
     baseURL: process.env.REACT_APP_BE,
-    headers: {
-      Authorization: `Bearer ${Cookie.get(process.env.REACT_APP_ACCESS_TOKEN_NAME)}`,
-      'Content-Type': 'application/json',
-    },
+    // headers: {
+    //   Authorization: `Bearer ${Cookie.get(process.env.REACT_APP_ACCESS_TOKEN_NAME)}`,
+    //   'Content-Type': 'application/json',
+    // },
   })
 }
 
-const handleResponse = (res) => (!res.data.error ? Promise.resolve(res) : Promise.reject(new Error(res)))
+const handleResponse = (res) =>
+  !res.data.error ? Promise.resolve(res) : Promise.reject(new Error(res))
 
 const catchError = (err) => {
   return Promise.reject(err)
 }
 
 export default {
-  get: (path, headers = {}) => createInstance(headers).get(path).then(handleResponse).catch(catchError),
+  get: (path, headers = {}) =>
+    createInstance(headers).get(path).then(handleResponse).catch(catchError),
   post: (path, body = {}, headers = {}) =>
     createInstance(headers)
       .request({
         url: path,
-        method: 'POST',
+        method: "POST",
         data: body,
       })
       .then(handleResponse)
@@ -32,7 +34,7 @@ export default {
     createInstance(headers)
       .request({
         url: path,
-        method: 'PUT',
+        method: "PUT",
         data: body,
       })
       .then(handleResponse)
@@ -41,7 +43,7 @@ export default {
     createInstance(headers)
       .request({
         url: path,
-        method: 'DELETE',
+        method: "DELETE",
       })
       .then(handleResponse)
       .catch(catchError),

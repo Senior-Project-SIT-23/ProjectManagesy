@@ -22,7 +22,10 @@ import DeleteIcon from "@material-ui/icons/Delete"
 import FilterListIcon from "@material-ui/icons/FilterList"
 import AddBoxIcon from "@material-ui/icons/AddBox"
 import DialogCreateActivity from "./DialogCreateActivity"
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined"
+import SearchIcon from "@material-ui/icons/Search"
+import InputBase from "@material-ui/core/InputBase"
+import { fade } from "@material-ui/core/styles"
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -51,9 +54,19 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  {id: "activityName",numeric: false,disablePadding: true,label: "Activity name",},
-  {id: "branch", numeric: true, disablePadding: false, label: "สาขา"  },
-  {id: "yearofActivity", numeric: true, disablePadding: false, label: "ปีที่จัดกิจกรรม" },
+  {
+    id: "activityName",
+    numeric: false,
+    disablePadding: true,
+    label: "Activity name",
+  },
+  { id: "branch", numeric: true, disablePadding: false, label: "สาขา" },
+  {
+    id: "yearofActivity",
+    numeric: true,
+    disablePadding: false,
+    label: "ปีที่จัดกิจกรรม",
+  },
   { id: "file", numeric: true, disablePadding: false, label: "File" },
   { id: "edit", numeric: true, disablePadding: false, label: "Edit" },
 ]
@@ -144,6 +157,63 @@ const EnhancedTableToolbar = (props) => {
   const classes = useToolbarStyles()
   const { numSelected } = props
 
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+      display: "none",
+      [theme.breakpoints.up("sm")]: {
+        display: "block",
+      },
+    },
+    search: {
+      position: "relative",
+      borderRadius: theme.shape.borderRadius,
+      backgroundColor: fade(theme.palette.common.white, 0.15),
+      "&:hover": {
+        backgroundColor: fade(theme.palette.common.white, 0.25),
+      },
+      marginLeft: 0,
+      width: "100%",
+      [theme.breakpoints.up("sm")]: {
+        marginLeft: theme.spacing(1),
+        width: "auto",
+      },
+    },
+    searchIcon: {
+      padding: theme.spacing(0, 2),
+      height: "100%",
+      position: "absolute",
+      pointerEvents: "none",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    inputRoot: {
+      color: "inherit",
+    },
+    inputInput: {
+      padding: theme.spacing(1, 1, 1, 0),
+      // vertical padding + font size from searchIcon
+      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+      transition: theme.transitions.create("width"),
+      width: "100%",
+      [theme.breakpoints.up("sm")]: {
+        width: "12ch",
+        "&:focus": {
+          width: "20ch",
+        },
+      },
+    },
+  }))
+
+  const classes1 = useStyles()
+
   return (
     <Toolbar
       className={clsx(classes.root, {
@@ -179,6 +249,21 @@ const EnhancedTableToolbar = (props) => {
       ) : (
         <Tooltip title="Filter list">
           <>
+            <div className={classes1.root}>
+              <div className={classes1.search}>
+                <div className={classes1.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <InputBase
+                  placeholder="Search…"
+                  classes={{
+                    root: classes1.inputRoot,
+                    input: classes1.inputInput,
+                  }}
+                  inputProps={{ "aria-label": "search" }}
+                />
+              </div>
+            </div>
             <IconButton aria-label="filter list">
               <FilterListIcon />
             </IconButton>
@@ -282,7 +367,7 @@ export default function EnhancedTable(props) {
               {stableSort(props.rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.activityName)
+                  const isItemSelected = isSelected(row.activity_id)
                   const labelId = `enhanc
                   ed-table-checkbox-${index}`
 
@@ -292,13 +377,13 @@ export default function EnhancedTable(props) {
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.activityName}
+                      key={row.activity_id}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
                           onClick={(event) =>
-                            props.handleClick(event, row?.activityName)
+                            props.handleClick(event, row?.activity_id)
                           }
                           checked={isItemSelected}
                           inputProps={{ "aria-labelledby": labelId }}
@@ -310,14 +395,22 @@ export default function EnhancedTable(props) {
                         scope="row"
                         padding="none"
                       >
-                        {row.activityName}
+                        {row.activity_name}
                       </TableCell>
-                      <TableCell>{row.major}</TableCell>
-                      <TableCell>{row.yearofActivity}</TableCell>
-                      <TableCell >{row?.file?.name}</TableCell>
-                      <TableCell >
+                      <TableCell>{row.activity_major}</TableCell>
+                      <TableCell>{row.activity_year}</TableCell>
+                      <TableCell>
+                        <a
+                          href={`${process.env.REACT_APP_BE_STORAGE}/${row.activity_file}`}
+                          // eslint-disable-next-line react/jsx-no-target-blank
+                          target="_blank"
+                        >
+                          {row?.activity_file_name}
+                        </a>
+                      </TableCell>
+                      <TableCell>
                         <button onClick={() => props.handleClickEdit(row)}>
-                        <EditOutlinedIcon/>
+                          <EditOutlinedIcon />
                         </button>
                       </TableCell>
                     </TableRow>

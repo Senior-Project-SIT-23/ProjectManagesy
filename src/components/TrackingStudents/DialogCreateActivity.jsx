@@ -100,16 +100,36 @@ export default function CustomizedDialogs(props) {
         open={props.open}
         minWidth="800"
       >
-        <form onSubmit={props.handleSubmit}>
+        <form
+          onSubmit={(event) => {
+            setState({
+              year: "",
+              major: "",
+            })
+            props.handleSubmit(event)
+          }}
+        >
           <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
             Create Activity
           </DialogTitle>
           <DialogContent dividers>
+            <input
+              hidden
+              id="id"
+              defaultValue=""
+              value={props.openEdit?.activity_id}
+            />
+            <input
+              hidden
+              id="delete_file_id"
+              defaultValue={[]}
+              value={[props.openEdit?.activity_file_id]}
+            />
             <div>
               <TextField
                 id="activityName"
                 label="Activity Name"
-                defaultValue={props.openEdit?.activityName}
+                defaultValue={props.openEdit?.activity_name}
                 variant="outlined"
               />
             </div>
@@ -122,9 +142,9 @@ export default function CustomizedDialogs(props) {
                 onChange={handleChange}
                 id="ํmajorofActivity"
                 name="major"
-                value={state.major}
+                value={state.major || props.openEdit?.activity_major}
               >
-                <option aria-label="None"  />
+                <option aria-label="None" />
                 <option value={"IT"}>เทคโนโลยรสารสนเทศ(IT)</option>
                 <option value={"CS"}>วิทยาการคอมพิวเตอร์(CS)</option>
                 <option value={"DSI"}>นวัตกรรมบริการดิจิตอล(DSI)</option>
@@ -138,7 +158,7 @@ export default function CustomizedDialogs(props) {
                 native
                 label="ปีที่จัดกิจกรรม"
                 onChange={handleChange}
-                value={state.year}
+                value={state.year || props.openEdit?.activity_year}
                 name="year"
                 id="yearofActivity"
               >
@@ -151,7 +171,11 @@ export default function CustomizedDialogs(props) {
             </FormControl>
 
             <div className="my-3">
-              <input type="file" id="upload_file" />
+              <input
+                type="file"
+                id="upload_file"
+                accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+              />
             </div>
           </DialogContent>
 
