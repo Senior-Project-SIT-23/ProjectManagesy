@@ -26,6 +26,7 @@ import EditOutlinedIcon from "@material-ui/icons/EditOutlined"
 import SearchIcon from "@material-ui/icons/Search"
 import InputBase from "@material-ui/core/InputBase"
 import { fade } from "@material-ui/core/styles"
+import { navigate } from "@reach/router"
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -343,6 +344,11 @@ export default function EnhancedTable(props) {
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, props.rows.length - page * rowsPerPage)
 
+  function showDataInFile (id) {
+    navigate(`/Showdatainfile/${id}`)
+
+  }
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -394,6 +400,8 @@ export default function EnhancedTable(props) {
                         id={labelId}
                         scope="row"
                         padding="none"
+                        onClick = {() => showDataInFile(row.activity_id)}
+                        className = "cursor-pointer"
                       >
                         {row.activity_name}
                       </TableCell>
