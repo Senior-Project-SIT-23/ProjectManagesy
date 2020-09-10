@@ -67,9 +67,13 @@ export default function Test(props) {
   }
   const handleSubmit = async (event) => {
     event.preventDefault()
+    const delete_file_id =
+      event.target.upload_file.files.length !== 0
+        ? event.target.delete_file_id.value
+        : []
     const data = {
       id: event.target.id.value,
-      delete_file_id: event.target.delete_file_id.value,
+      delete_file_id: delete_file_id,
       activityName: event.target.activityName.value,
       year: event.target.yearofActivity.value,
       major: event.target.major.value,

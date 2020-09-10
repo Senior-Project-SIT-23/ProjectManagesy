@@ -101,12 +101,12 @@ export default function CustomizedDialogs(props) {
         minWidth="800"
       >
         <form
-          onSubmit={(event) => {
+          onSubmit={async (event) => {
+            await props.handleSubmit(event)
             setState({
               year: "",
               major: "",
             })
-            props.handleSubmit(event)
           }}
         >
           <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
@@ -127,6 +127,7 @@ export default function CustomizedDialogs(props) {
             />
             <div>
               <TextField
+                required
                 id="activityName"
                 label="Activity Name"
                 defaultValue={props.openEdit?.activity_name}
@@ -142,6 +143,7 @@ export default function CustomizedDialogs(props) {
                 onChange={handleChange}
                 id="ํmajorofActivity"
                 name="major"
+                required
                 value={state.major || props.openEdit?.activity_major}
               >
                 <option aria-label="None" />
@@ -156,6 +158,7 @@ export default function CustomizedDialogs(props) {
               <InputLabel>ปีที่จัดกิจกรรม</InputLabel>
               <Select
                 native
+                required
                 label="ปีที่จัดกิจกรรม"
                 onChange={handleChange}
                 value={state.year || props.openEdit?.activity_year}
@@ -172,10 +175,13 @@ export default function CustomizedDialogs(props) {
 
             <div className="my-3">
               <input
+                required
                 type="file"
                 id="upload_file"
                 accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
               />
+              <br></br>
+              <p>Current {props.openEdit?.activity_file_name}</p>
             </div>
           </DialogContent>
 
