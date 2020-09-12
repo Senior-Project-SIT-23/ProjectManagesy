@@ -15,3 +15,9 @@ export function getActivityFormData(data) {
   )
   return formData
 }
+
+export function getActivityIdsFormData(data) {
+  const formData = new FormData()
+  formData.append("activity_id[]", data)
+  return formData
+}

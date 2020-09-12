@@ -7,8 +7,12 @@ import {
   apiCreateActivity,
   apiFetchActivities,
   apiEditActivity,
+  apiDeleteActivities,
 } from "../service/activity"
-import { getActivityFormData } from "../form/activityHelper"
+import {
+  getActivityFormData,
+  getActivityIdsFormData,
+} from "../form/activityHelper"
 
 export default function Test(props) {
   const [indexTab, setIndexTab] = useState(0)
@@ -49,7 +53,13 @@ export default function Test(props) {
 
   const [rows, setrows] = useState([])
 
-  const handleDelete = () => {}
+  const handleDelete = async () => {
+    const formData = getActivityIdsFormData(selected)
+    //เรียก api
+    await apiDeleteActivities(formData)
+    setSelected([])
+    await fetchActivities()
+  }
   //Dialog
   const [open, setOpen] = React.useState(false)
   const [openEdit, setOpenEdit] = React.useState()
@@ -118,6 +128,7 @@ export default function Test(props) {
             handleClickOpen={handleClickOpen}
             handleClose={handleClose}
             handleSubmit={handleSubmit}
+            handleDelete={handleDelete}
           />
         )}
         {indexTab === 2 && <TableAdmission />}

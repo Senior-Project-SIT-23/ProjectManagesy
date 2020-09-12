@@ -175,7 +175,7 @@ export default function CustomizedDialogs(props) {
 
             <div className="my-3">
               <input
-                required
+                // required
                 type="file"
                 id="upload_file"
                 accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
@@ -186,7 +186,7 @@ export default function CustomizedDialogs(props) {
           </DialogContent>
 
           <DialogActions>
-            <Button autoFocus color="primary" type="submit">
+            <Button autoFocus color="primary" type="submit" >
               Save changes
             </Button>
           </DialogActions>

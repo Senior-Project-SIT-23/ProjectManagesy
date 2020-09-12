@@ -27,6 +27,7 @@ import SearchIcon from "@material-ui/icons/Search"
 import InputBase from "@material-ui/core/InputBase"
 import { fade } from "@material-ui/core/styles"
 import { navigate } from "@reach/router"
+import DialogConfirmDelete from "./DialogConfirmDelete"
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -244,7 +245,9 @@ const EnhancedTableToolbar = (props) => {
       {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton aria-label="delete">
-            <DeleteIcon />
+          <button>           
+            <DialogConfirmDelete  handleDelete={props.handleDelete}/>
+            </button>
           </IconButton>
         </Tooltip>
       ) : (
@@ -253,7 +256,7 @@ const EnhancedTableToolbar = (props) => {
             <div className={classes1.root}>
               <div className={classes1.search}>
                 <div className={classes1.searchIcon}>
-                  <SearchIcon />
+                    <SearchIcon />
                 </div>
                 <InputBase
                   placeholder="Search…"
@@ -368,6 +371,7 @@ export default function EnhancedTable(props) {
               onSelectAllClick={props.handleSelectAllClick}
               onRequestSort={handleRequestSort}
               rowCount={props.rows.length}
+              
             />
             <TableBody>
               {stableSort(props.rows, getComparator(order, orderBy))

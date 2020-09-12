@@ -10,3 +10,7 @@ export async function apiEditActivity(data) {
 export async function apiFetchActivities() {
   return await axios.get("/activity")
 }
+
+export async function apiDeleteActivities(data) {
+  return await axios.post("/activity/delete", data)
+}
