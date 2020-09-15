@@ -49,7 +49,7 @@ const DialogTitle = withStyles(styles)((props) => {
 const DialogContent = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
-    maxWidth: "370px",
+    maxWidth: "480px",
   },
 }))(MuiDialogContent)
 
@@ -92,31 +92,31 @@ export default function CustomizedDialogs() {
               <FormControlLabel
                 value="round1"
                 control={<Checkbox color="primary" />}
-                label="รอบที่ 1"
+                label="รอบ 1"
                 labelPlacement="round1"
               />
               <FormControlLabel
                 value="round2"
                 control={<Checkbox color="primary" />}
-                label="รอบที่ 2 "
+                label="รอบ 2 "
                 labelPlacement="round2"
               />
               <FormControlLabel
                 value="round3"
                 control={<Checkbox color="primary" />}
-                label="รอบที่ 3"
+                label="รอบ 3"
                 labelPlacement="round3"
               />
               <FormControlLabel
                 value="round4"
                 control={<Checkbox color="primary" />}
-                label="รอบที่ 4"
+                label="รอบ 4"
                 labelPlacement="round4"
               />
               <FormControlLabel
                 value="round5"
                 control={<Checkbox color="primary" />}
-                label="รอบที่ 5"
+                label="รอบ 5"
                 labelPlacement="round5"
               />
             </FormGroup>
