@@ -13,6 +13,8 @@ import {
   getActivityFormData,
   getActivityIdsFormData,
 } from "../form/activityHelper"
+import ShowDataInFile from "../components/TrackingStudents/ShowDataInFile"
+
 
 export default function Test(props) {
   const [indexTab, setIndexTab] = useState(0)
@@ -130,9 +132,11 @@ export default function Test(props) {
             handleSubmit={handleSubmit}
             handleDelete={handleDelete}
           />
+          
         )}
         {indexTab === 2 && <TableAdmission />}
       </div>
+      
     </>
   )
 }

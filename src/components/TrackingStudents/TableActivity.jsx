@@ -20,7 +20,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel"
 import Switch from "@material-ui/core/Switch"
 import DeleteIcon from "@material-ui/icons/Delete"
 import FilterListIcon from "@material-ui/icons/FilterList"
-import AddBoxIcon from "@material-ui/icons/AddBox"
+
 import DialogCreateActivity from "./DialogCreateActivity"
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined"
 import SearchIcon from "@material-ui/icons/Search"
@@ -28,6 +28,7 @@ import InputBase from "@material-ui/core/InputBase"
 import { fade } from "@material-ui/core/styles"
 import { navigate } from "@reach/router"
 import DialogConfirmDelete from "./DialogConfirmDelete"
+import DialogFilterActivity from "./DialogFilterActivity"
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -268,9 +269,10 @@ const EnhancedTableToolbar = (props) => {
                 />
               </div>
             </div>
-            <IconButton aria-label="filter list">
+            {/* <IconButton aria-label="filter list">
               <FilterListIcon />
-            </IconButton>
+            </IconButton> */}
+            <DialogFilterActivity/>
             <DialogCreateActivity
               {...props}
               open={props.open}
