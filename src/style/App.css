@@ -69,3 +69,13 @@
   font-size: 20px;
   font-family: "Athiti" !important;
 }
+
+#dialogDeleteActivity{
+  min-width: 500px;
+}
+
+.topicDelete {
+  font-size: 24px;
+  font-family: "Athiti" !important;
+  color: #336699;
+}

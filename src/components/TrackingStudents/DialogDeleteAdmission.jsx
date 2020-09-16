@@ -99,7 +99,7 @@ export default function DeleteDialog(props) {
             color="primary"
             autoFocus
             onClick={() => {
-              props.handleDelete()
+            //   props.handleDelete()
               handleClose()
             }}
           >

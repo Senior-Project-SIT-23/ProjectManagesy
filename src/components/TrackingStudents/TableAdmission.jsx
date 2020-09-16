@@ -26,6 +26,7 @@ import { fade } from "@material-ui/core/styles"
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined"
 import DialogCreateAdmission from "./DialogCreateAdmission"
 import DialogFilterAdmission from "./DialogFilterAdmission"
+import DialogDeleteAdmission from "./DialogDeleteAdmission"
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -231,11 +232,12 @@ const EnhancedTableToolbar = (props) => {
       )}
 
       {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton aria-label="delete">
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
+        // <Tooltip title="Delete">
+        //   <IconButton aria-label="delete">
+        //     <DeleteIcon />
+        //   </IconButton>
+        // </Tooltip>
+        <DialogDeleteAdmission/>
       ) : (
         <>
         <div className={classes1.root}>

@@ -110,7 +110,7 @@ export default function CustomizedDialogs(props) {
           }}
         >
           <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
-            Create Activity
+            สร้างกิจกรรม
           </DialogTitle>
           <DialogContent dividers>
             <input
@@ -188,7 +188,7 @@ export default function CustomizedDialogs(props) {
 
           <DialogActions>
             <Button autoFocus color="primary" type="submit" >
-              Save changes
+              บันทึก
             </Button>
           </DialogActions>
         </form>

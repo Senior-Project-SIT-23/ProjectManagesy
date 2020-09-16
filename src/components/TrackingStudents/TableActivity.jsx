@@ -18,9 +18,6 @@ import IconButton from "@material-ui/core/IconButton"
 import Tooltip from "@material-ui/core/Tooltip"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
 import Switch from "@material-ui/core/Switch"
-import DeleteIcon from "@material-ui/icons/Delete"
-import FilterListIcon from "@material-ui/icons/FilterList"
-
 import DialogCreateActivity from "./DialogCreateActivity"
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined"
 import SearchIcon from "@material-ui/icons/Search"
@@ -61,7 +58,7 @@ const headCells = [
     id: "activityName",
     numeric: false,
     disablePadding: true,
-    label: "Activity name",
+    label: "ชื่อกิจกรรม",
   },
   { id: "branch", numeric: true, disablePadding: false, label: "สาขา" },
   {
@@ -70,8 +67,8 @@ const headCells = [
     disablePadding: false,
     label: "ปีที่จัดกิจกรรม",
   },
-  { id: "file", numeric: true, disablePadding: false, label: "File" },
-  { id: "edit", numeric: true, disablePadding: false, label: "Edit" },
+  { id: "file", numeric: true, disablePadding: false, label: "ไฟล์" },
+  { id: "edit", numeric: true, disablePadding: false, label: "แก้ไข" },
 ]
 
 function EnhancedTableHead(props) {
