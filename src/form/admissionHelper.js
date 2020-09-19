@@ -10,8 +10,8 @@ export function getAdmissionFormData(data) {
   formDataAds.append("admission_file", _.get(data, "file", ""))
   formDataAds.append("new_admission_file", _.get(data, "file", ""))
   formDataAds.append(
-    "delete_admission_file_id[]",
-    _.get(data, "delete_file_id", [])
+    "delete_admission_file_id",
+    _.get(data, "delete_admission_file_id", " ")
   )
   console.log(data)
   return formDataAds

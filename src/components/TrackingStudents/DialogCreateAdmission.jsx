@@ -14,7 +14,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
 import InputLabel from "@material-ui/core/InputLabel"
-import { round } from "lodash"
+// import { round } from "lodash"
 
 const styles = (theme) => ({
   root: {
@@ -144,9 +144,9 @@ export default function CustomizedDialogs(props) {
               value={props.openEditAdmission?.admission_id}/>
             <input 
               hidden
-              id="delete_file_id"
+              id="delete_admission_file_id"
               defaultValue={[]}
-              value={props.openEditAdmission?.admission_id}/>
+              value={props.openEditAdmission?.admission_file_id}/>
             <div>
             <TextField
               id="admissionName"

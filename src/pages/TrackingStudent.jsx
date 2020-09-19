@@ -185,14 +185,14 @@ export default function Test(props) {
   }
   const handleSubmitAdmission = async (event) => {
     event.preventDefault()
-    const delete_file_admission_id = 
+    const delete_admission_file_id = 
     event.target.upload_file_admission.files.length !== 0
-    ? event.target.delete_file_admission_id?.value
+    ? event.target.delete_admission_file_id?.value
     : []
-    console.log(event.target.year.value)
+    console.log(event.target.delete_admission_file_id.value)
     const data = {
       id: event.target.id.value,
-      delete_file_admission_id: delete_file_admission_id,
+      delete_admission_file_id: delete_admission_file_id,
       admissionName : event.target.admissionName.value,
       round : event.target.round.value,
       year : event.target.year.value,
