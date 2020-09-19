@@ -14,6 +14,10 @@ import {
   getActivityIdsFormData,
 } from "../form/activityHelper"
 import ShowDataInFile from "../components/TrackingStudents/ShowDataInFile"
+import {
+  apiCreateAdmission,apiFetchAdmission,apiEditAdmission,apiDeteteAdmission,} from "../service/admission"
+import {
+  getAdmissionFormData,getAdmissionIdsFormData,} from "../form/admissionHelper"
 
 
 export default function Test(props) {
@@ -23,6 +27,7 @@ export default function Test(props) {
   }
   //Table
   const [selected, setSelected] = React.useState([])
+  
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
@@ -53,6 +58,8 @@ export default function Test(props) {
     setSelected(newSelected)
   }
 
+  
+
   const [rows, setrows] = useState([])
 
   const handleDelete = async () => {
@@ -62,6 +69,7 @@ export default function Test(props) {
     setSelected([])
     await fetchActivities()
   }
+
   //Dialog
   const [open, setOpen] = React.useState(false)
   const [openEdit, setOpenEdit] = React.useState()
@@ -92,12 +100,14 @@ export default function Test(props) {
       file: event.target.upload_file.files[0],
     }
     const formData = getActivityFormData(data)
-
+    console.log("data",formData)
     if (openEdit) {
       await apiEditActivity(formData)
+  
     } else {
       await apiCreateActivity(formData)
-    }
+    } 
+    
     fetchActivities()
     handleClose()
   }
@@ -110,6 +120,100 @@ export default function Test(props) {
   useEffect(() => {
     fetchActivities()
   }, [fetchActivities])
+
+  //Admission
+  //Table
+  const [selectedAdmission, setSelectedAdmission] = React.useState([]);
+
+  const handleSelectAllClickInAdmission = (event) => {
+    if (event.target.checked) {
+      const newSelecteds = rowsAdmissions.map((n) => n.admission_id);
+      setSelectedAdmission(newSelecteds);
+      return;
+    }
+    setSelectedAdmission([]);
+  };
+  
+ 
+
+  const [rowsAdmissions,setrowsAdmissions] = useState([])
+
+  const handleClickInAdmission = (event, name) => {
+    const selectedIndex = selectedAdmission.indexOf(name);
+    let newSelected = [];
+
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selectedAdmission, name);
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selectedAdmission.slice(1));
+    } else if (selectedIndex === selectedAdmission.length - 1) {
+      newSelected = newSelected.concat(selectedAdmission.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        selectedAdmission.slice(0, selectedIndex),
+        selectedAdmission.slice(selectedIndex + 1),
+      );
+    }
+
+    setSelectedAdmission(newSelected);
+  };
+  const handleDeleteAdmission = async () => {
+    const formData = getAdmissionIdsFormData(selectedAdmission)
+    //เรียก api
+    await apiDeteteAdmission(formData)
+    setSelectedAdmission([])
+    await fetchAdmission()
+  }
+
+  //Dialog
+  const [openAdmission, setOpenAdmission] = React.useState(false)
+  const [openEditAdmission, setOpenEditAdmission] = React.useState()
+  
+  const handleClickOpenCreateAdmission = () => {
+    setOpenAdmission(true)
+  }
+  const handleCloseAdmission = () => {
+    setOpenAdmission(false)
+    setOpenEditAdmission(null)
+  }
+  const handleClickEditAdmission = (row) => {
+    setOpenEditAdmission(row)
+    handleClickOpenCreateAdmission()
+  }
+  const handleSubmitAdmission = async (event) => {
+    event.preventDefault()
+    const delete_file_admission_id = 
+    event.target.upload_file_admission.files.length !== 0
+    ? event.target.delete_file_admission_id?.value
+    : []
+    console.log(event.target.year.value)
+    const data = {
+      id: event.target.id.value,
+      delete_file_admission_id: delete_file_admission_id,
+      admissionName : event.target.admissionName.value,
+      round : event.target.round.value,
+      year : event.target.year.value,
+      major : event.target.major.value,
+      file : event.target.upload_file_admission.files[0],
+    }
+    const formDataAdmission = getAdmissionFormData(data)
+    if(openEditAdmission) {
+      await apiEditAdmission(formDataAdmission)
+    }else{
+      await apiCreateAdmission(formDataAdmission)
+    }
+    fetchAdmission()
+    handleCloseAdmission()
+  }
+  const fetchAdmission = useCallback(async () => {
+    const response = await apiFetchAdmission()
+    setrowsAdmissions(response.data)
+  },[])
+
+  useEffect(() => {
+    fetchAdmission()
+  },[fetchAdmission])
+ 
 
   return (
     <>
@@ -134,7 +238,22 @@ export default function Test(props) {
           />
           
         )}
-        {indexTab === 2 && <TableAdmission />}
+        {indexTab === 2 && 
+        <TableAdmission 
+        handleSelectAllClickInAdmission={handleSelectAllClickInAdmission}
+        handleClickInAdmission={handleClickInAdmission}
+        rowsAdmissions={rowsAdmissions}
+        selectedAdmission={selectedAdmission}
+        setSelectedAdmission={setSelectedAdmission}
+        handleClickEditAdmission={handleClickEditAdmission}
+        openEditAdmission={openEditAdmission}
+        openAdmission={openAdmission}
+        setOpenAdmission={setOpenAdmission}
+        handleClickOpenCreateAdmission={handleClickOpenCreateAdmission}
+        handleCloseAdmission={handleCloseAdmission}
+        handleSubmitAdmission={handleSubmitAdmission}
+        handleDeleteAdmission={handleDeleteAdmission}
+        />}
       </div>
       
     </>

@@ -266,9 +266,6 @@ const EnhancedTableToolbar = (props) => {
                 />
               </div>
             </div>
-            {/* <IconButton aria-label="filter list">
-              <FilterListIcon />
-            </IconButton> */}
             <DialogFilterActivity/>
             <DialogCreateActivity
               {...props}
@@ -344,7 +341,7 @@ export default function EnhancedTable(props) {
   const isSelected = (name) => props.selected.indexOf(name) !== -1
 
   const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, props.rows.length - page * rowsPerPage)
+    rowsPerPage - Math.min(rowsPerPage, props.rows?.length - page * rowsPerPage)
 
   function showDataInFile (id) {
     navigate(`/Showdatainfile/${id}`)

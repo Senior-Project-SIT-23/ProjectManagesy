@@ -11,9 +11,9 @@ import Typography from "@material-ui/core/Typography"
 import AddBoxIcon from "@material-ui/icons/AddBox"
 import TextField from "@material-ui/core/TextField"
 import { makeStyles } from "@material-ui/core/styles"
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from "@material-ui/core/FormControl"
+import Select from "@material-ui/core/Select"
+import InputLabel from "@material-ui/core/InputLabel"
 import { round } from "lodash"
 
 const styles = (theme) => ({
@@ -60,15 +60,15 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions)
 
-export default function CustomizedDialogs() {
-  const [open, setOpen] = React.useState(false)
+export default function CustomizedDialogs(props) {
+  // const [openAdmission, setOpenAdmission] = React.useState(false)
 
-  const handleClickOpenCreateAdmission = () => {
-    setOpen(true)
-  }
-  const handleClose = () => {
-    setOpen(false)
-  }
+  // const handleClickOpenCreateAdmission = () => {
+  //   setOpenAdmission(true)
+  // }
+  // const handleCloseAdmission = () => {
+  //   setOpenAdmission(false)
+  // }
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -79,73 +79,95 @@ export default function CustomizedDialogs() {
     },
 
     formControl: {
-        marginTop: theme.spacing(2),
-        minWidth: 120,
-        
-      },
-      selectEmpty: {
-        marginTop: theme.spacing(2),
-      },
+      marginTop: theme.spacing(2),
+      minWidth: 120,
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
+    },
     formControl2: {
-        marginLeft : "20px",
-        marginTop: theme.spacing(2),
-    }
+      marginLeft: "20px",
+      marginTop: theme.spacing(2),
+    },
   }))
 
-  const classes = useStyles();
+  const classes = useStyles()
   const [state, setState] = React.useState({
     round: "",
     major: "",
     year: "",
   })
 
-  const handleChange = (event) => {
+  const handleChangeAdmission = (event) => {
     const name = event.target.name
     setState({
       ...state,
       [name]: event.target.value,
     })
-  };
+  }
 
   return (
     <div>
       <IconButton
         aria-label="Add Admission"
-        onClick={handleClickOpenCreateAdmission}
+        onClick={props.handleClickOpenCreateAdmission}
       >
         <AddBoxIcon />
       </IconButton>
       <Dialog
-        onClose={handleClose}
+        onClose={props.handleCloseAdmission}
         aria-labelledby="customized-dialog-title"
-        open={open}
+        open={props.openAdmission}
         minWidth="800"
       >
-        <form>
-          <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+        <form
+          onSubmit={async (event) => {
+            await props.handleSubmitAdmission(event)
+            setState({
+              round: "",
+              major: "",
+              year: "",
+            })
+          }}
+        >
+          <DialogTitle
+            id="customized-dialog-title"
+            onClose={props.handleCloseAdmission}
+          >
             <div className="font-athiti">สร้างโครงการสมัครสอบ</div>
           </DialogTitle>
           <DialogContent dividers>
+            <input
+              hidden
+              id="id"
+              defaultValue=""
+              value={props.openEditAdmission?.admission_id}/>
+            <input 
+              hidden
+              id="delete_file_id"
+              defaultValue={[]}
+              value={props.openEditAdmission?.admission_id}/>
+            <div>
             <TextField
               id="admissionName"
               label="ชื่อโครงการ"
               variant="outlined"
+              defaultValue={props.openEditAdmission?.admission_name}
             />
-            <br></br>
-            
+            </div>
+
             <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel >รอบที่รับสมัคร</InputLabel>
+              <InputLabel>รอบที่รับสมัคร</InputLabel>
               <Select
                 native
-                value={state.round}
-                onChange={handleChange}
+                onChange={handleChangeAdmission}
                 label="รอบที่รับสมัคร"
-                inputProps={{
-                  name: "round",
-                  id: "round",
-                }}
+                name="round"
+                id="round"
+                value={state.round || props.openEditAdmission?.round_name}
+                
               >
-                <option aria-label="None" value=""/>
+                <option aria-label="None" value="" />
                 <option value={"รอบ 1"}>รอบ 1 แฟ้มสะสมผลงาน</option>
                 <option value={"รอบ 2"}>รอบ 2 โควตา</option>
                 <option value={"รอบ 3"}>รอบ 3 รับตรงร่วมกัน</option>
@@ -159,10 +181,11 @@ export default function CustomizedDialogs() {
                 native
                 required
                 label="ปีการศึกษา"
-                onChange={handleChange}
-                value={state.year}
+                onChange={handleChangeAdmission}
+                value={state.year|| props.openEditAdmission?.admission_year}
                 name="year"
-                id="semester"
+                id="year"
+                
               >
                 <option aria-label="None" value="" />
                 <option value={"2017"}>2017</option>
@@ -173,16 +196,16 @@ export default function CustomizedDialogs() {
             </FormControl>
             <br></br>
             <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel >สาขา</InputLabel>
+              <InputLabel>สาขา</InputLabel>
               <Select
                 native
-                value={state.major}
-                onChange={handleChange}
+                required
+                value={state.major || props.openEditAdmission?.admission_major}
+                onChange={handleChangeAdmission}
                 label="major"
-                inputProps={{
-                  name: "major",
-                  id: "majorAdmission",
-                }}
+                name="major"
+                id="majorAdmission"
+                
               >
                 <option aria-label="None" value="" />
                 <option value={"IT"}>เทคโนโลยรสารสนเทศ(IT)</option>
@@ -193,20 +216,23 @@ export default function CustomizedDialogs() {
             </FormControl>
 
             <div className="my-4">
-              
               <input
-                // required
+                required={!props.openEditAdmission}
                 type="file"
-                id="upload_file"
+                id="upload_file_admission"
+                name="upload_file_admission"
                 accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
               />
               <br></br>
-              <p className="my-3">Current :</p>
+              <p className="my-3">Current :{props.openEditAdmission?.admission_file_name}</p>
             </div>
-            
           </DialogContent>
           <DialogActions>
-            <Button autoFocus onClick={handleClose} color="primary">
+            <Button
+              autoFocus
+              color="primary"
+              type="submit"
+            >
               <div>บันทึก</div>
             </Button>
           </DialogActions>

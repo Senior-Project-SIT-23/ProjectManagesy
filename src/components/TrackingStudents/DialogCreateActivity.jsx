@@ -176,13 +176,13 @@ export default function CustomizedDialogs(props) {
             <div className="my-3">
               
               <input
-                // required
+                required={!props.openEdit}
                 type="file"
                 id="upload_file"
                 accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
               />
               <br></br>
-              <p className="my-3">Current {props.openEdit?.activity_file_name}</p>
+              <p className="my-3">Current :{props.openEdit?.activity_file_name}</p>
             </div>
           </DialogContent>
 

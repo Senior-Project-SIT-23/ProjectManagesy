@@ -99,9 +99,8 @@ export default function DeleteDialog(props) {
             color="primary"
             autoFocus
             onClick={() => {
-            //   props.handleDelete()
-              handleClose()
-            }}
+              props.handleDeleteAdmission() 
+              handleClose()}}
           >
             ยืนยัน
           </Button>
