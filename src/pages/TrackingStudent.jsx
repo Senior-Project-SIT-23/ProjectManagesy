@@ -18,7 +18,7 @@ import {
   apiCreateAdmission,apiFetchAdmission,apiEditAdmission,apiDeteteAdmission,} from "../service/admission"
 import {
   getAdmissionFormData,getAdmissionIdsFormData,} from "../form/admissionHelper"
-
+// import fileDownload from "js-file-download";
 
 export default function Test(props) {
   const [indexTab, setIndexTab] = useState(0)
@@ -28,6 +28,9 @@ export default function Test(props) {
   //Table
   const [selected, setSelected] = React.useState([])
   
+  // function handleDowloadFileActivity(file) {
+  //   fileDownload(file, file.name);
+  // }
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
@@ -235,6 +238,7 @@ export default function Test(props) {
             handleClose={handleClose}
             handleSubmit={handleSubmit}
             handleDelete={handleDelete}
+            // handleDowloadFileActivity={handleDowloadFileActivity}
           />
           
         )}

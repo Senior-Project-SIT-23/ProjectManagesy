@@ -420,7 +420,7 @@ export default function EnhancedTable(props) {
                       <TableCell>{row.admission_year}</TableCell>
                       <TableCell>
                         <a
-                          href={`${process.env.REACT_APP_BE_STORAGE}/${row.admission_name}`}
+                          href={`${process.env.REACT_APP_BE_STORAGE}/${row.admission_file}`}
                           target="_blank"
                         >
                           {row?.admission_file_name}
