@@ -50,7 +50,7 @@ let theme = createMuiTheme({
   },
   mixins: {
     toolbar: {
-      minHeight: 40,
+      minHeight: 48,
     },
   },
 });

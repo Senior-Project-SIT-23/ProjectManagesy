@@ -35,6 +35,7 @@ function App() {
       <MainLayout title="ติดตามนักศึกษา"path="/3" component={TrackingCollegeStudent} />
       <MainLayout title="กิจกรรม"path="/2" component={Activity} />
       <MainLayout title="วิเคราะห์ข้อมูล"path="/4" component={Test2} />
+      <MainLayout title=" " path="/ShowDataInFileActivity/:id" component={ShowDataInFileActivity}/>
     </Router>
   );
 }
