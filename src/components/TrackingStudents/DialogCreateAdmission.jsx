@@ -61,14 +61,6 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions)
 
 export default function CustomizedDialogs(props) {
-  // const [openAdmission, setOpenAdmission] = React.useState(false)
-
-  // const handleClickOpenCreateAdmission = () => {
-  //   setOpenAdmission(true)
-  // }
-  // const handleCloseAdmission = () => {
-  //   setOpenAdmission(false)
-  // }
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -208,7 +200,7 @@ export default function CustomizedDialogs(props) {
                 
               >
                 <option aria-label="None" value="" />
-                <option value={"IT"}>เทคโนโลยรสารสนเทศ(IT)</option>
+                <option value={"IT"}>เทคโนโลยีสารสนเทศ(IT)</option>
                 <option value={"CS"}>วิทยาการคอมพิวเตอร์(CS)</option>
                 <option value={"DSI"}>นวัตกรรมบริการดิจิตอล(DSI)</option>
                 <option value={"SIT"}>คณะเทคโนโลยีสารสนเทศ(SIT)</option>

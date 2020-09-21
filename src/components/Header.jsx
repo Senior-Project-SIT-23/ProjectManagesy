@@ -54,7 +54,7 @@ function Header(props) {
     <React.Fragment>
       <AppBar color="primary" position="sticky" elevation={0}>
         <Toolbar>
-          <Grid container spacing={1} alignItems="center">
+          <Grid container spacing={1} alignItems="center" >
             <Hidden smUp>
               <Grid item>
                 <IconButton

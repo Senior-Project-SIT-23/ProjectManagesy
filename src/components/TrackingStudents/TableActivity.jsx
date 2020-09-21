@@ -23,9 +23,11 @@ import EditOutlinedIcon from "@material-ui/icons/EditOutlined"
 import SearchIcon from "@material-ui/icons/Search"
 import InputBase from "@material-ui/core/InputBase"
 import { fade } from "@material-ui/core/styles"
-import { navigate } from "@reach/router"
+import { Link, navigate } from "@reach/router"
 import DialogConfirmDelete from "./DialogConfirmDelete"
 import DialogFilterActivity from "./DialogFilterActivity"
+import ShowDataInFileActivity from "./ShowDataInFileActivity"
+import Axios from 'axios'
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -214,6 +216,13 @@ const EnhancedTableToolbar = (props) => {
 
   const classes1 = useStyles()
 
+  const seachAct =(keyword) => {
+    console.log(keyword)
+    Axios.get('http://127.0.0.1:8000/api/activity').then(result=>{
+      console.log(result.data)
+    })
+  }
+
   return (
     <Toolbar
       className={clsx(classes.root, {
@@ -257,7 +266,8 @@ const EnhancedTableToolbar = (props) => {
                     <SearchIcon />
                 </div>
                 <InputBase
-                  placeholder="Search…"
+                  placeholder="ค้นหา..."
+                  onChange={(event)=> {seachAct(event.target.value)}}
                   classes={{
                     root: classes1.inputRoot,
                     input: classes1.inputInput,
@@ -313,7 +323,7 @@ const useStyles = makeStyles((theme) => ({
 export default function EnhancedTable(props) {
   const classes = useStyles()
   const [order, setOrder] = React.useState("asc")
-  const [orderBy, setOrderBy] = React.useState("calories")
+  const [orderBy, setOrderBy] = React.useState("")
 
   const [page, setPage] = React.useState(0)
   const [dense, setDense] = React.useState(false)
@@ -344,8 +354,7 @@ export default function EnhancedTable(props) {
     rowsPerPage - Math.min(rowsPerPage, props.rows?.length - page * rowsPerPage)
 
   function showDataInFile (id) {
-    navigate(`/Showdatainfile/${id}`)
-
+    navigate(`/ShowDataInFileActivity/${id}`)
   }
 
   return (
@@ -400,7 +409,7 @@ export default function EnhancedTable(props) {
                         id={labelId}
                         scope="row"
                         padding="none"
-                        onClick = {() => showDataInFile(row.activity_id)}
+                        onClick = {() => showDataInFile(row.activity_id)  }
                         className = "cursor-pointer"
                       >
                         {row.activity_name}
@@ -408,6 +417,7 @@ export default function EnhancedTable(props) {
                       <TableCell>{row.activity_major}</TableCell>
                       <TableCell>{row.activity_year}</TableCell>
                       <TableCell>
+                        
                         <a
                           href={`${process.env.REACT_APP_BE_STORAGE}/${row.activity_file}`}
                           // eslint-disable-next-line react/jsx-no-target-blank

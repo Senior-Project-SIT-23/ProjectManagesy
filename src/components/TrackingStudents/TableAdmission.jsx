@@ -416,7 +416,7 @@ export default function EnhancedTable(props) {
                       </TableCell>
                       <TableCell>{row.round_name}</TableCell>
                       <TableCell>{row.admission_major}</TableCell>
-                      {console.log(row.admission_year)}
+                      
                       <TableCell>{row.admission_year}</TableCell>
                       <TableCell>
                         <a

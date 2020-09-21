@@ -79,3 +79,10 @@
   font-family: "Athiti" !important;
   color: #336699;
 }
+.addActivityCard {
+  text-align: right;
+}
+
+a:hover {
+  text-decoration: underline;
+}

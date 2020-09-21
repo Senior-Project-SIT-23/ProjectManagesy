@@ -79,6 +79,7 @@ export default function CustomizedDialogs(props) {
     year: "",
     major: "",
   })
+  const [open, setOpen] = React.useState(false)
 
   const handleChange = (event) => {
     const name = event.target.name
@@ -89,27 +90,33 @@ export default function CustomizedDialogs(props) {
     })
   }
 
+  const handleClose = () => {
+    setOpen(false)
+  }
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
   return (
     <div>
-      <IconButton aria-label="Add Activity" onClick={props.handleClickOpen}>
+      <IconButton aria-label="Add Activity" onClick={handleClickOpen}>
         <AddBoxIcon />
       </IconButton>
       <Dialog
-        onClose={props.handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={props.open}
+        // onClose={props.handleClose}
+        // aria-labelledby="customized-dialog-title"
+        open={open}
         minWidth="800"
       >
         <form
-          onSubmit={async (event) => {
-            await props.handleSubmit(event)
-            setState({
-              year: "",
-              major: "",
-            })
-          }}
+        //   onSubmit={async (event) => {
+        //     await props.handleSubmit(event)
+        //     setState({
+        //       year: "",
+        //       major: "",
+        //     })
+        //   }}
         >
-          <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
+          <DialogTitle id="customized-dialog-title" onClose={handleClose}>
             สร้างกิจกรรม
           </DialogTitle>
           <DialogContent dividers>
@@ -117,20 +124,20 @@ export default function CustomizedDialogs(props) {
               hidden
               id="id"
               defaultValue=""
-              value={props.openEdit?.activity_id}
+            //   value={props.openEdit?.activity_id}
             />
             <input
               hidden
               id="delete_file_id"
               defaultValue={[]}
-              value={[props.openEdit?.activity_file_id]}
+            //   value={[props.openEdit?.activity_file_id]}
             />
             <div>
               <TextField
                 required
                 id="activityName"
                 label="ชื่อกิจกรรม"
-                defaultValue={props.openEdit?.activity_name}
+                // defaultValue={props.openEdit?.activity_name}
                 variant="outlined"
               />
             </div>
@@ -144,7 +151,7 @@ export default function CustomizedDialogs(props) {
                 id="ํmajorofActivity"
                 name="major"
                 required
-                value={state.major || props.openEdit?.activity_major}
+                // value={state.major || props.openEdit?.activity_major}
               >
                 <option aria-label="None" />
                 <option value={"IT"}>เทคโนโลยีสารสนเทศ(IT)</option>
@@ -161,7 +168,7 @@ export default function CustomizedDialogs(props) {
                 required
                 label="ปีที่จัดกิจกรรม"
                 onChange={handleChange}
-                value={state.year || props.openEdit?.activity_year}
+                // value={state.year || props.openEdit?.activity_year}
                 name="year"
                 id="yearofActivity"
               >
@@ -182,7 +189,7 @@ export default function CustomizedDialogs(props) {
                 accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
               />
               <br></br>
-              <p className="my-3">Current :{props.openEdit?.activity_file_name}</p>
+              {/* <p className="my-3">Current :{props.openEdit?.activity_file_name}</p> */}
             </div>
           </DialogContent>
 

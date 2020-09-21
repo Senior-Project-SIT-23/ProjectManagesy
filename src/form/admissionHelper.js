@@ -13,7 +13,7 @@ export function getAdmissionFormData(data) {
     "delete_admission_file_id",
     _.get(data, "delete_admission_file_id", " ")
   )
-  console.log(data)
+
   return formDataAds
 }
 

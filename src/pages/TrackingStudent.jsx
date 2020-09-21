@@ -13,12 +13,11 @@ import {
   getActivityFormData,
   getActivityIdsFormData,
 } from "../form/activityHelper"
-import ShowDataInFile from "../components/TrackingStudents/ShowDataInFile"
 import {
   apiCreateAdmission,apiFetchAdmission,apiEditAdmission,apiDeteteAdmission,} from "../service/admission"
 import {
   getAdmissionFormData,getAdmissionIdsFormData,} from "../form/admissionHelper"
-// import fileDownload from "js-file-download";
+
 
 export default function Test(props) {
   const [indexTab, setIndexTab] = useState(0)
@@ -27,10 +26,6 @@ export default function Test(props) {
   }
   //Table
   const [selected, setSelected] = React.useState([])
-  
-  // function handleDowloadFileActivity(file) {
-  //   fileDownload(file, file.name);
-  // }
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
@@ -103,7 +98,7 @@ export default function Test(props) {
       file: event.target.upload_file.files[0],
     }
     const formData = getActivityFormData(data)
-    console.log("data",formData)
+    
     if (openEdit) {
       await apiEditActivity(formData)
   
@@ -189,7 +184,7 @@ export default function Test(props) {
     event.target.upload_file_admission.files.length !== 0
     ? event.target.delete_admission_file_id?.value
     : []
-    console.log(event.target.delete_admission_file_id.value)
+    
     const data = {
       id: event.target.id.value,
       delete_admission_file_id: delete_admission_file_id,
