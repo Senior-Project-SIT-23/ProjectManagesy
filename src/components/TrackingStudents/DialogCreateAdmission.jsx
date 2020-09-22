@@ -126,7 +126,7 @@ export default function CustomizedDialogs(props) {
             id="customized-dialog-title"
             onClose={props.handleCloseAdmission}
           >
-            <div className="font-athiti">สร้างโครงการสมัครสอบ</div>
+            <div className="font-athiti">{props.topicAdmission}</div>
           </DialogTitle>
           <DialogContent dividers>
             <input

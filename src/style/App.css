@@ -88,5 +88,9 @@ a:hover {
 }
 
 .backbutton {
-  margin: 40px;
+  margin: 20px;
+}
+
+.tableShowdata {
+  margin-left: 40px;
 }

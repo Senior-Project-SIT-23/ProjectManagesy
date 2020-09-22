@@ -32,9 +32,9 @@ function App() {
   return (
     <Router>
       <MainLayout title="ติดตามนักเรียน" path="/" component={TrackingStudent} />
-      <MainLayout title="ติดตามนักศึกษา"path="/3" component={TrackingCollegeStudent} />
-      <MainLayout title="กิจกรรม"path="/2" component={Activity} />
-      <MainLayout title="วิเคราะห์ข้อมูล"path="/4" component={Test2} />
+      <MainLayout title="ติดตามนักศึกษา"path="/TrackingCollegeStudents" component={TrackingCollegeStudent} />
+      <MainLayout title="กิจกรรม"path="/Activitys" component={Activity} />
+      <MainLayout title="วิเคราะห์ข้อมูล"path="/Analysis" component={Test2} />
       <MainLayout title=" " path="/ShowDataInFileActivity/:id" component={ShowDataInFileActivity}/>
     </Router>
   );

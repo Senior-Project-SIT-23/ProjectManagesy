@@ -1,4 +1,4 @@
-import React from "react"
+import React ,{component} from "react"
 import PropTypes from "prop-types"
 import clsx from "clsx"
 import { lighten, makeStyles } from "@material-ui/core/styles"
@@ -216,7 +216,7 @@ const EnhancedTableToolbar = (props) => {
 
   const classes1 = useStyles()
 
-  const seachAct =(keyword) => {
+  const searchAct =(keyword) => {
     console.log(keyword)
     Axios.get('http://127.0.0.1:8000/api/activity').then(result=>{
       console.log(result.data)
@@ -267,7 +267,7 @@ const EnhancedTableToolbar = (props) => {
                 </div>
                 <InputBase
                   placeholder="ค้นหา..."
-                  onChange={(event)=> {seachAct(event.target.value)}}
+                  onChange={(event)=> {searchAct(event.target.value)}}
                   classes={{
                     root: classes1.inputRoot,
                     input: classes1.inputInput,
@@ -284,6 +284,8 @@ const EnhancedTableToolbar = (props) => {
               handleClickOpen={props.handleClickOpen}
               handleClose={props.handleClose}
               handleSubmit={props.handleSubmit}
+              topic={props.topic}
+              setTopic={props.setTopic}
             />
           </>
         </Tooltip>
@@ -356,7 +358,8 @@ export default function EnhancedTable(props) {
   function showDataInFile (id) {
     navigate(`/ShowDataInFileActivity/${id}`)
   }
-
+  
+ 
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -427,7 +430,7 @@ export default function EnhancedTable(props) {
                         </a>
                       </TableCell>
                       <TableCell>
-                        <button onClick={() => props.handleClickEdit(row)}>
+                        <button onClick={() => props.handleClickEdit(row)}  >
                           <EditOutlinedIcon />
                         </button>
                       </TableCell>

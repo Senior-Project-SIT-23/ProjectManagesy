@@ -56,7 +56,7 @@ export default function Test(props) {
     setSelected(newSelected)
   }
 
-  
+  const [topic, setTopic] = useState()
 
   const [rows, setrows] = useState([])
 
@@ -74,10 +74,12 @@ export default function Test(props) {
 
   const handleClickOpen = () => {
     setOpen(true)
+    setTopic("สร้างกิจกรรม")
   }
   const handleClickEdit = (row) => {
     setOpenEdit(row)
     handleClickOpen()
+    setTopic("แก้ไขกิจกรรม")
   }
   const handleClose = () => {
     setOpen(false)
@@ -132,7 +134,7 @@ export default function Test(props) {
     setSelectedAdmission([]);
   };
   
- 
+  const [topicAdmission, setTopicAdmission] = useState()
 
   const [rowsAdmissions,setrowsAdmissions] = useState([])
 
@@ -169,6 +171,7 @@ export default function Test(props) {
   
   const handleClickOpenCreateAdmission = () => {
     setOpenAdmission(true)
+    setTopicAdmission("สร้างโครงการสมัครสอบ")
   }
   const handleCloseAdmission = () => {
     setOpenAdmission(false)
@@ -177,6 +180,7 @@ export default function Test(props) {
   const handleClickEditAdmission = (row) => {
     setOpenEditAdmission(row)
     handleClickOpenCreateAdmission()
+    setTopicAdmission("แก้ไขโครงการสมัครสอบ")
   }
   const handleSubmitAdmission = async (event) => {
     event.preventDefault()
@@ -233,7 +237,9 @@ export default function Test(props) {
             handleClose={handleClose}
             handleSubmit={handleSubmit}
             handleDelete={handleDelete}
-            // handleDowloadFileActivity={handleDowloadFileActivity}
+            topic={topic}
+            setTopic={setTopic}
+            
           />
           
         )}
@@ -252,6 +258,8 @@ export default function Test(props) {
         handleCloseAdmission={handleCloseAdmission}
         handleSubmitAdmission={handleSubmitAdmission}
         handleDeleteAdmission={handleDeleteAdmission}
+        setTopicAdmission={setTopicAdmission}
+        topicAdmission={topicAdmission}
         />}
       </div>
       

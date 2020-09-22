@@ -109,8 +109,9 @@ export default function CustomizedDialogs(props) {
             })
           }}
         >
+          
           <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
-            สร้างกิจกรรม
+          <div className="font-athiti">{props.topic}</div>
           </DialogTitle>
           <DialogContent dividers>
             <input

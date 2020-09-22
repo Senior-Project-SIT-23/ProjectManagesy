@@ -24,10 +24,10 @@ const categories = [
   {
     id: "Develop",
     children: [
-      { id: "กิจกรรม", icon: <PeopleIcon />, url: "/2" },
+      { id: "กิจกรรม", icon: <PeopleIcon />, url: "/Activitys" },
       { id: "ติดตามนักเรียน", icon: <PeopleIcon />, url: "/" },
-      { id: "ติดตามนักศึกษา", icon: <PeopleIcon />, url: "/3" },
-      { id: "วิเคราะห์ข้อมูล", icon: <SettingsIcon />, url: "/4" },
+      { id: "ติดตามนักศึกษา", icon: <PeopleIcon />, url: "/TrackingCollegeStudents" },
+      { id: "วิเคราะห์ข้อมูล", icon: <SettingsIcon />, url: "/Analysis" },
     ],
   },
 ]
