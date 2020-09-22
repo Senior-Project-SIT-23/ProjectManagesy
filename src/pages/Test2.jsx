@@ -4,7 +4,7 @@ import TableActivity from '../components/TrackingStudents/TableDataOfStudents'
 
 export default function Test(props) {
   return (
-    <div className="flex flex-col flex-1 mx-auto max-w-screen-lg h-screen">
+    <div className="flex flex-col flex-1 mx-auto min-w-screen-lg h-screen">
       <TableActivity/>
     </div>
     

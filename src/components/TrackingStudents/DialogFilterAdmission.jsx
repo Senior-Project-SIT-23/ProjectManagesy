@@ -14,6 +14,7 @@ import FormGroup from "@material-ui/core/FormGroup"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
 import FormControl from "@material-ui/core/FormControl"
 import FormLabel from "@material-ui/core/FormLabel"
+import Tooltip from '@material-ui/core/Tooltip';
 
 const styles = (theme) => ({
   root: {
@@ -72,9 +73,11 @@ export default function CustomizedDialogs() {
 
   return (
     <div>
+      <Tooltip title="ค้นหาโดย...">
       <IconButton aria-label="filter list" onClick={handleClickOpen}>
         <FilterListIcon />
       </IconButton>
+      </Tooltip>
       <Dialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"

@@ -13,6 +13,7 @@ import CloseIcon from "@material-ui/icons/Close"
 import { withStyles } from "@material-ui/core/styles"
 import MuiDialogTitle from "@material-ui/core/DialogTitle"
 import Typography from "@material-ui/core/Typography"
+import Tooltip from "@material-ui/core/Tooltip"
 
 export default function DeleteDialog(props) {
   const [open, setOpen] = React.useState(false)
@@ -60,9 +61,11 @@ export default function DeleteDialog(props) {
 
   return (
     <div>
-      <Button onClick={handleClickOpen}>
-        <DeleteIcon />
-      </Button>
+      <Tooltip title="ลบ">
+      <IconButton aria-label="delete" onClick={handleClickOpen}>
+      <DeleteIcon />
+          </IconButton>
+      </Tooltip>
       <Dialog
         open={open}
         onClose={handleClose}

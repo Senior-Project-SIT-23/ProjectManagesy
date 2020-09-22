@@ -16,6 +16,7 @@
   font-family: 'Sarabun' !important;
   background: #3399cc;
   color: floralwhite;
+  
 }
 
 .font-athiti {
@@ -93,4 +94,8 @@ a:hover {
 
 .tableShowdata {
   margin-left: 40px;
+}
+
+*:focus {
+  outline: none !important;
 }

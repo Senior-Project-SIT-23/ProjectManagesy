@@ -251,15 +251,12 @@ const EnhancedTableToolbar = (props) => {
 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
-          <IconButton aria-label="delete">
-          <button>           
             <DialogConfirmDelete  handleDelete={props.handleDelete}/>
-            </button>
-          </IconButton>
         </Tooltip>
       ) : (
-        <Tooltip title="Filter list">
+        <Tooltip title=" ">
           <>
+          <Tooltip title="ค้นหา...">
             <div className={classes1.root}>
               <div className={classes1.search}>
                 <div className={classes1.searchIcon}>
@@ -276,6 +273,7 @@ const EnhancedTableToolbar = (props) => {
                 />
               </div>
             </div>
+            </Tooltip>
             <DialogFilterActivity/>
             <DialogCreateActivity
               {...props}
@@ -430,9 +428,11 @@ export default function EnhancedTable(props) {
                         </a>
                       </TableCell>
                       <TableCell>
-                        <button onClick={() => props.handleClickEdit(row)}  >
+                      <Tooltip title="แก้ไขกิจกรรม">
+                        <IconButton onClick={() => props.handleClickEdit(row)}  >
                           <EditOutlinedIcon />
-                        </button>
+                        </IconButton>
+                        </Tooltip>
                       </TableCell>
                     </TableRow>
                   )

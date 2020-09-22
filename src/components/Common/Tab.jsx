@@ -25,9 +25,10 @@ export default function Tab(props) {
     button: {
       borderColor: lightColor,
     },
+    
   })
   return (
-    <div>
+    <div className="focus">
       <AppBar
         component="div"
         className={styles.secondaryBar}

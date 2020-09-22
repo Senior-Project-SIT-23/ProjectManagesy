@@ -14,6 +14,7 @@ import InputLabel from "@material-ui/core/InputLabel"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
 import { makeStyles } from "@material-ui/core/styles"
+import Tooltip from "@material-ui/core/Tooltip"
 
 const styles = (theme) => ({
   root: {
@@ -91,9 +92,11 @@ export default function CustomizedDialogs(props) {
 
   return (
     <div>
+      <Tooltip title="เพิ่มกิจกรรม">
       <IconButton aria-label="Add Activity" onClick={props.handleClickOpen}>
         <AddBoxIcon />
       </IconButton>
+      </Tooltip>
       <Dialog
         onClose={props.handleClose}
         aria-labelledby="customized-dialog-title"

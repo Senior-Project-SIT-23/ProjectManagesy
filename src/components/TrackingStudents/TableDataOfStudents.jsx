@@ -38,13 +38,13 @@ function createData(idCard, name, school, sumActivity, sumAdmission) {
     sumAdmission,
 
     activity: [
-      { date: "2020-01-05", customerId: "11091700" },
-      { date: "2020-01-02", customerId: "Anonymous" },
+      { date: "wipcamp#10", customerId: "2018" },
+      { date: "wipcamp#11", customerId: "2019" },
     ],
 
     admission: [
-      { date: "2020-01-05", customerId: "11091700", year: "2017" },
-      { date: "2020-01-05", customerId: "11091700", year: "2017" },
+      { date: "โครงการ Active Recruitment", customerId: "รอบ 1", year: "2017" },
+      { date: "โครงการทุนเพชรพระจอม", customerId: "รอบ 2", year: "2017" },
     ],
   }
 }
@@ -89,8 +89,8 @@ function Row(props) {
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>ชื่อกิจกรรม</TableCell>
-                    <TableCell>ปีที่จัดกิจกรรม</TableCell>
+                    <TableCell><b>ชื่อกิจกรรม</b></TableCell>
+                    <TableCell><b>ปีที่จัดกิจกรรม</b></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -119,9 +119,9 @@ function Row(props) {
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>ชื่อโครงการที่สมัครสอบ</TableCell>
-                    <TableCell>รอบที่สมัครสอบ</TableCell>
-                    <TableCell>ปีที่สมัครสอบ</TableCell>
+                    <TableCell><b>ชื่อโครงการที่สมัครสอบ</b></TableCell>
+                    <TableCell><b>รอบที่สมัครสอบ</b></TableCell>
+                    <TableCell><b>ปีที่สมัครสอบ</b></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -265,7 +265,7 @@ export default function CollapsibleTable() {
           >
             <div className="font-athiti">ข้อมูลนักเรียน</div>
           </Typography>
-          <Tooltip title="search">
+          <Tooltip title="ค้นหา...">
             <div className={classes.root}>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>

@@ -14,6 +14,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
 import InputLabel from "@material-ui/core/InputLabel"
+import Tooltip from '@material-ui/core/Tooltip';
 // import { round } from "lodash"
 
 const styles = (theme) => ({
@@ -100,12 +101,14 @@ export default function CustomizedDialogs(props) {
 
   return (
     <div>
+      <Tooltip title="เพิ่มโครงการสมัครสอบ">
       <IconButton
         aria-label="Add Admission"
         onClick={props.handleClickOpenCreateAdmission}
       >
         <AddBoxIcon />
       </IconButton>
+      </Tooltip>
       <Dialog
         onClose={props.handleCloseAdmission}
         aria-labelledby="customized-dialog-title"
