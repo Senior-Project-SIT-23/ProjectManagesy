@@ -99,3 +99,7 @@ a:hover {
 *:focus {
   outline: none !important;
 }
+
+.buttonAddAct{
+  text-align: left;
+}

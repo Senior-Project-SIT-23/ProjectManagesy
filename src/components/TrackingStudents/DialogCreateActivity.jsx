@@ -15,6 +15,7 @@ import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
 import { makeStyles } from "@material-ui/core/styles"
 import Tooltip from "@material-ui/core/Tooltip"
+import { createMuiTheme, MuiThemeProvider,ThemeProvider } from "@material-ui/core/styles"
 
 const styles = (theme) => ({
   root: {
@@ -74,6 +75,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+
+
 export default function CustomizedDialogs(props) {
   const classes = useStyles()
   const [state, setState] = React.useState({
@@ -89,12 +92,33 @@ export default function CustomizedDialogs(props) {
       [name]: event.target.value,
     })
   }
+
+  const theme = createMuiTheme({
+    palette: {
+      secondary: {
+        main: '#19202B',
+      },
+    },
+  });
   return (
     <div>
       <Tooltip title="เพิ่มกิจกรรม">
-      <IconButton aria-label="Add Activity" onClick={props.handleClickOpen}>
+      {/* <IconButton aria-label="Add Activity" onClick={props.handleClickOpen}>
         <AddBoxIcon />
-      </IconButton>
+      </IconButton> */}
+      <ThemeProvider theme={theme}>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={props.handleClickOpen}
+        size="large"
+        className={classes.button}
+        startIcon={<AddBoxIcon />}
+        
+      >
+        <div className="font-athiti">สร้างกิจกรรม</div>
+      </Button>
+      </ThemeProvider>
       </Tooltip>
       <Dialog
         onClose={props.handleClose}
