@@ -6,11 +6,23 @@ import MUIDataTable from "mui-datatables";
 import { apiDeleteActivities } from "../../service/activity";
 import Tooltip from "@material-ui/core/Tooltip"
 import DialogConfirmDelete from "./DialogConfirmDelete"
+import { Link, navigate } from "@reach/router"
 
 export default function EnhancedTable(props) {
+
+  function showDataInFile (id) {
+    navigate(`/ShowDataInFileActivity/${id}`)
+  }
+
+
   const columns = () => {
     return [
-      { name: "activity_name", label: "ชื่อกิจกรรม" },
+      { name: "activity_name", label: "ชื่อกิจกรรม" ,
+      options: {
+        customBodyRender: (value , tableMeta) => (
+        <a onClick={()=>showDataInFile(tableMeta.rowData[10])} style={{cursor:"pointer"}}>{value}</a>
+        ),
+      },},
       { name: "activity_major", label: "สาขา" },
       { name: "activity_year", label: "ปีที่จัดกิจกรรม" },
       {
