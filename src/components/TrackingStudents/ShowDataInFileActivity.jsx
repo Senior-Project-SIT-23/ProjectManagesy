@@ -1,4 +1,4 @@
-import React from "react"
+import React,{useState} from "react"
 import { navigate, useParams } from "@reach/router"
 import ArrowBackSharpIcon from "@material-ui/icons/ArrowBackSharp"
 import Fab from "@material-ui/core/Fab"
@@ -11,7 +11,8 @@ import TableHead from "@material-ui/core/TableHead"
 import TableRow from "@material-ui/core/TableRow"
 import Paper from "@material-ui/core/Paper"
 import IconButton from '@material-ui/core/IconButton';
-
+import Header from '../TrackingStudents/Header'
+import Headers from '../../components/Header'
 import Grid from "@material-ui/core/Grid"
 
 const useStylesTable = makeStyles({
@@ -48,9 +49,15 @@ const useStylesGrid = makeStyles((theme) => ({
 export default function ShowDataInFileActivity() {
   const { id } = useParams()
   const classesGrid = useStylesGrid()
+  const [indexTab, setIndexTab] = useState(1)
   //Button
-  const handleBack = () => {
+  const handleBack = (index) => {
+    console.log(index)
+    setIndexTab(index)
     navigate(`/`)
+  }
+  function handleChangeTab(index) {
+    setIndexTab(index)
   }
 
   const useStyles = makeStyles((theme) => ({
@@ -64,6 +71,7 @@ export default function ShowDataInFileActivity() {
   const classes = useStylesTable()
   return (
     <>
+    <Header handleChangeTab={handleChangeTab} indexTab={indexTab} />
       <div className={classesGrid.root}>
         <Grid container spacing={3}>
           {/* <div className="backbutton"> */}
@@ -74,7 +82,7 @@ export default function ShowDataInFileActivity() {
               {/* <Fab aria-label="ย้อนกลับ" onClick={handleBack}>
                 
               </Fab> */}
-              <IconButton aria-label="Back" onClick={handleBack}>
+              <IconButton aria-label="Back" onClick={()=> handleBack(indexTab)}>
                 <ArrowBackSharpIcon />
               </IconButton>
             </div>

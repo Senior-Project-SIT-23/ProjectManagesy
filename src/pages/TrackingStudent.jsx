@@ -77,6 +77,7 @@ export default function Test(props) {
     setTopic("สร้างกิจกรรม")
   }
   const handleClickEdit = (row) => {
+    console.log(row)
     setOpenEdit(row)
     handleClickOpen()
     setTopic("แก้ไขกิจกรรม")
@@ -114,6 +115,7 @@ export default function Test(props) {
 
   const fetchActivities = useCallback(async () => {
     const response = await apiFetchActivities()
+    console.log(response)
     setrows(response.data)
   }, [])
 
