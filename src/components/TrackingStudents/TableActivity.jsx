@@ -77,12 +77,12 @@ export default function EnhancedTable(props) {
           filter: false,
         },
       },
-      { name: "activity_file", options: { display: false, filter: false ,viewColumns: false } },
-      { name: "updated_at", options: { display: false, filter: false ,viewColumns: false} },
-      { name: "keep_file_name", options: { display: false, filter: false ,viewColumns: false} },
-      { name: "created_at", options: { display: false, filter: false ,viewColumns: false} },
-      { name: "activity_file_id", options: { display: false, filter: false ,viewColumns: false} },
-      { name: "activity_id", options: { display: false, filter: false ,viewColumns: false} },
+      { name: "activity_file", options: { display: false, filter: false ,viewColumns: false,download:false} },
+      { name: "updated_at", options: { display: false, filter: false ,viewColumns: false,download:false} },
+      { name: "keep_file_name", options: { display: false, filter: false ,viewColumns: false,download:false} },
+      { name: "created_at", options: { display: false, filter: false ,viewColumns: false,download:false} },
+      { name: "activity_file_id", options: { display: false, filter: false ,viewColumns: false,download:false} },
+      { name: "activity_id", options: { display: false, filter: false ,viewColumns: false,download:false} },
     ]
   }
 

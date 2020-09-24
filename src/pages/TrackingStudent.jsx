@@ -180,6 +180,7 @@ export default function Test(props) {
     setOpenEditAdmission(null)
   }
   const handleClickEditAdmission = (row) => {
+    console.log(row)
     setOpenEditAdmission(row)
     handleClickOpenCreateAdmission()
     setTopicAdmission("แก้ไขโครงการสมัครสอบ")

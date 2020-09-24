@@ -10,7 +10,7 @@ import CloseIcon from "@material-ui/icons/Close"
 import Typography from "@material-ui/core/Typography"
 import AddBoxIcon from "@material-ui/icons/AddBox"
 import TextField from "@material-ui/core/TextField"
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles,createMuiTheme,ThemeProvider } from "@material-ui/core/styles"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
 import InputLabel from "@material-ui/core/InputLabel"
@@ -99,16 +99,36 @@ export default function CustomizedDialogs(props) {
     })
   }
 
+  const theme = createMuiTheme({
+    palette: {
+      secondary: {
+        main: '#19202B',
+      },
+    },
+  });
+
   return (
     <div>
       <Tooltip title="เพิ่มโครงการสมัครสอบ">
-      <IconButton
+      {/* <IconButton
         aria-label="Add Admission"
         onClick={props.handleClickOpenCreateAdmission}
       >
         <AddBoxIcon />
-      </IconButton>
+      </IconButton> */}
+       <ThemeProvider theme={theme}>
+      <Button 
+        variant="contained"
+        color="secondary"
+        onClick={props.handleClickOpenCreateAdmission}
+        size="large"
+        className={classes.button}
+        startIcon={<AddBoxIcon />}>
+           <div className="font-athiti">สร้างโครงการสมัครสอบ</div>
+      </Button>
+      </ThemeProvider>
       </Tooltip>
+      
       <Dialog
         onClose={props.handleCloseAdmission}
         aria-labelledby="customized-dialog-title"
