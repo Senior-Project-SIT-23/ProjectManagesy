@@ -31,6 +31,7 @@ import MUIDataTable from "mui-datatables"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import {apiDeteteAdmission,} from "../../service/admission"
+import { Link, navigate } from "@reach/router"
 
 
 // function descendingComparator(a, b, orderBy) {
@@ -306,9 +307,9 @@ import {apiDeteteAdmission,} from "../../service/admission"
 
 export default function EnhancedTable(props) {
   // 
-  // function showDataInFile(id) {
-  //   navigate(`/ShowDataInFileActivity/${id}`)
-  // }
+  function showDataInFile(id) {
+    navigate(`/ShowDataFileAdmission/${id}`)
+  }
 
   const getMuiTheme = () =>
     createMuiTheme({
@@ -327,14 +328,14 @@ export default function EnhancedTable(props) {
         name: "admission_name",
         label: "ชื่อโครงการสมัครสอบ",
         options: {
-          // customBodyRender: (value, tableMeta) => (
-          //   <a
-          //     onClick={() => showDataInFile(tableMeta.rowData[10])}
-          //     style={{ cursor: "pointer" }}
-          //   >
-          //     {value}
-          //   </a>
-          // ),
+          customBodyRender: (value, tableMeta) => (
+            <a
+              onClick={() => showDataInFile(tableMeta.rowData[11])}
+              style={{ cursor: "pointer" }}
+            >
+              {value}
+            </a>
+          ),
           filter: false,
         },
       },

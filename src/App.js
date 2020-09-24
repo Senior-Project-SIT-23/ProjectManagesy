@@ -22,6 +22,7 @@ import TrackingCollegeStudent from "./pages/TrackingCollegeStudent";
 import ShowDataInFileActivity from "./components/TrackingStudents/ShowDataInFileActivity";
 import Activity from "./pages/Activity"
 import Analysis from "./pages/Analysis"
+import ShowDataFileAdmission from "./components/TrackingStudents/ShowDataFileAdmission"
 /**
  |--------------------------------------------------
  | BASEUI SETUP
@@ -37,6 +38,7 @@ function App() {
       <MainLayout title="กิจกรรม"path="/Activitys" component={Activity} />
       <MainLayout title="วิเคราะห์ข้อมูล"path="/Analysis" component={Analysis} />
       <MainLayout title=" " path="/ShowDataInFileActivity/:id" component={ShowDataInFileActivity}/>
+      <MainLayout title=" " path="/ShowDataFileAdmission/:id" component={ShowDataFileAdmission}/>
     </Router>
   );
 }
