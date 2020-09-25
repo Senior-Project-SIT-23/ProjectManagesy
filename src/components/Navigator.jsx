@@ -24,7 +24,7 @@ const categories = [
   {
     id: "Develop",
     children: [
-      { id: "กิจกรรม", icon: <PeopleIcon />, url: "/Activitys" },
+      // { id: "กิจกรรม", icon: <PeopleIcon />, url: "/Activitys" },
       { id: "ติดตามนักเรียน", icon: <PeopleIcon />, url: "/" },
       { id: "ติดตามนักศึกษา", icon: <PeopleIcon />, url: "/TrackingCollegeStudents" },
       { id: "วิเคราะห์ข้อมูล", icon: <SettingsIcon />, url: "/Analysis" },

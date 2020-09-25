@@ -13,7 +13,7 @@ import AddBoxIcon from "@material-ui/icons/AddBox"
 import InputLabel from "@material-ui/core/InputLabel"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles,ThemeProvider ,createMuiTheme} from "@material-ui/core/styles"
 
 const styles = (theme) => ({
   root: {
@@ -96,10 +96,29 @@ export default function CustomizedDialogs(props) {
   const handleClickOpen = () => {
     setOpen(true)
   }
+
+  const theme = createMuiTheme({
+    palette: {
+      secondary: {
+        main: '#18202c',
+      },
+    },
+  });
   return (
     <div>
-      <IconButton aria-label="Add Activity" onClick={handleClickOpen}>
-        <AddBoxIcon />
+      <IconButton aria-label="Add Activity" >
+       
+        <ThemeProvider theme={theme}>
+      <Button 
+        variant="contained"
+        color="secondary"
+        onClick={handleClickOpen}
+        size="large"
+        className={classes.button}
+        startIcon={<AddBoxIcon />}>
+           <div className="font-athiti">สร้างกิจกรรม</div>
+      </Button>
+      </ThemeProvider>
       </IconButton>
       <Dialog
         // onClose={props.handleClose}
@@ -173,6 +192,7 @@ export default function CustomizedDialogs(props) {
                 id="yearofActivity"
               >
                 <option aria-label="None" value="" />
+                <option value={"2016"}>2016</option>
                 <option value={"2017"}>2017</option>
                 <option value={"2018"}>2018</option>
                 <option value={"2019"}>2019</option>

@@ -14,7 +14,7 @@ export default function Test(props) {
   return (
       <>
     <Header handleChangeTab={handleChangeTab} indexTab={indexTab} />
-    <div className="flex flex-col flex-1 mx-auto min-w-screen-lg h-screen">
+    <div className="flex flex-col flex-1 p-12 mx-auto max-w-screen-lg min-h-screen">
       {indexTab === 0 && <FullPageAnalysis />}
       {indexTab === 1 && <TableActivity/>}
     </div>

@@ -121,7 +121,8 @@ export default function EnhancedTable(props) {
     },
     download: {
       activity_id: false
-    }
+    },
+    print: false
   }
   // const classes = useStyles();
 

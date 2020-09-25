@@ -102,7 +102,7 @@ export default function CustomizedDialogs(props) {
   const theme = createMuiTheme({
     palette: {
       secondary: {
-        main: '#19202B',
+        main: '#18202c',
       },
     },
   });
@@ -110,12 +110,7 @@ export default function CustomizedDialogs(props) {
   return (
     <div>
       <Tooltip title="เพิ่มโครงการสมัครสอบ">
-      {/* <IconButton
-        aria-label="Add Admission"
-        onClick={props.handleClickOpenCreateAdmission}
-      >
-        <AddBoxIcon />
-      </IconButton> */}
+     
        <ThemeProvider theme={theme}>
       <Button 
         variant="contained"

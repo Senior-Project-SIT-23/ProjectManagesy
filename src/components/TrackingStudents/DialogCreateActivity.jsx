@@ -96,7 +96,7 @@ export default function CustomizedDialogs(props) {
   const theme = createMuiTheme({
     palette: {
       secondary: {
-        main: '#19202B',
+        main: '#18202c',
       },
     },
   });
