@@ -11,8 +11,8 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 
 export default function EnhancedTable(props) {
-  function showDataInFile(id) {
-    navigate(`/ShowDataInFileActivity/${id}`)
+  function showDataInFile(id,name) {
+    navigate(`/ShowDataInFileActivity/${id}/${name}`)
   }
 
   const getMuiTheme = () =>
@@ -34,7 +34,7 @@ export default function EnhancedTable(props) {
         options: {
           customBodyRender: (value, tableMeta) => (
             <a
-              onClick={() => showDataInFile(tableMeta.rowData[10])}
+              onClick={() => showDataInFile(tableMeta.rowData[10],tableMeta.rowData[0])}
               style={{ cursor: "pointer" }}
             >
               {value}
@@ -153,10 +153,11 @@ export default function EnhancedTable(props) {
       </Grid>
       <MuiThemeProvider theme={getMuiTheme()}>
         <MUIDataTable
-          title={" กิจกรรมนักเรียน"}
+          title={"กิจกรรมนักเรียน"}
           data={data}
           columns={columns(clickedit)}
           options={options}
+          
         />
       </MuiThemeProvider>
     </div>

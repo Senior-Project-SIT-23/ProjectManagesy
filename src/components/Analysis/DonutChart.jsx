@@ -18,7 +18,7 @@ const data = {
    
     legend: {
         display: true,
-        position: 'right',
+        position: 'bottom',
         
     }
 }

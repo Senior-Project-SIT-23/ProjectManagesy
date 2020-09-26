@@ -6,8 +6,8 @@ export default function Header(props) {
     return (
         <div>
           <HeaderTab  index={props.indexTab}>
-            <Tab textColor="inherit" label="Tracking นักศึกษา" onClick={()=>props.handleChangeTab(0)}/>
-            <Tab textColor="inherit" label="Tracking นักศึกษาที่ร่วมกิจกรรม" onClick={()=>props.handleChangeTab(1)}/>
+            <Tab textColor="inherit" label="ข้อมูลนักศึกษา" onClick={()=>props.handleChangeTab(0)}/>
+            <Tab textColor="inherit" label="ข้อมูลนักศึกษาที่ร่วมกิจกรรม" onClick={()=>props.handleChangeTab(1)}/>
           </HeaderTab>
         </div>
       )

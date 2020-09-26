@@ -25,7 +25,7 @@ import InputBase from "@material-ui/core/InputBase"
 import { fade } from "@material-ui/core/styles"
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined"
 import DialogCreateAdmission from "./DialogCreateAdmission"
-import DialogFilterAdmission from "./DialogFilterAdmission"
+
 import DialogDeleteAdmission from "./DialogDeleteAdmission"
 import MUIDataTable from "mui-datatables"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
@@ -36,8 +36,8 @@ import { Link, navigate } from "@reach/router"
 
 export default function EnhancedTable(props) {
   // 
-  function showDataInFile(id) {
-    navigate(`/ShowDataFileAdmission/${id}`)
+  function showDataInFile(id,name) {
+    navigate(`/ShowDataFileAdmission/${id}/${name}`)
   }
 
   const getMuiTheme = () =>
@@ -59,7 +59,7 @@ export default function EnhancedTable(props) {
         options: {
           customBodyRender: (value, tableMeta) => (
             <a
-              onClick={() => showDataInFile(tableMeta.rowData[11])}
+              onClick={() => showDataInFile(tableMeta.rowData[11],tableMeta.rowData[0])}
               style={{ cursor: "pointer" }}
             >
               {value}

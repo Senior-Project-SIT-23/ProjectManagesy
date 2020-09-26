@@ -37,8 +37,8 @@ function App() {
       <MainLayout title="ติดตามนักศึกษา"path="/TrackingCollegeStudents" component={TrackingCollegeStudent} />
       <MainLayout title="กิจกรรม"path="/Activitys" component={Activity} />
       <MainLayout title="วิเคราะห์ข้อมูล"path="/Analysis" component={Analysis} />
-      <MainLayout title=" " path="/ShowDataInFileActivity/:id" component={ShowDataInFileActivity}/>
-      <MainLayout title=" " path="/ShowDataFileAdmission/:id" component={ShowDataFileAdmission}/>
+      <MainLayout title=" " path="/ShowDataInFileActivity/:id/:name" component={ShowDataInFileActivity}/>
+      <MainLayout title=" " path="/ShowDataFileAdmission/:id/:name" component={ShowDataFileAdmission}/>
     </Router>
   );
 }

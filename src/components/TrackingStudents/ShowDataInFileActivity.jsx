@@ -14,6 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Header from '../TrackingStudents/Header'
 import Headers from '../../components/Header'
 import Grid from "@material-ui/core/Grid"
+import TableDataFromFileAct from "./TableDataFromFileAct"
 
 const useStylesTable = makeStyles({
   table: {
@@ -46,8 +47,8 @@ const useStylesGrid = makeStyles((theme) => ({
   },
 }))
 
-export default function ShowDataInFileActivity() {
-  const { id } = useParams()
+export default function ShowDataInFileActivity(props) {
+  const { id,name } = useParams()
   const classesGrid = useStylesGrid()
   const [indexTab, setIndexTab] = useState(1)
   //Button
@@ -87,38 +88,12 @@ export default function ShowDataInFileActivity() {
               </IconButton>
             </div>
           </Grid>
-          {/* <div className="tableShowdata"> */}
-          <Grid item>
-            <TableContainer component={Paper}>
-              <Table className={classes.table} aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Dessert (100g serving)</TableCell>
-                    <TableCell align="right">Calories</TableCell>
-                    <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                    <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                    <TableCell align="right">Protein&nbsp;(g)</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rows.map((row) => (
-                    <TableRow key={row.name}>
-                      <TableCell component="th" scope="row">
-                        {row.name}
-                      </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
-                      <TableCell align="right">{row.carbs}</TableCell>
-                      <TableCell align="right">{row.protein}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+          
+          <Grid item xs={10}>
+            <TableDataFromFileAct title={name}/>
           </Grid>
         </Grid>
-        {/* </div> */}
-        {/* </div> */}
+        
       </div>
     </>
   )

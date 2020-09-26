@@ -163,12 +163,12 @@ Row.propTypes = {
 }
 
 const rows = [
-  createData("1", "อินทิรา  ตั้งนิรามัย", "อัสสัมชัญศึกษา", 4, 1),
-  createData("2", "อินทิรา  ตั้งนิรามัย", "อัสสัมชัญศึกษา", 4, 1),
-  createData("3", "อินทิรา  ตั้งนิรามัย", "อัสสัมชัญศึกษา", 4, 1),
-  createData("4", "อินทิรา  ตั้งนิรามัย", "อัสสัมชัญศึกษา", 4, 1),
-  createData("5", "อินทิรา  ตั้งนิรามัย", "อัสสัมชัญศึกษา", 4, 1),
-  createData("6", "อินทิรา  ตั้งนิรามัย", "อัสสัมชัญศึกษา", 4, 1),
+  createData("60130500xxx", "อินทิรา  ตั้งนิรามัย", "อัสสัมชัญศึกษา", 4, 1),
+  createData("60130500xxx", "อินทิรา  ตั้งนิรามัย", "อัสสัมชัญศึกษา", 4, 1),
+  createData("60130500xxx", "อินทิรา  ตั้งนิรามัย", "อัสสัมชัญศึกษา", 4, 1),
+  createData("60130500xxx", "อินทิรา  ตั้งนิรามัย", "อัสสัมชัญศึกษา", 4, 1),
+  createData("60130500xxx", "อินทิรา  ตั้งนิรามัย", "อัสสัมชัญศึกษา", 4, 1),
+  createData("60130500xxx", "อินทิรา  ตั้งนิรามัย", "อัสสัมชัญศึกษา", 4, 1),
 ]
 
 const useStylesSearch = makeStyles((theme) => ({
@@ -287,11 +287,11 @@ export default function CollapsibleTable() {
           <TableHead>
             <TableRow>
               <TableCell />
-              <TableCell align="center">ลำดับ</TableCell>
+              <TableCell align="center">รหัสนักศึกษา</TableCell>
               <TableCell align="center">ชื่อ-นามสกุล</TableCell>
-              <TableCell align="center">โรงเรียน</TableCell>
+              <TableCell align="center">สาขา</TableCell>
+              <TableCell align="center">GPAX</TableCell>
               <TableCell align="center">จำนวนกิจกรรมที่เข้าร่วม</TableCell>
-              <TableCell align="center">จำนวนโครงการที่สมัครสอบ</TableCell>
               {/* <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
             </TableRow>
           </TableHead>
