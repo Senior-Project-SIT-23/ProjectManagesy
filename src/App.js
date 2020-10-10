@@ -23,6 +23,7 @@ import ShowDataInFileActivity from "./components/TrackingStudents/ShowDataInFile
 import Activity from "./pages/Activity"
 import Analysis from "./pages/Analysis"
 import ShowDataFileAdmission from "./components/TrackingStudents/ShowDataFileAdmission"
+import Login from "./pages/Login";
 /**
  |--------------------------------------------------
  | BASEUI SETUP
@@ -33,7 +34,8 @@ function App() {
   useEffect(() => {}, []);
   return (
     <Router>
-      <MainLayout title="ติดตามนักเรียน" path="/" component={TrackingStudent} />
+      <Login path="/"/>
+      <MainLayout title="ติดตามนักเรียน" path="/TrackingStudents" component={TrackingStudent} />
       <MainLayout title="ติดตามนักศึกษา"path="/TrackingCollegeStudents" component={TrackingCollegeStudent} />
       <MainLayout title="กิจกรรม"path="/Activitys" component={Activity} />
       <MainLayout title="วิเคราะห์ข้อมูล"path="/Analysis" component={Analysis} />
