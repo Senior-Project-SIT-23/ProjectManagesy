@@ -14,40 +14,40 @@ export class AuthenticationStore {
     return accessToken
   }
 
-  @action async me() {
-    try {
-      const { data } = await fecthMe()
-      this.setCurrentUser(data)
-      return data
-    } catch (error) {
-      this.romoveToken()
-    }
-  }
+  // @action async me() {
+  //   try {
+  //     const { data } = await fecthMe()
+  //     this.setCurrentUser(data)
+  //     return data
+  //   } catch (error) {
+  //     this.romoveToken()
+  //   }
+  // }
 
-  @action setCurrentUser(user) {
-    this.user = user
-  }
+  // @action setCurrentUser(user) {
+  //   this.user = user
+  // }
 
-  @action async signIn(formData) {
-    const response = await login(formData)
-    const { token } = response.data
-    console.log(token)
-    this.setToken(token)
-    return response
-  }
+  // @action async signIn(formData) {
+  //   const response = await login(formData)
+  //   const { token } = response.data
+  //   console.log(token)
+  //   this.setToken(token)
+  //   return response
+  // }
 
-  @action async signOut() {
-    await logout()
-    this.user = null
-    this.romoveToken()
-    window.location.reload()
-  }
+  // @action async signOut() {
+  //   await logout()
+  //   this.user = null
+  //   this.romoveToken()
+  //   window.location.reload()
+  // }
 
-  @action setToken(token) {
-    Cookies.set(process.env.REACT_APP_ACCESS_TOKEN_NAME, token)
-  }
+  // @action setToken(token) {
+  //   Cookies.set(process.env.REACT_APP_ACCESS_TOKEN_NAME, token)
+  // }
 
-  @action romoveToken() {
-    Cookies.remove(process.env.REACT_APP_ACCESS_TOKEN_NAME)
-  }
+  // @action romoveToken() {
+  //   Cookies.remove(process.env.REACT_APP_ACCESS_TOKEN_NAME)
+  // }
 }

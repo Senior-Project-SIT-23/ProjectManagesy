@@ -24,6 +24,7 @@ import Activity from "./pages/Activity"
 import Analysis from "./pages/Analysis"
 import ShowDataFileAdmission from "./components/TrackingStudents/ShowDataFileAdmission"
 import Login from "./pages/Login";
+import CallBack from "./pages/CallBack"
 /**
  |--------------------------------------------------
  | BASEUI SETUP
@@ -35,6 +36,7 @@ function App() {
   return (
     <Router>
       <Login path="/"/>
+      <CallBack path="/CallBack"/>
       <MainLayout title="ติดตามนักเรียน" path="/TrackingStudents" component={TrackingStudent} />
       <MainLayout title="ติดตามนักศึกษา"path="/TrackingCollegeStudents" component={TrackingCollegeStudent} />
       <MainLayout title="กิจกรรม"path="/Activitys" component={Activity} />

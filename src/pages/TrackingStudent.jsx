@@ -17,7 +17,7 @@ import {
   apiCreateAdmission,apiFetchAdmission,apiEditAdmission,apiDeteteAdmission,} from "../service/admission"
 import {
   getAdmissionFormData,getAdmissionIdsFormData,} from "../form/admissionHelper"
-
+import TableTest from "../components/TrackingStudents/TableTest"
 
 export default function Test(props) {
   const [indexTab, setIndexTab] = useState(0)
@@ -224,7 +224,8 @@ export default function Test(props) {
     <>
       <Header handleChangeTab={handleChangeTab} indexTab={indexTab} />
       <div className="flex flex-col flex-1 p-12 mx-auto max-w-screen-lg min-h-screen">
-        {indexTab === 0 && <TableDataOfStudents />}
+        {/* {indexTab === 0 && <TableDataOfStudents />} */}
+        {indexTab === 0 && <TableTest />}
         {indexTab === 1 && (
           <TableActivity
             handleSelectAllClick={handleSelectAllClick}

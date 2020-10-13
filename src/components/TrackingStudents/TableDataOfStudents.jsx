@@ -319,5 +319,6 @@ export default function CollapsibleTable() {
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
     </Paper>
+    
   )
 }
