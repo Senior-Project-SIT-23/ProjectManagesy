@@ -52,7 +52,7 @@ export default function TableTest() {
     },
     {
       name: "countActivity",
-      label: "จำนวนกิจกรรมที่เข้าร่วม",
+      label: "กิจกรรมที่เข้าร่วม",
       options: {
         filter: true,
         sort: true,
@@ -60,7 +60,7 @@ export default function TableTest() {
     },
     {
       name: "countAdmission",
-      label: "จำนวนโครงการที่สมัครสอบ",
+      label: "โครงการที่สมัครสอบ",
       options: {
         filter: true,
         sort: true,
