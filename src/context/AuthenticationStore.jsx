@@ -24,9 +24,9 @@ export class AuthenticationStore {
   //   }
   // }
 
-  // @action setCurrentUser(user) {
-  //   this.user = user
-  // }
+  @action setCurrentUser(user) {
+    this.user = user
+  }
 
   // @action async signIn(formData) {
   //   const response = await login(formData)

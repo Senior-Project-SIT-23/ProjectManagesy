@@ -27,7 +27,7 @@ export default function Login() {
       <div className={`w-full `}>
         <div className={`text-center`}>
           <h1 className={`${classes.title} `}>Managesy</h1>
-          <a href="http://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=IlNvm&redirect_uri=http://localhost:3000/CallBack">
+          <a href="http://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=niJdtxLo&redirect_uri=http://localhost:3000/CallBack&state=Managesy">
           <button className={`text-center ${classes.login}`}>Login</button>
           </a>
         </div>

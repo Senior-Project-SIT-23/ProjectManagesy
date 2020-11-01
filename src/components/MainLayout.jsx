@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useCallback,useEffect} from "react";
 import PropTypes from "prop-types";
 import {
   createMuiTheme,
@@ -11,6 +11,9 @@ import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import Navigator from "./Navigator";
 import Header from "./Header";
+import * as queryString from 'query-string'
+import fecthMe from '../service/auth'
+import Cookie from 'js-cookie'
 
 function Copyright() {
   return (
@@ -171,7 +174,32 @@ function MainLayout(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  const [user, setUser] = useState({})
+  
+  const checkLogin = useCallback(
+    async () => {
+      const queryParams = queryString.parse(props.location.search)
+      console.log(queryParams) 
+      try{
+        if(queryParams.state === 'Managesy'){
+          const response = await fecthMe(queryParams.code)
+          if(response.status === 200){
+            alert(response.data)
+            Cookie.set('jwt',response.data.token)
+           //  setUser(response.data)
+           }
+        }else{
+          alert('123')
+        }
+      }catch(error){
+          alert(error)
+      }
+   },
+   [props.location.search]
+  )
+  useEffect(() => {
+    checkLogin()
+}, [checkLogin])
   return (
     <ThemeProvider theme={theme}>
       <div className={classes.root}>

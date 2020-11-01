@@ -1,17 +1,37 @@
 import axios from "../utils/libs/connectApi"
-
+import Cookie from "js-cookie"
 export async function apiCreateAdmission(data) {
-    return await axios.post("/admission", data)
+    const headers = {
+        Authorization: `Bearer ${Cookie.get("jwt")}`,
+        "Content-Type": "application/json",
+        accept: "application/json",
+      }
+    return await axios.post("/admission", data,{headers})
   }
  
 export async function apiEditAdmission(data) {
-    return await axios.post("/admission/edit",data)
+    const headers = {
+        Authorization: `Bearer ${Cookie.get("jwt")}`,
+        "Content-Type": "application/json",
+        accept: "application/json",
+      }
+    return await axios.post("/admission/edit",data,{headers})
 }
 
 export async function apiFetchAdmission() {
-    return await axios.get("/admission")
+    const headers = {
+        Authorization: `Bearer ${Cookie.get("jwt")}`,
+        "Content-Type": "application/json",
+        accept: "application/json",
+      }
+    return await axios.get("/admission",{headers})
 }
 
 export async function apiDeteteAdmission(data) {
-    return await axios.post("/admission/delete",data)
+    const headers = {
+        Authorization: `Bearer ${Cookie.get("jwt")}`,
+        "Content-Type": "application/json",
+        accept: "application/json",
+      }
+    return await axios.post("/admission/delete",data,{headers})
 }

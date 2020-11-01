@@ -1,9 +1,20 @@
 import api  from "../utils/libs/connectApi"
+import Cookie from 'js-cookie'
 
 export default function fetchUserDataByAuthCode(code) {
-    return api.post('/oauth/token',{auth_code: code})
+    const headers = {
+        Authorization: `Bearer ${Cookie.get("jwt")}`,
+        "Content-Type": "application/json",
+        accept: "application/json",
+      }
+    return api.post('/oauth/token',{auth_code: code},{headers})
 }
 
 export function fecthMe(){
-    return api.get(`/me`)
+    const headers = {
+        Authorization: `Bearer ${Cookie.get("jwt")}`,
+        "Content-Type": "application/json",
+        accept: "application/json",
+      }
+    return api.get(`/me`,{headers})
 }
