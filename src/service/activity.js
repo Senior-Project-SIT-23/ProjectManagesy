@@ -1,36 +1,20 @@
 import axios from "../utils/libs/connectApi"
 import Cookie from "js-cookie"
 export async function apiCreateActivity(data) {
-  const headers = {
-    Authorization: `Bearer ${Cookie.get("jwt")}`,
-    "Content-Type": "application/json",
-    accept: "application/json",
-  }
-  return await axios.post("/activity", data,{headers})
+  
+  return await axios.post("/activity", data)
 }
 export async function apiEditActivity(data) {
-  const headers = {
-    Authorization: `Bearer ${Cookie.get("jwt")}`,
-    "Content-Type": "application/json",
-    accept: "application/json",
-  }
-  return await axios.post("/activity/edit", data,{headers})
+ 
+  return await axios.post("/activity/edit", data)
 }
 
 export async function apiFetchActivities() {
-  const headers = {
-    Authorization: `Bearer ${Cookie.get("jwt")}`,
-    "Content-Type": "application/json",
-    accept: "application/json",
-  }
-  return await axios.get("/activity",{headers})
+ 
+  return await axios.get("/activity")
 }
 
 export async function apiDeleteActivities(data) {
-  const headers = {
-    Authorization: `Bearer ${Cookie.get("jwt")}`,
-    "Content-Type": "application/json",
-    accept: "application/json",
-  }
-  return await axios.post("/activity/delete", data,{headers})
+ 
+  return await axios.post("/activity/delete", data)
 }

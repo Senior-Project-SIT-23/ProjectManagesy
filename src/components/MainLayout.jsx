@@ -1,19 +1,19 @@
-import React,{useState,useCallback,useEffect} from "react";
-import PropTypes from "prop-types";
+import React, { useState, useCallback, useEffect, useContext } from "react"
+import PropTypes from "prop-types"
 import {
   createMuiTheme,
   ThemeProvider,
   withStyles,
-} from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Hidden from "@material-ui/core/Hidden";
-import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
-import Navigator from "./Navigator";
-import Header from "./Header";
-import * as queryString from 'query-string'
-import fecthMe from '../service/auth'
-import Cookie from 'js-cookie'
+} from "@material-ui/core/styles"
+import CssBaseline from "@material-ui/core/CssBaseline"
+import Hidden from "@material-ui/core/Hidden"
+import Typography from "@material-ui/core/Typography"
+import Link from "@material-ui/core/Link"
+import Navigator from "./Navigator"
+import Header from "./Header"
+import * as queryString from "query-string"
+import Cookie from "js-cookie"
+import { storesContext } from "../context"
 
 function Copyright() {
   return (
@@ -25,7 +25,7 @@ function Copyright() {
       {new Date().getFullYear()}
       {"."}
     </Typography>
-  );
+  )
 }
 
 let theme = createMuiTheme({
@@ -56,7 +56,7 @@ let theme = createMuiTheme({
       minHeight: 48,
     },
   },
-});
+})
 
 theme = {
   ...theme,
@@ -136,9 +136,9 @@ theme = {
       },
     },
   },
-};
+}
 
-const drawerWidth = 256;
+const drawerWidth = 256
 
 const styles = {
   root: {
@@ -164,75 +164,70 @@ const styles = {
     padding: theme.spacing(2),
     background: "#eaeff1",
   },
-};
+}
 
 function MainLayout(props) {
-  const { classes } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { authenticationStore } = useContext(storesContext)
+
+  const { classes } = props
+  const [mobileOpen, setMobileOpen] = React.useState(false)
   const { component: Child } = props
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-  const [user, setUser] = useState({})
-  
-  const checkLogin = useCallback(
-    async () => {
-      const queryParams = queryString.parse(props.location.search)
-      console.log(queryParams) 
-      try{
-        if(queryParams.state === 'Managesy'){
-          const response = await fecthMe(queryParams.code)
-          if(response.status === 200){
-            alert(response.data)
-            Cookie.set('jwt',response.data.token)
-           //  setUser(response.data)
-           }
-        }else{
-          alert('123')
-        }
-      }catch(error){
-          alert(error)
-      }
-   },
-   [props.location.search]
-  )
+    setMobileOpen(!mobileOpen)
+  }
+  const [preFetch, setPreFetch] = useState(true)
+
+  const checkLogin = useCallback(async () => {
+    setPreFetch(true)
+    await authenticationStore.me()
+    setPreFetch(false)
+  }, [authenticationStore])
   useEffect(() => {
     checkLogin()
-}, [checkLogin])
-  return (
-    <ThemeProvider theme={theme}>
-      <div className={classes.root}>
-        <CssBaseline />
-        <nav className={classes.drawer}>
-          <Hidden smUp implementation="js">
-            <Navigator
-              PaperProps={{ style: { width: drawerWidth } }}
-              variant="temporary"
-              open={mobileOpen}
-              onClose={handleDrawerToggle}
-            />
-          </Hidden>
-          <Hidden xsDown implementation="css">
-            <Navigator title={props.title} PaperProps={{ style: { width: drawerWidth } }} />
-          </Hidden>
-        </nav>
-        <div className={classes.app}>
-          <Header title={props.title}onDrawerToggle={handleDrawerToggle} />
-          <main className={classes.main}>
-            <Child {...props} />
-          </main>
-          <footer className={classes.footer}>
-            <Copyright />
-          </footer>
+  }, [checkLogin])
+  if (!preFetch) {
+    return (
+      <ThemeProvider theme={theme}>
+        <div className={classes.root}>
+          <CssBaseline />
+          <nav className={classes.drawer}>
+            <Hidden smUp implementation="js">
+              <Navigator
+                user={authenticationStore.currentUser}
+                PaperProps={{ style: { width: drawerWidth } }}
+                variant="temporary"
+                open={mobileOpen}
+                onClose={handleDrawerToggle}
+              />
+            </Hidden>
+            <Hidden xsDown implementation="css">
+              <Navigator
+                user={authenticationStore.currentUser}
+                title={props.title}
+                PaperProps={{ style: { width: drawerWidth } }}
+              />
+            </Hidden>
+          </nav>
+          <div className={classes.app}>
+            <Header title={props.title} onDrawerToggle={handleDrawerToggle} />
+            <main className={classes.main}>
+              <Child {...props} />
+            </main>
+            <footer className={classes.footer}>
+              <Copyright />
+            </footer>
+          </div>
         </div>
-      </div>
-    </ThemeProvider>
-  );
+      </ThemeProvider>
+    )
+  } else {
+    return <></>
+  }
 }
 
 MainLayout.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
 
-export default withStyles(styles)(MainLayout);
+export default withStyles(styles)(MainLayout)

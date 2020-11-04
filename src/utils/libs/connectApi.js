@@ -4,10 +4,10 @@ import Cookie from "js-cookie"
 const createInstance = (headers) => {
   return axios.create({
     baseURL: process.env.REACT_APP_BE,
-    // headers: {
-    //   Authorization: `Bearer ${Cookie.get(process.env.REACT_APP_ACCESS_TOKEN_NAME)}`,
-    //   'Content-Type': 'application/json',
-    // },
+    headers: {
+      Authorization: `Bearer ${Cookie.get(process.env.REACT_APP_ACCESS_TOKEN_NAME)}`,
+      'Content-Type': 'application/json',
+    },
   })
 }
 

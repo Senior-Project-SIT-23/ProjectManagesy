@@ -9,6 +9,8 @@ import Chart from "../Analysis/Chart"
 import FolderSharedIcon from "@material-ui/icons/FolderShared"
 import BarChart from "../Analysis/BarChart"
 import DonutChart from "../Analysis/DonutChart"
+import ButtonYear from "./ButtonYear"
+import ButtonTest from "./ButtonTest"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +29,13 @@ export default function FullPageAnalysis() {
 
   return (
     <div className={classes.root}>
+      <Grid container direction="row" justify="flex-end">
+        <Grid item xs={2}>
+          <div className={"mb-2"}>
+            <ButtonYear />
+          </div>
+        </Grid>
+      </Grid>
       <Grid container spacing={3}>
         <Grid item xs>
           <Card
@@ -52,7 +61,7 @@ export default function FullPageAnalysis() {
             count={"1,250"}
           />
         </Grid>
-        <Grid item >
+        <Grid item>
           <Card
             className={classes.paper}
             title={"จำนวนนักเรียนที่เข้าร่วมกิจกรรมทั้งหมด"}

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import Button from "@material-ui/core/Button"
 import ClickAwayListener from "@material-ui/core/ClickAwayListener"
 import Grow from "@material-ui/core/Grow"
@@ -9,6 +9,9 @@ import MenuList from "@material-ui/core/MenuList"
 import { makeStyles } from "@material-ui/core/styles"
 import IconButton from "@material-ui/core/IconButton"
 import Avatar from "@material-ui/core/Avatar"
+import { storesContext } from "../context"
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { Tooltip } from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,11 +22,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function MenuListComposition() {
+export default function MenuListComposition(props) {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
   const anchorRef = React.useRef(null)
 
+  const { authenticationStore } = useContext(storesContext)
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen)
   }
@@ -65,14 +69,17 @@ export default function MenuListComposition() {
             aria-haspopup="true"
             onClick={handleToggle}
           >
-            <Avatar
+            {/* <Avatar
               src="/static/images/avatar/1.jpg"
               alt="My Avatar"
               className={classes.small}
-            />
+            /> */}
+            <Tooltip title='Logout'>
+            <ExitToAppIcon onClick={() => authenticationStore.signOut()}/>
+            </Tooltip>
           </IconButton>
         
-        <Popper
+        {/* <Popper
           open={open}
           anchorEl={anchorRef.current}
           role={undefined}
@@ -94,13 +101,13 @@ export default function MenuListComposition() {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    <MenuItem onClick={() => authenticationStore.signOut()}>Logout</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
             </Grow>
           )}
-        </Popper>
+        </Popper> */}
       </div>
     </div>
   )

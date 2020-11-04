@@ -1,6 +1,6 @@
-import { observable, action, computed } from 'mobx'
-import Cookies from 'js-cookie'
-import { login, logout, fecthMe } from '../service/auth'
+import { observable, action, computed } from "mobx"
+import Cookies from "js-cookie"
+import { login, logout, fecthMe } from "../service/auth"
 
 export class AuthenticationStore {
   @observable user = null
@@ -14,40 +14,30 @@ export class AuthenticationStore {
     return accessToken
   }
 
-  // @action async me() {
-  //   try {
-  //     const { data } = await fecthMe()
-  //     this.setCurrentUser(data)
-  //     return data
-  //   } catch (error) {
-  //     this.romoveToken()
-  //   }
-  // }
+  @action async me() {
+    try {
+      const { data } = await fecthMe()
+      this.setCurrentUser(data)
+      return data
+    } catch (error) {
+      if (error.response.status === 401) {
+        this.romoveToken()
+        window.location.href = "/"
+      }
+    }
+  }
 
   @action setCurrentUser(user) {
     this.user = user
   }
 
-  // @action async signIn(formData) {
-  //   const response = await login(formData)
-  //   const { token } = response.data
-  //   console.log(token)
-  //   this.setToken(token)
-  //   return response
-  // }
+  @action async signOut() {
+    this.user = null
+    this.romoveToken()
+    window.location.reload()
+  }
 
-  // @action async signOut() {
-  //   await logout()
-  //   this.user = null
-  //   this.romoveToken()
-  //   window.location.reload()
-  // }
-
-  // @action setToken(token) {
-  //   Cookies.set(process.env.REACT_APP_ACCESS_TOKEN_NAME, token)
-  // }
-
-  // @action romoveToken() {
-  //   Cookies.remove(process.env.REACT_APP_ACCESS_TOKEN_NAME)
-  // }
+  @action romoveToken() {
+    Cookies.remove(process.env.REACT_APP_ACCESS_TOKEN_NAME)
+  }
 }

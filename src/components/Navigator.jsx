@@ -19,6 +19,8 @@ import TimerIcon from "@material-ui/icons/Timer"
 import SettingsIcon from "@material-ui/icons/Settings"
 import PhonelinkSetupIcon from "@material-ui/icons/PhonelinkSetup"
 import AccountCircleIcon from "@material-ui/icons/AccountCircle"
+import { storesContext } from "../context"
+import { useContext } from "react"
 
 const categories = [
   {
@@ -26,7 +28,11 @@ const categories = [
     children: [
       // { id: "กิจกรรม", icon: <PeopleIcon />, url: "/Activitys" },
       { id: "ติดตามนักเรียน", icon: <PeopleIcon />, url: "/TrackingStudents" },
-      { id: "ติดตามนักศึกษา", icon: <PeopleIcon />, url: "/TrackingCollegeStudents" },
+      {
+        id: "ติดตามนักศึกษา",
+        icon: <PeopleIcon />,
+        url: "/TrackingCollegeStudents",
+      },
       { id: "วิเคราะห์ข้อมูล", icon: <SettingsIcon />, url: "/Analysis" },
     ],
   },
@@ -75,7 +81,6 @@ const styles = (theme) => ({
 
 function Navigator(props) {
   const { classes, ...other } = props
-
   return (
     <Drawer variant="permanent" {...other}>
       <List disablePadding>
@@ -93,7 +98,7 @@ function Navigator(props) {
               primary: classes.itemPrimary,
             }}
           >
-            Name Last
+            {props.user?.name}
           </ListItemText>
         </ListItem>
         {categories.map(({ id, children }) => (
