@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     // backgroundColor: "#EBEFF1",
     minHeight: "100vh",
-    backgroundImage: 'url(/logon.jpg)'
+    backgroundImage: 'url(/web.jpg)'
   },
   title: {
     fontFamily: "Athiti",
