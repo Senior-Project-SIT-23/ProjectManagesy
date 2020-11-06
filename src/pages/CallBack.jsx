@@ -23,6 +23,7 @@ export default function CallBack(props) {
         const response = await fetchUserDataByAuthCode(queryParams.code)
         if (response.status === 200) {
           if (response.data.user_type === "st_group") {
+            alert('นักศึกษาไม่สามารถ login เข้าใช้งานระบบนี้ได้')
             navigate("/")
           } else if (
             response.data.user_type === "staff_group" ||
