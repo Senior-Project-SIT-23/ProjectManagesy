@@ -40,7 +40,7 @@ const BarChart = (props) => {
               </Typography>
         <Bar
           data={data}
-          height={100}
+          height={180}
           options={{
             scales: {
               xAxes: [

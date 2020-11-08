@@ -29,7 +29,7 @@ export default function EnhancedTable(props) {
   const columns = () => {
     return [
       {
-        name: "activity_name",
+        name: "activity_student_name",
         label: "ชื่อกิจกรรม",
         options: {
           customBodyRender: (value, tableMeta) => (
@@ -43,10 +43,10 @@ export default function EnhancedTable(props) {
           filter: false,
         },
       },
-      { name: "activity_major", label: "สาขา" },
-      { name: "activity_year", label: "ปีที่จัดกิจกรรม" },
+      { name: "activity_student_major", label: "สาขา" },
+      { name: "activity_student_year", label: "ปีที่จัดกิจกรรม" },
       {
-        name: "activity_file_name",
+        name: "activity_student_file_name",
         label: "ไฟล์",
         options: {
           customBodyRender: (value, tableMeta) => (
@@ -82,7 +82,7 @@ export default function EnhancedTable(props) {
       { name: "keep_file_name", options: { display: false, filter: false ,viewColumns: false,download:false} },
       { name: "created_at", options: { display: false, filter: false ,viewColumns: false,download:false} },
       { name: "activity_file_id", options: { display: false, filter: false ,viewColumns: false,download:false} },
-      { name: "activity_id", options: { display: false, filter: false ,viewColumns: false,download:false} },
+      { name: "activity_student_id", options: { display: false, filter: false ,viewColumns: false,download:false} },
     ]
   }
 

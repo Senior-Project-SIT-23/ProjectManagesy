@@ -2,19 +2,18 @@ import React from "react"
 import Card from "./Card"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
-import { useState } from "react"
 import CheckCircleIcon from "@material-ui/icons/CheckCircle"
 import GroupIcon from "@material-ui/icons/Group"
-import Chart from "../Analysis/Chart"
 import FolderSharedIcon from "@material-ui/icons/FolderShared"
 import BarChart from "../Analysis/BarChart"
 import DonutChart from "../Analysis/DonutChart"
 import ButtonYear from "./ButtonYear"
-import ButtonTest from "./ButtonTest"
+import SchoolTable from "./SchoolTable"
+import AllActTable from "./AllActTable"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 2,
     // margin: theme.spacing(3),
   },
   paper: {
@@ -74,20 +73,24 @@ export default function FullPageAnalysis() {
           />
         </Grid>
       </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <BarChart className={classes.paper} />
-        </Grid>
-        {/* <Grid item xs>
-          <Card className={classes.paper} />
-        </Grid> */}
-      </Grid>
+     
+     
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <Chart className={classes.paper} />
+        <BarChart className={classes.paper} />
         </Grid>
         <Grid item xs={12} sm={6}>
           <DonutChart className={classes.paper} />
+        </Grid>
+      </Grid>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <SchoolTable/>
+        </Grid>
+      </Grid>
+      <Grid container spacing={6}>
+        <Grid item xs={12}>
+          <AllActTable/>
         </Grid>
       </Grid>
     </div>

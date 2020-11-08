@@ -103,6 +103,9 @@ export default function CustomizedDialogs(props) {
         main: '#18202c',
       },
     },
+    shape: {
+      borderRadius: 30,
+    }, 
   });
   return (
     <div>
