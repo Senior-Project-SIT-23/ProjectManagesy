@@ -73,6 +73,18 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "20px",
     minWidth: 150,
   },
+  col:{
+    color: 'red',
+    fontSize: '12px',
+    marginTop:theme.spacing(1)
+  },
+  format:{
+    color: 'blue',
+    marginBottom: theme.spacing(2)
+  },
+  upload:{
+    marginTop: theme.spacing(1)
+  }
 }))
 
 
@@ -202,19 +214,21 @@ export default function CustomizedDialogs(props) {
                 <option value={"2018"}>2018</option>
                 <option value={"2019"}>2019</option>
                 <option value={"2020"}>2020</option>
-                <option value={"2020"}>2021</option>
+                <option value={"2021"}>2021</option>
               </Select>
             </FormControl>
 
             <div className="my-3">
+              <p> format ไฟล์: <a href='/format.csv' download className={classes.format}>format.csv </a></p>
               
               <input
+                className={classes.upload}
                 required={!props.openEdit}
                 type="file"
                 id="upload_file"
                 accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
               />
-              <br></br>
+              <p className={classes.col}>**กรุณาอัปโหลดเป็นไฟล์ .CSV UTF-8 เท่านั้น</p>
               <p className="my-3">Current :{props.openEdit?.activity_file_name}</p>
             </div>
           </DialogContent>

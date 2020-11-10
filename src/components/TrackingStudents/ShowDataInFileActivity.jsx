@@ -55,7 +55,7 @@ export default function ShowDataInFileActivity(props) {
   const handleBack = (index) => {
     console.log(index)
     setIndexTab(index)
-    navigate(`/`)
+    navigate(`/TrackingStudents`)
   }
   function handleChangeTab(index) {
     setIndexTab(index)
