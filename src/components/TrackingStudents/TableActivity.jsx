@@ -97,7 +97,7 @@ export default function EnhancedTable(props) {
       activity_major: data[1],
       activity_name: data[0],
       activity_year: data[2],
-      created_at: data[7],
+      created_at: data[8],
       keep_file_name: data[7],
       updated_at: 1,
     }
@@ -107,15 +107,16 @@ export default function EnhancedTable(props) {
   const options = {
     filterType: "checkbox",
     onRowsDelete: async (deleted) => {
-      console.log(data)
+      console.log(deleted)
       console.log(deleted.data)
+      
       let Id = []
       for (let i = 0; i < deleted.data.length; i++) {
         let n = deleted.data[i].index
 
-        Id.push(data[n].activity_id)
+        Id.push(data[n].activity_student_id)
       }
-
+      console.log(Id)
       const datRes = { activity_id: Id }
       await apiDeleteActivities(datRes)
     },

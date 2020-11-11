@@ -10,8 +10,8 @@ export function getActivityFormData(data) {
   formData.append("activity_file", _.get(data, "file", ''))
   formData.append("new_activity_file", _.get(data, "file",''))
   formData.append(
-    "delete_activity_file_id[]",
-    _.get(data, "delete_file_id", [])
+    "delete_activity_file_id",
+    _.get(data, "delete_file_id", )
   )
   return formData
 }

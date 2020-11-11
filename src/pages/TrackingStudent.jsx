@@ -114,7 +114,7 @@ export default function Test(props) {
         await apiCreateActivity(formData)
       }
     } catch (error) {
-      console.log("test")
+      console.log("test",error)
       alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
     }
 

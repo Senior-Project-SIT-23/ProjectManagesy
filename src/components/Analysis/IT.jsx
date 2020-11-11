@@ -6,7 +6,8 @@ import { makeStyles } from "@material-ui/core/styles"
 import Card from "./AnalysisIT/Card"
 import GroupIcon from "@material-ui/icons/Group"
 import SchoolIT from "./AnalysisIT/SchoolIT"
-
+import BarChart from "./BarChart"
+import DonutChart from './DonutChart'
 export default function IT() {
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -55,6 +56,14 @@ export default function IT() {
           />
         </Grid>
         
+      </Grid>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+        <BarChart className={classes.paper} />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <DonutChart className={classes.paper} />
+        </Grid>
       </Grid>
       <Grid container spacing={3}>
       <Grid item xs={12}>
