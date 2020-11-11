@@ -14,9 +14,15 @@ import {
   getActivityIdsFormData,
 } from "../form/activityHelper"
 import {
-  apiCreateAdmission,apiFetchAdmission,apiEditAdmission,apiDeteteAdmission,} from "../service/admission"
+  apiCreateAdmission,
+  apiFetchAdmission,
+  apiEditAdmission,
+  apiDeteteAdmission,
+} from "../service/admission"
 import {
-  getAdmissionFormData,getAdmissionIdsFormData,} from "../form/admissionHelper"
+  getAdmissionFormData,
+  getAdmissionIdsFormData,
+} from "../form/admissionHelper"
 import TableTest from "../components/TrackingStudents/TableTest"
 
 export default function Test(props) {
@@ -91,33 +97,29 @@ export default function Test(props) {
     const delete_file_id =
       event.target.upload_file.files.length !== 0
         ? event.target.delete_file_id.value
-        : []
+        : null
     const data = {
       id: event.target.id.value,
       delete_file_id: delete_file_id,
       activityName: event.target.activityName.value,
       year: event.target.yearofActivity.value,
       major: event.target.major.value,
-      file: event.target.upload_file.files[0],
+      file: event.target.upload_file.files[0] || null,
     }
     const formData = getActivityFormData(data)
-    try{
+    try {
       if (openEdit) {
         await apiEditActivity(formData)
-        
-    
       } else {
-       await apiCreateActivity(formData)
-      
-      } 
-      
-      fetchActivities()
-      handleClose()
-    }catch(error){
-      console.log('test')
-      alert('ไฟล์ที่อัพโหลด format ของไฟล์ไม่ถูกต้อง')
+        await apiCreateActivity(formData)
+      }
+    } catch (error) {
+      console.log("test")
+      alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
     }
-   
+
+    fetchActivities()
+    handleClose()
   }
 
   const fetchActivities = useCallback(async () => {
@@ -132,40 +134,40 @@ export default function Test(props) {
 
   //Admission
   //Table
-  const [selectedAdmission, setSelectedAdmission] = React.useState([]);
+  const [selectedAdmission, setSelectedAdmission] = React.useState([])
 
   const handleSelectAllClickInAdmission = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rowsAdmissions.map((n) => n.admission_id);
-      setSelectedAdmission(newSelecteds);
-      return;
+      const newSelecteds = rowsAdmissions.map((n) => n.admission_id)
+      setSelectedAdmission(newSelecteds)
+      return
     }
-    setSelectedAdmission([]);
-  };
-  
+    setSelectedAdmission([])
+  }
+
   const [topicAdmission, setTopicAdmission] = useState()
 
-  const [rowsAdmissions,setrowsAdmissions] = useState([])
+  const [rowsAdmissions, setrowsAdmissions] = useState([])
 
   const handleClickInAdmission = (event, name) => {
-    const selectedIndex = selectedAdmission.indexOf(name);
-    let newSelected = [];
+    const selectedIndex = selectedAdmission.indexOf(name)
+    let newSelected = []
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selectedAdmission, name);
+      newSelected = newSelected.concat(selectedAdmission, name)
     } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selectedAdmission.slice(1));
+      newSelected = newSelected.concat(selectedAdmission.slice(1))
     } else if (selectedIndex === selectedAdmission.length - 1) {
-      newSelected = newSelected.concat(selectedAdmission.slice(0, -1));
+      newSelected = newSelected.concat(selectedAdmission.slice(0, -1))
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
         selectedAdmission.slice(0, selectedIndex),
-        selectedAdmission.slice(selectedIndex + 1),
-      );
+        selectedAdmission.slice(selectedIndex + 1)
+      )
     }
 
-    setSelectedAdmission(newSelected);
-  };
+    setSelectedAdmission(newSelected)
+  }
   const handleDeleteAdmission = async () => {
     const formData = getAdmissionIdsFormData(selectedAdmission)
     //เรียก api
@@ -177,7 +179,7 @@ export default function Test(props) {
   //Dialog
   const [openAdmission, setOpenAdmission] = React.useState(false)
   const [openEditAdmission, setOpenEditAdmission] = React.useState()
-  
+
   const handleClickOpenCreateAdmission = () => {
     setOpenAdmission(true)
     setTopicAdmission("สร้างโครงการสมัครสอบ")
@@ -194,24 +196,24 @@ export default function Test(props) {
   }
   const handleSubmitAdmission = async (event) => {
     event.preventDefault()
-    const delete_admission_file_id = 
-    event.target.upload_file_admission.files.length !== 0
-    ? event.target.delete_admission_file_id?.value
-    : []
-    
+    const delete_admission_file_id =
+      event.target.upload_file_admission.files.length !== 0
+        ? event.target.delete_admission_file_id?.value
+        : []
+
     const data = {
       id: event.target.id.value,
       delete_admission_file_id: delete_admission_file_id,
-      admissionName : event.target.admissionName.value,
-      round : event.target.round.value,
-      year : event.target.year.value,
-      major : event.target.major.value,
-      file : event.target.upload_file_admission.files[0],
+      admissionName: event.target.admissionName.value,
+      round: event.target.round.value,
+      year: event.target.year.value,
+      major: event.target.major.value,
+      file: event.target.upload_file_admission.files[0],
     }
     const formDataAdmission = getAdmissionFormData(data)
-    if(openEditAdmission) {
+    if (openEditAdmission) {
       await apiEditAdmission(formDataAdmission)
-    }else{
+    } else {
       await apiCreateAdmission(formDataAdmission)
     }
     fetchAdmission()
@@ -220,12 +222,11 @@ export default function Test(props) {
   const fetchAdmission = useCallback(async () => {
     const response = await apiFetchAdmission()
     setrowsAdmissions(response.data)
-  },[])
+  }, [])
 
   useEffect(() => {
     fetchAdmission()
-  },[fetchAdmission])
- 
+  }, [fetchAdmission])
 
   return (
     <>
@@ -250,30 +251,28 @@ export default function Test(props) {
             handleDelete={handleDelete}
             topic={topic}
             setTopic={setTopic}
-            
           />
-          
         )}
-        {indexTab === 2 && 
-        <TableAdmission 
-        handleSelectAllClickInAdmission={handleSelectAllClickInAdmission}
-        handleClickInAdmission={handleClickInAdmission}
-        rowsAdmissions={rowsAdmissions}
-        selectedAdmission={selectedAdmission}
-        setSelectedAdmission={setSelectedAdmission}
-        handleClickEditAdmission={handleClickEditAdmission}
-        openEditAdmission={openEditAdmission}
-        openAdmission={openAdmission}
-        setOpenAdmission={setOpenAdmission}
-        handleClickOpenCreateAdmission={handleClickOpenCreateAdmission}
-        handleCloseAdmission={handleCloseAdmission}
-        handleSubmitAdmission={handleSubmitAdmission}
-        handleDeleteAdmission={handleDeleteAdmission}
-        setTopicAdmission={setTopicAdmission}
-        topicAdmission={topicAdmission}
-        />}
+        {indexTab === 2 && (
+          <TableAdmission
+            handleSelectAllClickInAdmission={handleSelectAllClickInAdmission}
+            handleClickInAdmission={handleClickInAdmission}
+            rowsAdmissions={rowsAdmissions}
+            selectedAdmission={selectedAdmission}
+            setSelectedAdmission={setSelectedAdmission}
+            handleClickEditAdmission={handleClickEditAdmission}
+            openEditAdmission={openEditAdmission}
+            openAdmission={openAdmission}
+            setOpenAdmission={setOpenAdmission}
+            handleClickOpenCreateAdmission={handleClickOpenCreateAdmission}
+            handleCloseAdmission={handleCloseAdmission}
+            handleSubmitAdmission={handleSubmitAdmission}
+            handleDeleteAdmission={handleDeleteAdmission}
+            setTopicAdmission={setTopicAdmission}
+            topicAdmission={topicAdmission}
+          />
+        )}
       </div>
-      
     </>
   )
 }
