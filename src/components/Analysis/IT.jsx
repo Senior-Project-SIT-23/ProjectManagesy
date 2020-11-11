@@ -5,6 +5,7 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle"
 import { makeStyles } from "@material-ui/core/styles"
 import Card from "./AnalysisIT/Card"
 import GroupIcon from "@material-ui/icons/Group"
+import SchoolIT from "./AnalysisIT/SchoolIT"
 
 export default function IT() {
     const useStyles = makeStyles((theme) => ({
@@ -53,7 +54,13 @@ export default function IT() {
             count={"300"}
           />
         </Grid>
+        
       </Grid>
+      <Grid container spacing={3}>
+      <Grid item xs={12}>
+          <SchoolIT/>
+          </Grid>
+        </Grid>
     </div>
   )
 }

@@ -1,7 +1,12 @@
 import React from "react"
-
 import MUIDataTable from "mui-datatables"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
+import TableRow from "@material-ui/core/TableRow"
+import TableCell from "@material-ui/core/TableCell"
+import TableBody from "@material-ui/core/TableBody"
+import TableHead from "@material-ui/core/TableHead"
+import Typography from "@material-ui/core/Typography"
+import { Table } from "@material-ui/core"
 
 export default function EnhancedTable(props) {
   const columns = [
@@ -73,6 +78,44 @@ export default function EnhancedTable(props) {
     expandableRows: true,
     expandableRowsHeader: false,
     expandableRowsOnClick: true,
+
+    renderExpandableRow: (rowData, rowMeta) => {
+      const colSpan = rowData.length + 1
+      return (
+        <>
+          <TableRow>
+            <TableCell colSpan={colSpan}>
+              <Typography gutterBottom component="div" className="font-athiti">
+                รายชื่อกิจกรรมที่เข้าร่วม
+              </Typography>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>
+                      <b className="font-athiti">ชื่อกิจกรรม</b>
+                    </TableCell>
+                    <TableCell>
+                      <b className="font-athiti">ปีที่จัดกิจกรรม</b>
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  <TableRow>
+                    <TableCell component="th" scope="row">
+                      XXXXXXXXXXX
+                    </TableCell>
+                    <TableCell>XXXXXXXX</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableCell>
+          </TableRow>
+     
+        </>
+      )
+    },
+    onRowExpansionChange: (curExpanded, allExpanded, rowsExpanded) =>
+      console.log(curExpanded, allExpanded, rowsExpanded),
   }
   const getMuiTheme = () =>
     createMuiTheme({

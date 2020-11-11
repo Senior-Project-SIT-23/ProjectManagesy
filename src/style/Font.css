@@ -60,3 +60,29 @@
     /* Modern Browsers */ url('../asset/font/Athiti-Medium.ttf') format('truetype'),
     /* Safari, Android, iOS */ url('../asset/font/Athiti-Medium.ttf') format('svg'); /* Legacy iOS */
 }
+
+@font-face {
+  font-family: 'Roboto';
+  font-style:  italic;
+  font-weight: 400;
+  src: url('../asset/font/Roboto-Regular.ttf');
+  src: local('Roboto Regular Italic'), local('Roboto-BoldItalic'),
+  url('../asset/font/Roboto-Regular.ttf') format('embedded-opentype'),
+  /* IE6-IE8 */ url('../asset/font/Roboto-Regular.ttf') format('woff2'),
+  /* Super Modern Browsers */ url('../asset/font/Roboto-Regular.ttf') format('woff'),
+  /* Modern Browsers */ url('../asset/font/Roboto-Regular.ttf') format('truetype'),
+  /* Safari, Android, iOS */ url('../asset/font/Roboto-Regular.ttf') format('svg'); /* Legacy iOS */
+}
+
+@font-face{
+  font-family: 'Prompt';
+  font-style: italic;
+  font-weight: 700;
+  src: url('../asset/font/Prompt-Bold.ttf');
+  src: local('Prompt Regular Italic'), local('Roboto-BoldItalic'),
+  url('../asset/font/Prompt-Bold.ttf') format('embedded-opentype'),
+  /* IE6-IE8 */ url('../asset/font/Prompt-Bold.ttf') format('woff2'),
+  /* Super Modern Browsers */ url('../asset/font/Prompt-Bold.ttf') format('woff'),
+  /* Modern Browsers */ url('../asset/font/Prompt-Bold.ttf') format('truetype'),
+  /* Safari, Android, iOS */ url('../asset/font/Prompt-Bold.ttf') format('svg'); /* Legacy iOS */
+}

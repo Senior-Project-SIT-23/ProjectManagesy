@@ -64,6 +64,7 @@ export default function TableTest() {
       options: {
         filter: true,
         sort: true,
+        
       },
     },
   ]
@@ -191,14 +192,7 @@ export default function TableTest() {
               </Table>
             </TableCell>
           </TableRow>
-          {/* <Table size="small" aria-label="purchases">
-        <TableHead>
-                  <TableRow>
-                    <TableCell><b>ชื่อกิจกรรม</b></TableCell>
-                    <TableCell><b>ปีที่จัดกิจกรรม</b></TableCell>
-                  </TableRow>
-                </TableHead>
-        </Table> */}
+     
         </>
       )
     },

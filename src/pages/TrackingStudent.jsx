@@ -101,16 +101,23 @@ export default function Test(props) {
       file: event.target.upload_file.files[0],
     }
     const formData = getActivityFormData(data)
+    try{
+      if (openEdit) {
+        await apiEditActivity(formData)
+        
     
-    if (openEdit) {
-      await apiEditActivity(formData)
-  
-    } else {
-      await apiCreateActivity(formData)
-    } 
-    
-    fetchActivities()
-    handleClose()
+      } else {
+       await apiCreateActivity(formData)
+      
+      } 
+      
+      fetchActivities()
+      handleClose()
+    }catch(error){
+      console.log('test')
+      alert('ไฟล์ที่อัพโหลด format ของไฟล์ไม่ถูกต้อง')
+    }
+   
   }
 
   const fetchActivities = useCallback(async () => {

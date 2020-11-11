@@ -1,10 +1,8 @@
 import React from "react"
 import MUIDataTable from "mui-datatables"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import TextField from '@material-ui/core/TextField';
 
-export default function AllActTable() {
+export default function SchoolIT() {
   const getMuiTheme = () =>
     createMuiTheme({
       overrides: {
@@ -13,14 +11,11 @@ export default function AllActTable() {
             fontFamily: "Athiti",
           },
         },
-        MUIDataTableBodyCell: {
-          root: {
+        MUIDataTable: {
             
-          }
         }
       },
     })
-   
     
   const columns = [
     {
@@ -32,36 +27,34 @@ export default function AllActTable() {
       },
     },
     {
-      name: "activityname",
-      label: "ชื่อกิจกรรม",
+      name: "school",
+      label: "สถาบันการศึกษา",
       options: {
         filter: true,
         sort: true,
       },
     },
     {
-      name: "count",
-      label: "จำนวนผู้เข้าร่วมทั้งหมด",
+      name: "All",
+      label: "All",
       options: {
         filter: true,
-        sort: false,
-
+        sort: true,
       },
     },
-    
+   
   ]
 
   const data = [
-    { number: "1", activityname: "Test Corp", count: "10", },
-    { number: "2", activityname: "Test Corp", count: "2", },
-    { number: "3", activityname: "Test Corp", count: "9",  },
+    { number: "1", school: "Test Corp",All:'12'},
+    { number: "2", school: "Test Corp",All:'12' },
+    { number: "3", school: "Test Corp",All:'12' },
     {
         number: "4",
-        activityname: "Test Corp",
-        count: "3",
-       
+        school: "Test Corp",
+        All:'12'
     },
-    { number: "5", activityname: "Test Corp", count: "5",  },
+    { number: "5", school: "Test Corp",All:'12' },
   ]
 
   const options = {
@@ -70,8 +63,7 @@ export default function AllActTable() {
     selectableRows: false,
     print: false,
     rowsPerPage: 5,
-    rowsPerPageOptions: [5,10,20],
-   
+    rowsPerPageOptions: [5,10,20]
   }
 
 
@@ -79,7 +71,7 @@ export default function AllActTable() {
     <div>
       <MuiThemeProvider theme={getMuiTheme()}>
         <MUIDataTable
-          title={"ตารางแสดงจำนวนผู้เข้าร่วมกิจกรรม"}
+          title={"ตารางแสดงจำนวนนักเรียนที่มีสิทธิ์เข้าศึกษาที่คณะ"}
           data={data}
           columns={columns}
           options={options}

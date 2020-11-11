@@ -6,15 +6,17 @@ import { Public } from "@material-ui/icons"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // backgroundColor: "#EBEFF1",
+    backgroundColor: "#EBEFF1",
     minHeight: "100vh",
-    backgroundImage: 'url(/Background.jpg)'
+    backgroundImage: 'url(/Background.png)',
+    backgroundSize: "cover"
+    
   },
   title: {
-    fontFamily: "Athiti",
-    fontSize: 50,
+    fontFamily: "Prompt",
+    fontSize: 60,
     // color: "#3E3E3E",
-    color: "white",
+    color: "black",
   },
   login: {
     color: "white",
@@ -22,9 +24,10 @@ const useStyles = makeStyles((theme) => ({
   button: {
     borderRadius: 30,
     // backgroundColor: "#3E3E3E",
-    backgroundColor: "white",
-    color: '#3E3E3E',
-    
+    // backgroundColor: "white",
+    // color: '#3E3E3E',
+    fontFamily:'Roboto',
+    minWidth: '480px',
     
   }
 }))
@@ -33,20 +36,33 @@ export default function Login() {
   const classes = useStyles()
 
   return (
-    <div
-      className={`flex content-center flex-wrap  min-h-screen ${classes.root}`}
-    >
-      <div className={`w-full `}>
-        <div className={`text-center`}>
-          <h1 className={`${classes.title} `}>M A N A G E S Y</h1>
-          <a href="http://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=PYXjbgDs&redirect_uri=http://localhost:3000/CallBack&state=Managesy" style={{textDecoration: 'none'}}>
-            {/* <button className={`text-center ${classes.login}`}>Login</button> */}
-            <Button variant="contained"  className={`${classes.button}`}>
-            Login via SSO         
-            </Button>
-          </a>
-        </div>
+    // <div
+    //   className={`flex content-center flex-wrap min-h-screen ${classes.root}`}
+    // >
+    //   <div className={`w-full `}>
+    //     <div className={`text-left`}>
+    //       <h1 className={`${classes.title} `}>M A N A G E S Y</h1>
+    //       <a href="http://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=PYXjbgDs&redirect_uri=http://localhost:3000/CallBack&state=Managesy" style={{textDecoration: 'none'}}>
+          
+    //         <Button variant="contained"  className={`${classes.button}`}>
+    //         Login via SSO         
+    //         </Button>
+    //       </a>
+    //     </div>
+    //   </div>
+    // </div>
+    <div className={classes.root}>
+    <div className='flex w-full h-screen'>
+      <div className='my-auto ml-20 '>
+      <h1 className={`${classes.title} `}>M A N A G E S Y</h1>
+           <a href="http://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=PYXjbgDs&redirect_uri=http://localhost:3000/CallBack&state=Managesy" style={{textDecoration: 'none'}}>
+          
+             <Button variant="contained" color="primary" className={`${classes.button}`}>
+             Login via SSO         
+             </Button>
+           </a>
       </div>
+    </div>
     </div>
   )
 }

@@ -189,11 +189,10 @@ export default function CustomizedDialogs(props) {
                 required
                 value={state.major || props.openEdit?.activity_major}
               >
-                <option aria-label="None" />
-                <option value={"IT"}>เทคโนโลยีสารสนเทศ(IT)</option>
-                <option value={"CS"}>วิทยาการคอมพิวเตอร์(CS)</option>
-                <option value={"DSI"}>นวัตกรรมบริการดิจิตอล(DSI)</option>
                 <option value={"SIT"}>คณะเทคโนโลยีสารสนเทศ(SIT)</option>
+                <option value={"DSI"}>นวัตกรรมบริการดิจิตอล(DSI)</option>
+                <option value={"CS"}>วิทยาการคอมพิวเตอร์(CS)</option>
+                <option value={"IT"}>เทคโนโลยีสารสนเทศ(IT)</option>
               </Select>
             </FormControl>
 
@@ -208,13 +207,12 @@ export default function CustomizedDialogs(props) {
                 name="year"
                 id="yearofActivity"
               >
-                <option aria-label="None" value="" />
-                <option value={"2017"}>2016</option>
-                <option value={"2017"}>2017</option>
-                <option value={"2018"}>2018</option>
-                <option value={"2019"}>2019</option>
                 <option value={"2020"}>2020</option>
-                <option value={"2021"}>2021</option>
+                <option value={"2019"}>2019</option>
+                <option value={"2018"}>2018</option>
+                <option value={"2017"}>2017</option>
+                <option value={"2016"}>2016</option>
+                <option value={"2015"}>2015</option>
               </Select>
             </FormControl>
 
