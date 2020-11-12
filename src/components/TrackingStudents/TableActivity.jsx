@@ -4,15 +4,19 @@ import DialogCreateActivity from "./DialogCreateActivity"
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined"
 import MUIDataTable from "mui-datatables"
 import { apiDeleteActivities } from "../../service/activity"
-import Tooltip from "@material-ui/core/Tooltip"
-import DialogConfirmDelete from "./DialogConfirmDelete"
+import styled from 'styled-components';
 import { Link, navigate } from "@reach/router"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 
+
+
+
+
 export default function EnhancedTable(props) {
   function showDataInFile(id,name) {
     navigate(`/ShowDataInFileActivity/${id}/${name}`)
+    
   }
 
   const getMuiTheme = () =>
@@ -25,20 +29,29 @@ export default function EnhancedTable(props) {
         },
       },
     })
-
+  
   const columns = () => {
+    const HoverText = styled.p`
+	color: #000000;
+	:hover {
+		color: #336699;
+		cursor: pointer;
+	}
+`
     return [
       {
         name: "activity_student_name",
         label: "ชื่อกิจกรรม",
         options: {
           customBodyRender: (value, tableMeta) => (
-            <a
-              onClick={() => showDataInFile(tableMeta.rowData[10],tableMeta.rowData[0])}
-              style={{ cursor: "pointer" }}
-            >
-              {value}
+            <a href={`/ShowDataInFileActivity/${tableMeta.rowData[10]}/${tableMeta.rowData[0]}`} target="_blank">
+              <p>{value}</p>
             </a>
+            // <HoverText
+            //   onClick={() => showDataInFile(tableMeta.rowData[10],tableMeta.rowData[0])}
+            // >
+            //   {value}
+            // </HoverText>
           ),
           filter: false,
         },

@@ -8,6 +8,7 @@ import GroupIcon from "@material-ui/icons/Group"
 import SchoolIT from "./AnalysisIT/SchoolIT"
 import BarChart from "./BarChart"
 import DonutChart from './DonutChart'
+import LineChart from "./AnalysisCollegestudent/LineChart"
 export default function IT() {
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -68,6 +69,11 @@ export default function IT() {
       <Grid container spacing={3}>
       <Grid item xs={12}>
           <SchoolIT/>
+          </Grid>
+        </Grid>
+      <Grid container spacing={3}>
+      <Grid item xs={12}>
+          <LineChart title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 1"}/>
           </Grid>
         </Grid>
     </div>

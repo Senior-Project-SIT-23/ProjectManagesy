@@ -8,6 +8,14 @@ import Grid from "@material-ui/core/Grid"
 export default function EnhancedTable(props) {
   const columns = [
     {
+      name: "number",
+      label: "ลำดับ",
+      options: {
+        filter: false,
+        sort: true,
+      },
+    },
+    {
       name: "Name",
       label: "ชื่อ-นามสกุล",
       options: {
@@ -50,12 +58,12 @@ export default function EnhancedTable(props) {
   ]
 
   const data = [
-    ["รวิสรา เกตุแก้ว", "ม.4", "xxxxxx@gmail.com", "08xxxxxxxx","อัสสัมชัญศึกษา"],
-    ["อินทิรา ตั้งนิรามัย", "ม.5",  "xxxxxx@gmail.com", "08xxxxxxxx","นาคประสิทธิ์"],
-    ["ธนัชชา พิพม์ศิริกุล", "ม.4",  "xxxxxx@gmail.com", "08xxxxxxxx","อุดรพิทยานุกูล"],
-    ["ธัญวรัตน์ ดวงสีหา", "ม.6",  "xxxxxx@gmail.com", "08xxxxxxxx","ดัดดรุณี"],
-    ["อิทธิเดช ชาญสาธิต", "ม.6",  "xxxxxx@gmail.com", "08xxxxxxxx","เตรียมอุดมศึกษาน้อมเกล้า"],
-    ["สุภาวรรณ ชูเชิด", "ม.5",  "xxxxxx@gmail.com", "08xxxxxxxx","พระหฤทัยคอนแวนต์"],
+    ["1","รวิสรา เกตุแก้ว", "ม.4", "xxxxxx@gmail.com", "08xxxxxxxx","อัสสัมชัญศึกษา"],
+    ["2","อินทิรา ตั้งนิรามัย", "ม.5",  "xxxxxx@gmail.com", "08xxxxxxxx","นาคประสิทธิ์"],
+    ["3","ธนัชชา พิพม์ศิริกุล", "ม.4",  "xxxxxx@gmail.com", "08xxxxxxxx","อุดรพิทยานุกูล"],
+    ["4","ธัญวรัตน์ ดวงสีหา", "ม.6",  "xxxxxx@gmail.com", "08xxxxxxxx","ดัดดรุณี"],
+    ["5","อิทธิเดช ชาญสาธิต", "ม.6",  "xxxxxx@gmail.com", "08xxxxxxxx","เตรียมอุดมศึกษาน้อมเกล้า"],
+    ["6","สุภาวรรณ ชูเชิด", "ม.5",  "xxxxxx@gmail.com", "08xxxxxxxx","พระหฤทัยคอนแวนต์"],
   ]
 
   const options = {

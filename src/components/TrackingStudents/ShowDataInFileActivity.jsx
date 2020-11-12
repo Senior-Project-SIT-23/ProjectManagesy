@@ -11,10 +11,11 @@ import TableHead from "@material-ui/core/TableHead"
 import TableRow from "@material-ui/core/TableRow"
 import Paper from "@material-ui/core/Paper"
 import IconButton from '@material-ui/core/IconButton';
-import Header from '../TrackingStudents/Header'
+import HeaderFile from '../TrackingStudents/HeaderFile'
 import Headers from '../../components/Header'
 import Grid from "@material-ui/core/Grid"
 import TableDataFromFileAct from "./TableDataFromFileAct"
+import TableTest from "./TableTest"
 
 const useStylesTable = makeStyles({
   table: {
@@ -37,8 +38,8 @@ const rows = [
 const useStylesGrid = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    margin: theme.spacing(5),
-    marginLeft: theme.spacing(10),
+    // margin: theme.spacing(5),
+    // marginLeft: theme.spacing(10),
   },
   paper: {
     padding: theme.spacing(2),
@@ -50,7 +51,7 @@ const useStylesGrid = makeStyles((theme) => ({
 export default function ShowDataInFileActivity(props) {
   const { id,name } = useParams()
   const classesGrid = useStylesGrid()
-  const [indexTab, setIndexTab] = useState(1)
+  const [indexTab, setIndexTab] = useState(0)
   //Button
   const handleBack = (index) => {
     console.log(index)
@@ -72,17 +73,13 @@ export default function ShowDataInFileActivity(props) {
   const classes = useStylesTable()
   return (
     <>
-    <Header handleChangeTab={handleChangeTab} indexTab={indexTab} />
-      <div className={classesGrid.root}>
+    <HeaderFile handleChangeTab={handleChangeTab} indexTab={indexTab} />
+    <div className="flex flex-col flex-1 p-10 mx-auto max-w-screen-lg min-h-screen">
+    
+    
         <Grid container spacing={3}>
-          {/* <div className="backbutton"> */}
           <Grid item>
             <div className={useStyles.root}>
-              {/* hello
-            {id} */}
-              {/* <Fab aria-label="ย้อนกลับ" onClick={handleBack}>
-                
-              </Fab> */}
               <IconButton aria-label="Back" onClick={()=> handleBack(indexTab)}>
                 <ArrowBackSharpIcon />
               </IconButton>
