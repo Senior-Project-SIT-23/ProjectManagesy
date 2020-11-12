@@ -73,14 +73,14 @@ export default function FullPageAnalysis() {
           />
         </Grid>
       </Grid>
-     
-     
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
         <BarChart className={classes.paper} />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <DonutChart className={classes.paper} />
+          <DonutChart 
+          className={classes.paper} 
+          data={[300, 268, 455,625,365]}/>
         </Grid>
       </Grid>
       <Grid container spacing={3}>

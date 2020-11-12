@@ -76,10 +76,10 @@ export default function IT() {
           <LineChart 
           data={[25, 18, 22, 32, 2, 5, 18, 16]}
           title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 1"}
-          bgcolor={"#D87D0D"}
-          borderColor={"#D87D0D"}
-          hoverBackgroundColor={"rgba(216,125,13,0.4)"}
-          hoverBorderColor={"#D87D0D"}/>
+          bgcolor={"#9DDDE1"}
+          borderColor={"#9DDDE1"}
+          hoverBackgroundColor={"rgba(157,221,225,0.4)"}
+          hoverBorderColor={"#9DDDE1"}/>
           </Grid>
         </Grid>
         <Grid container spacing={3}>
@@ -87,10 +87,10 @@ export default function IT() {
           <LineChart 
           data={[25, 18, 22, 32, 2, 5, 18, 16]}
           title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 2"}
-          bgcolor={"#CD7E59"}
-          borderColor={"#CD7E59"}
-          hoverBackgroundColor={"rgba(205, 126, 89,0.4)"}
-          hoverBorderColor={"#CD7E59"}/>
+          bgcolor={"#F9D68A"}
+          borderColor={"#F9D68A"}
+          hoverBackgroundColor={"rgba(249, 214, 138,0.4)"}
+          hoverBorderColor={"#F9D68A"}/>
         </Grid>
         </Grid>
         <Grid container spacing={3}>
@@ -98,21 +98,21 @@ export default function IT() {
           <LineChart 
           data={[25, 18, 22, 32, 2, 5, 18, 16]}
           title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 3"}
-          bgcolor={"#457373"}
-          borderColor={"#457373"}
-          hoverBackgroundColor={"rgba(115,115,69,0.4)"}
-          hoverBorderColor={"#457373"}/>
+          bgcolor={"#EA9F6F"}
+          borderColor={"#EA9F6F"}
+          hoverBackgroundColor={"rgba(234,159,111,0.4)"}
+          hoverBorderColor={"#EA9F6F"}/>
         </Grid>
         </Grid>
         <Grid container spacing={3}>
         <Grid item xs={12}>
           <LineChart 
           data={[25, 18, 22, 32, 2, 5, 18, 16]}
-          title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 3"}
-          bgcolor={"#DDB247"}
-          borderColor={"#DDB247"}
-          hoverBackgroundColor={"rgba(71,178,221,0.4)"}
-          hoverBorderColor={"#DDB247"}/>
+          title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 4"}
+          bgcolor={"#EC8A7B"}
+          borderColor={"#EC8A7B"}
+          hoverBackgroundColor={"rgba(236,138,123,0.4)"}
+          hoverBorderColor={"#EC8A7B"}/>
         </Grid>
         </Grid>
         

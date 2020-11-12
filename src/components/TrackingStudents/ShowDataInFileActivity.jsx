@@ -1,4 +1,4 @@
-import React,{useState} from "react"
+import React,{useCallback, useEffect, useState} from "react"
 import { navigate, useParams } from "@reach/router"
 import ArrowBackSharpIcon from "@material-ui/icons/ArrowBackSharp"
 import Fab from "@material-ui/core/Fab"
@@ -16,6 +16,7 @@ import Headers from '../../components/Header'
 import Grid from "@material-ui/core/Grid"
 import TableDataFromFileAct from "./TableDataFromFileAct"
 import TableTest from "./TableTest"
+import { apiReadFileActivities } from "../../service/activity"
 
 const useStylesTable = makeStyles({
   table: {
@@ -52,6 +53,22 @@ export default function ShowDataInFileActivity(props) {
   const { id,name } = useParams()
   const classesGrid = useStylesGrid()
   const [indexTab, setIndexTab] = useState(0)
+  const [data , setData] = useState()
+
+  const fetchActivities = useCallback(async () => {
+    const {data} = await apiReadFileActivities(id)
+    const tmp = []
+    for(let i = 0; i < data.length;i++ ){
+      tmp.push({index: i+1, ...data[i]})
+    }
+    setData(tmp)
+  }, [id])
+
+  useEffect(() => {
+    fetchActivities()
+  }, [fetchActivities])
+
+
   //Button
   const handleBack = (index) => {
     console.log(index)
@@ -77,19 +94,19 @@ export default function ShowDataInFileActivity(props) {
     <div className="flex flex-col flex-1 p-10 mx-auto max-w-screen-lg min-h-screen">
     
     
-        <Grid container spacing={3}>
-          <Grid item>
+        {/* <Grid container spacing={3}> */}
+          {/* <Grid item>
             <div className={useStyles.root}>
               <IconButton aria-label="Back" onClick={()=> handleBack(indexTab)}>
                 <ArrowBackSharpIcon />
               </IconButton>
             </div>
-          </Grid>
+          </Grid> */}
           
-          <Grid item xs={10}>
-            <TableDataFromFileAct title={name}/>
-          </Grid>
-        </Grid>
+          {/* <Grid item xs={10}> */}
+            <TableDataFromFileAct title={name} data={data} />
+          {/* </Grid>
+        </Grid> */}
         
       </div>
     </>

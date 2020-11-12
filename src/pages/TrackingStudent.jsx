@@ -211,13 +211,20 @@ export default function Test(props) {
       file: event.target.upload_file_admission.files[0],
     }
     const formDataAdmission = getAdmissionFormData(data)
-    if (openEditAdmission) {
-      await apiEditAdmission(formDataAdmission)
-    } else {
-      await apiCreateAdmission(formDataAdmission)
+    try{
+      if (openEditAdmission) {
+        await apiEditAdmission(formDataAdmission)
+      } else {
+        await apiCreateAdmission(formDataAdmission)
+      }
+    }catch(error){
+      console.log("test",error)
+      alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+      
     }
     fetchAdmission()
     handleCloseAdmission()
+   
   }
   const fetchAdmission = useCallback(async () => {
     const response = await apiFetchAdmission()

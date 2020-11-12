@@ -7,24 +7,32 @@ import Grid from "@material-ui/core/Grid"
 
 export default function EnhancedTable(props) {
   const columns = [
+    // {
+    //   name: "index",
+    //   label: "ลำดับ",
+    //   options: {
+    //     filter: false,
+    //     sort: true,
+    //   },
+    // },
     {
-      name: "number",
-      label: "ลำดับ",
+      name: "data_first_name",
+      label: "ชื่อ",
       options: {
         filter: false,
         sort: true,
       },
     },
     {
-      name: "Name",
-      label: "ชื่อ-นามสกุล",
+      name: "data_surname",
+      label: "นามสกุล",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
       },
     },
     {
-      name: "year",
+      name: "data_degree",
       label: "ระดับชั้น",
       options: {
         filter: true,
@@ -32,7 +40,15 @@ export default function EnhancedTable(props) {
       },
     },
     {
-      name: "email",
+      name: "data_school_name",
+      label: "โรงเรียน",
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: "data_email",
       label: "email",
       options: {
         filter: true,
@@ -40,31 +56,18 @@ export default function EnhancedTable(props) {
       },
     },
     {
-      name: "tel",
+      name: "data_tel",
       label: "เบอร์ติดต่อ",
       options: {
         filter: true,
         sort: true,
       },
     },
-    {
-      name: "school",
-      label: "โรงเรียน",
-      options: {
-        filter: true,
-        sort: true,
-      },
-    },
+    
   ]
 
-  const data = [
-    ["1","รวิสรา เกตุแก้ว", "ม.4", "xxxxxx@gmail.com", "08xxxxxxxx","อัสสัมชัญศึกษา"],
-    ["2","อินทิรา ตั้งนิรามัย", "ม.5",  "xxxxxx@gmail.com", "08xxxxxxxx","นาคประสิทธิ์"],
-    ["3","ธนัชชา พิพม์ศิริกุล", "ม.4",  "xxxxxx@gmail.com", "08xxxxxxxx","อุดรพิทยานุกูล"],
-    ["4","ธัญวรัตน์ ดวงสีหา", "ม.6",  "xxxxxx@gmail.com", "08xxxxxxxx","ดัดดรุณี"],
-    ["5","อิทธิเดช ชาญสาธิต", "ม.6",  "xxxxxx@gmail.com", "08xxxxxxxx","เตรียมอุดมศึกษาน้อมเกล้า"],
-    ["6","สุภาวรรณ ชูเชิด", "ม.5",  "xxxxxx@gmail.com", "08xxxxxxxx","พระหฤทัยคอนแวนต์"],
-  ]
+  
+  
 
   const options = {
     filterType: "checkbox",
@@ -91,7 +94,7 @@ export default function EnhancedTable(props) {
       <MuiThemeProvider theme={getMuiTheme()}>
         <MUIDataTable
           title={props.title}
-          data={data}
+          data={ props.data}
           columns={columns}
           options={options}
         />

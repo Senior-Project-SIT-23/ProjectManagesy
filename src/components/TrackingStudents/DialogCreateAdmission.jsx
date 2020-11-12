@@ -70,7 +70,11 @@ export default function CustomizedDialogs(props) {
         width: "25ch",
       },
     },
-
+    col:{
+      color: 'red',
+      fontSize: '12px',
+      marginTop:theme.spacing(1)
+    },
     formControl: {
       marginTop: theme.spacing(2),
       minWidth: 120,
@@ -82,6 +86,9 @@ export default function CustomizedDialogs(props) {
       marginLeft: "20px",
       marginTop: theme.spacing(2),
     },
+    upload:{
+      marginTop: theme.spacing(1)
+    }
   }))
 
   const classes = useStyles()
@@ -180,7 +187,6 @@ export default function CustomizedDialogs(props) {
                 value={state.round || props.openEditAdmission?.round_name}
                 
               >
-                <option aria-label="None" value="" />
                 <option value={"รอบ 1"}>รอบ 1 แฟ้มสะสมผลงาน</option>
                 <option value={"รอบ 2"}>รอบ 2 โควตา</option>
                 <option value={"รอบ 3"}>รอบ 3 รับตรงร่วมกัน</option>
@@ -200,13 +206,12 @@ export default function CustomizedDialogs(props) {
                 id="year"
                 
               >
-                <option aria-label="None" value="" />
-                <option value={"2017"}>2016</option>
-                <option value={"2017"}>2017</option>
-                <option value={"2018"}>2018</option>
-                <option value={"2019"}>2019</option>
-                <option value={"2020"}>2020</option>
-                <option value={"2020"}>2021</option>
+                {/* <option aria-label="None" value="" /> */}
+                <option value={"2563"}>2563</option>
+                <option value={"2562"}>2562</option>
+                <option value={"2561"}>2561</option>
+                <option value={"2560"}>2560</option>
+                <option value={"2559"}>2559</option>
               </Select>
             </FormControl>
             <br></br>
@@ -222,7 +227,7 @@ export default function CustomizedDialogs(props) {
                 id="majorAdmission"
                 
               >
-                <option aria-label="None" value="" />
+                
                 <option value={"IT"}>เทคโนโลยีสารสนเทศ(IT)</option>
                 <option value={"CS"}>วิทยาการคอมพิวเตอร์(CS)</option>
                 <option value={"DSI"}>นวัตกรรมบริการดิจิตอล(DSI)</option>
@@ -231,7 +236,9 @@ export default function CustomizedDialogs(props) {
             </FormControl>
 
             <div className="my-4">
+            <p> format ไฟล์: <a href='/formatAdmission.csv' download className={classes.format}>formatFileAdmission.csv </a></p>
               <input
+              className={classes.upload}
                 required={!props.openEditAdmission}
                 type="file"
                 id="upload_file_admission"
@@ -239,6 +246,7 @@ export default function CustomizedDialogs(props) {
                 accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
               />
               <br></br>
+              <p className={classes.col}>**กรุณาอัปโหลดเป็นไฟล์ .CSV UTF-8 เท่านั้น</p>
               <p className="my-3">Current :{props.openEditAdmission?.admission_file_name}</p>
             </div>
           </DialogContent>
