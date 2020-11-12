@@ -18,26 +18,57 @@ export default function LineChart(props) {
     ],
     datasets: [
       {
-        data: [25, 18, 22, 32, 2, 5, 18, 16],
-        //   backgroundColor: "#98E7A9",
-        hoverBackgroundColor: "rgba(152,231,169,0.4)",
-        hoverBorderColor: "#98E7A9",
-        fill: false
+        label: "จำนวนนักศึกษา",
+        data: props.data,
+        backgroundColor: `${props.bgcolor}`,
+        hoverBackgroundColor: `${props.hoverBackgroundColor}`,
+        hoverBorderColor: `${props.hoverBorderColor}`,
+        borderColor: `${props.borderColor}`,
+        borderCapStyle: "square",
+        pointBorderWidth: 2,
+        pointHitRadius: 5,
+        fill: false,
+        borderJoinStyle: "bevel",
+        lineTension: 0,
       },
     ],
   }
 
   return (
-    
     <Paper style={{ padding: 10 }}>
-      <Grid container >
-            <Grid item container direction="column" spacing={2}>
-                <Typography  variant="subtitle1" style={{textAlign:"center"}}>
-                     <div className="font-athiti "><b>{props.title}</b></div>
-                </Typography>
-                <Line data={data} />
-            </Grid>
-    </Grid>
-      </Paper>
+      <Grid container>
+        <Grid item container direction="column" spacing={2}>
+          <Typography variant="subtitle1" style={{ textAlign: "center" }}>
+            <div className="font-athiti ">
+              <b>{props.title}</b>
+            </div>
+          </Typography>
+          <Line
+            data={data}
+            height={120}
+            options={{
+              scales: {
+                yAxes: [
+                  {
+                    scaleLabel: {
+                      display: true,
+                      labelString: "จำนวนนักศึกษา",
+                    },
+                  },
+                ],
+                xAxes: [
+                    {
+                      scaleLabel: {
+                        display: true,
+                        labelString: "เกรดเฉลี่ยสะสม",
+                      },
+                    },
+                  ],
+              },
+            }}
+          />
+        </Grid>
+      </Grid>
+    </Paper>
   )
 }

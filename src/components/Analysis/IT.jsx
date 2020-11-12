@@ -73,9 +73,50 @@ export default function IT() {
         </Grid>
       <Grid container spacing={3}>
       <Grid item xs={12}>
-          <LineChart title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 1"}/>
+          <LineChart 
+          data={[25, 18, 22, 32, 2, 5, 18, 16]}
+          title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 1"}
+          bgcolor={"#D87D0D"}
+          borderColor={"#D87D0D"}
+          hoverBackgroundColor={"rgba(216,125,13,0.4)"}
+          hoverBorderColor={"#D87D0D"}/>
           </Grid>
         </Grid>
+        <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <LineChart 
+          data={[25, 18, 22, 32, 2, 5, 18, 16]}
+          title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 2"}
+          bgcolor={"#CD7E59"}
+          borderColor={"#CD7E59"}
+          hoverBackgroundColor={"rgba(205, 126, 89,0.4)"}
+          hoverBorderColor={"#CD7E59"}/>
+        </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <LineChart 
+          data={[25, 18, 22, 32, 2, 5, 18, 16]}
+          title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 3"}
+          bgcolor={"#457373"}
+          borderColor={"#457373"}
+          hoverBackgroundColor={"rgba(115,115,69,0.4)"}
+          hoverBorderColor={"#457373"}/>
+        </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <LineChart 
+          data={[25, 18, 22, 32, 2, 5, 18, 16]}
+          title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 3"}
+          bgcolor={"#DDB247"}
+          borderColor={"#DDB247"}
+          hoverBackgroundColor={"rgba(71,178,221,0.4)"}
+          hoverBorderColor={"#DDB247"}/>
+        </Grid>
+        </Grid>
+        
+
     </div>
   )
 }
