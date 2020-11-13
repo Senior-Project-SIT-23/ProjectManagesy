@@ -1,4 +1,4 @@
-import React,{useState} from "react"
+import React,{useCallback, useEffect, useState} from "react"
 import { navigate, useParams } from "@reach/router"
 import ArrowBackSharpIcon from "@material-ui/icons/ArrowBackSharp"
 import Fab from "@material-ui/core/Fab"
@@ -11,10 +11,12 @@ import TableHead from "@material-ui/core/TableHead"
 import TableRow from "@material-ui/core/TableRow"
 import Paper from "@material-ui/core/Paper"
 import IconButton from '@material-ui/core/IconButton';
-import Header from '../TrackingStudents/Header'
+import HeaderFileAdmission from '../TrackingStudents/HeaderFileAdmission'
 import Headers from '../../components/Header'
 import Grid from "@material-ui/core/Grid"
 import TableDataFormFileAdmission from "./TableDataFormFileAdmission"
+import { apiReadFileAdmission } from "../../service/admission"
+import { data } from "autoprefixer"
 
 const useStylesTable = makeStyles({
   table: {
@@ -39,13 +41,29 @@ const useStylesGrid = makeStyles((theme) => ({
 export default function ShowDataInFileActivity(props) {
   const { id,name } = useParams()
   const classesGrid = useStylesGrid()
-  const [indexTab, setIndexTab] = useState(2)
+  const [indexTab, setIndexTab] = useState(0)
+  const [data , setData] = useState()
+  // const [data, setdata] = useState()
   //Button
   const handleBack = (index) => {
     console.log(index)
     setIndexTab(index)
     navigate(`/`)
   }
+ const fetchAdmission = useCallback(async () => {
+   const {data} = await apiReadFileAdmission(id)
+   const tmp = []
+    for(let i = 0; i < data.length;i++ ){
+      tmp.push({index: i+1, ...data[i]})
+    }
+    setData(tmp)
+   
+ },[id])
+
+ useEffect(() => {
+   fetchAdmission()
+ },[fetchAdmission])
+
   function handleChangeTab(index) {
     setIndexTab(index)
   }
@@ -61,29 +79,26 @@ export default function ShowDataInFileActivity(props) {
   const classes = useStylesTable()
   return (
     <>
-    <Header handleChangeTab={handleChangeTab} indexTab={indexTab} />
-      <div className={classesGrid.root}>
+    <HeaderFileAdmission handleChangeTab={handleChangeTab} indexTab={indexTab} />
+    <div className="flex flex-col flex-1 p-10 mx-auto max-w-screen-lg min-h-screen">
+      {/* <div className={classesGrid.root}>
         <Grid container spacing={3}>
-          {/* <div className="backbutton"> */}
+         
           <Grid item>
             <div className={useStyles.root}>
-              {/* hello
-            {id} */}
-              {/* <Fab aria-label="ย้อนกลับ" onClick={handleBack}>
-                
-              </Fab> */}
+            
               <IconButton aria-label="Back" onClick={()=> handleBack(indexTab)}>
                 <ArrowBackSharpIcon />
               </IconButton>
             </div>
           </Grid>
-          {/* <div className="tableShowdata"> */}
-          <Grid item>
-           
-            <TableDataFormFileAdmission title={name}/>
-          </Grid>
+         
+          <Grid item> */}
+            <TableDataFormFileAdmission title={name} data={data}/>
+          {/* </Grid>
         </Grid>
        
+      </div> */}
       </div>
     </>
   )

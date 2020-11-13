@@ -11,7 +11,7 @@ export function getAdmissionFormData(data) {
   formDataAds.append("new_admission_file", _.get(data, "file", ""))
   formDataAds.append(
     "delete_admission_file_id",
-    _.get(data, "delete_admission_file_id", " ")
+    _.get(data, "delete_admission_file_id", )
   )
 
   return formDataAds

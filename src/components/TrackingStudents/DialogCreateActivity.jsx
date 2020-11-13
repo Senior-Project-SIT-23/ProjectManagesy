@@ -15,7 +15,12 @@ import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
 import { makeStyles } from "@material-ui/core/styles"
 import Tooltip from "@material-ui/core/Tooltip"
-import { createMuiTheme, MuiThemeProvider,ThemeProvider } from "@material-ui/core/styles"
+import {
+  createMuiTheme,
+  MuiThemeProvider,
+  ThemeProvider,
+} from "@material-ui/core/styles"
+import { CSVReader } from "react-papaparse"
 
 const styles = (theme) => ({
   root: {
@@ -73,21 +78,21 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "20px",
     minWidth: 150,
   },
-  col:{
-    color: 'red',
-    fontSize: '12px',
-    marginTop:theme.spacing(1)
+  col: {
+    color: "red",
+    fontSize: "12px",
+    marginTop: theme.spacing(1),
   },
-  format:{
-    color: 'blue',
-    marginBottom: theme.spacing(2)
+  format: {
+    color: "blue",
+    marginBottom: theme.spacing(2),
   },
-  upload:{
-    marginTop: theme.spacing(1)
-  }
+  upload: {
+    marginTop: theme.spacing(1),
+  },
 }))
 
-
+const buttonRef = React.createRef()
 
 export default function CustomizedDialogs(props) {
   const classes = useStyles()
@@ -108,33 +113,62 @@ export default function CustomizedDialogs(props) {
   const theme = createMuiTheme({
     palette: {
       secondary: {
-        main: '#18202c',
-        
+        main: "#18202c",
       },
     },
     shape: {
-    borderRadius: 30,
-  }, 
-  });
+      borderRadius: 30,
+    },
+  })
+
+  //uploadfile
+  const handleOpenDialog = (e) => {
+    // Note that the ref is set async, so it might be null at some point
+    if (buttonRef.current) {
+      buttonRef.current.open(e)
+    }
+  }
+
+  const handleOnFileLoad = (data) => {
+    console.log("---------------------------")
+    console.log("data" ,data)
+    console.log("---------------------------")
+  }
+
+  const handleOnError = (err, file, inputElem, reason) => {
+    console.log(err)
+  }
+
+  const handleOnRemoveFile = (data) => {
+    console.log("---------------------------")
+    console.log(data)
+    console.log("---------------------------")
+  }
+
+  const handleRemoveFile = (e) => {
+    // Note that the ref is set async, so it might be null at some point
+    if (buttonRef.current) {
+      buttonRef.current.removeFile(e)
+    }
+  }
   return (
     <div>
       <Tooltip title="เพิ่มกิจกรรม">
-      {/* <IconButton aria-label="Add Activity" onClick={props.handleClickOpen}>
+        {/* <IconButton aria-label="Add Activity" onClick={props.handleClickOpen}>
         <AddBoxIcon />
       </IconButton> */}
-      <ThemeProvider theme={theme}>
-      <Button
-        variant="contained"
-        color="secondary"
-        onClick={props.handleClickOpen}
-        size="large"
-        className={classes.button}
-        startIcon={<AddBoxIcon />}
-        
-      >
-        <div className="font-athiti">สร้างกิจกรรม</div>
-      </Button>
-      </ThemeProvider>
+        <ThemeProvider theme={theme}>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={props.handleClickOpen}
+            size="large"
+            className={classes.button}
+            startIcon={<AddBoxIcon />}
+          >
+            <div className="font-athiti">สร้างกิจกรรม</div>
+          </Button>
+        </ThemeProvider>
       </Tooltip>
       <Dialog
         onClose={props.handleClose}
@@ -151,9 +185,8 @@ export default function CustomizedDialogs(props) {
             })
           }}
         >
-          
           <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
-          <div className="font-athiti">{props.topic}</div>
+            <div className="font-athiti">{props.topic}</div>
           </DialogTitle>
           <DialogContent dividers>
             <input
@@ -217,22 +250,93 @@ export default function CustomizedDialogs(props) {
             </FormControl>
 
             <div className="my-3">
-              <p> format ไฟล์: <a href='/format.csv' download className={classes.format}>format.csv </a></p>
-              
-              <input
+              <p>
+                {" "}
+                format ไฟล์:{" "}
+                <a href="/format.csv" download className={classes.format}>
+                  format.csv{" "}
+                </a>
+              </p>
+
+              {/* <input
                 className={classes.upload}
                 required={!props.openEdit}
                 type="file"
                 id="upload_file"
                 accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-              />
-              <p className={classes.col}>**กรุณาอัปโหลดเป็นไฟล์ .CSV UTF-8 เท่านั้น</p>
-              <p className="my-3">Current :{props.openEdit?.activity_file_name}</p>
+              /> */}
+
+              <CSVReader
+                ref={buttonRef}
+                onFileLoad={handleOnFileLoad}
+                onError={handleOnError}
+                noClick
+                noDrag
+                onRemoveFile={handleOnRemoveFile}
+                required={!props.openEdit}
+                accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+              >
+                {({ file }) => (
+                  <aside
+                  id="upload_file"
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      marginBottom: 10,
+                    }}
+                  >
+                    <button
+                      
+                      required={!props.openEdit}
+                      accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                      type="button"
+                      onClick={handleOpenDialog}
+                      style={{
+                        borderRadius: 0,
+                        marginLeft: 0,
+                        marginRight: 0,
+                        marginTop: 5,
+                        marginBottom: 5,
+                        width: "40%",
+                        paddingLeft: 0,
+                        paddingRight: 0,
+                        backgroundColor: "#336699",
+                        color: "white",
+                      }}
+                    >
+                      Browe file
+                    </button>
+                    <div
+                      style={{
+                        borderWidth: 1,
+                        borderStyle: "solid",
+                        borderColor: "#ccc",
+                        height: 45,
+                        lineHeight: 2.5,
+                        marginTop: 5,
+                        marginBottom: 5,
+                        paddingLeft: 13,
+                        paddingTop: 3,
+                        width: "60%",
+                      }}
+                    >
+                      {file && file.name}
+                    </div>
+                  </aside>
+                )}
+              </CSVReader>
+
+              <p className={classes.col}>
+                **กรุณาอัปโหลดเป็นไฟล์ .CSV UTF-8 เท่านั้น
+              </p>
+              <p className="my-3">
+                Current :{props.openEdit?.activity_file_name}
+              </p>
             </div>
           </DialogContent>
 
           <DialogActions>
-            <Button autoFocus color="primary" type="submit" >
+            <Button autoFocus color="primary" type="submit">
               บันทึก
             </Button>
           </DialogActions>

@@ -41,8 +41,9 @@ export default function EnhancedTable(props) {
         options: {
           customBodyRender: (value, tableMeta) => (
             <a
-              onClick={() => showDataInFile(tableMeta.rowData[11],tableMeta.rowData[0])}
-              style={{ cursor: "pointer" }}
+              // onClick={() => showDataInFile(tableMeta.rowData[11],tableMeta.rowData[0])}
+              // style={{ cursor: "pointer" }}
+              href={`/ShowDataFileAdmission/${tableMeta.rowData[11]}/${tableMeta.rowData[0]}`} target="_blank"
             >
               {value}
             </a>

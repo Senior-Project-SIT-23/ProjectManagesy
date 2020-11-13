@@ -31,13 +31,8 @@ export default function EnhancedTable(props) {
     })
   
   const columns = () => {
-    const HoverText = styled.p`
-	color: #000000;
-	:hover {
-		color: #336699;
-		cursor: pointer;
-	}
-`
+   
+
     return [
       {
         name: "activity_student_name",
@@ -47,11 +42,7 @@ export default function EnhancedTable(props) {
             <a href={`/ShowDataInFileActivity/${tableMeta.rowData[10]}/${tableMeta.rowData[0]}`} target="_blank">
               <p>{value}</p>
             </a>
-            // <HoverText
-            //   onClick={() => showDataInFile(tableMeta.rowData[10],tableMeta.rowData[0])}
-            // >
-            //   {value}
-            // </HoverText>
+
           ),
           filter: false,
         },

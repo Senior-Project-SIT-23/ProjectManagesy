@@ -8,48 +8,49 @@ import Grid from "@material-ui/core/Grid"
 export default function EnhancedTable(props) {
   const columns = [
     {
-      name: "Name",
-      label: "ชื่อ-นามสกุล",
+      name: "data_first_name",
+      label: "ชื่อ",
+      options: {
+        filter: false,
+        sort: true,
+      },
+    },
+    {
+      name: "data_surname",
+      label: "นามสกุล",
+      options: {
+        filter: false,
+        sort: true,
+      },
+    },
+    {
+      name: "data_gpax",
+      label: "GPAX",
       options: {
         filter: true,
         sort: true,
       },
     },
     {
-        name: "year",
-        label: "ระดับชั้น",
-        options: {
-          filter: true,
-          sort: true,
-        },
-      },
-    {
-      name: "gpax",
-      label: "เกรดเฉลี่ยสะสม",
+      name: "data_school_name",
+      label: "โรงเรียน",
       options: {
         filter: true,
         sort: true,
       },
     },
     {
-      name: "email",
+      name: "data_email",
       label: "email",
       options: {
         filter: true,
         sort: true,
       },
     },
+   
     {
-      name: "tel",
+      name: "data_tel",
       label: "เบอร์ติดต่อ",
-      options: {
-        filter: true,
-        sort: true,
-      },
-    },
-    {
-      name: "school",
-      label: "โรงเรียน",
       options: {
         filter: true,
         sort: true,
@@ -57,14 +58,14 @@ export default function EnhancedTable(props) {
     },
   ]
 
-  const data = [
-    ["รวิสรา เกตุแก้ว", "ม.4","3.4", "xxxxxx@gmail.com", "08xxxxxxxx","อัสสัมชัญศึกษา"],
-    ["อินทิรา ตั้งนิรามัย", "ม.5","3.5",  "xxxxxx@gmail.com", "08xxxxxxxx","นาคประสิทธิ์"],
-    ["ธนัชชา พิพม์ศิริกุล", "ม.4", "3.25", "xxxxxx@gmail.com", "08xxxxxxxx","อุดรพิทยานุกูล"],
-    ["ธัญวรัตน์ ดวงสีหา", "ม.6", "2.94", "xxxxxx@gmail.com", "08xxxxxxxx","ดัดดรุณี"],
-    ["อิทธิเดช ชาญสาธิต", "ม.6", "3.12", "xxxxxx@gmail.com", "08xxxxxxxx","เตรียมอุดมศึกษาน้อมเกล้า"],
-    ["สุภาวรรณ ชูเชิด", "ม.5", "3.89", "xxxxxx@gmail.com", "08xxxxxxxx","พระหฤทัยคอนแวนต์"],
-  ]
+  // const data = [
+  //   ["รวิสรา เกตุแก้ว", "ม.4","3.4", "xxxxxx@gmail.com", "08xxxxxxxx","อัสสัมชัญศึกษา"],
+  //   ["อินทิรา ตั้งนิรามัย", "ม.5","3.5",  "xxxxxx@gmail.com", "08xxxxxxxx","นาคประสิทธิ์"],
+  //   ["ธนัชชา พิพม์ศิริกุล", "ม.4", "3.25", "xxxxxx@gmail.com", "08xxxxxxxx","อุดรพิทยานุกูล"],
+  //   ["ธัญวรัตน์ ดวงสีหา", "ม.6", "2.94", "xxxxxx@gmail.com", "08xxxxxxxx","ดัดดรุณี"],
+  //   ["อิทธิเดช ชาญสาธิต", "ม.6", "3.12", "xxxxxx@gmail.com", "08xxxxxxxx","เตรียมอุดมศึกษาน้อมเกล้า"],
+  //   ["สุภาวรรณ ชูเชิด", "ม.5", "3.89", "xxxxxx@gmail.com", "08xxxxxxxx","พระหฤทัยคอนแวนต์"],
+  // ]
 
   const options = {
     filterType: "checkbox",
@@ -91,7 +92,7 @@ export default function EnhancedTable(props) {
       <MuiThemeProvider theme={getMuiTheme()}>
         <MUIDataTable
           title={props.title}
-          data={data}
+          data={props.data}
           columns={columns}
           options={options}
         />
