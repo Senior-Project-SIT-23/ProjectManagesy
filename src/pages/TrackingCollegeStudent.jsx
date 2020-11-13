@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useCallback, useState } from "react"
 // import TableData from "../components/TrackingStudents/TableActivity"
-import TableActivity from "../components/TrackingStudents/TableDataOfStudents"
 import Header from "../components/TrackingCollegeStudents/Header"
 import TableActivityCollegeStudents from "../components/TrackingCollegeStudents/TableActivityCollegeStudents"
-import TableDataCollegeStudents from "../components/TrackingCollegeStudents/TableDataCollegeStudents"
 import TableData from "../components/TrackingCollegeStudents/TableData"
 
 export default function TrackingCollageStudent() {

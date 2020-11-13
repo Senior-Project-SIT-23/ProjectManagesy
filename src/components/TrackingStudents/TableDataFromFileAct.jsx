@@ -39,14 +39,7 @@ export default function EnhancedTable(props) {
         sort: true,
       },
     },
-    {
-      name: "data_school_name",
-      label: "โรงเรียน",
-      options: {
-        filter: true,
-        sort: true,
-      },
-    },
+    
     {
       name: "data_email",
       label: "email",
@@ -65,9 +58,6 @@ export default function EnhancedTable(props) {
     },
     
   ]
-
-  
-  
 
   const options = {
     filterType: "checkbox",

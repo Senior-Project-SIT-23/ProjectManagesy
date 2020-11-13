@@ -8,7 +8,7 @@ import { Table } from "@material-ui/core"
 import TableBody from "@material-ui/core/TableBody"
 import TableHead from "@material-ui/core/TableHead"
 
-export default function TableTest() {
+export default function TableMatched() {
   const columns = [
     {
       name: "Name",

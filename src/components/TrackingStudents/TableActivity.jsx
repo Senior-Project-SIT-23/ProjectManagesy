@@ -14,10 +14,10 @@ import Grid from "@material-ui/core/Grid"
 
 
 export default function EnhancedTable(props) {
-  function showDataInFile(id,name) {
-    navigate(`/ShowDataInFileActivity/${id}/${name}`)
+  // function showDataInFile(id,name) {
+  //   navigate(`/ShowDataInFileActivity/${id}/${name}`)
     
-  }
+  // }
 
   const getMuiTheme = () =>
     createMuiTheme({
@@ -167,7 +167,7 @@ export default function EnhancedTable(props) {
       </Grid>
       <MuiThemeProvider theme={getMuiTheme()}>
         <MUIDataTable
-          title={"กิจกรรมนักเรียน"}
+          title={"กิจกรรมที่นักเรียนเข้าร่วม"}
           data={data}
           columns={columns(clickedit)}
           options={options}

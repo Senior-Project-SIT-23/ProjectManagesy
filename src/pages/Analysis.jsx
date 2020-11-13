@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useCallback, useState } from 'react'
 import CommonCard from '../components/Common/Card'
-import TableActivity from '../components/TrackingStudents/TableDataOfStudents'
 import Header from "../components/Analysis/Header"
-import Card from "../components/Analysis/Card"
 import FullPageAnalysis from '../components/Analysis/FullPageAnalysis'
 import IT from '../components/Analysis/IT'
 import CS from '../components/Analysis/CS'
