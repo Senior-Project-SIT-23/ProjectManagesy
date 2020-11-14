@@ -22,6 +22,9 @@ import {
 } from "@material-ui/core/styles"
 import { CSVReader } from "react-papaparse"
 
+
+
+
 const styles = (theme) => ({
   root: {
     margin: 0,
@@ -121,6 +124,7 @@ export default function CustomizedDialogs(props) {
     },
   })
 
+ 
   //uploadfile
   const handleOpenDialog = (e) => {
     // Note that the ref is set async, so it might be null at some point
@@ -131,7 +135,7 @@ export default function CustomizedDialogs(props) {
 
   const handleOnFileLoad = (data) => {
     console.log("---------------------------")
-    console.log("data" ,data)
+    console.log("data", data)
     console.log("---------------------------")
   }
 
@@ -258,14 +262,17 @@ export default function CustomizedDialogs(props) {
                 </a>
               </p>
 
-              {/* <input
+              <input
                 className={classes.upload}
                 required={!props.openEdit}
                 type="file"
                 id="upload_file"
                 accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-              /> */}
+              />
 
+             
+
+              {/* <div id="iuload_file">
               <CSVReader
                 ref={buttonRef}
                 onFileLoad={handleOnFileLoad}
@@ -325,7 +332,7 @@ export default function CustomizedDialogs(props) {
                   </aside>
                 )}
               </CSVReader>
-
+            </div> */}
               <p className={classes.col}>
                 **กรุณาอัปโหลดเป็นไฟล์ .CSV UTF-8 เท่านั้น
               </p>
