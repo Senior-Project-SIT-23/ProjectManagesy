@@ -1,4 +1,6 @@
 import React from "react"
+import styled from "styled-components"
+import _ from "lodash"
 import { withStyles } from "@material-ui/core/styles"
 import Button from "@material-ui/core/Button"
 import Dialog from "@material-ui/core/Dialog"
@@ -21,9 +23,6 @@ import {
   ThemeProvider,
 } from "@material-ui/core/styles"
 import { CSVReader } from "react-papaparse"
-
-
-
 
 const styles = (theme) => ({
   root: {
@@ -124,7 +123,6 @@ export default function CustomizedDialogs(props) {
     },
   })
 
- 
   //uploadfile
   const handleOpenDialog = (e) => {
     // Note that the ref is set async, so it might be null at some point
@@ -134,27 +132,18 @@ export default function CustomizedDialogs(props) {
   }
 
   const handleOnFileLoad = (data) => {
-    console.log("---------------------------")
-    console.log("data", data)
-    console.log("---------------------------")
+    const temp = []
+    for(let i =0; i < data.length-1; i++){
+      temp.push(data[i].data)
+    }
+    console.log(temp)
+    props.setDataFile(temp)
   }
 
   const handleOnError = (err, file, inputElem, reason) => {
     console.log(err)
   }
 
-  const handleOnRemoveFile = (data) => {
-    console.log("---------------------------")
-    console.log(data)
-    console.log("---------------------------")
-  }
-
-  const handleRemoveFile = (e) => {
-    // Note that the ref is set async, so it might be null at some point
-    if (buttonRef.current) {
-      buttonRef.current.removeFile(e)
-    }
-  }
   return (
     <div>
       <Tooltip title="เพิ่มกิจกรรม">
@@ -262,30 +251,19 @@ export default function CustomizedDialogs(props) {
                 </a>
               </p>
 
-              <input
-                className={classes.upload}
-                required={!props.openEdit}
-                type="file"
-                id="upload_file"
-                accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-              />
-
-             
-
-              {/* <div id="iuload_file">
               <CSVReader
                 ref={buttonRef}
                 onFileLoad={handleOnFileLoad}
                 onError={handleOnError}
                 noClick
                 noDrag
-                onRemoveFile={handleOnRemoveFile}
+                config={{ header: true }}
                 required={!props.openEdit}
-                accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                accept=".csv"
               >
                 {({ file }) => (
                   <aside
-                  id="upload_file"
+                    id="upload_file"
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -293,9 +271,7 @@ export default function CustomizedDialogs(props) {
                     }}
                   >
                     <button
-                      
                       required={!props.openEdit}
-                      accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
                       type="button"
                       onClick={handleOpenDialog}
                       style={{
@@ -327,19 +303,19 @@ export default function CustomizedDialogs(props) {
                         width: "60%",
                       }}
                     >
+                      {file && props.setDataFileName(file.name)}
                       {file && file.name}
                     </div>
                   </aside>
                 )}
               </CSVReader>
-            </div> */}
-              <p className={classes.col}>
-                **กรุณาอัปโหลดเป็นไฟล์ .CSV UTF-8 เท่านั้น
-              </p>
-              <p className="my-3">
-                Current :{props.openEdit?.activity_file_name}
-              </p>
             </div>
+            <p className={classes.col}>
+              **กรุณาอัปโหลดเป็นไฟล์ .CSV UTF-8 เท่านั้น
+            </p>
+            <p className="my-3">
+              Current :{props.openEdit?.activity_file_name}
+            </p>
           </DialogContent>
 
           <DialogActions>

@@ -25,8 +25,6 @@ import {
 } from "../form/admissionHelper"
 import TableMatched from "../components/TrackingStudents/TableMatched"
 import { readString } from "react-papaparse"
-import { CSVReader } from 'react-papaparse'
-
 
 export default function Test(props) {
   const [indexTab, setIndexTab] = useState(0)
@@ -72,6 +70,7 @@ export default function Test(props) {
   const handleDelete = async () => {
     const formData = getActivityIdsFormData(selected)
     //เรียก api
+    console.log("delete", formData)
     await apiDeleteActivities(formData)
     setSelected([])
     await fetchActivities()
@@ -80,6 +79,8 @@ export default function Test(props) {
   //Dialog
   const [open, setOpen] = React.useState(false)
   const [openEdit, setOpenEdit] = React.useState()
+  const [dataFile, setDataFile] = React.useState()
+  const [dataFileName, setDataFileName] = React.useState()
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -97,53 +98,36 @@ export default function Test(props) {
   }
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const delete_file_id =
-      event.target.upload_file.files.length !== 0
-        ? event.target.delete_file_id.value
-        : null
+    // const delete_file_id =
+    //   event.target.upload_file.files.length !== 0
+    //     ? event.target.delete_file_id.value
+    //     : null
     const data = {
       id: event.target.id.value,
-      delete_file_id: delete_file_id,
+      // delete_file_id: delete_file_id,
       activityName: event.target.activityName.value,
       year: event.target.yearofActivity.value,
       major: event.target.major.value,
-      file: event.target.upload_file.files[0] || null,
+      file: dataFile,
+      fileName: dataFileName,
     }
-    console.log("event", event.target.upload_file.files)
+    console.log("-->", data)
     const formData = getActivityFormData(data)
 
-    const formatFileAct = [
-      "data_activity_id",
-      "data_first_name",
-      "data_surname",
-      "data_degree",
-      "data_school_name",
-      "data_from_activity_name",
-      "data_email",
-      "data_tel",
-    ]
-
-    try {
-     
-      let fileName = data.file.name
-      let fileExtension = fileName.split(".").pop()
-      console.log("data file", data.file)
-      console.log("file extension", fileExtension)
-      const result = readString(data.file)
-      console.log("res", result)
-      console.log("event 1", event.target.upload_file.files)
-      if (fileExtension === "csv") {
-        if (openEdit) {
-          await apiEditActivity(formData)
-        } else {
-          await apiCreateActivity(formData)
-        }
-      } else {
-        alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
-      }
-    } catch (error) {
-      console.log("test", error)
-      alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+    if (openEdit) {
+      // try {
+        await apiEditActivity(formData)
+      // } catch (error) {
+      //   console.log("test", error)
+      //   alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+      // }
+    } else {
+      // try {
+        await apiCreateActivity(formData)
+      // } catch (error) {
+      //   console.log("test", error)
+      //   alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+      // }
     }
 
     fetchActivities()
@@ -238,7 +222,7 @@ export default function Test(props) {
       major: event.target.major.value,
       file: event.target.upload_file_admission.files[0] || null,
     }
-    
+
     const formDataAdmission = getAdmissionFormData(data)
     try {
       if (openEditAdmission) {
@@ -283,6 +267,8 @@ export default function Test(props) {
             handleDelete={handleDelete}
             topic={topic}
             setTopic={setTopic}
+            setDataFile={setDataFile}
+            setDataFileName={setDataFileName}
           />
         )}
         {indexTab === 1 && (

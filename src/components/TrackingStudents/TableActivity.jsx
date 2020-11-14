@@ -121,7 +121,7 @@ export default function EnhancedTable(props) {
         Id.push(data[n].activity_student_id)
       }
       console.log(Id)
-      const datRes = { activity_id: Id }
+      const datRes = { activity_student_id: Id }
       await apiDeleteActivities(datRes)
     },
     download: {
@@ -153,6 +153,8 @@ export default function EnhancedTable(props) {
             topic={props.topic}
             setTopic={props.setTopic}
             edit={true}
+            setDataFile={props.setDataFile}
+            setDataFileName={props.setDataFileName}
           />
         </div>
       </Grid>
