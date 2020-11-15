@@ -6,6 +6,8 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 
 export default function EnhancedTable(props) {
+
+  
   const columns = [
     // {
     //   name: "index",
@@ -16,7 +18,7 @@ export default function EnhancedTable(props) {
     //   },
     // },
     {
-      name: "data_first_name",
+      name: "data_first_name" ,
       label: "ชื่อ",
       options: {
         filter: false,
@@ -39,7 +41,14 @@ export default function EnhancedTable(props) {
         sort: true,
       },
     },
-    
+    {
+      name: "data_school_name",
+      label: "โรงเรียน",
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
     {
       name: "data_email",
       label: "email",

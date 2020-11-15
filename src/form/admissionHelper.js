@@ -20,14 +20,20 @@ export function getAdmissionFormData(data) {
     round_name: _.get(data, "round", " "),
     admission_major: _.get(data, "major", " "),
     admission_year: _.get(data,"year"," "),
-    admission_file: _.get(data, "file", "")
+    admission_file: _.get(data, "file", []),
+    admission_file_name: _.get(data, "filename"," ")
   }
   return JSON.stringify(dataTemp)
 
 }
 
 export function getAdmissionIdsFormData(data) {
-    const formDataAds = new FormData()
-    formDataAds.append("admission_id[]", data)
-    return formDataAds
+    // const formDataAds = new FormData()
+    // formDataAds.append("admission_id[]", data)
+    // return formDataAds
+    const formDataAds = {
+      admission_id: data,
+    }
+    
+    return JSON.stringify(formDataAds)
   }

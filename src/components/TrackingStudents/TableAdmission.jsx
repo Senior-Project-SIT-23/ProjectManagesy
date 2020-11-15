@@ -155,7 +155,8 @@ export default function EnhancedTable(props) {
       <Grid container direction="row" justify="flex-end" alignItems="center">
         <div className={"mb-2"}>
          
-          <DialogCreateAdmission {...props} edit={true}/>
+          <DialogCreateAdmission {...props} setDataFileAdmission={props.setDataFileAdmission}
+            setDataFileNameAdmission={props.setDataFileNameAdmission} edit={true}/>
         </div>
       </Grid>
       <MuiThemeProvider theme={getMuiTheme()}>

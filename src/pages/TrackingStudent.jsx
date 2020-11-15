@@ -116,14 +116,14 @@ export default function Test(props) {
 
     if (openEdit) {
       // try {
-        await apiEditActivity(formData)
+      await apiEditActivity(formData)
       // } catch (error) {
       //   console.log("test", error)
       //   alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
       // }
     } else {
       // try {
-        await apiCreateActivity(formData)
+      await apiCreateActivity(formData)
       // } catch (error) {
       //   console.log("test", error)
       //   alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
@@ -136,7 +136,7 @@ export default function Test(props) {
 
   const fetchActivities = useCallback(async () => {
     const response = await apiFetchActivities()
-    console.log(response)
+
     setrows(response.data)
   }, [])
 
@@ -191,6 +191,8 @@ export default function Test(props) {
   //Dialog
   const [openAdmission, setOpenAdmission] = React.useState(false)
   const [openEditAdmission, setOpenEditAdmission] = React.useState()
+  const [dataFileAdmission, setDataFileAdmission] = React.useState()
+  const [dataFileNameAdmission, setDataFileNameAdmission] = React.useState()
 
   const handleClickOpenCreateAdmission = () => {
     setOpenAdmission(true)
@@ -208,20 +210,23 @@ export default function Test(props) {
   }
   const handleSubmitAdmission = async (event) => {
     event.preventDefault()
-    const delete_admission_file_id =
-      event.target.upload_file_admission.files.length !== 0
-        ? event.target.delete_admission_file_id?.value
-        : null
+    // const delete_admission_file_id =
+    //   event.target.upload_file_admission.files.length !== 0
+    //     ? event.target.delete_admission_file_id?.value
+    //     : null
 
     const data = {
       id: event.target.id.value,
-      delete_admission_file_id: delete_admission_file_id,
+      // delete_admission_file_id: delete_admission_file_id,
       admissionName: event.target.admissionName.value,
       round: event.target.round.value,
       year: event.target.year.value,
       major: event.target.major.value,
-      file: event.target.upload_file_admission.files[0] || null,
+      // file: event.target.upload_file_admission.files[0] || null,
+      file: dataFileAdmission,
+      fileName: dataFileNameAdmission,
     }
+    console.log("dataAds", data)
 
     const formDataAdmission = getAdmissionFormData(data)
     try {
@@ -288,6 +293,8 @@ export default function Test(props) {
             handleDeleteAdmission={handleDeleteAdmission}
             setTopicAdmission={setTopicAdmission}
             topicAdmission={topicAdmission}
+            setDataFileAdmission={setDataFileAdmission}
+            setDataFileNameAdmission={setDataFileNameAdmission}
           />
         )}
         {indexTab === 2 && <TableMatched />}
