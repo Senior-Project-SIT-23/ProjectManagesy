@@ -229,16 +229,16 @@ export default function Test(props) {
     console.log("dataAds", data)
 
     const formDataAdmission = getAdmissionFormData(data)
-    try {
+    // try {
       if (openEditAdmission) {
         await apiEditAdmission(formDataAdmission)
       } else {
         await apiCreateAdmission(formDataAdmission)
       }
-    } catch (error) {
-      console.log("test", error)
-      alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
-    }
+    // } catch (error) {
+    //   console.log("test", error)
+    //   alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+    // }
     fetchAdmission()
     handleCloseAdmission()
   }

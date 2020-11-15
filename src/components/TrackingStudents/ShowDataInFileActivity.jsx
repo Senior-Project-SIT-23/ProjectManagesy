@@ -5,7 +5,7 @@ import Fab from "@material-ui/core/Fab"
 import { makeStyles } from "@material-ui/core/styles"
 import HeaderFile from '../TrackingStudents/HeaderFile'
 import TableDataFromFileAct from "./TableDataFromFileAct"
-import { apiReadFileActivities } from "../../service/activity"
+import { apiFetchActivities, apiReadFileActivities } from "../../service/activity"
 
 const useStylesTable = makeStyles({
   table: {
@@ -45,14 +45,9 @@ export default function ShowDataInFileActivity(props) {
   const [data , setData] = useState()
 
   const fetchActivities = useCallback(async () => {
-    
-    const {data} = await apiReadFileActivities(id)
-    const tmp = []
-    for(let i = 0; i < data.length;i++ ){
-      tmp.push({index: i+1, ...data[i]})
-    }
-    setData(tmp)
-  }, [id])
+    const response = await apiFetchActivities()
+    setData(response.data[props.id].acitivty_file)
+  }, [props.id])
 
   useEffect(() => {
     fetchActivities()

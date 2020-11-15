@@ -15,6 +15,14 @@ export default function EnhancedTable(props) {
   //   navigate(`/ShowDataInFileActivity/${id}/${name}`)
 
   // }
+  const headers = [
+    { label: "data_first_name", key: "data_first_name" },
+    { label: "data_surname", key: "data_surname" },
+    { label: "data_degree", key: "data_degree" },
+    { label: "data_school_name", key: "data_school_name"},
+    { label: "data_email", key: "data_email"},
+    { label: "data_tel", key: "data_tel"}
+  ];
 
   const getMuiTheme = () =>
     createMuiTheme({
@@ -35,9 +43,10 @@ export default function EnhancedTable(props) {
         options: {
           customBodyRender: (value, tableMeta) => (
             <a
-              href={`/ShowDataInFileActivity/${tableMeta.rowData[10]}/${tableMeta.rowData[0]}`}
+              href={`/ShowDataInFileActivity/${tableMeta.rowIndex}`}
               target="_blank"
             >
+              {/* tableMeta.tableData[tableMeta.rowIndex].acitivty_file */}
               <p>{value}</p>
             </a>
           ),
@@ -53,6 +62,8 @@ export default function EnhancedTable(props) {
           customBodyRender: (value, tableMeta) => (
             <CSVLink
               data={tableMeta.tableData[tableMeta.rowIndex].acitivty_file}
+              filename={value}
+              headers={headers}
             >
               {value}
             </CSVLink>

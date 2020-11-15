@@ -14,6 +14,7 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import {apiDeteteAdmission,} from "../../service/admission"
 import { Link, navigate } from "@reach/router"
+import { CSVLink } from "react-csv";
 
 
 export default function EnhancedTable(props) {
@@ -59,13 +60,16 @@ export default function EnhancedTable(props) {
         label: "ไฟล์",
         options: {
           customBodyRender: (value, tableMeta) => (
-            <a
-              href={`${process.env.REACT_APP_BE_STORAGE}/${tableMeta.rowData[6]}`}
-              // eslint-disable-next-line react/jsx-no-target-blank
-              target="_blank"
-            >
+            // <a
+            //   href={`${process.env.REACT_APP_BE_STORAGE}/${tableMeta.rowData[6]}`}
+            //   // eslint-disable-next-line react/jsx-no-target-blank
+            //   target="_blank"
+            // >
+            //   {value}
+            // </a>
+            <CSVLink data={tableMeta.tableMeta[tableMeta.rowIndex].admission_file} >
               {value}
-            </a>
+            </CSVLink>
           ),
           filter: false,
         },
