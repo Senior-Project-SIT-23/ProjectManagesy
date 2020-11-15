@@ -4,8 +4,6 @@ import DialogCreateActivity from "./DialogCreateActivity"
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined"
 import MUIDataTable from "mui-datatables"
 import { apiDeleteActivities } from "../../service/activity"
-import styled from "styled-components"
-import { Link, navigate } from "@reach/router"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { CSVLink } from "react-csv"
@@ -208,6 +206,7 @@ export default function EnhancedTable(props) {
             edit={true}
             setDataFile={props.setDataFile}
             setDataFileName={props.setDataFileName}
+            errorMessage={props.errorMessage}
           />
         </div>
       </Grid>

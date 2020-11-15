@@ -81,6 +81,7 @@ export default function Test(props) {
   const [openEdit, setOpenEdit] = React.useState()
   const [dataFile, setDataFile] = React.useState()
   const [dataFileName, setDataFileName] = React.useState()
+  const [errorMessage, setErrorMessage] = React.useState()
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -115,23 +116,24 @@ export default function Test(props) {
     const formData = getActivityFormData(data)
 
     if (openEdit) {
-      // try {
-      await apiEditActivity(formData)
-      // } catch (error) {
-      //   console.log("test", error)
-      //   alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
-      // }
+      try {
+        await apiEditActivity(formData)
+        fetchActivities()
+        handleClose()
+      } catch (error) {
+        console.log("test", error)
+        setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+      }
     } else {
-      // try {
-      await apiCreateActivity(formData)
-      // } catch (error) {
-      //   console.log("test", error)
-      //   alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
-      // }
+      try {
+        await apiCreateActivity(formData)
+        fetchActivities()
+        handleClose()
+      } catch (error) {
+        console.log("test", error)
+        setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+      }
     }
-
-    fetchActivities()
-    handleClose()
   }
 
   const fetchActivities = useCallback(async () => {
@@ -230,11 +232,11 @@ export default function Test(props) {
 
     const formDataAdmission = getAdmissionFormData(data)
     // try {
-      if (openEditAdmission) {
-        await apiEditAdmission(formDataAdmission)
-      } else {
-        await apiCreateAdmission(formDataAdmission)
-      }
+    if (openEditAdmission) {
+      await apiEditAdmission(formDataAdmission)
+    } else {
+      await apiCreateAdmission(formDataAdmission)
+    }
     // } catch (error) {
     //   console.log("test", error)
     //   alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
@@ -274,6 +276,7 @@ export default function Test(props) {
             setTopic={setTopic}
             setDataFile={setDataFile}
             setDataFileName={setDataFileName}
+            errorMessage={errorMessage}
           />
         )}
         {indexTab === 1 && (

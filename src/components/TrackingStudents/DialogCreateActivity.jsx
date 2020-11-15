@@ -133,7 +133,7 @@ export default function CustomizedDialogs(props) {
 
   const handleOnFileLoad = (data) => {
     const temp = []
-    for(let i =0; i < data.length-1; i++){
+    for (let i = 0; i < data.length - 1; i++) {
       temp.push(data[i].data)
     }
     console.log(temp)
@@ -251,6 +251,10 @@ export default function CustomizedDialogs(props) {
                 </a>
               </p>
 
+              {props.errorMessage && (
+              <p className="my-3 text-red-600">Alert : {props.errorMessage}</p>
+              )}
+
               <CSVReader
                 ref={buttonRef}
                 onFileLoad={handleOnFileLoad}
@@ -310,12 +314,13 @@ export default function CustomizedDialogs(props) {
                 )}
               </CSVReader>
             </div>
-            <p className={classes.col}>
+            <p className="text-red-600">
               **กรุณาอัปโหลดเป็นไฟล์ .CSV UTF-8 เท่านั้น
             </p>
             <p className="my-3">
               Current :{props.openEdit?.activity_file_name}
             </p>
+            
           </DialogContent>
 
           <DialogActions>
