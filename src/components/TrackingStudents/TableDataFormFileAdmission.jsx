@@ -49,7 +49,7 @@ export default function EnhancedTable(props) {
     },
    
     {
-      name: "data_phone",
+      name: "data_tel",
       label: "เบอร์ติดต่อ",
       options: {
         filter: true,

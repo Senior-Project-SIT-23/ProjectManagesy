@@ -215,11 +215,11 @@ export default function CustomizedDialogs(props) {
                 id="round"
                 value={state.round || props.openEditAdmission?.round_name}
               >
-                <option value={"รอบ 1"}>รอบ 1 แฟ้มสะสมผลงาน</option>
-                <option value={"รอบ 2"}>รอบ 2 โควตา</option>
-                <option value={"รอบ 3"}>รอบ 3 รับตรงร่วมกัน</option>
-                <option value={"รอบ 4"}>รอบ 4 Admission</option>
-                <option value={"รอบ 5"}>รอบ 5 รับตรงอิสระ</option>
+                <option value={"รอบ 1"}>รอบ 1 </option>
+                <option value={"รอบ 2"}>รอบ 2 </option>
+                <option value={"รอบ 3"}>รอบ 3 </option>
+                <option value={"รอบ 4"}>รอบ 4 </option>
+                <option value={"รอบ 5"}>รอบ 5 </option>
               </Select>
             </FormControl>
             <FormControl variant="outlined" className={classes.formControl2}>
@@ -280,6 +280,9 @@ export default function CustomizedDialogs(props) {
                 name="upload_file_admission"
                 accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
               /> */}
+              {props.errorMessage && (
+              <p className="my-3 text-red-600">Alert : {props.errorMessage}</p>
+              )}
 
               <CSVReader
                 ref={buttonRef}
@@ -288,7 +291,7 @@ export default function CustomizedDialogs(props) {
                 noClick
                 noDrag
                 config={{ header: true }}
-                required={!props.openEdit}
+                required={!props.openEditAdmission}
                 accept=".csv"
               >
                 {({ file }) => (
@@ -301,7 +304,7 @@ export default function CustomizedDialogs(props) {
                     }}
                   >
                     <button
-                      required={!props.openEdit}
+                      required={!props.openEditAdmission}
                       type="button"
                       onClick={handleOpenDialog}
                       style={{

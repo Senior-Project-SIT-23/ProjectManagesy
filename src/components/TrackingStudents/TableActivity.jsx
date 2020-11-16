@@ -41,10 +41,10 @@ export default function EnhancedTable(props) {
         options: {
           customBodyRender: (value, tableMeta) => (
             <a
-              href={`/ShowDataInFileActivity/${tableMeta.rowIndex}`}
+              href={`/ShowDataInFileActivity/${tableMeta.rowIndex}/${tableMeta.rowData[0]}`}
               target="_blank"
             >
-              {/* tableMeta.tableData[tableMeta.rowIndex].acitivty_file */}
+              {/* tableMeta.tableData[tableMeta.rowIndex].activity_file */}
               <p>{value}</p>
             </a>
           ),
@@ -59,7 +59,7 @@ export default function EnhancedTable(props) {
         options: {
           customBodyRender: (value, tableMeta) => (
             <CSVLink
-              data={tableMeta.tableData[tableMeta.rowIndex].acitivty_file}
+              data={tableMeta.tableData[tableMeta.rowIndex].activity_file}
               filename={value}
               headers={headers}
             >

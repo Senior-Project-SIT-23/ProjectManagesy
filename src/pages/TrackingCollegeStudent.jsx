@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useCallback, useState } from "react"
 import Header from "../components/TrackingCollegeStudents/Header"
 import TableActivityCollegeStudents from "../components/TrackingCollegeStudents/TableActivityCollegeStudents"
 import TableData from "../components/TrackingCollegeStudents/TableData"
+import TableImportData from "../components/TrackingCollegeStudents/TableImportData"
 
 export default function TrackingCollageStudent() {
     const [indexTab, setIndexTab] = useState(0)
@@ -16,6 +17,7 @@ export default function TrackingCollageStudent() {
         <div className="flex flex-col flex-1 p-12 mx-auto max-w-screen-lg min-h-screen">
           {indexTab === 0 && <TableData />}
           {indexTab === 1 && <TableActivityCollegeStudents/>}
+          {indexTab === 2 && <TableImportData/>}
         </div>
       </>
     )

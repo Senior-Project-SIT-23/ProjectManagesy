@@ -15,7 +15,7 @@ import HeaderFileAdmission from '../TrackingStudents/HeaderFileAdmission'
 // import Headers from '../../components/Header'
 // import Grid from "@material-ui/core/Grid"
 import TableDataFormFileAdmission from "./TableDataFormFileAdmission"
-import { apiReadFileAdmission } from "../../service/admission"
+import { apiFetchAdmission, apiReadFileAdmission } from "../../service/admission"
 // import { data } from "autoprefixer"
 
 const useStylesTable = makeStyles({
@@ -45,20 +45,21 @@ export default function ShowDataInFileActivity(props) {
   const [data , setData] = useState()
   // const [data, setdata] = useState()
   //Button
-  const handleBack = (index) => {
-    console.log(index)
-    setIndexTab(index)
-    navigate(`/`)
-  }
+  // const handleBack = (index) => {
+  //   console.log(index)
+  //   setIndexTab(index)
+  //   navigate(`/`)
+  // }
  const fetchAdmission = useCallback(async () => {
-   const {data} = await apiReadFileAdmission(id)
-   const tmp = []
-    for(let i = 0; i < data.length;i++ ){
-      tmp.push({index: i+1, ...data[i]})
-    }
-    setData(tmp)
-   
- },[id])
+  //  const {data} = await apiReadFileAdmission(id)
+  //  const tmp = []
+  //   for(let i = 0; i < data.length;i++ ){
+  //     tmp.push({index: i+1, ...data[i]})
+  //   }
+  //   setData(tmp)
+   const response = await apiFetchAdmission()
+   setData(response.data[props.id].admission_file)
+ },[props.id])
 
  useEffect(() => {
    fetchAdmission()
@@ -68,15 +69,15 @@ export default function ShowDataInFileActivity(props) {
     setIndexTab(index)
   }
 
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      "& > *": {
-        margin: theme.spacing(1),
-      },
-    },
-  }))
+  // const useStyles = makeStyles((theme) => ({
+  //   root: {
+  //     "& > *": {
+  //       margin: theme.spacing(1),
+  //     },
+  //   },
+  // }))
   //Table
-  const classes = useStylesTable()
+  // const classes = useStylesTable()
   return (
     <>
     <HeaderFileAdmission handleChangeTab={handleChangeTab} indexTab={indexTab} />
@@ -94,7 +95,7 @@ export default function ShowDataInFileActivity(props) {
           </Grid>
          
           <Grid item> */}
-            <TableDataFormFileAdmission title={name} data={data}/>
+            <TableDataFormFileAdmission title={props.name} data={data}/>
           {/* </Grid>
         </Grid>
        

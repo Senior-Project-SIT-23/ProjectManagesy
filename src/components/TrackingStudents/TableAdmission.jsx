@@ -18,10 +18,19 @@ import { CSVLink } from "react-csv";
 
 
 export default function EnhancedTable(props) {
-  // 
-  function showDataInFile(id,name) {
-    navigate(`/ShowDataFileAdmission/${id}/${name}`)
-  }
+
+  // function showDataInFile(id,name) {
+  //   navigate(`/ShowDataFileAdmission/${id}/${name}`)
+  // }
+
+  const headers = [
+    { label: "data_first_name", key: "data_first_name" },
+    { label: "data_surname", key: "data_surname" },
+    { label: "data_gpax", key: "data_gpax" },
+    { label: "data_school_name", key: "data_school_name"},
+    { label: "data_email", key: "data_email"},
+    { label: "data_tel", key: "data_tel"}
+  ];
 
   const getMuiTheme = () =>
     createMuiTheme({
@@ -44,7 +53,7 @@ export default function EnhancedTable(props) {
             <a
               // onClick={() => showDataInFile(tableMeta.rowData[11],tableMeta.rowData[0])}
               // style={{ cursor: "pointer" }}
-              href={`/ShowDataFileAdmission/${tableMeta.rowData[11]}/${tableMeta.rowData[0]}`} target="_blank"
+              href={`/ShowDataFileAdmission/${tableMeta.rowIndex}/${tableMeta.rowData[0]}`} target="_blank"
             >
               {value}
             </a>
@@ -67,7 +76,10 @@ export default function EnhancedTable(props) {
             // >
             //   {value}
             // </a>
-            <CSVLink data={tableMeta.tableMeta[tableMeta.rowIndex].admission_file} >
+            <CSVLink 
+            data={tableMeta.tableData[tableMeta.rowIndex].admission_file} 
+            filename={value}
+            header={headers}>
               {value}
             </CSVLink>
           ),

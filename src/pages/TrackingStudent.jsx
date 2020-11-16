@@ -109,7 +109,7 @@ export default function Test(props) {
       activityName: event.target.activityName.value,
       year: event.target.yearofActivity.value,
       major: event.target.major.value,
-      file: dataFile,
+      file: dataFile ,
       fileName: dataFileName,
     }
     console.log("-->", data)
@@ -233,16 +233,33 @@ export default function Test(props) {
     const formDataAdmission = getAdmissionFormData(data)
     // try {
     if (openEditAdmission) {
-      await apiEditAdmission(formDataAdmission)
+      try{
+        await apiEditAdmission(formDataAdmission)
+        fetchAdmission()
+    handleCloseAdmission()
+      } catch(error){
+        console.log("test",error)
+        setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+      }
+      
     } else {
-      await apiCreateAdmission(formDataAdmission)
+      try{
+        await apiCreateAdmission(formDataAdmission)
+        fetchAdmission()
+        
+    handleCloseAdmission()
+      } catch(error){
+        console.log("test",error)
+        setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+        
+      }
+      
     }
     // } catch (error) {
     //   console.log("test", error)
     //   alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
     // }
-    fetchAdmission()
-    handleCloseAdmission()
+    
   }
   const fetchAdmission = useCallback(async () => {
     const response = await apiFetchAdmission()
@@ -298,6 +315,7 @@ export default function Test(props) {
             topicAdmission={topicAdmission}
             setDataFileAdmission={setDataFileAdmission}
             setDataFileNameAdmission={setDataFileNameAdmission}
+            errorMessage={errorMessage}
           />
         )}
         {indexTab === 2 && <TableMatched />}

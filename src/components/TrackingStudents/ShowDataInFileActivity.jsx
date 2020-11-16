@@ -46,7 +46,7 @@ export default function ShowDataInFileActivity(props) {
 
   const fetchActivities = useCallback(async () => {
     const response = await apiFetchActivities()
-    setData(response.data[props.id].acitivty_file)
+    setData(response.data[props.id].activity_file)
   }, [props.id])
 
   useEffect(() => {
@@ -89,7 +89,7 @@ export default function ShowDataInFileActivity(props) {
           </Grid> */}
           
           {/* <Grid item xs={10}> */}
-            <TableDataFromFileAct title={name} data={data} />
+            <TableDataFromFileAct title={props.name} data={data} />
           {/* </Grid>
         </Grid> */}
         

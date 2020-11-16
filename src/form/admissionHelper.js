@@ -21,7 +21,7 @@ export function getAdmissionFormData(data) {
     admission_major: _.get(data, "major", " "),
     admission_year: _.get(data,"year"," "),
     admission_file: _.get(data, "file", []),
-    admission_file_name: _.get(data, "filename"," ")
+    admission_file_name: _.get(data, "fileName"," ")
   }
   return JSON.stringify(dataTemp)
 
