@@ -92,7 +92,7 @@ export default function SchoolTable() {
     <div>
       <MuiThemeProvider theme={getMuiTheme()}>
         <MUIDataTable
-          title={"ตารางแสดงจำนวนนักเรียนที่มีสิทธิ์เข้าศึกษาที่คณะ"}
+          title={"จำนวนนักเรียนจากโรงเรียนที่มีสิทธิ์เข้าศึกษาที่คณะ"}
           data={data}
           columns={columns}
           options={options}

@@ -13,9 +13,13 @@ import AddBoxIcon from "@material-ui/icons/AddBox"
 import InputLabel from "@material-ui/core/InputLabel"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
-import { makeStyles,ThemeProvider ,createMuiTheme} from "@material-ui/core/styles"
+import {
+  makeStyles,
+  ThemeProvider,
+  createMuiTheme,
+} from "@material-ui/core/styles"
+import { Tooltip } from "@material-ui/core"
 import { CSVReader } from "react-papaparse"
-
 
 const styles = (theme) => ({
   root: {
@@ -71,12 +75,10 @@ const useStyles = makeStyles((theme) => ({
   formControl2: {
     marginTop: theme.spacing(2),
     marginLeft: "20px",
-    minWidth: 150,
+    minWidth: 250,
   },
 }))
-
 const buttonRef = React.createRef()
-
 export default function CustomizedDialogs(props) {
   const classes = useStyles()
   const [state, setState] = React.useState({
@@ -104,16 +106,16 @@ export default function CustomizedDialogs(props) {
   const theme = createMuiTheme({
     palette: {
       secondary: {
-        main: '#18202c',
+        main: "#18202c",
       },
     },
     shape: {
       borderRadius: 30,
-    }, 
-  });
+    },
+  })
 
-   //uploadfile
-   const handleOpenDialog = (e) => {
+  //uploadfile
+  const handleOpenDialog = (e) => {
     // Note that the ref is set async, so it might be null at some point
     if (buttonRef.current) {
       buttonRef.current.open(e)
@@ -121,12 +123,15 @@ export default function CustomizedDialogs(props) {
   }
 
   const handleOnFileLoad = (data) => {
-    const temp = []
-    for (let i = 0; i < data.length - 1; i++) {
-      temp.push(data[i].data)
-    }
-    console.log(temp)
-    props.setDataFileAdmission(temp)
+    // const temp = []
+    // for (let i = 0; i < data.length; i++) {
+    //   if(data[i].errors.length !== 0){
+    //     break;
+    //   }
+    //   temp.push(data[i].data)
+    // }
+    // console.log(temp)
+    // props.setDataFile(temp)
   }
 
   const handleOnError = (err, file, inputElem, reason) => {
@@ -135,20 +140,20 @@ export default function CustomizedDialogs(props) {
 
   return (
     <div>
-      <IconButton aria-label="Add Activity" >
-       
+      <Tooltip title="เพิ่มกิจกรรม">
         <ThemeProvider theme={theme}>
-      <Button 
-        variant="contained"
-        color="secondary"
-        onClick={handleClickOpen}
-        size="large"
-        className={classes.button}
-        startIcon={<AddBoxIcon />}>
-           <div className="font-athiti">สร้างกิจกรรม</div>
-      </Button>
-      </ThemeProvider>
-      </IconButton>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={handleClickOpen}
+            size="large"
+            className={classes.button}
+            startIcon={<AddBoxIcon />}
+          >
+            <div className="font-athiti">สร้างกิจกรรม</div>
+          </Button>
+        </ThemeProvider>
+      </Tooltip>
       <Dialog
         // onClose={props.handleClose}
         // aria-labelledby="customized-dialog-title"
@@ -165,51 +170,33 @@ export default function CustomizedDialogs(props) {
         //   }}
         >
           <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-            สร้างกิจกรรม
+            Import ข้อมูลนักศึกษา
           </DialogTitle>
           <DialogContent dividers>
             <input
               hidden
               id="id"
               defaultValue=""
-            //   value={props.openEdit?.activity_id}
+              //   value={props.openEdit?.activity_id}
             />
             <input
               hidden
               id="delete_file_id"
               defaultValue={[]}
-            //   value={[props.openEdit?.activity_file_id]}
+              //   value={[props.openEdit?.activity_file_id]}
             />
             <div>
               <TextField
                 required
                 id="activityName"
-                label="ชื่อกิจกรรม"
+                label="ชื่อข้อมูล"
                 // defaultValue={props.openEdit?.activity_name}
                 variant="outlined"
               />
             </div>
 
-            <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel>สาขาที่จัดกิจกรรม</InputLabel>
-              <Select
-                label="สาขาที่จัดกิจกรรม"
-                native
-                onChange={handleChange}
-                id="ํmajorofActivity"
-                name="major"
-                required
-                // value={state.major || props.openEdit?.activity_major}
-              >
-                <option aria-label="None" />
-                <option value={"IT"}>เทคโนโลยีสารสนเทศ(IT)</option>
-                <option value={"CS"}>วิทยาการคอมพิวเตอร์(CS)</option>
-                <option value={"DSI"}>นวัตกรรมบริการดิจิตอล(DSI)</option>
-
-              </Select>
-            </FormControl>
-
             <FormControl variant="outlined" className={classes.formControl2}>
+              
               <InputLabel>ปีการศึกษา</InputLabel>
               <Select
                 native
@@ -218,33 +205,31 @@ export default function CustomizedDialogs(props) {
                 onChange={handleChange}
                 // value={state.year || props.openEdit?.activity_year}
                 name="year"
-                id="year"
+                id="yearofActivity"
               >
-                <option value={"2563"}>2563</option>
-                <option value={"2562"}>2562</option>
-                <option value={"2561"}>2561</option>
-                <option value={"2560"}>2560</option>
-                <option value={"2559"}>2559</option>
+                <option aria-label="None" value="" />
+                <option value={"2016"}>2016</option>
+                <option value={"2017"}>2017</option>
+                <option value={"2018"}>2018</option>
+                <option value={"2019"}>2019</option>
+                <option value={"2020"}>2020</option>
               </Select>
             </FormControl>
 
             <div className="my-3">
-            
               <p>
                 {" "}
                 format ไฟล์:{" "}
-                <a
-                  href="/formatAdmission.csv"
-                  download
-                  className={classes.format}
-                >
-                  formatFileAdmission.csv{" "}
+                <a href="/format.csv" download className={classes.format}>
+                  format.csv{" "}
                 </a>
               </p>
-            
-              {/* {props.errorMessage && (
-              <p className="my-3 text-red-600">Alert : {props.errorMessage}</p>
-              )} */}
+
+              {props.errorMessage && (
+                <p className="my-3 text-red-600">
+                  Alert : {props.errorMessage}
+                </p>
+              )}
 
               <CSVReader
                 ref={buttonRef}
@@ -253,7 +238,7 @@ export default function CustomizedDialogs(props) {
                 noClick
                 noDrag
                 config={{ header: true }}
-                // required={!props.openEditAdmission}
+                required={!props.openEdit}
                 accept=".csv"
               >
                 {({ file }) => (
@@ -266,7 +251,7 @@ export default function CustomizedDialogs(props) {
                     }}
                   >
                     <button
-                      required={!props.openEditAdmission}
+                      required={!props.openEdit}
                       type="button"
                       onClick={handleOpenDialog}
                       style={{
@@ -298,23 +283,23 @@ export default function CustomizedDialogs(props) {
                         width: "60%",
                       }}
                     >
-                      {file && props.setDataFileNameAdmission(file.name)}
+                      {file && props.setDataFileName(file.name)}
                       {file && file.name}
                     </div>
                   </aside>
                 )}
               </CSVReader>
-              <p className={classes.col}>
-                **กรุณาอัปโหลดเป็นไฟล์ .CSV UTF-8 เท่านั้น
-              </p>
-              <p className="my-3">
-                {/* Current :{props.openEditAdmission?.admission_file_name} */}
-              </p>
             </div>
+            <p className="text-red-600">
+              **กรุณาอัปโหลดเป็นไฟล์ .CSV UTF-8 เท่านั้น
+            </p>
+            <p className="my-3">
+              Current :{props.openEdit?.activity_file_name}
+            </p>
           </DialogContent>
 
           <DialogActions>
-            <Button autoFocus color="primary" type="submit" >
+            <Button autoFocus color="primary" type="submit">
               บันทึก
             </Button>
           </DialogActions>

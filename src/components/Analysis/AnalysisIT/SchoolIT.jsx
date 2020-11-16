@@ -35,8 +35,8 @@ export default function SchoolIT() {
       },
     },
     {
-      name: "All",
-      label: "All",
+      name: "countIT",
+      label: "จำนวนนักเรียน",
       options: {
         filter: true,
         sort: true,
@@ -71,7 +71,7 @@ export default function SchoolIT() {
     <div>
       <MuiThemeProvider theme={getMuiTheme()}>
         <MUIDataTable
-          title={"ตารางแสดงจำนวนนักเรียนที่มีสิทธิ์เข้าศึกษาที่คณะ"}
+          title={"จำนวนนักเรียนจากโรงเรียนที่มีสิทธิ์เข้าศึกษาต่อสาขาเทคโนโลยีสารสนเทศ(IT)"}
           data={data}
           columns={columns}
           options={options}

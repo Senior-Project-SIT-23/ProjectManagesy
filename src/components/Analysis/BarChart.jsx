@@ -4,12 +4,16 @@ import Paper from "@material-ui/core/Paper"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 
+
+
 const BarChart = (props) => {
+
+
   const data = {
-    labels: ["ปี 2018", "ปี 2019", "ปี 2020", "ปี 2021"],
+    labels: ["WIPCAMP", "JPC", "openhouse", "sittalk",],
     datasets: [
       {
-        label: "จำนวนคนที่ไม่เคยเข้าร่วมกิจกรรม",
+        label: "จำนวนคนที่เข้าร่วมกิจกรรม",
         backgroundColor: "#FFB54B",
         borderColor: "#FFB54B",
         borderWidth: 1,
@@ -19,7 +23,7 @@ const BarChart = (props) => {
         barThickness: "30"
       },
       {
-        label: "จำนวนคนที่เคยเข้าร่วมกิจกรรม",
+        label: "จำนวนคนที่เรียนต่อ",
         backgroundColor: "#62C7E4",
         borderColor: "#62C7E4",
         borderWidth: 1,
@@ -34,21 +38,28 @@ const BarChart = (props) => {
   return (
     <Paper style={{ padding: 10 }}>
       <Grid container >
-          <Grid item container direction="column" spacing={2}>
+          <Grid item container direction="column" spacing={2} >
           <Typography  variant="subtitle1" style={{textAlign:"center"}}>
-                <div className="font-athiti "><b>{"กราฟเปรียบเทียบจำนวนนักเรียนที่..."}</b></div>
+                <div className="font-athiti "><b>{"เปรียบเทียบจำนวนนักเรียนที่มีสิทธิ์เข้าศึกษาต่อ x นักเรียนที่เข้าร่วมกิจกรรม"}</b></div>
               </Typography>
         <Bar
           data={data}
-          height={180}
+          height={120}
           options={{
             scales: {
               xAxes: [
                 {
-                  ticks: {
-                    beginAtZero: true,
-                    min: 0,
-                    //   max: props.data.borrowTime ? props.data.borrowTime[0] + 1 : null
+                  scaleLabel: {
+                    display: true,
+                    labelString: "ชื่อกิจกรรม",
+                  },
+                },
+              ],
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: "จำนวนนักศึกษา",
                   },
                 },
               ],
@@ -56,6 +67,9 @@ const BarChart = (props) => {
           }}
         />
         </Grid>
+        {/* <Grid item container direction="column" spacing={2} xs={3}>
+           <button>gfgggg</button>
+        </Grid> */}
       </Grid>
     </Paper>
   )

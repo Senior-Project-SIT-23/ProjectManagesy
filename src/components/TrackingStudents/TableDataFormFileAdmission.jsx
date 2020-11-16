@@ -32,6 +32,14 @@ export default function EnhancedTable(props) {
       },
     },
     {
+      name: "data_proggramme",
+      label: "แผนการเรียน",
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
       name: "data_school_name",
       label: "โรงเรียน",
       options: {
@@ -72,7 +80,11 @@ export default function EnhancedTable(props) {
     selectableRowsHeader: false,
     selectableRows: false,
     print: false,
-    download: false
+    download: true,
+    downloadOptions: {filename: `${props.title}.csv`},
+    onDownload: (buildHead, buildBody, columns, data) => {
+    return "\uFEFF" + buildHead(columns) + buildBody(data); 
+} 
   }
   const getMuiTheme = () =>
     createMuiTheme({

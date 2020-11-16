@@ -87,7 +87,6 @@ export default function EnhancedTable() {
     <Grid container direction="row" justify="flex-end" alignItems="center">
     <div className={"mb-2"}>
       <DialogCreateDataCollegeSrudents
-      
         edit={true}
       />
     </div>

@@ -4,7 +4,7 @@ import Paper from "@material-ui/core/Paper"
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
 
-export default function DoughnutComponent(props) {
+export default function DoughnutChartIT(props) {
   const data = {
     labels: [
       "กิจกรรมที่ 1",
@@ -41,11 +41,11 @@ export default function DoughnutComponent(props) {
     ],
   }
   return (
-    <Paper style={{ padding: 10 }}>
+    <Paper style={{ padding: 10 }} elevation={3}>
       <Grid container>
         <Grid item container direction="column" spacing={2}>
           <Typography variant="subtitle1" style={{ textAlign: "center" }}>
-            <div className="font-athiti ">
+            <div className="font-athiti font-2xl">
               <b>
                 {"กราฟแสดงจำนวนกิจกรรมที่มีคนเข้าร่วมมากที่สุด 5 อันดับแรก"}
               </b>
@@ -53,18 +53,18 @@ export default function DoughnutComponent(props) {
           </Typography>
           <Doughnut
             data={data}
-            height={120}
+            height={295}
             align= {`start`}
             options={{
               legend: {
                 display: true,
                 position: "bottom",
                 labels: {
-                  fontSize: 18,
                   fontFamily: "font-athiti"
               }
 
               },
+              
             }}
           />
         </Grid>

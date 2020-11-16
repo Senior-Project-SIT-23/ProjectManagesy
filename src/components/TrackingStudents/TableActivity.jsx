@@ -7,6 +7,7 @@ import { apiDeleteActivities } from "../../service/activity"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import { CSVLink } from "react-csv"
+import { navigate } from "@reach/router"
 
 export default function EnhancedTable(props) {
   // function showDataInFile(id,name) {
@@ -17,10 +18,10 @@ export default function EnhancedTable(props) {
     { label: "data_first_name", key: "data_first_name" },
     { label: "data_surname", key: "data_surname" },
     { label: "data_degree", key: "data_degree" },
-    { label: "data_school_name", key: "data_school_name"},
-    { label: "data_email", key: "data_email"},
-    { label: "data_tel", key: "data_tel"}
-  ];
+    { label: "data_school_name", key: "data_school_name" },
+    { label: "data_email", key: "data_email" },
+    { label: "data_tel", key: "data_tel" },
+  ]
 
   const getMuiTheme = () =>
     createMuiTheme({
@@ -56,18 +57,6 @@ export default function EnhancedTable(props) {
       {
         name: "activity_student_file_name",
         label: "ไฟล์",
-        options: {
-          customBodyRender: (value, tableMeta) => (
-            <CSVLink
-              data={tableMeta.tableData[tableMeta.rowIndex].activity_file}
-              filename={value}
-              headers={headers}
-            >
-              {value}
-            </CSVLink>
-          ),
-          filter: false,
-        },
       },
       {
         name: "activity_name",
@@ -143,6 +132,7 @@ export default function EnhancedTable(props) {
   }
 
   const data = props.rows
+  console.log(data)
 
   const changeValue = (data) => {
     const dataRes = {
@@ -169,12 +159,14 @@ export default function EnhancedTable(props) {
       let Id = []
       for (let i = 0; i < deleted.data.length; i++) {
         let n = deleted.data[i].index
+        console.log(n)
 
         Id.push(data[n].activity_student_id)
       }
       console.log(Id)
       const datRes = { activity_student_id: Id }
       await apiDeleteActivities(datRes)
+      // await window.location.reload()
     },
     download: {
       activity_id: false,

@@ -13,6 +13,7 @@ export async function apiFetchActivities() {
 
 export async function apiDeleteActivities(data) {
   return await axios.post("/activity/student/delete", data)
+  // window.location.reload()
 }
 
 export async function apiReadFileActivities(activity_id) {

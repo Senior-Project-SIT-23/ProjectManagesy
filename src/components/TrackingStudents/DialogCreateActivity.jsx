@@ -133,11 +133,17 @@ export default function CustomizedDialogs(props) {
 
   const handleOnFileLoad = (data) => {
     const temp = []
-    for (let i = 0; i < data.length - 1; i++) {
+    for (let i = 0; i < data.length; i++) {
+      if(data[i].errors.length !== 0){
+        break;
+      }
       temp.push(data[i].data)
     }
     console.log(temp)
+    console.log(data)
     props.setDataFile(temp)
+
+   
   }
 
   const handleOnError = (err, file, inputElem, reason) => {

@@ -96,6 +96,7 @@ export default function Test(props) {
   const handleClose = () => {
     setOpen(false)
     setOpenEdit(null)
+    setErrorMessage(null)
   }
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -294,6 +295,7 @@ export default function Test(props) {
             setDataFile={setDataFile}
             setDataFileName={setDataFileName}
             errorMessage={errorMessage}
+            fetchActivities={fetchActivities}
           />
         )}
         {indexTab === 1 && (

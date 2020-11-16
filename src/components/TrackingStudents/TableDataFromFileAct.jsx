@@ -6,8 +6,6 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 
 export default function EnhancedTable(props) {
-
-  
   const columns = [
     // {
     //   name: "index",
@@ -18,7 +16,7 @@ export default function EnhancedTable(props) {
     //   },
     // },
     {
-      name: "data_first_name" ,
+      name: "data_first_name",
       label: "ชื่อ",
       options: {
         filter: false,
@@ -31,11 +29,28 @@ export default function EnhancedTable(props) {
       options: {
         filter: false,
         sort: true,
+        
+      },
+    },
+    {
+      name: "data_gpax",
+      label: "เกรดเฉลี่ย",
+      options: {
+        filter: true,
+        sort: true,
       },
     },
     {
       name: "data_degree",
       label: "ระดับชั้น",
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: "data_programme",
+      label: "แผนการเรียน",
       options: {
         filter: true,
         sort: true,
@@ -65,7 +80,6 @@ export default function EnhancedTable(props) {
         sort: true,
       },
     },
-    
   ]
 
   const options = {
@@ -73,7 +87,12 @@ export default function EnhancedTable(props) {
     selectableRowsHeader: false,
     selectableRows: false,
     print: false,
-    download: false
+    responsive: 'standard',
+    download: true,
+    downloadOptions: { filename: `${props.title}.csv` },
+    onDownload: (buildHead, buildBody, columns, data) => {
+      return "\uFEFF" + buildHead(columns) + buildBody(data)
+    },
   }
   const getMuiTheme = () =>
     createMuiTheme({
@@ -83,17 +102,22 @@ export default function EnhancedTable(props) {
             fontFamily: "Athiti",
           },
         },
-        // MUIDataTableSelectCell: {
-        //     color: "red",
-        // }
       },
+
+      // MUIDataTable: {
+      //   responsiveScroll: {
+      //     overflowX: "none",
+      //     height: "auto",
+      //     maxHeight: "auto",
+      //   },
+      // },
     })
   return (
     <>
-      <MuiThemeProvider theme={getMuiTheme()}>
+      <MuiThemeProvider theme={getMuiTheme()} >
         <MUIDataTable
           title={props.title}
-          data={ props.data}
+          data={props.data}
           columns={columns}
           options={options}
         />

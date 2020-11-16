@@ -1,4 +1,4 @@
-import {Grid } from "@material-ui/core"
+import { Grid } from "@material-ui/core"
 import React from "react"
 import ButtonYear from "./ButtonYear"
 import CheckCircleIcon from "@material-ui/icons/CheckCircle"
@@ -7,22 +7,24 @@ import Card from "./AnalysisIT/Card"
 import GroupIcon from "@material-ui/icons/Group"
 import SchoolIT from "./AnalysisIT/SchoolIT"
 import BarChart from "./BarChart"
-import DonutChart from './DonutChart'
+import DonutChartIT from "./AnalysisIT/DonutChartIT"
+import DonutChart from "./DonutChart"
 import LineChart from "./AnalysisCollegestudent/LineChart"
+import BarChartAct from "./AnalysisIT/BarChartAct"
 export default function IT() {
-    const useStyles = makeStyles((theme) => ({
-        root: {
-          flexGrow: 2,
-          // margin: theme.spacing(3),
-        },
-        paper: {
-          padding: theme.spacing(2),
-          textAlign: "center",
-          color: theme.palette.text.secondary,
-        },
-      }))
-      const classes = useStyles()
-    return (
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 2,
+      // margin: theme.spacing(3),
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+    },
+  }))
+  const classes = useStyles()
+  return (
     <div>
       <Grid container direction="row" justify="flex-end">
         <Grid item xs={2}>
@@ -56,67 +58,62 @@ export default function IT() {
             count={"300"}
           />
         </Grid>
-        
       </Grid>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-        <BarChart className={classes.paper} />
+        <SchoolIT />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <DonutChart className={classes.paper} />
+          <DonutChartIT data={[300, 268, 455,625,365]}/>
+          
+        </Grid>
+      </Grid>
+      {/* <Grid container spacing={3}>
+        <Grid item xs={12} data={[300, 268, 455,625,365]}>
+        
+        </Grid>
+      </Grid> */}
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <BarChartAct/>
+        </Grid>
+      </Grid>
+      {/* <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <LineChart
+            data={[25, 18, 22, 32, 2, 5, 18, 16]}
+            title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 2"}
+            bgcolor={"#F9D68A"}
+            borderColor={"#F9D68A"}
+            hoverBackgroundColor={"rgba(249, 214, 138,0.4)"}
+            hoverBorderColor={"#F9D68A"}
+          />
+        </Grid>
+      </Grid> */}
+      {/* <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <LineChart
+            data={[25, 18, 22, 32, 2, 5, 18, 16]}
+            title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 3"}
+            bgcolor={"#EA9F6F"}
+            borderColor={"#EA9F6F"}
+            hoverBackgroundColor={"rgba(234,159,111,0.4)"}
+            hoverBorderColor={"#EA9F6F"}
+          />
         </Grid>
       </Grid>
       <Grid container spacing={3}>
-      <Grid item xs={12}>
-          <SchoolIT/>
-          </Grid>
-        </Grid>
-      <Grid container spacing={3}>
-      <Grid item xs={12}>
-          <LineChart 
-          data={[25, 18, 22, 32, 2, 5, 18, 16]}
-          title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 1"}
-          bgcolor={"#9DDDE1"}
-          borderColor={"#9DDDE1"}
-          hoverBackgroundColor={"rgba(157,221,225,0.4)"}
-          hoverBorderColor={"#9DDDE1"}/>
-          </Grid>
-        </Grid>
-        <Grid container spacing={3}>
         <Grid item xs={12}>
-          <LineChart 
-          data={[25, 18, 22, 32, 2, 5, 18, 16]}
-          title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 2"}
-          bgcolor={"#F9D68A"}
-          borderColor={"#F9D68A"}
-          hoverBackgroundColor={"rgba(249, 214, 138,0.4)"}
-          hoverBorderColor={"#F9D68A"}/>
+          <LineChart
+            data={[25, 18, 22, 32, 2, 5, 18, 16]}
+            title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 4"}
+            bgcolor={"#EC8A7B"}
+            borderColor={"#EC8A7B"}
+            hoverBackgroundColor={"rgba(236,138,123,0.4)"}
+            hoverBorderColor={"#EC8A7B"}
+          />
         </Grid>
-        </Grid>
-        <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <LineChart 
-          data={[25, 18, 22, 32, 2, 5, 18, 16]}
-          title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 3"}
-          bgcolor={"#EA9F6F"}
-          borderColor={"#EA9F6F"}
-          hoverBackgroundColor={"rgba(234,159,111,0.4)"}
-          hoverBorderColor={"#EA9F6F"}/>
-        </Grid>
-        </Grid>
-        <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <LineChart 
-          data={[25, 18, 22, 32, 2, 5, 18, 16]}
-          title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 4"}
-          bgcolor={"#EC8A7B"}
-          borderColor={"#EC8A7B"}
-          hoverBackgroundColor={"rgba(236,138,123,0.4)"}
-          hoverBorderColor={"#EC8A7B"}/>
-        </Grid>
-        </Grid>
-        
-
+      </Grid> */}
     </div>
   )
 }
