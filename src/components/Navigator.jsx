@@ -24,7 +24,7 @@ import { useContext } from "react"
 
 const categories = [
   {
-    id: "Develop",
+    id: "Menu",
     children: [
       // { id: "กิจกรรม", icon: <PeopleIcon />, url: "/Activitys" },
       { id: "ติดตามนักเรียน", icon: <PeopleIcon />, url: "/TrackingStudents" },

@@ -9,7 +9,7 @@ import BarChart from "../Analysis/BarChart"
 import DonutChart from "../Analysis/DonutChart"
 import ButtonYear from "./ButtonYear"
 import SchoolTable from "./SchoolTable"
-import AllActTable from "./AllActTable"
+import TableAdmissionXSchool from "./TableAdmissionXSchool"
 import { Paper } from "@material-ui/core"
 import ActivityChart from "./ActivityChart"
 
@@ -75,16 +75,13 @@ export default function FullPageAnalysis() {
           />
         </Grid>
       </Grid>
-      <Grid container spacing={3}>
-        {/* <Grid item xs={12} sm={6}>
-        <BarChart className={classes.paper} />
-        </Grid> */}
+      {/* <Grid container spacing={3}>
         <Grid item xs={12} >
           <DonutChart 
           className={classes.paper} 
           data={[300, 268, 455,625,365]}/>
         </Grid>
-      </Grid>
+      </Grid> */}
 
       <Grid container spacing={3}>
         <Grid item xs={12} >
@@ -99,7 +96,7 @@ export default function FullPageAnalysis() {
       </Grid>
       <Grid container spacing={6}>
         <Grid item xs={12}>
-          <AllActTable/>
+          <TableAdmissionXSchool/>
         </Grid>
       </Grid>
       <Grid container spacing={6}>

@@ -171,6 +171,9 @@ export default function EnhancedTable(props) {
     download: {
       activity_id: false,
     },
+    onDownload: (buildHead, buildBody, columns, data) => {
+      return "\uFEFF" + buildHead(columns) + buildBody(data)
+    },
     print: false,
   }
   // const classes = useStyles();

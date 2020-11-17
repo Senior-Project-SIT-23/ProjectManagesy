@@ -11,6 +11,7 @@ import DonutChartIT from "./AnalysisIT/DonutChartIT"
 import DonutChart from "./DonutChart"
 import LineChart from "./AnalysisCollegestudent/LineChart"
 import BarChartAct from "./AnalysisIT/BarChartAct"
+import TableAdmissionXSchool from "./TableAdmissionXSchool"
 export default function IT() {
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -114,6 +115,11 @@ export default function IT() {
           />
         </Grid>
       </Grid> */}
+      <Grid container spacing={6}>
+        <Grid item xs={12}>
+          <TableAdmissionXSchool/>
+        </Grid>
+      </Grid>
     </div>
   )
 }

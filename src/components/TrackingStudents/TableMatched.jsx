@@ -8,18 +8,26 @@ import { Table } from "@material-ui/core"
 import TableBody from "@material-ui/core/TableBody"
 import TableHead from "@material-ui/core/TableHead"
 
-export default function TableMatched() {
+export default function TableMatched(props) {
   const columns = [
     {
-      name: "Name",
-      label: "ชื่อ-นามสกุล",
+      name: "data_first_name",
+      label: "ชื่อ",
       options: {
         filter: true,
         sort: true,
       },
     },
     {
-      name: "year",
+      name: "data_surname",
+      label: "นามสกุล",
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: "data_degree",
       label: "ระดับชั้น",
       options: {
         filter: true,
@@ -27,7 +35,7 @@ export default function TableMatched() {
       },
     },
     {
-      name: "email",
+      name: "data_email",
       label: "email",
       options: {
         filter: true,
@@ -35,7 +43,7 @@ export default function TableMatched() {
       },
     },
     {
-      name: "tel",
+      name: "data_tel",
       label: "เบอร์ติดต่อ",
       options: {
         filter: true,
@@ -43,7 +51,7 @@ export default function TableMatched() {
       },
     },
     {
-      name: "school",
+      name: "data_school_name",
       label: "โรงเรียน",
       options: {
         filter: true,
@@ -51,7 +59,7 @@ export default function TableMatched() {
       },
     },
     {
-      name: "countActivity",
+      name: "num_of_activity",
       label: "กิจกรรมที่เข้าร่วม",
       options: {
         filter: true,
@@ -60,7 +68,7 @@ export default function TableMatched() {
       
     },
     {
-      name: "countAdmission",
+      name: "num_of_admission",
       label: "โครงการที่สมัครสอบ",
       options: {
         filter: true,
@@ -70,57 +78,57 @@ export default function TableMatched() {
     },
   ]
 
-  const data = [
-    ["Gabby George", "ม.5", "Minneapolis", 30, "$100,000",3,1,],
-    ["Aiden Lloyd", "ม.5", "Dallas", 55, "$200,000",3,1,],
-    ["Jaden Collins","ม.5", "Santa Ana", 27, "$500,000",3,1,],
-    ["Franky Rees","ม.6", "St. Petersburg", 22, "$50,000",3,1,],
-    ["Aaren Rose", "ม.5", "Toledo", 28, "$75,000",3,1,],
-    ["Blake Duncan", "ม.5", "San Diego", 65, "$94,000",3,1,],
-    ["Frankie Parry", "ม.5", "Jacksonville", 71, "$210,000",3,1,],
-    ["Lane Wilson", "ม.5", "Omaha", 19, "$65,000",3,1,],
-    ["Robin Duncan", "ม.6", "Los Angeles", 20, "$77,000",3,1,],
-    ["Mel Brooks", "ม.5", "Oklahoma City", 37, "$135,000",3,1,],
-    ["Harper White", "ม.4", "Pittsburgh", 52, "$420,000",3,1,],
-    ["Kris Humphrey", "ม.5", "Laredo", 30, "$150,000",3,1,],
-    ["Frankie Long", "ม.5", "Austin", 31, "$170,000",3,1,],
-    ["Brynn Robbins", "ม.3", "Norfolk", 22, "$90,000",3,1,],
-    ["Justice Mann", "ม.5", "Chicago", 24, "$133,000",3,1,],
-    [
-      "Addison Navarro",
-      "Business Management Analyst",
-      "New York",
-      50,
-      "$295,000",
-      3,1,
-    ],
-    ["Jesse Welch", "Agency Legal Counsel", "Seattle", 28, "$200,000",3,1],
-    ["Eli Mejia", "Commercial Specialist", "Long Beach", 65, "$400,000",3,1],
-    ["Gene Leblanc", "Industrial Analyst", "Hartford", 34, "$110,000",4,1],
-    ["Danny Leon", "Computer Scientist", "Newark", 60, "$220,000",5,1],
-    ["Lane Lee", "Corporate Counselor", "Cincinnati", 52, "$180,000",2,1,],
-    ["Jesse Hall", "Business Analyst", "Baltimore", 44, "$99,000",3,1,],
-    ["Jesse Hall", "Business Analyst", "Baltimore", 44, "$99,000",1,1,],
-    ["Danni Hudson", "Agency Legal Counsel", "Tampa", 37, "$90,000",5,1,],
-    ["Terry Macdonald", "Commercial Specialist", "Miami", 39, "$140,000",3,3,],
-    ["Justice Mccarthy", "Attorney", "Tucson", 26, "$330,000",3,1,],
-    ["Silver Carey", "Computer Scientist", "Memphis", 47, "$250,000",3,1,],
-    ["Franky Miles", "Industrial Analyst", "Buffalo", 49, "$190,000",3,1,],
-    ["Glen Nixon", "Corporate Counselor", "Arlington", 44, "$80,000",3,1,],
-    [
-      "Gabby Strickland",
-      "Business Process Consultant",
-      "Scottsdale",
-      26,
-      "$45,000",
-      3,1,
-    ],
-    ["Mason Ray", "Computer Scientist", "San Francisco", 39, "$142,000",3,1,],
-  ]
+  // const data = [
+  //   ["Gabby George", "ม.5", "Minneapolis", 30, "$100,000",3,1,],
+  //   ["Aiden Lloyd", "ม.5", "Dallas", 55, "$200,000",3,1,],
+  //   ["Jaden Collins","ม.5", "Santa Ana", 27, "$500,000",3,1,],
+  //   ["Franky Rees","ม.6", "St. Petersburg", 22, "$50,000",3,1,],
+  //   ["Aaren Rose", "ม.5", "Toledo", 28, "$75,000",3,1,],
+  //   ["Blake Duncan", "ม.5", "San Diego", 65, "$94,000",3,1,],
+  //   ["Frankie Parry", "ม.5", "Jacksonville", 71, "$210,000",3,1,],
+  //   ["Lane Wilson", "ม.5", "Omaha", 19, "$65,000",3,1,],
+  //   ["Robin Duncan", "ม.6", "Los Angeles", 20, "$77,000",3,1,],
+  //   ["Mel Brooks", "ม.5", "Oklahoma City", 37, "$135,000",3,1,],
+  //   ["Harper White", "ม.4", "Pittsburgh", 52, "$420,000",3,1,],
+  //   ["Kris Humphrey", "ม.5", "Laredo", 30, "$150,000",3,1,],
+  //   ["Frankie Long", "ม.5", "Austin", 31, "$170,000",3,1,],
+  //   ["Brynn Robbins", "ม.3", "Norfolk", 22, "$90,000",3,1,],
+  //   ["Justice Mann", "ม.5", "Chicago", 24, "$133,000",3,1,],
+  //   [
+  //     "Addison Navarro",
+  //     "Business Management Analyst",
+  //     "New York",
+  //     50,
+  //     "$295,000",
+  //     3,1,
+  //   ],
+  //   ["Jesse Welch", "Agency Legal Counsel", "Seattle", 28, "$200,000",3,1],
+  //   ["Eli Mejia", "Commercial Specialist", "Long Beach", 65, "$400,000",3,1],
+  //   ["Gene Leblanc", "Industrial Analyst", "Hartford", 34, "$110,000",4,1],
+  //   ["Danny Leon", "Computer Scientist", "Newark", 60, "$220,000",5,1],
+  //   ["Lane Lee", "Corporate Counselor", "Cincinnati", 52, "$180,000",2,1,],
+  //   ["Jesse Hall", "Business Analyst", "Baltimore", 44, "$99,000",3,1,],
+  //   ["Jesse Hall", "Business Analyst", "Baltimore", 44, "$99,000",1,1,],
+  //   ["Danni Hudson", "Agency Legal Counsel", "Tampa", 37, "$90,000",5,1,],
+  //   ["Terry Macdonald", "Commercial Specialist", "Miami", 39, "$140,000",3,3,],
+  //   ["Justice Mccarthy", "Attorney", "Tucson", 26, "$330,000",3,1,],
+  //   ["Silver Carey", "Computer Scientist", "Memphis", 47, "$250,000",3,1,],
+  //   ["Franky Miles", "Industrial Analyst", "Buffalo", 49, "$190,000",3,1,],
+  //   ["Glen Nixon", "Corporate Counselor", "Arlington", 44, "$80,000",3,1,],
+  //   [
+  //     "Gabby Strickland",
+  //     "Business Process Consultant",
+  //     "Scottsdale",
+  //     26,
+  //     "$45,000",
+  //     3,1,
+  //   ],
+  //   ["Mason Ray", "Computer Scientist", "San Francisco", 39, "$142,000",3,1,],
+  // ]
 
   const options = {
     filter: true,
-    filterType: "dropdown",
+    filterType: "checkbox",
     responsive: "standard",
     selectableRowsHeader: false,
     selectableRows: false,
@@ -137,6 +145,7 @@ export default function TableMatched() {
     // rowsExpanded: [0, 1],
     renderExpandableRow: (rowData, rowMeta) => {
       const colSpan = rowData.length + 1
+      console.log("ddd",rowData)
       return (
         <>
           <TableRow>
@@ -164,7 +173,7 @@ export default function TableMatched() {
                   </TableRow>
                 </TableBody>
               </Table>
-              <Typography gutterBottom component="div" className="font-athiti">
+              <Typography gutterBottom component="div" className="font-athiti mt-2">
                 รายชื่อโครงการที่สมัครสอบ
               </Typography>
               <Table>
@@ -225,9 +234,10 @@ export default function TableMatched() {
   }
   return (
     <MuiThemeProvider theme={theme}>
+      {console.log(props.dataMatch)}
       <MUIDataTable
         title={"ข้อมูลนักเรียน"}
-        data={data}
+        data={props.dataMatch}
         columns={columns}
         options={options}
         components={components}

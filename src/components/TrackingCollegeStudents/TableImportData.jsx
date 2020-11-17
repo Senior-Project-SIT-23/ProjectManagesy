@@ -71,6 +71,7 @@ export default function EnhancedTable() {
    
    const options = {
      filterType: 'checkbox',
+     print: false,
    };
    const getMuiTheme = () =>
     createMuiTheme({

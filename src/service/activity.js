@@ -1,5 +1,5 @@
 import axios from "../utils/libs/connectApi"
-import Cookie from "js-cookie"
+
 export async function apiCreateActivity(data) {
   return await axios.post("/activity/student", data)
 }

@@ -25,6 +25,7 @@ import {
 } from "../form/admissionHelper"
 import TableMatched from "../components/TrackingStudents/TableMatched"
 import { readString } from "react-papaparse"
+import { apiFetchDataMatch, apiMatching } from "../service/analyze"
 
 export default function Test(props) {
   const [indexTab, setIndexTab] = useState(0)
@@ -271,6 +272,17 @@ export default function Test(props) {
     fetchAdmission()
   }, [fetchAdmission])
 
+  //MatchData
+  const [dataMatch, setDataMatch] = useState()
+  const fetchData = useCallback( async() => {
+      const response = await apiFetchDataMatch()
+      setDataMatch(response.data)
+      console.log('response0',response.data)
+    },[]
+  )
+  useEffect(() => {
+    fetchData()
+  },[fetchData])
   return (
     <>
       <Header handleChangeTab={handleChangeTab} indexTab={indexTab} />
@@ -320,7 +332,8 @@ export default function Test(props) {
             errorMessage={errorMessage}
           />
         )}
-        {indexTab === 2 && <TableMatched />}
+        {indexTab === 2 && <TableMatched 
+        dataMatch={dataMatch}/>}
       </div>
     </>
   )

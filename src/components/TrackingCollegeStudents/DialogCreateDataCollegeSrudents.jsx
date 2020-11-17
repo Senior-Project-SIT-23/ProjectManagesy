@@ -74,8 +74,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl2: {
     marginTop: theme.spacing(2),
-    marginLeft: "20px",
-    minWidth: 250,
+    width: "100%"
   },
 }))
 const buttonRef = React.createRef()
@@ -170,7 +169,7 @@ export default function CustomizedDialogs(props) {
         //   }}
         >
           <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-            Import ข้อมูลนักศึกษา
+            <div className="font-athiti">Import ข้อมูลนักศึกษา</div>
           </DialogTitle>
           <DialogContent dividers>
             <input
@@ -195,8 +194,7 @@ export default function CustomizedDialogs(props) {
               />
             </div>
 
-            <FormControl variant="outlined" className={classes.formControl2}>
-              
+            <FormControl variant="outlined" className={classes.formControl2 }>
               <InputLabel>ปีการศึกษา</InputLabel>
               <Select
                 native
@@ -207,12 +205,12 @@ export default function CustomizedDialogs(props) {
                 name="year"
                 id="yearofActivity"
               >
-                <option aria-label="None" value="" />
-                <option value={"2016"}>2016</option>
-                <option value={"2017"}>2017</option>
-                <option value={"2018"}>2018</option>
-                <option value={"2019"}>2019</option>
-                <option value={"2020"}>2020</option>
+                {/* <option aria-label="None" value="" /> */}
+                <option value={"2563"}>2563</option>
+                <option value={"2562"}>2562</option>
+                <option value={"2561"}>2561</option>
+                <option value={"2560"}>2560</option>
+                <option value={"2559"}>2559</option>
               </Select>
             </FormControl>
 
