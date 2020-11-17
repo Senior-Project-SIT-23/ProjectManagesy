@@ -5,6 +5,9 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle"
 import { makeStyles } from "@material-ui/core/styles"
 import Card from "./AnalysisIT/Card"
 import GroupIcon from "@material-ui/icons/Group"
+import TableAdmissionXSchoolDSI from "./AnalysisDSI/TableAdmissionXSchoolDSI"
+import SchoolDSI from "./AnalysisDSI/SchoolDSI"
+import BarChartActDSI from "./AnalysisDSI/BarChartActDSI"
 
 export default function DSI() {
     const useStyles = makeStyles((theme) => ({
@@ -52,6 +55,21 @@ export default function DSI() {
             }
             count={"300"}
           />
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={12}>
+            <SchoolDSI />
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <BarChartActDSI />
+          </Grid>
+        </Grid>
+        <Grid container spacing={6}>
+          <Grid item xs={12}>
+            <TableAdmissionXSchoolDSI />
+          </Grid>
         </Grid>
       </Grid>
     </div>

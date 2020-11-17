@@ -5,7 +5,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextField from '@material-ui/core/TextField';
 import { Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@material-ui/core";
 
-export default function TableAdmissionXSchool() {
+export default function TableAdmissionXSchoolDSI() {
   const getMuiTheme = () =>
     createMuiTheme({
       overrides: {
@@ -90,6 +90,9 @@ export default function TableAdmissionXSchool() {
               <Table>
                 <TableHead>
                   <TableRow>
+                  <TableCell>
+                      <b className="font-athiti">ลำดับ</b>
+                    </TableCell>
                     <TableCell>
                       <b className="font-athiti">ชื่อโรงเรียน</b>
                     </TableCell>
@@ -101,8 +104,9 @@ export default function TableAdmissionXSchool() {
                 <TableBody>
                   <TableRow>
                     <TableCell component="th" scope="row">
-                      XXXXXXXXXXX
+                      X
                     </TableCell>
+                    <TableCell>XXXXXXXX</TableCell>
                     <TableCell>XXXXXXXX</TableCell>
                   </TableRow>
                 </TableBody>

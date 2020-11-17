@@ -1,25 +1,28 @@
-import {Grid } from "@material-ui/core"
+import { Grid } from "@material-ui/core"
 import React from "react"
 import ButtonYear from "./ButtonYear"
 import CheckCircleIcon from "@material-ui/icons/CheckCircle"
 import { makeStyles } from "@material-ui/core/styles"
 import Card from "./AnalysisIT/Card"
 import GroupIcon from "@material-ui/icons/Group"
+import BarChartActCS from "./AnanlysisCS/BarChartActCS"
+import SchoolCS from "./AnanlysisCS/SchoolCS"
+import TableAdmissionXSchoolCS from "./AnanlysisCS/TableAdmissionXSchoolCS"
 
 export default function CS() {
-    const useStyles = makeStyles((theme) => ({
-        root: {
-          flexGrow: 2,
-          // margin: theme.spacing(3),
-        },
-        paper: {
-          padding: theme.spacing(2),
-          textAlign: "center",
-          color: theme.palette.text.secondary,
-        },
-      }))
-      const classes = useStyles()
-    return (
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 2,
+      // margin: theme.spacing(3),
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+    },
+  }))
+  const classes = useStyles()
+  return (
     <div>
       <Grid container direction="row" justify="flex-end">
         <Grid item xs={2}>
@@ -52,6 +55,21 @@ export default function CS() {
             }
             count={"300"}
           />
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={12}>
+            <SchoolCS />
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <BarChartActCS />
+          </Grid>
+        </Grid>
+        <Grid container spacing={6}>
+          <Grid item xs={12}>
+            <TableAdmissionXSchoolCS />
+          </Grid>
         </Grid>
       </Grid>
     </div>

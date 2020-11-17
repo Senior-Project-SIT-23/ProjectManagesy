@@ -9,9 +9,10 @@ import BarChart from "../Analysis/BarChart"
 import DonutChart from "../Analysis/DonutChart"
 import ButtonYear from "./ButtonYear"
 import SchoolTable from "./SchoolTable"
-import TableAdmissionXSchool from "./TableAdmissionXSchool"
+import TableAdmissionXSchool from "./AnalysisIT/TableAdmissionXSchool"
 import { Paper } from "@material-ui/core"
 import ActivityChart from "./ActivityChart"
+import TableAllAdmission from "./TableAllAdmission"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -96,7 +97,7 @@ export default function FullPageAnalysis() {
       </Grid>
       <Grid container spacing={6}>
         <Grid item xs={12}>
-          <TableAdmissionXSchool/>
+          <TableAllAdmission/>
         </Grid>
       </Grid>
       <Grid container spacing={6}>

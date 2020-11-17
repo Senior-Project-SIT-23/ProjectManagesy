@@ -11,7 +11,7 @@ import DonutChartIT from "./AnalysisIT/DonutChartIT"
 import DonutChart from "./DonutChart"
 import LineChart from "./AnalysisCollegestudent/LineChart"
 import BarChartAct from "./AnalysisIT/BarChartAct"
-import TableAdmissionXSchool from "./TableAdmissionXSchool"
+import TableAdmissionXSchool from "./AnalysisIT/TableAdmissionXSchool"
 export default function IT() {
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -61,12 +61,8 @@ export default function IT() {
         </Grid>
       </Grid>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12}>
         <SchoolIT />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <DonutChartIT data={[300, 268, 455,625,365]}/>
-          
         </Grid>
       </Grid>
       {/* <Grid container spacing={3}>
@@ -79,42 +75,6 @@ export default function IT() {
           <BarChartAct/>
         </Grid>
       </Grid>
-      {/* <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <LineChart
-            data={[25, 18, 22, 32, 2, 5, 18, 16]}
-            title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 2"}
-            bgcolor={"#F9D68A"}
-            borderColor={"#F9D68A"}
-            hoverBackgroundColor={"rgba(249, 214, 138,0.4)"}
-            hoverBorderColor={"#F9D68A"}
-          />
-        </Grid>
-      </Grid> */}
-      {/* <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <LineChart
-            data={[25, 18, 22, 32, 2, 5, 18, 16]}
-            title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 3"}
-            bgcolor={"#EA9F6F"}
-            borderColor={"#EA9F6F"}
-            hoverBackgroundColor={"rgba(234,159,111,0.4)"}
-            hoverBorderColor={"#EA9F6F"}
-          />
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <LineChart
-            data={[25, 18, 22, 32, 2, 5, 18, 16]}
-            title={"กราฟแสดงอัตราเฉลี่ยผลการศึกษาของนักศึกษาปีที่ 4"}
-            bgcolor={"#EC8A7B"}
-            borderColor={"#EC8A7B"}
-            hoverBackgroundColor={"rgba(236,138,123,0.4)"}
-            hoverBorderColor={"#EC8A7B"}
-          />
-        </Grid>
-      </Grid> */}
       <Grid container spacing={6}>
         <Grid item xs={12}>
           <TableAdmissionXSchool/>

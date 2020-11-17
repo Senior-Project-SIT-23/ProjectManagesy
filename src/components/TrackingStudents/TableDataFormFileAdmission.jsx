@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid"
 
 export default function EnhancedTable(props) {
   const columns = [
+    
     {
       name: "data_first_name",
       label: "ชื่อ",
