@@ -9,6 +9,14 @@ export default function EnhancedTable(props) {
   const columns = [
     
     {
+      name: "data_id",
+      label: "รหัสบัตรประชาชน",
+      options: {
+        filter: false,
+        sort: true,
+      },
+    },
+    {
       name: "data_first_name",
       label: "ชื่อ",
       options: {
@@ -28,7 +36,7 @@ export default function EnhancedTable(props) {
       name: "data_gpax",
       label: "GPAX",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
       },
     },
@@ -52,7 +60,7 @@ export default function EnhancedTable(props) {
       name: "data_email",
       label: "email",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
       },
     },
@@ -61,7 +69,7 @@ export default function EnhancedTable(props) {
       name: "data_tel",
       label: "เบอร์ติดต่อ",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
       },
     },

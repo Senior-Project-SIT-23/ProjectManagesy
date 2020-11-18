@@ -45,7 +45,7 @@ export default function EnhancedTable(props) {
       name: "data_gpax",
       label: "เกรดเฉลี่ย",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
       },
     },
@@ -77,7 +77,7 @@ export default function EnhancedTable(props) {
       name: "data_email",
       label: "email",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
       },
     },
@@ -85,7 +85,7 @@ export default function EnhancedTable(props) {
       name: "data_tel",
       label: "เบอร์ติดต่อ",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
       },
     },

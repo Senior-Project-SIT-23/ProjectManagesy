@@ -17,9 +17,9 @@ export default function Test(props) {
     <Header handleChangeTab={handleChangeTab} indexTab={indexTab} />
     <div className="flex flex-col flex-1 p-12 mx-auto max-w-screen-lg min-h-screen">
       {indexTab === 0 && <FullPageAnalysis />}
-      {indexTab === 1 && <IT/>}
+      {/* {indexTab === 1 && <IT/>}
       {indexTab === 2 && <CS/>}
-      {indexTab === 3 && <DSI/>}
+      {indexTab === 3 && <DSI/>} */}
     </div>
     </>
   )

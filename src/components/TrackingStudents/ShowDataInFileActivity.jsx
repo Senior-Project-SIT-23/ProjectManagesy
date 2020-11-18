@@ -46,6 +46,11 @@ export default function ShowDataInFileActivity(props) {
 
   const fetchActivities = useCallback(async () => {
     const response = await apiFetchActivities()
+    // const temp = []
+    // for(let i = 0; i < response.data[props.id].activity_file.length;i++ ){
+    //       temp.push({index: i+1, ...response.data[props.id].activity_file[i]})
+    //     }
+    //     setData(temp)
     setData(response.data[props.id].activity_file)
   }, [props.id])
 

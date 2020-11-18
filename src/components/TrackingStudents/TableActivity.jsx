@@ -14,14 +14,14 @@ export default function EnhancedTable(props) {
   //   navigate(`/ShowDataInFileActivity/${id}/${name}`)
 
   // }
-  const headers = [
-    { label: "data_first_name", key: "data_first_name" },
-    { label: "data_surname", key: "data_surname" },
-    { label: "data_degree", key: "data_degree" },
-    { label: "data_school_name", key: "data_school_name" },
-    { label: "data_email", key: "data_email" },
-    { label: "data_tel", key: "data_tel" },
-  ]
+  // const headers = [
+  //   { label: "data_first_name", key: "data_first_name" },
+  //   { label: "data_surname", key: "data_surname" },
+  //   { label: "data_degree", key: "data_degree" },
+  //   { label: "data_school_name", key: "data_school_name" },
+  //   { label: "data_email", key: "data_email" },
+  //   { label: "data_tel", key: "data_tel" },
+  // ]
 
   const getMuiTheme = () =>
     createMuiTheme({

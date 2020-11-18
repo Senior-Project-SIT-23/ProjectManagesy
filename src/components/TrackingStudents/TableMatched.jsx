@@ -135,6 +135,7 @@ export default function TableMatched(props) {
     expandableRows: true,
     expandableRowsHeader: false,
     expandableRowsOnClick: true,
+    print: false,
     // isRowExpandable: (dataIndex, expandedRows) => {
     //   if (dataIndex === 3 || dataIndex === 4) return false;
 
@@ -146,6 +147,7 @@ export default function TableMatched(props) {
     renderExpandableRow: (rowData, rowMeta) => {
       const colSpan = rowData.length + 1
       console.log("ddd",rowData)
+      
       return (
         <>
           <TableRow>
@@ -205,9 +207,15 @@ export default function TableMatched(props) {
      
         </>
       )
+      
     },
     onRowExpansionChange: (curExpanded, allExpanded, rowsExpanded) =>
       console.log(curExpanded, allExpanded, rowsExpanded),
+
+      downloadOptions: { filename: `ข้อมูลนักเรียน.csv` },
+      onDownload: (buildHead, buildBody, columns, data) => {
+        return "\uFEFF" + buildHead(columns) + buildBody(data)
+      },
   }
 
   const theme = createMuiTheme({

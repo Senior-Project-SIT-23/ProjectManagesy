@@ -13,6 +13,7 @@ import TableAdmissionXSchool from "./AnalysisIT/TableAdmissionXSchool"
 import { Paper } from "@material-ui/core"
 import ActivityChart from "./ActivityChart"
 import TableAllAdmission from "./TableAllAdmission"
+import TableSchoolXAct from "./TableSchoolXAct"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -83,18 +84,66 @@ export default function FullPageAnalysis() {
           data={[300, 268, 455,625,365]}/>
         </Grid>
       </Grid> */}
-
       <Grid container spacing={3}>
+        <Grid item xs>
+        <Card
+            className={classes.paper}
+            title={"นักเรียนที่สมัครเข้าศึกษาสาขาเทคโนโลยีสารสนเทศ"}
+            icon={
+              // <CheckCircleIcon
+              //   style={{ fontSize: 60, marginRight: 10, color: "40DC9A" }}
+              // />
+              <img src="IT.png" style={{ marginRight: 10,width: 60, height:60 }}/>
+            }
+            count={"300"}
+          />
+        </Grid>
+        <Grid item xs>
+        <Card
+            className={classes.paper}
+            title={"นักเรียนที่สมัครเข้าศึกษาสาขาวิทยาการคอมพิวเตอร์"}
+            icon={
+              // <CheckCircleIcon
+              //   style={{ fontSize: 60, marginRight: 10, color: "40DC9A" }}
+              // />
+              <img src="CS.png" style={{ marginRight: 10,width: 60, height:60 }}/>
+            }
+            count={"300"}
+          />
+        </Grid>
+        <Grid item>
+        <Card
+            className={classes.paper}
+            title={"นักเรียนที่สมัครเข้าศึกษาสาขานวัตกรรมบริการดิจิตัล"}
+            icon={
+              // <CheckCircleIcon
+              //   style={{ fontSize: 60, marginRight: 10, color: "40DC9A" }}
+              // />
+              <img src="DSI.png" style={{ marginRight: 10,width: 60, height:60 }}/>
+            }
+            count={"300"}
+          />
+        </Grid>
+      </Grid>
+
+      {/* <Grid container spacing={3}>
         <Grid item xs={12} >
         <BarChart/>
         </Grid>
-      </Grid>
+      </Grid> */}
 
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <SchoolTable/>
         </Grid>
       </Grid>
+
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <TableSchoolXAct/>
+        </Grid>
+      </Grid>
+
       <Grid container spacing={6}>
         <Grid item xs={12}>
           <TableAllAdmission/>

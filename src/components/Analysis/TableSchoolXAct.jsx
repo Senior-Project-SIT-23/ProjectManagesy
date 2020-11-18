@@ -2,7 +2,7 @@ import React from "react"
 import MUIDataTable from "mui-datatables"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 
-export default function SchoolTable() {
+export default function TableSchoolXAct(props) {
   const getMuiTheme = () =>
     createMuiTheme({
       overrides: {
@@ -33,7 +33,7 @@ export default function SchoolTable() {
     },
     {
       name: "IT",
-      label: "IT",
+      label: "Act 1",
       options: {
         filter: true,
         sort: false,
@@ -41,7 +41,7 @@ export default function SchoolTable() {
     },
     {
       name: "CS",
-      label: "CS",
+      label: "Act 2",
       options: {
         filter: true,
         sort: false,
@@ -49,12 +49,36 @@ export default function SchoolTable() {
     },
     {
         name: "DSI",
-        label: "DSI",
+        label: "Act 3",
         options: {
           filter: true,
           sort: false,
         },
       },
+    {
+        name: "All",
+        label: "Act 4",
+        options: {
+          filter: true,
+          sort: false,
+        },
+    },
+    {
+        name: "All",
+        label: "Act 5",
+        options: {
+          filter: true,
+          sort: false,
+        },
+    },
+    {
+        name: "All",
+        label: "Act 6",
+        options: {
+          filter: true,
+          sort: false,
+        },
+    },
     {
         name: "All",
         label: "All",
@@ -92,7 +116,7 @@ export default function SchoolTable() {
     <div>
       <MuiThemeProvider theme={getMuiTheme()}>
         <MUIDataTable
-          title={"สถิตินักเรียนจากโรงเรียนที่มีสิทธิ์เข้าศึกษาที่คณะ"}
+          title={"สถิตินักเรียนที่เข้าร่วมกิจกรรม"}
           data={data}
           columns={columns}
           options={options}

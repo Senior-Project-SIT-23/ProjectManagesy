@@ -97,7 +97,16 @@ export default function TableAdmissionXSchool() {
                       <b className="font-athiti">ชื่อโรงเรียน</b>
                     </TableCell>
                     <TableCell>
-                      <b className="font-athiti">จำนวนนักเรียนที่มาสมัครสอบ</b>
+                      <b className="font-athiti">IT</b>
+                    </TableCell>
+                    <TableCell>
+                      <b className="font-athiti">CS</b>
+                    </TableCell>
+                    <TableCell>
+                      <b className="font-athiti">DSI</b>
+                    </TableCell>
+                    <TableCell>
+                      <b className="font-athiti">All</b>
                     </TableCell>
                   </TableRow>
                 </TableHead>
