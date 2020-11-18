@@ -31,8 +31,8 @@ function Copyright() {
 let theme = createMuiTheme({
   palette: {
     primary: {
-      light: "#63ccff",
-      main: "#336699",
+      light: "#4587bb",
+      main: "#104976",
       dark: "#006db3",
     },
   },

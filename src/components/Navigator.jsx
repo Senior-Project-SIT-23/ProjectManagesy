@@ -65,7 +65,7 @@ const styles = (theme) => ({
     color: theme.palette.common.white,
   },
   itemActiveItem: {
-    color: "#4fc3f7",
+    color: "#3e9be5",
   },
   itemPrimary: {
     fontSize: "inherit",

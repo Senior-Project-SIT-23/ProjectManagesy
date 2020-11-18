@@ -108,7 +108,10 @@ export default function TableSchoolXAct(props) {
     selectableRows: false,
     print: false,
     rowsPerPage: 5,
-    rowsPerPageOptions: [5,10,20]
+    rowsPerPageOptions: [5,10,20],
+    onDownload: (buildHead, buildBody, columns, data) => {
+        return "\uFEFF" + buildHead(columns) + buildBody(data); 
+    } 
   }
 
 

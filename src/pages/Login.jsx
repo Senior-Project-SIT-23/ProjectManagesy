@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#EBEFF1",
     minHeight: "100vh",
-    backgroundImage: 'url(/Background.png)',
+    backgroundImage: 'url(/managesy.png)',
     backgroundSize: "cover"
     
   },
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Prompt",
     fontSize: 60,
     // color: "#3E3E3E",
-    color: "black",
+    color: "white",
   },
   login: {
     color: "white",
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     borderRadius: 30,
     // backgroundColor: "#3E3E3E",
-    // backgroundColor: "white",
+    backgroundColor: "#19202B",
     // color: '#3E3E3E',
     fontFamily:'Roboto',
     minWidth: '480px',
@@ -56,7 +56,6 @@ export default function Login() {
       <div className='my-auto ml-20 '>
       <h1 className={`${classes.title} `}>M A N A G E S Y</h1>
            <a href="http://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=PYXjbgDs&redirect_uri=http://localhost:3000/CallBack&state=Managesy" style={{textDecoration: 'none'}}>
-          
              <Button variant="contained" color="primary" className={`${classes.button}`}>
              Login via SSO         
              </Button>

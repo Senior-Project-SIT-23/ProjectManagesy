@@ -51,6 +51,14 @@ export default function EnhancedTable(props) {
       },
     },
     {
+      name: "tel",
+      label: "โครงการที่สอบเข้า",
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
       name: "countAct",
       label: "จำนวนกิจกรรมที่เข้าร่วม",
       options: {
@@ -74,7 +82,6 @@ export default function EnhancedTable(props) {
     selectableRowsHeader: false,
     selectableRows: false,
     print: false,
-    download: false,
     expandableRows: true,
     expandableRowsHeader: false,
     expandableRowsOnClick: true,
@@ -116,7 +123,12 @@ export default function EnhancedTable(props) {
     },
     onRowExpansionChange: (curExpanded, allExpanded, rowsExpanded) =>
       console.log(curExpanded, allExpanded, rowsExpanded),
+    download: true,
+      onDownload: (buildHead, buildBody, columns, data) => {
+        return "\uFEFF" + buildHead(columns) + buildBody(data); 
+    } 
   }
+  
   const getMuiTheme = () =>
     createMuiTheme({
       overrides: {

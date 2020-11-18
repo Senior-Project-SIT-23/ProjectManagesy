@@ -319,7 +319,7 @@ export default function CustomizedDialogs(props) {
                         width: "40%",
                         paddingLeft: 0,
                         paddingRight: 0,
-                        backgroundColor: "#336699",
+                        backgroundColor: "#104976",
                         color: "white",
                       }}
                     >
