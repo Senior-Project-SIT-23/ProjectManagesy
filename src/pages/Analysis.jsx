@@ -2,9 +2,7 @@ import React, { useContext, useEffect, useCallback, useState } from 'react'
 import CommonCard from '../components/Common/Card'
 import Header from "../components/Analysis/Header"
 import FullPageAnalysis from '../components/Analysis/FullPageAnalysis'
-import IT from '../components/Analysis/IT'
-import CS from '../components/Analysis/CS'
-import DSI from '../components/Analysis/DSI'
+
 
 export default function Test(props) {
     const [indexTab, setIndexTab] = useState(0)

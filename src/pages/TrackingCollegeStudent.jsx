@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useCallback, useState } from "react"
 // import TableData from "../components/TrackingStudents/TableActivity"
 import Header from "../components/TrackingCollegeStudents/Header"
-import TableActivityCollegeStudents from "../components/TrackingCollegeStudents/TableActivityCollegeStudents"
 import TableData from "../components/TrackingCollegeStudents/TableData"
 import TableImportData from "../components/TrackingCollegeStudents/TableImportData"
 

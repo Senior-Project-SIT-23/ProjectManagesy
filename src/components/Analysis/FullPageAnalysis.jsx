@@ -2,16 +2,11 @@ import React from "react"
 import Card from "./Card"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
-import CheckCircleIcon from "@material-ui/icons/CheckCircle"
 import GroupIcon from "@material-ui/icons/Group"
 import FolderSharedIcon from "@material-ui/icons/FolderShared"
-import BarChart from "../Analysis/BarChart"
-import DonutChart from "../Analysis/DonutChart"
 import ButtonYear from "./ButtonYear"
 import SchoolTable from "./SchoolTable"
-import TableAdmissionXSchool from "./AnalysisIT/TableAdmissionXSchool"
 import { Paper } from "@material-ui/core"
-import ActivityChart from "./ActivityChart"
 import TableAllAdmission from "./TableAllAdmission"
 import TableSchoolXAct from "./TableSchoolXAct"
 import CardAll from "./CardAll"
@@ -104,18 +99,6 @@ export default function FullPageAnalysis() {
       </Grid>
 
       <Grid container spacing={3}>
-        {/* <Grid item xs>
-          <Card
-            className={classes.paper}
-            title={"นักศึกษาทั้งหมด"}
-            icon={
-              <CheckCircleIcon
-                style={{ fontSize: 60, marginRight: 10, color: "40DC9A" }}
-              />
-            }
-            count={"300"}
-          />
-        </Grid> */}
         <Grid item xs>
           <CardAll
             className={classes.paper}

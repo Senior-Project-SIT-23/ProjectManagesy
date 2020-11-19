@@ -2,13 +2,11 @@ import React from "react"
 
 import IconButton from '@material-ui/core/IconButton';
 
-// import DeleteIcon from '@material-ui/icons/Delete';
-// import FilterListIcon from '@material-ui/icons/FilterList';
 
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined"
 import DialogCreateAdmission from "./DialogCreateAdmission"
 
-import DialogDeleteAdmission from "./DialogDeleteAdmission"
+
 import MUIDataTable from "mui-datatables"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
@@ -168,9 +166,7 @@ export default function EnhancedTable(props) {
   
   return (
     <div>
-      {/* <Tooltip title="Delete">
-            <DialogConfirmDelete  handleDelete={props.handleDelete}/>
-        </Tooltip> */}
+
       <Grid container direction="row" justify="flex-end" alignItems="center">
         <div className={"mb-2"}>
          
