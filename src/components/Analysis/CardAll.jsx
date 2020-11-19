@@ -10,7 +10,7 @@ import Grid from "@material-ui/core/Grid"
 const useStyles = makeStyles({
   root: {
     // minWidth: 250,
-    minHeight: 160,
+    minHeight: 100,
     // maxWidth: 280,
   },
   bullet: {
@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   }
 })
 
-export default function SimpleCard(props) {
+export default function CardAll(props) {
   const classes = useStyles()
   const bull = <span className={classes.bullet}>•</span>
 

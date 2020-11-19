@@ -14,6 +14,7 @@ import { Paper } from "@material-ui/core"
 import ActivityChart from "./ActivityChart"
 import TableAllAdmission from "./TableAllAdmission"
 import TableSchoolXAct from "./TableSchoolXAct"
+import CardAll from "./CardAll"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,44 +40,7 @@ export default function FullPageAnalysis() {
           </div>
         </Grid>
       </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs>
-          <Card
-            className={classes.paper}
-            title={"จำนวนนักเรียนที่ได้เข้าศึกษาต่อ"}
-            icon={
-              <CheckCircleIcon
-                style={{ fontSize: 60, marginRight: 10, color: "40DC9A" }}
-              />
-            }
-            count={"300"}
-          />
-        </Grid>
-        <Grid item xs>
-          <Card
-            className={classes.paper}
-            title={"จำนวนนักเรียนที่สมัครสอบทั้งหมด"}
-            icon={
-              <GroupIcon
-                style={{ fontSize: 60, marginRight: 10, color: "32BDDF" }}
-              />
-            }
-            count={"1,250"}
-          />
-        </Grid>
-        <Grid item>
-          <Card
-            className={classes.paper}
-            title={"จำนวนนักเรียนที่เข้าร่วมกิจกรรมทั้งหมด"}
-            icon={
-              <FolderSharedIcon
-                style={{ fontSize: 60, marginRight: 10, color: "FC6D7F" }}
-              />
-            }
-            count={"1,780"}
-          />
-        </Grid>
-      </Grid>
+      
       {/* <Grid container spacing={3}>
         <Grid item xs={12} >
           <DonutChart 
@@ -85,10 +49,10 @@ export default function FullPageAnalysis() {
         </Grid>
       </Grid> */}
       <Grid container spacing={3}>
-        <Grid item xs>
+        <Grid item xs={3}>
         <Card
             className={classes.paper}
-            title={"นักเรียนที่สมัครเข้าศึกษาสาขาเทคโนโลยีสารสนเทศ"}
+            title={"นักศึกษาสาขาเทคโนโลยีสารสนเทศ"}
             icon={
               // <CheckCircleIcon
               //   style={{ fontSize: 60, marginRight: 10, color: "40DC9A" }}
@@ -98,10 +62,10 @@ export default function FullPageAnalysis() {
             count={"300"}
           />
         </Grid>
-        <Grid item xs>
+        <Grid item xs={3}>
         <Card
             className={classes.paper}
-            title={"นักเรียนที่สมัครเข้าศึกษาสาขาวิทยาการคอมพิวเตอร์"}
+            title={"นักศึกษาสาขาวิทยาการคอมพิวเตอร์"}
             icon={
               // <CheckCircleIcon
               //   style={{ fontSize: 60, marginRight: 10, color: "40DC9A" }}
@@ -111,10 +75,10 @@ export default function FullPageAnalysis() {
             count={"300"}
           />
         </Grid>
-        <Grid item>
+        <Grid item xs={3}>
         <Card
             className={classes.paper}
-            title={"นักเรียนที่สมัครเข้าศึกษาสาขานวัตกรรมบริการดิจิตัล"}
+            title={"นักศึกษาสาขานวัตกรรมบริการดิจิตัล"}
             icon={
               // <CheckCircleIcon
               //   style={{ fontSize: 60, marginRight: 10, color: "40DC9A" }}
@@ -122,6 +86,58 @@ export default function FullPageAnalysis() {
               <img src="DSI.png" style={{ marginRight: 10,width: 60, height:60 }}/>
             }
             count={"300"}
+          />
+        </Grid>
+        <Grid item xs={3}>
+          <Card
+            className={classes.paper}
+            title={"นักศึกษาคณะเทคโนโลยีสารเทศทั้งหมด"}
+            icon={
+              // <CheckCircleIcon
+              //   style={{ fontSize: 60, marginRight: 10, color: "40DC9A" }}
+              // />
+              <img src="All.png" style={{ marginRight: 10,width: 60, height:60 }}/>
+            }
+            count={"300"}
+          />
+        </Grid>
+      </Grid>
+
+      <Grid container spacing={3}>
+        {/* <Grid item xs>
+          <Card
+            className={classes.paper}
+            title={"นักศึกษาทั้งหมด"}
+            icon={
+              <CheckCircleIcon
+                style={{ fontSize: 60, marginRight: 10, color: "40DC9A" }}
+              />
+            }
+            count={"300"}
+          />
+        </Grid> */}
+        <Grid item xs>
+          <CardAll
+            className={classes.paper}
+            title={"นักเรียนที่สมัครสอบทั้งหมด"}
+            icon={
+              <GroupIcon
+                style={{ fontSize: 60, marginRight: 10, color: "#e85d04" }}
+              />
+            }
+            count={"1,250"}
+          />
+        </Grid>
+        <Grid item xs>
+          <CardAll
+            className={classes.paper}
+            title={"นักเรียนที่เข้าร่วมกิจกรรมทั้งหมด"}
+            icon={
+              <FolderSharedIcon
+                style={{ fontSize: 60, marginRight: 10, color: "#f48c06" }}
+              />
+            }
+            count={"1,780"}
           />
         </Grid>
       </Grid>
@@ -149,11 +165,11 @@ export default function FullPageAnalysis() {
           <TableAllAdmission/>
         </Grid>
       </Grid>
-      <Grid container spacing={6}>
+      {/* <Grid container spacing={6}>
         <Grid item xs={12}>
           
         </Grid>
-      </Grid>
+      </Grid> */}
     </div>
   )
 }

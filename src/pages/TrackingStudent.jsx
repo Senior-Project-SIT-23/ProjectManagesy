@@ -68,14 +68,14 @@ export default function Test(props) {
 
   const [rows, setrows] = useState([])
 
-  const handleDelete = async () => {
-    const formData = getActivityIdsFormData(selected)
-    //เรียก api
-    console.log("delete", formData)
-    await apiDeleteActivities(formData)
-    setSelected([])
-    await fetchActivities()
-  }
+  // const handleDelete = async () => {
+  //   const formData = getActivityIdsFormData(selected)
+  //   //เรียก api
+  //   console.log("delete", formData)
+  //   await apiDeleteActivities(formData)
+  //   setSelected([])
+  //   await fetchActivities()
+  // }
 
   //Dialog
   const [open, setOpen] = React.useState(false)
@@ -301,7 +301,7 @@ export default function Test(props) {
             handleClickOpen={handleClickOpen}
             handleClose={handleClose}
             handleSubmit={handleSubmit}
-            handleDelete={handleDelete}
+            // handleDelete={handleDelete}
             topic={topic}
             setTopic={setTopic}
             setDataFile={setDataFile}
