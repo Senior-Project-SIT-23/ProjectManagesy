@@ -114,6 +114,9 @@ export default function Test(props) {
       file: dataFile ,
       fileName: dataFileName,
     }
+    if(!data.file){
+      return setErrorMessage("กรุณา upload ไฟล์")
+    }
     console.log("-->", data)
     const formData = getActivityFormData(data)
 

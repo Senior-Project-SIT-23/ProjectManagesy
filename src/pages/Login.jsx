@@ -28,8 +28,13 @@ const useStyles = makeStyles((theme) => ({
     // color: '#3E3E3E',
     fontFamily:'Roboto',
     minWidth: '480px',
-    
+    '&:hover': {
+      background: "#e3e3e3",
+      color: "#19202B",
+      fontFamily:'Roboto',
+   },
   }
+ 
 }))
 
 export default function Login() {
