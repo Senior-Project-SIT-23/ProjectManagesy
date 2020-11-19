@@ -28,7 +28,7 @@ export default function TableSchoolXAct(props) {
       label: "สถาบันการศึกษา",
       options: {
         filter: true,
-        sort: false,
+        sort: true,
       },
     },
     {
@@ -36,7 +36,7 @@ export default function TableSchoolXAct(props) {
       label: "Act 1",
       options: {
         filter: true,
-        sort: false,
+        sort: true,
       },
     },
     {
@@ -44,7 +44,7 @@ export default function TableSchoolXAct(props) {
       label: "Act 2",
       options: {
         filter: true,
-        sort: false,
+        sort: true,
       },
     },
     {
@@ -52,7 +52,7 @@ export default function TableSchoolXAct(props) {
         label: "Act 3",
         options: {
           filter: true,
-          sort: false,
+          sort: true,
         },
       },
     {
@@ -60,7 +60,7 @@ export default function TableSchoolXAct(props) {
         label: "Act 4",
         options: {
           filter: true,
-          sort: false,
+          sort: true,
         },
     },
     {
@@ -68,7 +68,7 @@ export default function TableSchoolXAct(props) {
         label: "Act 5",
         options: {
           filter: true,
-          sort: false,
+          sort: true,
         },
     },
     {
@@ -76,7 +76,7 @@ export default function TableSchoolXAct(props) {
         label: "Act 6",
         options: {
           filter: true,
-          sort: false,
+          sort: true,
         },
     },
     {
@@ -84,7 +84,7 @@ export default function TableSchoolXAct(props) {
         label: "All",
         options: {
           filter: true,
-          sort: false,
+          sort: true,
         },
     },
   ]

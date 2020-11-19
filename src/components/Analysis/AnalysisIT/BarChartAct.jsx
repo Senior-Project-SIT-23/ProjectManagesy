@@ -17,8 +17,8 @@ const BarChartAct = (props) => {
     datasets: [
       {
         label: "จำนวนคนที่เข้าร่วมกิจกรรม",
-        backgroundColor: "#336699",
-        borderColor: "#336699",
+        backgroundColor: "#104976",
+        borderColor: "#104976",
         borderWidth: 1,
         hoverBackgroundColor: "rgba(255,181,75,0.4)",
         hoverBorderColor: "rgba(255,181,75,1)",

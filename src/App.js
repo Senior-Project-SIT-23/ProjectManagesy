@@ -37,12 +37,12 @@ function App() {
     <Router>
       <Login path="/"/>
       <CallBack path="/CallBack"/>
-      <MainLayout title="ติดตามนักเรียน" path="/TrackingStudents" component={TrackingStudent} />
-      <MainLayout title="ติดตามนักศึกษา"path="/TrackingCollegeStudents" component={TrackingCollegeStudent} />
+      <MainLayout title="นักเรียน" path="/TrackingStudents" component={TrackingStudent} />
+      <MainLayout title="นักศึกษา"path="/TrackingCollegeStudents" component={TrackingCollegeStudent} />
       <MainLayout title="กิจกรรม"path="/Activitys" component={Activity} />
       <MainLayout title="วิเคราะห์ข้อมูล"path="/Analysis" component={Analysis} />
-      <MainLayout title="ติดตามนักเรียน" path="/ShowDataInFileActivity/:id/:name" component={ShowDataInFileActivity}/>
-      <MainLayout title="ติดตามนักเรียน" path="/ShowDataFileAdmission/:id/:name" component={ShowDataFileAdmission}/>
+      <MainLayout title="นักเรียน" path="/ShowDataInFileActivity/:id/:name" component={ShowDataInFileActivity}/>
+      <MainLayout title="นักเรียน" path="/ShowDataFileAdmission/:id/:name" component={ShowDataFileAdmission}/>
     </Router>
   );
 }

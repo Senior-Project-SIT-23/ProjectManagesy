@@ -28,7 +28,7 @@ export default function SchoolTable() {
       label: "สถาบันการศึกษา",
       options: {
         filter: true,
-        sort: false,
+        sort: true,
       },
     },
     {
@@ -36,7 +36,7 @@ export default function SchoolTable() {
       label: "IT",
       options: {
         filter: true,
-        sort: false,
+        sort: true,
       },
     },
     {
@@ -44,7 +44,7 @@ export default function SchoolTable() {
       label: "CS",
       options: {
         filter: true,
-        sort: false,
+        sort: true,
       },
     },
     {
@@ -52,7 +52,7 @@ export default function SchoolTable() {
         label: "DSI",
         options: {
           filter: true,
-          sort: false,
+          sort: true,
         },
       },
     {
@@ -60,7 +60,7 @@ export default function SchoolTable() {
         label: "All",
         options: {
           filter: true,
-          sort: false,
+          sort: true,
         },
     },
   ]

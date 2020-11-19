@@ -27,9 +27,9 @@ const categories = [
     id: "Menu",
     children: [
       // { id: "กิจกรรม", icon: <PeopleIcon />, url: "/Activitys" },
-      { id: "ติดตามนักเรียน", icon: <PeopleIcon />, url: "/TrackingStudents" },
+      { id: "นักเรียน", icon: <PeopleIcon />, url: "/TrackingStudents" },
       {
-        id: "ติดตามนักศึกษา",
+        id: "นักศึกษา",
         icon: <PeopleIcon />,
         url: "/TrackingCollegeStudents",
       },
