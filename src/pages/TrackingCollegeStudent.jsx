@@ -13,7 +13,7 @@ export default function TrackingCollageStudent() {
     return (
       <>
         <Header handleChangeTab={handleChangeTab} indexTab={indexTab} />
-        <div className="flex flex-col flex-1 p-12 mx-auto max-w-screen-lg min-h-screen">
+        <div className="flex flex-col flex-1 px-1 py-8 mx-auto max-w-screen-lg min-h-screen">
           {indexTab === 0 && <TableData />}
           {indexTab === 1 && <TableImportData/>}
          

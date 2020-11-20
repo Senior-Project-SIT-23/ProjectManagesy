@@ -139,7 +139,8 @@ export default function CustomizedDialogs(props) {
       }
       temp.push(data[i].data)
     }
-    console.log(temp)
+    console.log("temp",temp)
+    console.log("data", data)
     props.setDataFileAdmission(temp)
   }
 

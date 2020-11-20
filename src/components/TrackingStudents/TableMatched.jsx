@@ -17,7 +17,7 @@ export default function TableMatched(props) {
       options: {
         filter: true,
         sort: true,
-        display: false
+        display: true
       },
     },
     {
@@ -106,7 +106,7 @@ export default function TableMatched(props) {
     },
 
     {
-      name: "activity.activity_student_name",
+      name: "all_activity",
       label: "activity",
       options: {
         filter: false,
@@ -116,7 +116,7 @@ export default function TableMatched(props) {
     },
 
     {
-      name: "admission.admission_name",
+      name: "all_admission",
       label: "admission",
       options: {
         filter: false,
@@ -136,14 +136,7 @@ export default function TableMatched(props) {
     expandableRowsHeader: false,
     expandableRowsOnClick: true,
     print: false,
-    // isRowExpandable: (dataIndex, expandedRows) => {
-    //   if (dataIndex === 3 || dataIndex === 4) return false;
-
-    //   // Prevent expand/collapse of any row if there are 4 rows expanded already (but allow those already expanded to be collapsed)
-    //   if (expandedRows.data.length > 4 && expandedRows.data.filter(d => d.dataIndex === dataIndex).length === 0) return false;
-    //   return true;
-    // },
-    // rowsExpanded: [0, 1],
+   
     renderExpandableRow: (rowData, rowMeta) => {
       const colSpan = rowData.length + 1
       console.log("ddd", rowData)
@@ -167,7 +160,7 @@ export default function TableMatched(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {_.map(rowData[8], (data, index) => (
+                  {_.map(rowData[9], (data, index) => (
                     <TableRow>
                       <TableCell component="th" scope="row">
                         {data.activity_student_name}
@@ -199,7 +192,7 @@ export default function TableMatched(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                {_.map(rowData[9], (data, index) => (
+                {_.map(rowData[10], (data, index) => (
                   <TableRow>
                     <TableCell component="th" scope="row">
                       {data.admission_name}

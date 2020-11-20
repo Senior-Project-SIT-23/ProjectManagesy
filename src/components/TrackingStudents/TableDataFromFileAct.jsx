@@ -24,6 +24,7 @@ export default function EnhancedTable(props) {
         
       },
     },
+    
     {
       name: "data_first_name",
       label: "ชื่อ",
@@ -124,6 +125,7 @@ export default function EnhancedTable(props) {
   return (
     <>
       <MuiThemeProvider theme={getMuiTheme()} >
+        
         <MUIDataTable
           title={props.title}
           data={props.data}

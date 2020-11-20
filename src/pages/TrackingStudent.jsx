@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useCallback, useState } from "react"
 import TableActivity from "../components/TrackingStudents/TableActivity"
 import Header from "../components/TrackingStudents/Header"
+import _ from "lodash"
 import TableAdmission from "../components/TrackingStudents/TableAdmission"
 import {
   apiCreateActivity,
@@ -148,7 +149,11 @@ export default function Test(props) {
 
   const fetchActivities = useCallback(async () => {
     const response = await apiFetchActivities()
-
+    // const dataMatch = {
+    //   ...response.data,
+    //   all_activity:
+    // }
+    console.log("response.data", response.data)
     setrows(response.data)
   }, [])
 
@@ -283,8 +288,25 @@ export default function Test(props) {
   const [dataMatch, setDataMatch] = useState()
   const fetchData = useCallback(async () => {
     const response = await apiFetchDataMatch()
-    setDataMatch(response.data)
-    console.log("response0", response.data)
+    const temp = []
+
+    _.map(response.data, (item, index) => {
+      let all_activity = ""
+      let all_admission = ""
+      _.map(item.activity, (act, i) => {
+        all_activity = all_activity + act.activity_student_name + ","
+      })
+      _.map(item.admission, (adm, j) => {
+        all_admission = all_admission + adm.admission_name + ","
+      })
+      temp.push({
+        ...item,
+        all_activity,
+        all_admission,
+      })
+    })
+    setDataMatch(temp)
+    console.log("response0", temp)
   }, [])
   useEffect(() => {
     fetchData()
