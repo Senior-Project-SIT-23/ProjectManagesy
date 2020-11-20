@@ -242,7 +242,7 @@ export default function TableMatched(props) {
   }
   return (
     <MuiThemeProvider theme={theme}>
-      {console.log(props.dataMatch)}
+      {console.log("ddd",props.dataMatch)}
       <MUIDataTable
         title={"ข้อมูลนักเรียน"}
         data={props.dataMatch}

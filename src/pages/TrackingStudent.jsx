@@ -104,6 +104,7 @@ export default function Test(props) {
     //   event.target.upload_file.files.length !== 0
     //     ? event.target.delete_file_id.value
     //     : null
+    // setDataFileName(rows[event.target.id.value].activity_file_name)
     const data = {
       id: event.target.id.value,
       // delete_file_id: delete_file_id,
@@ -113,10 +114,10 @@ export default function Test(props) {
       file: dataFile ,
       fileName: dataFileName,
     }
-    if(!data.file){
-      return setErrorMessage("กรุณา upload ไฟล์")
-    }
     console.log("-->", data)
+    // if(!data.fileName & !data.file){
+    //   return setErrorMessage("กรุณา upload ไฟล์")
+    // }
     const formData = getActivityFormData(data)
 
     if (openEdit) {
@@ -124,6 +125,7 @@ export default function Test(props) {
         await apiEditActivity(formData)
         fetchActivities()
         handleClose()
+
       } catch (error) {
         console.log("test", error)
         setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
@@ -136,6 +138,9 @@ export default function Test(props) {
       } catch (error) {
         console.log("test", error)
         setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+        if(!data.file){
+          return setErrorMessage("กรุณา upload ไฟล์")
+        }
       }
     }
   }
