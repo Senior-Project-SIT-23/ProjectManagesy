@@ -41,7 +41,7 @@ export default function EnhancedTable(props) {
       },
     },
     {
-      name: "data_proggramme",
+      name: "data_programme",
       label: "แผนการเรียน",
       options: {
         filter: true,

@@ -111,7 +111,7 @@ export default function Test(props) {
       activityName: event.target.activityName.value,
       year: event.target.yearofActivity.value,
       major: event.target.major.value,
-      file: dataFile ,
+      file: dataFile,
       fileName: dataFileName,
     }
     console.log("-->", data)
@@ -125,7 +125,7 @@ export default function Test(props) {
         await apiEditActivity(formData)
         fetchActivities()
         handleClose()
-
+        window.location.reload()
       } catch (error) {
         console.log("test", error)
         setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
@@ -135,10 +135,11 @@ export default function Test(props) {
         await apiCreateActivity(formData)
         fetchActivities()
         handleClose()
+        window.location.reload()
       } catch (error) {
         console.log("test", error)
         setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
-        if(!data.file){
+        if (!data.file) {
           return setErrorMessage("กรุณา upload ไฟล์")
         }
       }
@@ -191,13 +192,13 @@ export default function Test(props) {
 
     setSelectedAdmission(newSelected)
   }
-  const handleDeleteAdmission = async () => {
-    const formData = getAdmissionIdsFormData(selectedAdmission)
-    //เรียก api
-    await apiDeteteAdmission(formData)
-    setSelectedAdmission([])
-    await fetchAdmission()
-  }
+  // const handleDeleteAdmission = async () => {
+  //   const formData = getAdmissionIdsFormData(selectedAdmission)
+  //   //เรียก api
+  //   await apiDeteteAdmission(formData)
+  //   setSelectedAdmission([])
+  //   await fetchAdmission()
+  // }
 
   //Dialog
   const [openAdmission, setOpenAdmission] = React.useState(false)
@@ -242,33 +243,32 @@ export default function Test(props) {
     const formDataAdmission = getAdmissionFormData(data)
     // try {
     if (openEditAdmission) {
-      try{
+      try {
         await apiEditAdmission(formDataAdmission)
         fetchAdmission()
-    handleCloseAdmission()
-      } catch(error){
-        console.log("test",error)
+        handleCloseAdmission()
+      } catch (error) {
+        console.log("test", error)
         setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
       }
-      
     } else {
-      try{
+      try {
         await apiCreateAdmission(formDataAdmission)
         fetchAdmission()
-        
-    handleCloseAdmission()
-      } catch(error){
-        console.log("test",error)
+
+        handleCloseAdmission()
+      } catch (error) {
+        console.log("test", error)
         setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
-        
+        if (!data.file) {
+          return setErrorMessage("กรุณา upload ไฟล์")
+        }
       }
-      
     }
     // } catch (error) {
     //   console.log("test", error)
     //   alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
     // }
-    
   }
   const fetchAdmission = useCallback(async () => {
     const response = await apiFetchAdmission()
@@ -281,19 +281,18 @@ export default function Test(props) {
 
   //MatchData
   const [dataMatch, setDataMatch] = useState()
-  const fetchData = useCallback( async() => {
-      const response = await apiFetchDataMatch()
-      setDataMatch(response.data)
-      console.log('response0',response.data)
-    },[]
-  )
+  const fetchData = useCallback(async () => {
+    const response = await apiFetchDataMatch()
+    setDataMatch(response.data)
+    console.log("response0", response.data)
+  }, [])
   useEffect(() => {
     fetchData()
-  },[fetchData])
+  }, [fetchData])
   return (
     <>
       <Header handleChangeTab={handleChangeTab} indexTab={indexTab} />
-      <div className="flex flex-col flex-1 p-12 mx-auto max-w-screen-lg min-h-screen">
+      <div className="flex flex-col flex-1 px-6 py-8 mx-auto max-w-screen-lg min-h-screen">
         {indexTab === 0 && (
           <TableActivity
             handleSelectAllClick={handleSelectAllClick}
@@ -331,16 +330,16 @@ export default function Test(props) {
             handleClickOpenCreateAdmission={handleClickOpenCreateAdmission}
             handleCloseAdmission={handleCloseAdmission}
             handleSubmitAdmission={handleSubmitAdmission}
-            handleDeleteAdmission={handleDeleteAdmission}
+            // handleDeleteAdmission={handleDeleteAdmission}
             setTopicAdmission={setTopicAdmission}
             topicAdmission={topicAdmission}
             setDataFileAdmission={setDataFileAdmission}
             setDataFileNameAdmission={setDataFileNameAdmission}
             errorMessage={errorMessage}
+            fetchAdmission={fetchAdmission}
           />
         )}
-        {indexTab === 2 && <TableMatched 
-        dataMatch={dataMatch}/>}
+        {indexTab === 2 && <TableMatched dataMatch={dataMatch} />}
       </div>
     </>
   )

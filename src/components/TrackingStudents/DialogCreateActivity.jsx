@@ -101,6 +101,7 @@ export default function CustomizedDialogs(props) {
   const [state, setState] = React.useState({
     year: "",
     major: "",
+   
   })
 
   const handleChange = (event) => {
@@ -182,6 +183,7 @@ export default function CustomizedDialogs(props) {
               year: "",
               major: "",
             })
+            props.setDataFile(null)
           }}
         >
           <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>

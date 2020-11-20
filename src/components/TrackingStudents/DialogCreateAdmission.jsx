@@ -178,6 +178,7 @@ export default function CustomizedDialogs(props) {
               major: "",
               year: "",
             })
+            props.setDataFileAdmission(null)
           }}
         >
           <DialogTitle

@@ -21,14 +21,14 @@ export default function EnhancedTable(props) {
   //   navigate(`/ShowDataFileAdmission/${id}/${name}`)
   // }
 
-  const headers = [
-    { label: "data_first_name", key: "data_first_name" },
-    { label: "data_surname", key: "data_surname" },
-    { label: "data_gpax", key: "data_gpax" },
-    { label: "data_school_name", key: "data_school_name"},
-    { label: "data_email", key: "data_email"},
-    { label: "data_tel", key: "data_tel"}
-  ];
+  // const headers = [
+  //   { label: "data_first_name", key: "data_first_name" },
+  //   { label: "data_surname", key: "data_surname" },
+  //   { label: "data_gpax", key: "data_gpax" },
+  //   { label: "data_school_name", key: "data_school_name"},
+  //   { label: "data_email", key: "data_email"},
+  //   { label: "data_tel", key: "data_tel"}
+  // ];
 
   const getMuiTheme = () =>
     createMuiTheme({
@@ -66,21 +66,21 @@ export default function EnhancedTable(props) {
         name: "admission_file_name",
         label: "ไฟล์",
         options: {
-          customBodyRender: (value, tableMeta) => (
-            // <a
-            //   href={`${process.env.REACT_APP_BE_STORAGE}/${tableMeta.rowData[6]}`}
-            //   // eslint-disable-next-line react/jsx-no-target-blank
-            //   target="_blank"
-            // >
-            //   {value}
-            // </a>
-            <CSVLink 
-            data={tableMeta.tableData[tableMeta.rowIndex].admission_file} 
-            filename={value}
-            header={headers}>
-              {value}
-            </CSVLink>
-          ),
+          // customBodyRender: (value, tableMeta) => (
+          //   // <a
+          //   //   href={`${process.env.REACT_APP_BE_STORAGE}/${tableMeta.rowData[6]}`}
+          //   //   // eslint-disable-next-line react/jsx-no-target-blank
+          //   //   target="_blank"
+          //   // >
+          //   //   {value}
+          //   // </a>
+          //   <CSVLink 
+          //   data={tableMeta.tableData[tableMeta.rowIndex].admission_file} 
+          //   filename={value}
+          //   >
+          //     {value}
+          //   </CSVLink>
+          // ),
           filter: false,
         },
       },

@@ -15,13 +15,13 @@ export function getAdmissionFormData(data) {
   // )
 
   const dataTemp = {
-    admission_id:_.get(data, "id", " "),
-    admission_name:_.get(data, "admissionName", " "),
-    round_name: _.get(data, "round", " "),
-    admission_major: _.get(data, "major", " "),
-    admission_year: _.get(data,"year"," "),
-    admission_file: _.get(data, "file", []),
-    admission_file_name: _.get(data, "fileName"," ")
+    admission_id:_.get(data, "id", null),
+    admission_name:_.get(data, "admissionName", null),
+    round_name: _.get(data, "round", null),
+    admission_major: _.get(data, "major", null),
+    admission_year: _.get(data,"year",null),
+    admission_file: _.get(data, "file",null),
+    admission_file_name: _.get(data, "fileName",null)
   }
   return JSON.stringify(dataTemp)
 

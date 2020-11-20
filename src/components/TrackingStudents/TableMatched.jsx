@@ -7,9 +7,19 @@ import Typography from "@material-ui/core/Typography"
 import { Table } from "@material-ui/core"
 import TableBody from "@material-ui/core/TableBody"
 import TableHead from "@material-ui/core/TableHead"
+import _ from 'lodash'
 
 export default function TableMatched(props) {
   const columns = [
+    {
+      name: "id",
+      label: "รหัสบัตรประชาชน",
+      options: {
+        filter: true,
+        sort: true,
+        display: false
+      },
+    },
     {
       name: "data_first_name",
       label: "ชื่อ",
@@ -65,7 +75,6 @@ export default function TableMatched(props) {
         filter: true,
         sort: true,
       },
-      
     },
     {
       name: "num_of_admission",
@@ -73,58 +82,49 @@ export default function TableMatched(props) {
       options: {
         filter: true,
         sort: true,
-        
+      },
+    },
+    {
+      name: "activity",
+      label: "activity",
+      options: {
+        filter: false,
+        sort: false,
+        display: false,
+        download: false
+      },
+    },
+    {
+      name: "admission",
+      label: "admission",
+      options: {
+        filter: false,
+        sort: false,
+        display: false,
+        download: false
+      },
+    },
+
+    {
+      name: "activity.activity_student_name",
+      label: "activity",
+      options: {
+        filter: false,
+        sort: false,
+        display: false,
+      },
+    },
+
+    {
+      name: "admission.admission_name",
+      label: "admission",
+      options: {
+        filter: false,
+        sort: false,
+        display: false,
       },
     },
   ]
-
-  // const data = [
-  //   ["Gabby George", "ม.5", "Minneapolis", 30, "$100,000",3,1,],
-  //   ["Aiden Lloyd", "ม.5", "Dallas", 55, "$200,000",3,1,],
-  //   ["Jaden Collins","ม.5", "Santa Ana", 27, "$500,000",3,1,],
-  //   ["Franky Rees","ม.6", "St. Petersburg", 22, "$50,000",3,1,],
-  //   ["Aaren Rose", "ม.5", "Toledo", 28, "$75,000",3,1,],
-  //   ["Blake Duncan", "ม.5", "San Diego", 65, "$94,000",3,1,],
-  //   ["Frankie Parry", "ม.5", "Jacksonville", 71, "$210,000",3,1,],
-  //   ["Lane Wilson", "ม.5", "Omaha", 19, "$65,000",3,1,],
-  //   ["Robin Duncan", "ม.6", "Los Angeles", 20, "$77,000",3,1,],
-  //   ["Mel Brooks", "ม.5", "Oklahoma City", 37, "$135,000",3,1,],
-  //   ["Harper White", "ม.4", "Pittsburgh", 52, "$420,000",3,1,],
-  //   ["Kris Humphrey", "ม.5", "Laredo", 30, "$150,000",3,1,],
-  //   ["Frankie Long", "ม.5", "Austin", 31, "$170,000",3,1,],
-  //   ["Brynn Robbins", "ม.3", "Norfolk", 22, "$90,000",3,1,],
-  //   ["Justice Mann", "ม.5", "Chicago", 24, "$133,000",3,1,],
-  //   [
-  //     "Addison Navarro",
-  //     "Business Management Analyst",
-  //     "New York",
-  //     50,
-  //     "$295,000",
-  //     3,1,
-  //   ],
-  //   ["Jesse Welch", "Agency Legal Counsel", "Seattle", 28, "$200,000",3,1],
-  //   ["Eli Mejia", "Commercial Specialist", "Long Beach", 65, "$400,000",3,1],
-  //   ["Gene Leblanc", "Industrial Analyst", "Hartford", 34, "$110,000",4,1],
-  //   ["Danny Leon", "Computer Scientist", "Newark", 60, "$220,000",5,1],
-  //   ["Lane Lee", "Corporate Counselor", "Cincinnati", 52, "$180,000",2,1,],
-  //   ["Jesse Hall", "Business Analyst", "Baltimore", 44, "$99,000",3,1,],
-  //   ["Jesse Hall", "Business Analyst", "Baltimore", 44, "$99,000",1,1,],
-  //   ["Danni Hudson", "Agency Legal Counsel", "Tampa", 37, "$90,000",5,1,],
-  //   ["Terry Macdonald", "Commercial Specialist", "Miami", 39, "$140,000",3,3,],
-  //   ["Justice Mccarthy", "Attorney", "Tucson", 26, "$330,000",3,1,],
-  //   ["Silver Carey", "Computer Scientist", "Memphis", 47, "$250,000",3,1,],
-  //   ["Franky Miles", "Industrial Analyst", "Buffalo", 49, "$190,000",3,1,],
-  //   ["Glen Nixon", "Corporate Counselor", "Arlington", 44, "$80,000",3,1,],
-  //   [
-  //     "Gabby Strickland",
-  //     "Business Process Consultant",
-  //     "Scottsdale",
-  //     26,
-  //     "$45,000",
-  //     3,1,
-  //   ],
-  //   ["Mason Ray", "Computer Scientist", "San Francisco", 39, "$142,000",3,1,],
-  // ]
 
   const options = {
     filter: true,
@@ -146,8 +146,8 @@ export default function TableMatched(props) {
     // rowsExpanded: [0, 1],
     renderExpandableRow: (rowData, rowMeta) => {
       const colSpan = rowData.length + 1
-      console.log("ddd",rowData)
-      
+      console.log("ddd", rowData)
+      console.log("props.dataMatch", props.dataMatch)
       return (
         <>
           <TableRow>
@@ -167,15 +167,21 @@ export default function TableMatched(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      XXXXXXXXXXX
-                    </TableCell>
-                    <TableCell>XXXXXXXX</TableCell>
-                  </TableRow>
+                  {_.map(rowData[8], (data, index) => (
+                    <TableRow>
+                      <TableCell component="th" scope="row">
+                        {data.activity_student_name}
+                      </TableCell>
+                      <TableCell>{data.activity_student_year}</TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
-              <Typography gutterBottom component="div" className="font-athiti mt-2">
+              <Typography
+                gutterBottom
+                component="div"
+                className="font-athiti mt-2"
+              >
                 รายชื่อโครงการที่สมัครสอบ
               </Typography>
               <Table>
@@ -188,34 +194,34 @@ export default function TableMatched(props) {
                       <b className="font-athiti">รอบที่สมัครสอบ</b>
                     </TableCell>
                     <TableCell>
-                        <b className="font-athiti">ปีที่สมัครสอบ</b>
+                      <b className="font-athiti">ปีที่สมัครสอบ</b>
                     </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
+                {_.map(rowData[9], (data, index) => (
                   <TableRow>
                     <TableCell component="th" scope="row">
-                      XXXXXXXXXXX
+                      {data.admission_name}
                     </TableCell>
-                    <TableCell>XXXXXXXX</TableCell>
-                    <TableCell>XXXXXXXX</TableCell>
+                    <TableCell>{data.round_name}</TableCell>
+                    <TableCell>{data.admission_year}</TableCell>
                   </TableRow>
+                ))}
                 </TableBody>
               </Table>
             </TableCell>
           </TableRow>
-     
         </>
       )
-      
     },
     onRowExpansionChange: (curExpanded, allExpanded, rowsExpanded) =>
       console.log(curExpanded, allExpanded, rowsExpanded),
 
-      downloadOptions: { filename: `ข้อมูลนักเรียน.csv` },
-      onDownload: (buildHead, buildBody, columns, data) => {
-        return "\uFEFF" + buildHead(columns) + buildBody(data)
-      },
+    downloadOptions: { filename: `ข้อมูลนักเรียน.csv` },
+    onDownload: (buildHead, buildBody, columns, data) => {
+      return "\uFEFF" + buildHead(columns) + buildBody(data)
+    },
   }
 
   const theme = createMuiTheme({
@@ -242,7 +248,6 @@ export default function TableMatched(props) {
   }
   return (
     <MuiThemeProvider theme={theme}>
-      {console.log("ddd",props.dataMatch)}
       <MUIDataTable
         title={"ข้อมูลนักเรียน"}
         data={props.dataMatch}
