@@ -11,7 +11,7 @@ export default function EnhancedTable(props) {
   
   const columns = [
     {
-     name: "Name",
+     name: "college_student_name",
      label:"ข้อมูลนักศึกษา",
      options: {
       customBodyRender: (value, tableMeta) => (
@@ -24,14 +24,6 @@ export default function EnhancedTable(props) {
       ),
       filter: false,
     },
-    },
-    {
-     name: "major",
-     label:"สาขา",
-     options: {
-      filter: true,
-      sort: true,
-     }
     },
     {
      name: "year",
@@ -69,12 +61,14 @@ export default function EnhancedTable(props) {
      
    ];
    
-   const data = [
-    ["Joe James", "Test Corp", "Yonkers", "NY",],
-    ["John Walsh", "Test Corp", "Hartford", "CT",],
-    ["Bob Herm", "Test Corp", "Tampa", "FL",],
-    ["James Houston", "Test Corp", "Dallas", "TX",],
-   ];
+   const data =  props.rows
+   console.log(data)
+  //  [
+  //   ["Joe James", "Test Corp", "Yonkers", "NY",],
+  //   ["John Walsh", "Test Corp", "Hartford", "CT",],
+  //   ["Bob Herm", "Test Corp", "Tampa", "FL",],
+  //   ["James Houston", "Test Corp", "Dallas", "TX",],
+  //  ];
   //  const data = props.rows
 
   // const changeValue = (data) => {
@@ -92,6 +86,13 @@ export default function EnhancedTable(props) {
   //   }
   //   return dataRes
   // }
+
+  // const changeValue = (data) => {
+  //   const dataRes ={
+  //     college_student_name:,
+  //   }
+  // }
+
    const options = {
      filterType: 'checkbox',
      print: false,

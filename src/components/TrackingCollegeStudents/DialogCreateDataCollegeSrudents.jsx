@@ -95,12 +95,12 @@ export default function CustomizedDialogs(props) {
     })
   }
 
-  const handleClose = () => {
-    setOpen(false)
-  }
-  const handleClickOpen = () => {
-    setOpen(true)
-  }
+  // const handleClose = () => {
+  //   setOpen(false)
+  // }
+  // const handleClickOpen = () => {
+  //   setOpen(true)
+  // }
 
   const theme = createMuiTheme({
     palette: {
@@ -149,7 +149,7 @@ export default function CustomizedDialogs(props) {
             className={classes.button}
             startIcon={<AddBoxIcon />}
           >
-            <div className="font-athiti">สร้างกิจกรรม</div>
+            <div className="font-athiti">Import ข้อมูลนักศึกษา</div>
           </Button>
         </ThemeProvider>
       </Tooltip>
@@ -184,7 +184,7 @@ export default function CustomizedDialogs(props) {
               defaultValue={[]}
               //   value={[props.openEdit?.activity_file_id]}
             />
-            <div>
+            {/* <div>
               <TextField
                 required
                 id="activityName"
@@ -192,7 +192,7 @@ export default function CustomizedDialogs(props) {
                 // defaultValue={props.openEdit?.activity_name}
                 variant="outlined"
               />
-            </div>
+            </div> */}
 
             <FormControl variant="outlined" className={classes.formControl2 }>
               <InputLabel>ปีการศึกษา</InputLabel>

@@ -33,36 +33,36 @@ export default function Test(props) {
     setIndexTab(index)
   }
   //Table
-  const [selected, setSelected] = React.useState([])
+  // const [selected, setSelected] = React.useState([])
 
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.activity_id)
-      setSelected(newSelecteds)
-      return
-    }
-    setSelected([])
-  }
+  // const handleSelectAllClick = (event) => {
+  //   if (event.target.checked) {
+  //     const newSelecteds = rows.map((n) => n.activity_id)
+  //     setSelected(newSelecteds)
+  //     return
+  //   }
+  //   setSelected([])
+  // }
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name)
-    let newSelected = []
+  // const handleClick = (event, name) => {
+  //   const selectedIndex = selected.indexOf(name)
+  //   let newSelected = []
 
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name)
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1))
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1))
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      )
-    }
+  //   if (selectedIndex === -1) {
+  //     newSelected = newSelected.concat(selected, name)
+  //   } else if (selectedIndex === 0) {
+  //     newSelected = newSelected.concat(selected.slice(1))
+  //   } else if (selectedIndex === selected.length - 1) {
+  //     newSelected = newSelected.concat(selected.slice(0, -1))
+  //   } else if (selectedIndex > 0) {
+  //     newSelected = newSelected.concat(
+  //       selected.slice(0, selectedIndex),
+  //       selected.slice(selectedIndex + 1)
+  //     )
+  //   }
 
-    setSelected(newSelected)
-  }
+  //   setSelected(newSelected)
+  // }
 
   const [topic, setTopic] = useState()
 
@@ -317,13 +317,13 @@ export default function Test(props) {
       <div className="flex flex-col flex-1 px-6 py-8 mx-auto max-w-screen-lg min-h-screen">
         {indexTab === 0 && (
           <TableActivity
-            handleSelectAllClick={handleSelectAllClick}
-            handleClick={handleClick}
+            // handleSelectAllClick={handleSelectAllClick}
+            // handleClick={handleClick}
             rows={rows}
             handleClickEdit={handleClickEdit}
             openEdit={openEdit}
-            selected={selected}
-            setSelected={setSelected}
+            // selected={selected}
+            // setSelected={setSelected}
             open={open}
             setOpen={setOpen}
             handleClickOpen={handleClickOpen}

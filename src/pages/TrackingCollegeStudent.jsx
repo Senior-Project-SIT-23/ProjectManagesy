@@ -6,10 +6,20 @@ import TableImportData from "../components/TrackingCollegeStudents/TableImportDa
 
 export default function TrackingCollageStudent() {
     const [indexTab, setIndexTab] = useState(0)
-
+   
+    // const handleClose = () => {
+    //   setOpen(false)
+    // }
+    // const handleClickOpen = () => {
+    //   setOpen(true)
+    // }
     function handleChangeTab(index) {
       setIndexTab(index)
     }
+
+    
+
+
     return (
       <>
         <Header handleChangeTab={handleChangeTab} indexTab={indexTab} />
