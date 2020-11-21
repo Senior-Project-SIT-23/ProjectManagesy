@@ -23,6 +23,7 @@ import Analysis from "./pages/Analysis"
 import ShowDataFileAdmission from "./components/TrackingStudents/ShowDataFileAdmission"
 import Login from "./pages/Login";
 import CallBack from "./pages/CallBack"
+import ShowdataImport from "./components/TrackingCollegeStudents/ShowdataImport";
 /**
  |--------------------------------------------------
  | BASEUI SETUP
@@ -41,6 +42,7 @@ function App() {
       <MainLayout title="วิเคราะห์ข้อมูล"path="/Analysis" component={Analysis} />
       <MainLayout title="นักเรียน" path="/ShowDataInFileActivity/:id/:name" component={ShowDataInFileActivity}/>
       <MainLayout title="นักเรียน" path="/ShowDataFileAdmission/:id/:name" component={ShowDataFileAdmission}/>
+      <MainLayout title="นักศึกษา" path="/ShowdataImport/:id/:name" component={ShowdataImport}/>
     </Router>
   );
 }

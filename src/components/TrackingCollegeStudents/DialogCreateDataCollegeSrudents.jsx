@@ -84,7 +84,7 @@ export default function CustomizedDialogs(props) {
     year: "",
     major: "",
   })
-  const [open, setOpen] = React.useState(false)
+  // const [open, setOpen] = React.useState(false)
 
   const handleChange = (event) => {
     const name = event.target.name
@@ -122,15 +122,15 @@ export default function CustomizedDialogs(props) {
   }
 
   const handleOnFileLoad = (data) => {
-    // const temp = []
-    // for (let i = 0; i < data.length; i++) {
-    //   if(data[i].errors.length !== 0){
-    //     break;
-    //   }
-    //   temp.push(data[i].data)
-    // }
-    // console.log(temp)
-    // props.setDataFile(temp)
+    const temp = []
+    for (let i = 0; i < data.length; i++) {
+      if(data[i].errors.length !== 0){
+        break;
+      }
+      temp.push(data[i].data)
+    }
+    console.log(temp)
+    props.setDataFile(temp)
   }
 
   const handleOnError = (err, file, inputElem, reason) => {
@@ -144,7 +144,7 @@ export default function CustomizedDialogs(props) {
           <Button
             variant="contained"
             color="secondary"
-            onClick={handleClickOpen}
+            onClick={props.handleClickOpen}
             size="large"
             className={classes.button}
             startIcon={<AddBoxIcon />}
@@ -156,19 +156,19 @@ export default function CustomizedDialogs(props) {
       <Dialog
         // onClose={props.handleClose}
         // aria-labelledby="customized-dialog-title"
-        open={open}
+        open={props.open}
         minWidth="800"
       >
         <form
-        //   onSubmit={async (event) => {
-        //     await props.handleSubmit(event)
-        //     setState({
-        //       year: "",
-        //       major: "",
-        //     })
-        //   }}
+          onSubmit={async (event) => {
+            await props.handleSubmit(event)
+            setState({
+              year: "",
+            })
+            props.setDataFile(null)
+          }}
         >
-          <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+          <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
             <div className="font-athiti">Import ข้อมูลนักศึกษา</div>
           </DialogTitle>
           <DialogContent dividers>
@@ -201,9 +201,9 @@ export default function CustomizedDialogs(props) {
                 required
                 label="ปีการศึกษา"
                 onChange={handleChange}
-                // value={state.year || props.openEdit?.activity_year}
+                value={state.year || props.openEdit?.entrance_year}
                 name="year"
-                id="yearofActivity"
+                id="yearofDataCollegeStudent"
               >
                 {/* <option aria-label="None" value="" /> */}
                 <option value={"2563"}>2563</option>

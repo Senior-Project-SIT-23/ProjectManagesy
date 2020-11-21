@@ -126,7 +126,7 @@ export default function Test(props) {
         await apiEditActivity(formData)
         fetchActivities()
         handleClose()
-        window.location.reload()
+        // window.location.reload()
       } catch (error) {
         console.log("test", error)
         setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
@@ -136,7 +136,7 @@ export default function Test(props) {
         await apiCreateActivity(formData)
         fetchActivities()
         handleClose()
-        window.location.reload()
+        // window.location.reload()
       } catch (error) {
         console.log("test", error)
         setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")

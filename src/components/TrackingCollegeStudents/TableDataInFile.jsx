@@ -90,7 +90,7 @@ export default function TableDataInFile(props) {
       },
     },
     {
-        name: "data_tel",
+        name: "data_admission",
         label: "โครงการที่สมัครเข้า",
         options: {
           filter: false,

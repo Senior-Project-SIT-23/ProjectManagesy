@@ -2,6 +2,7 @@ import React ,{useCallback, useEffect, useState}from 'react'
 import { makeStyles } from "@material-ui/core/styles"
 import HeaderFile from "./HearderFile"
 import TableDataInFile from './TableDataInFile'
+import { apiFetchDataCollegeStudent } from '../../service/collegeStudent'
 
 // const useStylesTable = makeStyles({
     
@@ -30,6 +31,16 @@ export default function ShowdataImport(props) {
     function handleChangeTab(index) {
         setIndexTab(index)
       }
+
+      const fetchDataCollegeStudent = useCallback(async () => {
+        const response = await apiFetchDataCollegeStudent()
+        console.log("response",response.data)
+        setData(response.data[props.id])
+      },[props.id])
+    
+      useEffect(() => {
+        fetchDataCollegeStudent()
+      },[fetchDataCollegeStudent])
     return (
         <div>
             <HeaderFile handleChangeTab={handleChangeTab} indexTab={indexTab} />

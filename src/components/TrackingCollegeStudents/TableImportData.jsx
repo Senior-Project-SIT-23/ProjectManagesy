@@ -5,6 +5,7 @@ import DialogCreateDataCollegeSrudents from "./DialogCreateDataCollegeSrudents"
 import MUIDataTable from "mui-datatables";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
+import { apiDeleteImportData } from '../../service/collegeStudent';
 
 
 export default function EnhancedTable(props) {
@@ -15,18 +16,18 @@ export default function EnhancedTable(props) {
      label:"ข้อมูลนักศึกษา",
      options: {
       customBodyRender: (value, tableMeta) => (
-        // <a
-        //   href={`/ShowdataImport/${tableMeta.rowIndex}/${tableMeta.rowData[0]}`}
-        //   target="_blank"
-        // >
+        <a
+          href={`/ShowdataImport/${tableMeta.rowIndex}/${tableMeta.rowData[0]}`}
+          target="_blank"
+        >
           <p>{value}</p>
-        // </a>
+        </a>
       ),
       filter: false,
     },
     },
     {
-     name: "year",
+     name: "entrance_year",
      label: "ปีการศึกษา",
      options: {
       filter: true,
@@ -34,7 +35,7 @@ export default function EnhancedTable(props) {
      }
     },
     {
-     name: "file",
+     name: "college_student_file_name",
      label: "ไฟล์",
      options: {
       filter: true,
@@ -48,9 +49,9 @@ export default function EnhancedTable(props) {
         customBodyRender: (value, tableMeta) => (
           <IconButton>
             <EditOutlinedIcon
-              // onClick={() =>
-              //   (changeValue(tableMeta.rowData))
-              // }
+              onClick={() =>
+                (changeValue(tableMeta.rowData))
+              }
             />
           </IconButton>
         ),
@@ -87,36 +88,40 @@ export default function EnhancedTable(props) {
   //   return dataRes
   // }
 
-  // const changeValue = (data) => {
-  //   const dataRes ={
-  //     college_student_name:,
-  //   }
-  // }
+  const changeValue = (data) => {
+    const dataRes ={
+      college_student_name:data[0],
+      entrance_year: data[1],
+      college_student_file_name: [2],
+      edit: data[3]
+    }
+    return dataRes
+  }
 
    const options = {
      filterType: 'checkbox',
      print: false,
-    //  onRowsDelete: async (deleted) => {
-    //   console.log(deleted)
-    //   console.log(deleted.data)
+     onRowsDelete: async (deleted) => {
+      console.log(deleted)
+      console.log(deleted.data)
 
-    //   let Id = []
-    //   for (let i = 0; i < deleted.data.length; i++) {
-    //     let n = deleted.data[i].index
-    //     console.log(n)
+      let Id = []
+      for (let i = 0; i < deleted.data.length; i++) {
+        let n = deleted.data[i].index
+        console.log(n)
 
-    //     Id.push(data[n].activity_student_id)
-    //   }
-    //   console.log(Id)
-    //   const datRes = { activity_student_id: Id }
-    //   // await apiDeleteActivities(datRes)
-    //   // await window.location.reload()
-    // },
+        Id.push(data[n].college_student_id)
+      }
+      console.log(Id)
+      const datRes = { college_student_id: Id }
+      await apiDeleteImportData(datRes)
+      // await window.location.reload()
+    },
    };
 
-   const clickedit = () => {
-    props.handleClickEdit()
-  }
+  //  const clickedit = () => {
+  //   props.handleClickEdit()
+  // }
 
 
    const getMuiTheme = () =>
@@ -135,6 +140,7 @@ export default function EnhancedTable(props) {
     <div className={"mb-2"}>
       <DialogCreateDataCollegeSrudents
         edit={true}
+        {...props}
       />
     </div>
   </Grid>
