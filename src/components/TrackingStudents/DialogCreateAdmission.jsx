@@ -203,6 +203,7 @@ export default function CustomizedDialogs(props) {
             />
             <div>
               <TextField
+                required
                 id="admissionName"
                 label="ชื่อโครงการ"
                 variant="outlined"

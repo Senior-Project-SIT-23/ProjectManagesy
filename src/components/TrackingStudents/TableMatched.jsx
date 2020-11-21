@@ -145,17 +145,17 @@ export default function TableMatched(props) {
         <>
           <TableRow>
             <TableCell colSpan={colSpan}>
-              <Typography gutterBottom component="div" className="font-athiti">
+              <Typography gutterBottom component="div" className="font-athiti" style={{color:"#104976"}}>
                 รายชื่อกิจกรรมที่เข้าร่วม
               </Typography>
               <Table>
                 <TableHead>
                   <TableRow>
                     <TableCell>
-                      <b className="font-athiti">ชื่อกิจกรรม</b>
+                      <b className="font-athiti text-gray-600">ชื่อกิจกรรม</b>
                     </TableCell>
                     <TableCell>
-                      <b className="font-athiti">ปีที่จัดกิจกรรม</b>
+                      <b className="font-athiti text-gray-600">ปีที่จัดกิจกรรม</b>
                     </TableCell>
                   </TableRow>
                 </TableHead>
@@ -174,20 +174,24 @@ export default function TableMatched(props) {
                 gutterBottom
                 component="div"
                 className="font-athiti mt-2"
+                style={{color:"#104976"}}
               >
                 รายชื่อโครงการที่สมัครสอบ
               </Typography>
               <Table>
-                <TableHead>
+                <TableHead className="font-bold">
                   <TableRow>
                     <TableCell>
-                      <b className="font-athiti">ชื่อโครงการที่สมัครสอบ</b>
+                      <p className="font-athiti text-gray-600">ชื่อโครงการที่สมัครสอบ</p>
                     </TableCell>
                     <TableCell>
-                      <b className="font-athiti">รอบที่สมัครสอบ</b>
+                      <p className="font-athiti text-gray-600">สาขา</p>
                     </TableCell>
                     <TableCell>
-                      <b className="font-athiti">ปีที่สมัครสอบ</b>
+                      <p className="font-athiti text-gray-600">รอบที่สมัครสอบ</p>
+                    </TableCell>
+                    <TableCell>
+                      <p className="font-athiti text-gray-600">ปีที่สมัครสอบ</p>
                     </TableCell>
                   </TableRow>
                 </TableHead>
@@ -196,6 +200,9 @@ export default function TableMatched(props) {
                   <TableRow>
                     <TableCell component="th" scope="row">
                       {data.admission_name}
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                      {data.admission_major}
                     </TableCell>
                     <TableCell>{data.round_name}</TableCell>
                     <TableCell>{data.admission_year}</TableCell>

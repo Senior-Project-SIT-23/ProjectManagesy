@@ -169,21 +169,21 @@ export default function CustomizedDialogs(props) {
           }}
         >
           <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
-            <div className="font-athiti">Import ข้อมูลนักศึกษา</div>
+            <div className="font-athiti">{props.topic}</div>
           </DialogTitle>
           <DialogContent dividers>
             <input
               hidden
               id="id"
               defaultValue=""
-              //   value={props.openEdit?.activity_id}
+              value={props.openEdit?.college_student_id}
             />
-            <input
+            {/* <input
               hidden
               id="delete_file_id"
               defaultValue={[]}
-              //   value={[props.openEdit?.activity_file_id]}
-            />
+              value={[props.openEdit?.activity_file_id]}
+            /> */}
             {/* <div>
               <TextField
                 required
@@ -292,7 +292,7 @@ export default function CustomizedDialogs(props) {
               **กรุณาอัปโหลดเป็นไฟล์ .CSV UTF-8 เท่านั้น
             </p>
             <p className="my-3">
-              Current :{props.openEdit?.activity_file_name}
+              Current :{props.openEdit?.college_student_file_name}
             </p>
           </DialogContent>
 

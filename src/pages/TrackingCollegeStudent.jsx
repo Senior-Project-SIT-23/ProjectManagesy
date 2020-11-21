@@ -87,6 +87,18 @@ export default function TrackingCollageStudent() {
     fetchDataCollegeStudent()
   },[fetchDataCollegeStudent])
 
+  //data หน้ารวม
+  const [allData, setAlldata] = useState()
+  const fetchData = useCallback(async () => {
+    const response = await apiFetchDataCollegeStudent()
+    // const temp = []
+
+    setAlldata(response.data)
+    console.log("res",response)
+  },[])
+  useEffect(() => {
+      fetchData()
+  },[fetchData])
 
   return (
     <>
@@ -110,7 +122,7 @@ export default function TrackingCollageStudent() {
             errorMessage={errorMessage}
             fetchDataCollegeStudent={fetchDataCollegeStudent}
           />}
-        {indexTab === 1 && <TableData />}
+        {indexTab === 1 && <TableData allData={allData}/>}
         
       </div>
     </>

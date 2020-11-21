@@ -129,7 +129,8 @@ export default function Test(props) {
         // window.location.reload()
       } catch (error) {
         console.log("test", error)
-        setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+        // setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+        alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
       }
     } else {
       try {
@@ -139,9 +140,11 @@ export default function Test(props) {
         // window.location.reload()
       } catch (error) {
         console.log("test", error)
-        setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+        // setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+        alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
         if (!data.file) {
-          return setErrorMessage("กรุณา upload ไฟล์")
+          // return setErrorMessage("กรุณา upload ไฟล์")
+          return alert("กรุณา upload ไฟล์")
         }
       }
     }

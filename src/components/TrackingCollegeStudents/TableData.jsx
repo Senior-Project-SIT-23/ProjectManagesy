@@ -11,7 +11,7 @@ import { Table } from "@material-ui/core"
 export default function EnhancedTable(props) {
   const columns = [
     {
-        name: "studentid",
+        name: "data_student_id",
         label: "รหัสนักศึกษา",
         options: {
           filter: true,
@@ -19,15 +19,23 @@ export default function EnhancedTable(props) {
         },
       },
     {
-      name: "name",
-      label: "ชื่อ-นามสกุล",
+      name: "data_first_name",
+      label: "ชื่อ",
       options: {
         filter: true,
         sort: true,
       },
     },
     {
-      name: "major",
+      name: "data_surname",
+      label: "นามสกุล",
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: "data_major",
       label: "สาขา",
       options: {
         filter: true,
@@ -35,7 +43,7 @@ export default function EnhancedTable(props) {
       },
     },
     {
-      name: "gpax",
+      name: "data_gpax",
       label: "เกรดเฉลี่ย",
       options: {
         filter: true,
@@ -68,15 +76,15 @@ export default function EnhancedTable(props) {
     },
   ]
 
-  const data = [
-    ["60130500077", "รวิสรา เกตุแก้ว", "IT", "2.65", "08xxxxxxxx","22"],
-    ["60130500105", "อินทิรา ตั้งนิรามัย", "IT",  "3.12", "08xxxxxxxx","20"],
-    ["60130500038", "ธนัชชา พิพม์ศิริกุล", "CS",  "2.43", "08xxxxxxxx","28"],
-    ["60130500108", "ธัญวรัตน์ ดวงสีหา", "CS",  "2.83", "08xxxxxxxx","24"],
-    ["60130500104", "อิทธิเดช ชาญสาธิต", "DSI",  "3.24", "08xxxxxxxx","21"],
-    ["60130500099", "สุภาวรรณ ชูเชิด", "DSI",  "3.50", "08xxxxxxxx","23"],
-  ]
-
+  // const data = [
+  //   ["60130500077", "รวิสรา เกตุแก้ว", "IT", "2.65", "08xxxxxxxx","22"],
+  //   ["60130500105", "อินทิรา ตั้งนิรามัย", "IT",  "3.12", "08xxxxxxxx","20"],
+  //   ["60130500038", "ธนัชชา พิพม์ศิริกุล", "CS",  "2.43", "08xxxxxxxx","28"],
+  //   ["60130500108", "ธัญวรัตน์ ดวงสีหา", "CS",  "2.83", "08xxxxxxxx","24"],
+  //   ["60130500104", "อิทธิเดช ชาญสาธิต", "DSI",  "3.24", "08xxxxxxxx","21"],
+  //   ["60130500099", "สุภาวรรณ ชูเชิด", "DSI",  "3.50", "08xxxxxxxx","23"],
+  // ]
+  console.log("props",props.allData)
   const options = {
     filterType: "checkbox",
     selectableRowsHeader: false,
@@ -145,7 +153,7 @@ export default function EnhancedTable(props) {
       <MuiThemeProvider theme={getMuiTheme()}>
         <MUIDataTable
           title={"ข้อมูลนักศึกษา"}
-          data={data}
+          data={props.allData}
           columns={columns}
           options={options}
         />

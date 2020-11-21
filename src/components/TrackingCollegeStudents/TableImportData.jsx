@@ -50,7 +50,7 @@ export default function EnhancedTable(props) {
           <IconButton>
             <EditOutlinedIcon
               onClick={() =>
-                (changeValue(tableMeta.rowData))
+                props.handleClickEdit(changeValue(tableMeta.rowData))
               }
             />
           </IconButton>
@@ -59,41 +59,28 @@ export default function EnhancedTable(props) {
         sort: false,
             }
      },
-     
+     {
+      name: "college_student_id",
+      label: "college_student_id",
+      options: {
+       filter: false,
+       sort: false,
+       display: false
+      }
+     },
    ];
    
    const data =  props.rows
    console.log(data)
-  //  [
-  //   ["Joe James", "Test Corp", "Yonkers", "NY",],
-  //   ["John Walsh", "Test Corp", "Hartford", "CT",],
-  //   ["Bob Herm", "Test Corp", "Tampa", "FL",],
-  //   ["James Houston", "Test Corp", "Dallas", "TX",],
-  //  ];
-  //  const data = props.rows
-
-  // const changeValue = (data) => {
-  //   const dataRes = {
-  //     activity_file: data[5],
-  //     activity_file_id: data[9],
-  //     activity_file_name: data[3],
-  //     activity_id: data[10],
-  //     activity_major: data[1],
-  //     activity_name: data[0],
-  //     activity_year: data[2],
-  //     created_at: data[8],
-  //     keep_file_name: data[7],
-  //     updated_at: 1,
-  //   }
-  //   return dataRes
-  // }
+  
 
   const changeValue = (data) => {
     const dataRes ={
       college_student_name:data[0],
       entrance_year: data[1],
-      college_student_file_name: [2],
-      edit: data[3]
+      college_student_file_name: data[2],
+      // edit: data[3]
+      college_student_id:data[4]
     }
     return dataRes
   }

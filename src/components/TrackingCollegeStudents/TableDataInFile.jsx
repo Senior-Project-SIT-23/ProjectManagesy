@@ -49,14 +49,14 @@ export default function TableDataInFile(props) {
         sort: true,
       },
     },
-    {
-      name: "data_degree",
-      label: "ระดับชั้น",
-      options: {
-        filter: true,
-        sort: true,
-      },
-    },
+    // {
+    //   name: "data_degree",
+    //   label: "ระดับชั้น",
+    //   options: {
+    //     filter: true,
+    //     sort: true,
+    //   },
+    // },
     {
       name: "data_programme",
       label: "แผนการเรียน",
