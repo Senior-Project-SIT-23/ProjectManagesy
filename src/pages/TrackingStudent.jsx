@@ -297,10 +297,10 @@ export default function Test(props) {
       let all_activity = ""
       let all_admission = ""
       _.map(item.activity, (act, i) => {
-        all_activity = all_activity + act.activity_student_name + ","
+        all_activity = all_activity + act.activity_student_name + ", "
       })
       _.map(item.admission, (adm, j) => {
-        all_admission = all_admission + adm.admission_name + ","
+        all_admission = all_admission + adm.admission_name + ", "
       })
       temp.push({
         ...item,

@@ -168,12 +168,13 @@ export default function EnhancedTable(props) {
       await apiDeleteActivities(datRes)
       // await window.location.reload()
     },
-    download: {
-      activity_id: false,
-    },
-    onDownload: (buildHead, buildBody, columns, data) => {
-      return "\uFEFF" + buildHead(columns) + buildBody(data)
-    },
+    // download: {
+    //   activity_id: false,
+    // },
+    // onDownload: (buildHead, buildBody, columns, data) => {
+    //   return "\uFEFF" + buildHead(columns) + buildBody(data)
+    // },
+    download: false,
     print: false,
   }
   // const classes = useStyles();

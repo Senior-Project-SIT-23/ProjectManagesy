@@ -7,9 +7,18 @@ import TableBody from "@material-ui/core/TableBody"
 import TableHead from "@material-ui/core/TableHead"
 import Typography from "@material-ui/core/Typography"
 import { Table } from "@material-ui/core"
+import _ from 'lodash'
 
 export default function EnhancedTable(props) {
   const columns = [
+    {
+        name: "data_id",
+        label: "รหัสประชาชน",
+        options: {
+          filter: true,
+          sort: true,
+        },
+      },
     {
         name: "data_student_id",
         label: "รหัสนักศึกษา",
@@ -50,16 +59,16 @@ export default function EnhancedTable(props) {
         sort: true,
       },
     },
+    // {
+    //   name: "tel",
+    //   label: "เบอร์ติดต่อ",
+    //   options: {
+    //     filter: true,
+    //     sort: true,
+    //   },
+    // },
     {
-      name: "tel",
-      label: "เบอร์ติดต่อ",
-      options: {
-        filter: true,
-        sort: true,
-      },
-    },
-    {
-      name: "tel",
+      name: "data_admission",
       label: "โครงการที่สอบเข้า",
       options: {
         filter: true,
@@ -67,11 +76,30 @@ export default function EnhancedTable(props) {
       },
     },
     {
-      name: "countAct",
+      name: "num_of_activity",
       label: "จำนวนกิจกรรมที่เข้าร่วม",
       options: {
         filter: true,
         sort: true,
+      },
+    },
+    {
+      name: "activity",
+      label: "จำนวนกิจกรรมที่เข้าร่วม",
+      options: {
+        filter: false,
+        sort: false,
+        display:false,
+        download: false
+      },
+    },
+    {
+      name: "all_activity",
+      label: "กิจกรรมที่เข้าร่วม",
+      options: {
+        filter: false,
+        sort: false,
+        display: false,
       },
     },
   ]
@@ -85,6 +113,9 @@ export default function EnhancedTable(props) {
   //   ["60130500099", "สุภาวรรณ ชูเชิด", "DSI",  "3.50", "08xxxxxxxx","23"],
   // ]
   console.log("props",props.allData)
+
+
+
   const options = {
     filterType: "checkbox",
     selectableRowsHeader: false,
@@ -94,33 +125,37 @@ export default function EnhancedTable(props) {
     expandableRowsHeader: false,
     expandableRowsOnClick: true,
 
+      
     renderExpandableRow: (rowData, rowMeta) => {
       const colSpan = rowData.length + 1
+      console.log("rowData",rowData)
       return (
         <>
           <TableRow>
             <TableCell colSpan={colSpan}>
-              <Typography gutterBottom component="div" className="font-athiti">
+              <Typography gutterBottom component="div" className="font-athiti" style={{color:"#104976"}}>
                 รายชื่อกิจกรรมที่เข้าร่วม
               </Typography>
               <Table>
                 <TableHead>
                   <TableRow>
                     <TableCell>
-                      <b className="font-athiti">ชื่อกิจกรรม</b>
+                      <b className="font-athiti text-gray-600">ชื่อกิจกรรม</b>
                     </TableCell>
                     <TableCell>
-                      <b className="font-athiti">ปีที่จัดกิจกรรม</b>
+                      <b className="font-athiti text-gray-600">ปีที่จัดกิจกรรม</b>
                     </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
+                {_.map(rowData[8],(data,index) =>(
                   <TableRow>
                     <TableCell component="th" scope="row">
-                      XXXXXXXXXXX
+                       {data.activity_student_name}
                     </TableCell>
-                    <TableCell>XXXXXXXX</TableCell>
+                <TableCell>{data.activity_student_year}</TableCell>
                   </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </TableCell>
@@ -132,6 +167,7 @@ export default function EnhancedTable(props) {
     onRowExpansionChange: (curExpanded, allExpanded, rowsExpanded) =>
       console.log(curExpanded, allExpanded, rowsExpanded),
     download: true,
+    downloadOptions: { filename: `ข้อมูลนักศึกษา.csv` },
       onDownload: (buildHead, buildBody, columns, data) => {
         return "\uFEFF" + buildHead(columns) + buildBody(data); 
     } 

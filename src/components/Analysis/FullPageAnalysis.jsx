@@ -23,15 +23,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function FullPageAnalysis() {
+export default function FullPageAnalysis(props) {
   const classes = useStyles()
+  
+  
+  console.log("props.data",props.data)
+  if(props){
+    console.log("numstudent",props.data.num_of_activity_student)
 
+  }
   return (
     <div className={classes.root}>
       <Grid container direction="row" justify="flex-end">
         <Grid item xs={2}>
           <div className={"mb-2"}>
-            <ButtonYear />
+            <ButtonYear handleChangeYear={props.handleChangeYear}/>
           </div>
         </Grid>
       </Grid>
@@ -54,7 +60,7 @@ export default function FullPageAnalysis() {
               // />
               <img src="IT.png" style={{ marginRight: 10,width: 60, height:60 }}/>
             }
-            count={"300"}
+            count={props.data.num_of_it_student}
           />
         </Grid>
         <Grid item xs={3}>
@@ -67,7 +73,7 @@ export default function FullPageAnalysis() {
               // />
               <img src="CS.png" style={{ marginRight: 10,width: 60, height:60 }}/>
             }
-            count={"300"}
+            count={props.data.num_of_cs_student}
           />
         </Grid>
         <Grid item xs={3}>
@@ -80,7 +86,7 @@ export default function FullPageAnalysis() {
               // />
               <img src="DSI.png" style={{ marginRight: 10,width: 60, height:60 }}/>
             }
-            count={"300"}
+            count={props.data.num_of_dsi_student}
           />
         </Grid>
         <Grid item xs={3}>
@@ -93,7 +99,7 @@ export default function FullPageAnalysis() {
               // />
               <img src="All.png" style={{ marginRight: 10,width: 60, height:60 }}/>
             }
-            count={"300"}
+            count={props.data.num_of_sit_student}
           />
         </Grid>
       </Grid>
@@ -108,7 +114,7 @@ export default function FullPageAnalysis() {
                 style={{ fontSize: 60, marginRight: 10, color: "#e85d04" }}
               />
             }
-            count={"1,250"}
+            count={props.data.num_of_admission_student}
           />
         </Grid>
         <Grid item xs>
@@ -120,11 +126,11 @@ export default function FullPageAnalysis() {
                 style={{ fontSize: 60, marginRight: 10, color: "#f48c06" }}
               />
             }
-            count={"1,780"}
+            count={props.data.num_of_activity_student}
           />
         </Grid>
       </Grid>
-
+            
       {/* <Grid container spacing={3}>
         <Grid item xs={12} >
         <BarChart/>

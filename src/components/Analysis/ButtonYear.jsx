@@ -5,19 +5,19 @@ import Select from 'react-select';
 
 const yearOptions = [
   {
-    value: 'ปีการศึกษา 2563',
+    value: '2563',
     label: 'ปีการศึกษา 2563'
   },
   {
-    value: 'ปีการศึกษา 2562',
+    value: '2562',
     label: 'ปีการศึกษา 2562'
   },
   {
-    value: 'ปีการศึกษา 2561',
+    value: '2561',
     label: 'ปีการศึกษา 2561'
   },
   {
-    value: 'ปีการศึกษา 2560',
+    value: '2560',
     label: 'ปีการศึกษา 2560'
   },
 ]
@@ -47,10 +47,11 @@ const formatGroupLabel = data => (
   </div>
 );
 
-export default () => (
+export default (props) => (
   <Select
     defaultValue={yearOptions[0]}
     options={yearOptions}
     formatGroupLabel={formatGroupLabel}
+    onChange={ (option) => props.handleChangeYear(option.value) }
   />
 );

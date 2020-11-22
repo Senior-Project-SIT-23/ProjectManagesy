@@ -15,15 +15,15 @@ export default function TableDataInFile(props) {
     //     sort: true,
     //   },
     // },
-    // {
-    //   name: "data_id",
-    //   label: "รหัสบัตรประชาชน",
-    //   options: {
-    //     filter: false,
-    //     sort: true,
+    {
+      name: "data_id",
+      label: "รหัสบัตรประชาชน",
+      options: {
+        filter: false,
+        sort: true,
         
-    //   },
-    // },
+      },
+    },
     {
       name: "data_first_name",
       label: "ชื่อ",

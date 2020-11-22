@@ -4,6 +4,7 @@ import Header from "../components/TrackingCollegeStudents/Header"
 import TableData from "../components/TrackingCollegeStudents/TableData"
 import TableImportData from "../components/TrackingCollegeStudents/TableImportData"
 import getCollegeStudent from "../form/collegeStudentHelper"
+import _ from 'lodash'
 import { apiEditDataCollegeStudent, apiFetchDataCollegeStudent, apiImportData } from "../service/collegeStudent"
 
 export default function TrackingCollageStudent() {
@@ -90,10 +91,23 @@ export default function TrackingCollageStudent() {
   //data หน้ารวม
   const [allData, setAlldata] = useState()
   const fetchData = useCallback(async () => {
+    const temp = []
     const response = await apiFetchDataCollegeStudent()
-    // const temp = []
+    _.map(response.data, (data,index) => {
+      _.map(data.college_student_file, (item,i) => {
+        
+        let all_activity = ""
+        _.map(item.activity,(act,i) => {
+          all_activity = all_activity + act.activity_student_name + ", "
+        })
+        temp.push({
+          ...item,
+          all_activity
+        })
+      })
+    })
 
-    setAlldata(response.data)
+    setAlldata(temp)
     console.log("res",response)
   },[])
   useEffect(() => {

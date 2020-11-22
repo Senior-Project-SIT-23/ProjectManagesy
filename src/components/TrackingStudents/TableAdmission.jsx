@@ -149,12 +149,7 @@ export default function EnhancedTable(props) {
       const datRes = { admission_id: Id }
       await apiDeteteAdmission(datRes)
     },
-    download: {
-      activity_id: false
-    },
-    onDownload: (buildHead, buildBody, columns, data) => {
-      return "\uFEFF" + buildHead(columns) + buildBody(data)
-    },
+    download: false,
     print: false
   }
   // const classes = useStyles();
