@@ -107,7 +107,7 @@ export default function TableMatched(props) {
 
     {
       name: "all_activity",
-      label: "activity",
+      label: "กิจกรรมที่เข้าร่วม",
       options: {
         filter: false,
         sort: false,
@@ -117,7 +117,7 @@ export default function TableMatched(props) {
 
     {
       name: "all_admission",
-      label: "admission",
+      label: "โครงการที่สมัครสอบ",
       options: {
         filter: false,
         sort: false,

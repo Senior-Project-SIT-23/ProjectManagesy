@@ -62,7 +62,7 @@ export default function TrackingCollageStudent() {
       handleClose()
     }catch(error){
       console.log("error",error)
-      setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+      alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
     }
   }else {
     try{
@@ -71,9 +71,9 @@ export default function TrackingCollageStudent() {
       handleClose()
     }catch (error){
       console.log("error",error)
-      setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+      alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
       if(!data.file) {
-        return setErrorMessage("กรุณา upload ไฟล์")
+        return alert("กรุณา upload ไฟล์")
       }
     }
   }
