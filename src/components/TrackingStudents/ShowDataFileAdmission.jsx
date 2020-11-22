@@ -73,7 +73,7 @@ export default function ShowDataInFileActivity(props) {
   return (
     <>
     <HeaderFileAdmission handleChangeTab={handleChangeTab} indexTab={indexTab} />
-    <div className="flex flex-col flex-1 p-10 mx-auto max-w-screen-lg min-h-screen">
+    <div className="flex flex-col flex-1 px-1 py-8 mx-auto max-w-screen-lg min-h-screen">
       {/* <div className={classesGrid.root}>
         <Grid container spacing={3}>
          

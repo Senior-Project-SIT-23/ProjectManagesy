@@ -15,7 +15,7 @@ export default function TableMatched(props) {
       name: "id",
       label: "รหัสบัตรประชาชน",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
         display: true
       },
@@ -24,7 +24,7 @@ export default function TableMatched(props) {
       name: "data_first_name",
       label: "ชื่อ",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
       },
     },
@@ -32,8 +32,8 @@ export default function TableMatched(props) {
       name: "data_surname",
       label: "นามสกุล",
       options: {
-        filter: true,
-        sort: true,
+        filter: false,
+        sort: false,
       },
     },
     {
@@ -48,7 +48,7 @@ export default function TableMatched(props) {
       name: "data_email",
       label: "email",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
       },
     },
@@ -91,7 +91,8 @@ export default function TableMatched(props) {
         filter: false,
         sort: false,
         display: false,
-        download: false
+        download: false,
+        viewColumns: false
       },
     },
     {
@@ -101,7 +102,8 @@ export default function TableMatched(props) {
         filter: false,
         sort: false,
         display: false,
-        download: false
+        download: false,
+        viewColumns: false
       },
     },
 
@@ -112,6 +114,7 @@ export default function TableMatched(props) {
         filter: false,
         sort: false,
         display: false,
+        viewColumns: false
       },
     },
 
@@ -122,6 +125,7 @@ export default function TableMatched(props) {
         filter: false,
         sort: false,
         display: false,
+        viewColumns: false
       },
     },
   ]

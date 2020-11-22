@@ -25,6 +25,15 @@ export default function TableDataInFile(props) {
       },
     },
     {
+      name: "data_student_id",
+      label: "รหัสนักศึกษา",
+      options: {
+        filter: false,
+        sort: true,
+        
+      },
+    },
+    {
       name: "data_first_name",
       label: "ชื่อ",
       options: {
@@ -35,6 +44,15 @@ export default function TableDataInFile(props) {
     {
       name: "data_surname",
       label: "นามสกุล",
+      options: {
+        filter: false,
+        sort: true,
+        
+      },
+    },
+    {
+      name: "data_major",
+      label: "สาขา",
       options: {
         filter: false,
         sort: true,
@@ -57,14 +75,14 @@ export default function TableDataInFile(props) {
     //     sort: true,
     //   },
     // },
-    {
-      name: "data_programme",
-      label: "แผนการเรียน",
-      options: {
-        filter: true,
-        sort: true,
-      },
-    },
+    // {
+    //   name: "data_programme",
+    //   label: "แผนการเรียน",
+    //   options: {
+    //     filter: true,
+    //     sort: true,
+    //   },
+    // },
     {
       name: "data_school_name",
       label: "โรงเรียน",
@@ -73,22 +91,22 @@ export default function TableDataInFile(props) {
         sort: true,
       },
     },
-    {
-      name: "data_email",
-      label: "email",
-      options: {
-        filter: false,
-        sort: true,
-      },
-    },
-    {
-      name: "data_tel",
-      label: "เบอร์ติดต่อ",
-      options: {
-        filter: false,
-        sort: true,
-      },
-    },
+    // {
+    //   name: "data_email",
+    //   label: "email",
+    //   options: {
+    //     filter: false,
+    //     sort: true,
+    //   },
+    // },
+    // {
+    //   name: "data_tel",
+    //   label: "เบอร์ติดต่อ",
+    //   options: {
+    //     filter: false,
+    //     sort: true,
+    //   },
+    // },
     {
         name: "data_admission",
         label: "โครงการที่สมัครเข้า",

@@ -257,7 +257,7 @@ export default function Test(props) {
         handleCloseAdmission()
       } catch (error) {
         console.log("test", error)
-        setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+        alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
       }
     } else {
       try {
@@ -267,9 +267,9 @@ export default function Test(props) {
         handleCloseAdmission()
       } catch (error) {
         console.log("test", error)
-        setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+        alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
         if (!data.file) {
-          return setErrorMessage("กรุณา upload ไฟล์")
+          return alert("กรุณา upload ไฟล์")
         }
       }
     }
@@ -317,7 +317,7 @@ export default function Test(props) {
   return (
     <>
       <Header handleChangeTab={handleChangeTab} indexTab={indexTab} />
-      <div className="flex flex-col flex-1 px-6 py-8 mx-auto max-w-screen-lg min-h-screen">
+      <div className="flex flex-col flex-1 px-1 py-8 mx-auto max-w-screen-lg min-h-screen">
         {indexTab === 0 && (
           <TableActivity
             // handleSelectAllClick={handleSelectAllClick}

@@ -90,7 +90,8 @@ export default function EnhancedTable(props) {
         filter: false,
         sort: false,
         display:false,
-        download: false
+        download: false,
+        viewColumns: false
       },
     },
     {
@@ -100,6 +101,7 @@ export default function EnhancedTable(props) {
         filter: false,
         sort: false,
         display: false,
+        viewColumns: false
       },
     },
   ]

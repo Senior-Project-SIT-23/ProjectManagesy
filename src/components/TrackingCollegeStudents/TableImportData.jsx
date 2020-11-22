@@ -38,8 +38,8 @@ export default function EnhancedTable(props) {
      name: "college_student_file_name",
      label: "ไฟล์",
      options: {
-      filter: true,
       sort: true,
+      filter: false,
      }
     },
     {
@@ -55,7 +55,7 @@ export default function EnhancedTable(props) {
             />
           </IconButton>
         ),
-        filter: true,
+        filter: false,
         sort: false,
             }
      },
@@ -65,7 +65,8 @@ export default function EnhancedTable(props) {
       options: {
        filter: false,
        sort: false,
-       display: false
+       display: false,
+       viewColumns: false
       }
      },
    ];
