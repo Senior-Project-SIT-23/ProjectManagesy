@@ -139,7 +139,7 @@ export default function FullPageAnalysis(props) {
 
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <SchoolTable/>
+          <SchoolTable data={props.data}/>
         </Grid>
       </Grid>
 
