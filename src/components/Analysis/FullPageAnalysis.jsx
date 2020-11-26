@@ -30,7 +30,7 @@ export default function FullPageAnalysis(props) {
   console.log("props.data",props.data)
   if(props){
     console.log("numstudent",props.data.num_of_activity_student)
-
+    console.log("props.data.school_activity",props.data.school_activity)
   }
   return (
     <div className={classes.root}>
@@ -145,13 +145,13 @@ export default function FullPageAnalysis(props) {
 
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <TableSchoolXAct/>
+          <TableSchoolXAct data={props.data}/>
         </Grid>
       </Grid>
 
       <Grid container spacing={6}>
         <Grid item xs={12}>
-          <TableAllAdmission/>
+          <TableAllAdmission data={props.data}/>
         </Grid>
       </Grid>
       {/* <Grid container spacing={6}>

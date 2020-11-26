@@ -18,7 +18,7 @@ export default function Test(props) {
   const fetchDataAnalyse = useCallback(async () => {
     setIsFetch(true)
     const response = await apiFetchAnalyze(2563)
-
+    
     console.log("response.data", response.data)
     console.log("num", response.data.num_of_activity_student)
     setData(response.data)

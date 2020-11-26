@@ -16,7 +16,7 @@ export default function SchoolTable(props) {
 
   const columns = [
     // {
-    //   name: "number",
+    //   name: "index",
     //   label: "ลำดับ",
     //   options: {
     //     filter: false,
@@ -35,7 +35,7 @@ export default function SchoolTable(props) {
       name: "IT",
       label: "IT",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
       },
     },
@@ -43,7 +43,7 @@ export default function SchoolTable(props) {
       name: "CS",
       label: "CS",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
       },
     },
@@ -51,7 +51,7 @@ export default function SchoolTable(props) {
       name: "DSI",
       label: "DSI",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
       },
     },
@@ -59,7 +59,7 @@ export default function SchoolTable(props) {
       name: "SUM",
       label: "All",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
       },
     },
@@ -72,6 +72,7 @@ export default function SchoolTable(props) {
     print: false,
     rowsPerPage: 5,
     rowsPerPageOptions: [5, 10, 20],
+    downloadOptions: { filename: `สถิตินักเรียนจากโรงเรียนที่มีสิทธิ์เข้าศึกษาที่คณะ.csv` },
     onDownload: (buildHead, buildBody, columns, data) => {
       return "\uFEFF" + buildHead(columns) + buildBody(data)
     },
