@@ -15,14 +15,14 @@ export default function TableAllAdmission(props) {
     })
 
   const columns = [
-    {
-      name: "number",
-      label: "ลำดับ",
-      options: {
-        filter: false,
-        sort: true,
-      },
-    },
+    // {
+    //   name: "number",
+    //   label: "ลำดับ",
+    //   options: {
+    //     filter: false,
+    //     sort: true,
+    //   },
+    // },
     {
       name: "admission_name",
       label: "โครงการสมัครสอบ",
