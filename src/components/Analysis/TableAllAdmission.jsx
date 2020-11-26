@@ -98,6 +98,10 @@ export default function TableAllAdmission(props) {
     onDownload: (buildHead, buildBody, columns, data) => {
       return "\uFEFF" + buildHead(columns) + buildBody(data)
     },
+    sortOrder: {
+      name: "SUM",
+      direction: "desc",
+    },
   }
 
   return (

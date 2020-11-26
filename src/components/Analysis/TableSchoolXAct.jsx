@@ -80,6 +80,10 @@ export default function TableSchoolXAct(props) {
     onDownload: (buildHead, buildBody, columns, data) => {
       return "\uFEFF" + buildHead(columns) + buildBody(data)
     },
+    sortOrder: {
+      name: "SUM",
+      direction: "desc",
+    },
   }
 
   console.log("54564654",props.data)
