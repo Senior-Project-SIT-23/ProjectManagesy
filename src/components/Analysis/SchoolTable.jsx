@@ -86,7 +86,7 @@ export default function SchoolTable(props) {
     <div>
       <MuiThemeProvider theme={getMuiTheme()}>
         <MUIDataTable
-          title={"สถิตินักเรียนจากโรงเรียนที่มีสิทธิ์เข้าศึกษาที่คณะ"}
+          title={"สถิตินักเรียนจากโรงเรียนที่มีสมัครเข้าศึกษาที่คณะ"}
           data={props.data.school_admission}
           columns={columns}
           options={options}
