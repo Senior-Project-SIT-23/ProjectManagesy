@@ -158,7 +158,7 @@ export default function EnhancedTable(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                {_.map(rowData[7],(data,index) =>(
+                {_.map(rowData[8],(data,index) =>(
                   <TableRow>
                     <TableCell component="th" scope="row">
                        {data.activity_student_name}
