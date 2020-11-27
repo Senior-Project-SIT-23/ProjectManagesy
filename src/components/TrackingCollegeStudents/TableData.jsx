@@ -11,14 +11,14 @@ import _ from 'lodash'
 
 export default function EnhancedTable(props) {
   const columns = [
-    {
-        name: "data_id",
-        label: "รหัสประชาชน",
-        options: {
-          filter: true,
-          sort: true,
-        },
-      },
+    // {
+    //     name: "data_id",
+    //     label: "รหัสประชาชน",
+    //     options: {
+    //       filter: true,
+    //       sort: true,
+    //     },
+    //   },
     {
         name: "data_student_id",
         label: "รหัสนักศึกษา",
@@ -54,6 +54,14 @@ export default function EnhancedTable(props) {
     {
       name: "data_gpax",
       label: "เกรดเฉลี่ย",
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: "data_school_name",
+      label: "โรงเรียนเดิม",
       options: {
         filter: true,
         sort: true,
@@ -150,7 +158,7 @@ export default function EnhancedTable(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                {_.map(rowData[8],(data,index) =>(
+                {_.map(rowData[7],(data,index) =>(
                   <TableRow>
                     <TableCell component="th" scope="row">
                        {data.activity_student_name}

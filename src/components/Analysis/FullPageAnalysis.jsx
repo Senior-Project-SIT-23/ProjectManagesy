@@ -10,6 +10,7 @@ import { Paper } from "@material-ui/core"
 import TableAllAdmission from "./TableAllAdmission"
 import TableSchoolXAct from "./TableSchoolXAct"
 import CardAll from "./CardAll"
+import TableSchoolCollegeStudent from "./TableSchoolCollegeStudent"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -130,12 +131,6 @@ export default function FullPageAnalysis(props) {
           />
         </Grid>
       </Grid>
-            
-      {/* <Grid container spacing={3}>
-        <Grid item xs={12} >
-        <BarChart/>
-        </Grid>
-      </Grid> */}
 
       <Grid container spacing={3}>
         <Grid item xs={12}>
@@ -145,7 +140,7 @@ export default function FullPageAnalysis(props) {
 
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <TableSchoolXAct data={props.data}/>
+          <TableSchoolCollegeStudent data={props.data}/>
         </Grid>
       </Grid>
 
@@ -154,6 +149,13 @@ export default function FullPageAnalysis(props) {
           <TableAllAdmission data={props.data}/>
         </Grid>
       </Grid>
+
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <TableSchoolXAct data={props.data}/>
+        </Grid>
+      </Grid>
+
       {/* <Grid container spacing={6}>
         <Grid item xs={12}>
           

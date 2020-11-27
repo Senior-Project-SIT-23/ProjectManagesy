@@ -2,7 +2,7 @@ import React from "react"
 import MUIDataTable from "mui-datatables"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 
-export default function SchoolTable(props) {
+export default function TableSchoolCollegeStudent(props) {
   const getMuiTheme = () =>
     createMuiTheme({
       overrides: {
@@ -72,7 +72,7 @@ export default function SchoolTable(props) {
     print: false,
     rowsPerPage: 5,
     rowsPerPageOptions: [5, 10, 20],
-    downloadOptions: { filename: `สถิตินักเรียนจากโรงเรียนที่สมัครเข้าศึกษาที่คณะ.csv` },
+    downloadOptions: { filename: `สถิตินักศึกษาจากโรงเรียนที่มีสิทธิ์เข้าศึกษาที่คณะ.csv` },
     onDownload: (buildHead, buildBody, columns, data) => {
       return "\uFEFF" + buildHead(columns) + buildBody(data)
     },
@@ -86,8 +86,8 @@ export default function SchoolTable(props) {
     <div>
       <MuiThemeProvider theme={getMuiTheme()}>
         <MUIDataTable
-          title={"สถิตินักเรียนจากโรงเรียนที่มีสิทธิ์เข้าศึกษาที่คณะ"}
-          data={props.data.school_admission}
+          title={"สถิตินักศึกษาจากโรงเรียนที่มีสิทธิ์เข้าศึกษาที่คณะ"}
+          data={props.data.college_student}
           columns={columns}
           options={options}
         />
