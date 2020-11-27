@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import MUIDataTable from "mui-datatables"
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import _ from "lodash"
+import { TramRounded } from "@material-ui/icons"
 
 export default function TableSchoolXAct(props) {
   let response
@@ -16,7 +17,6 @@ export default function TableSchoolXAct(props) {
       },
     })
   console.log("sss", props.data.school_activity)
-
 
   // const columns = [
   //   {
@@ -86,7 +86,7 @@ export default function TableSchoolXAct(props) {
     },
   }
 
-  console.log("54564654",props.data)
+  console.log("54564654", props.data)
   // const data = [
   //   {
   //     school_name: "school1",
@@ -100,7 +100,14 @@ export default function TableSchoolXAct(props) {
   //   { school_name: "school2", wip10: 1, wip11: 2, wip12: 3, wip13: 4 },
   //   { school_name: "school", wip10: 1, wip11: 2, },
   // ]
-  const column = [{ name: "data_school_name", label: "สถาบันการศึกษา" }]
+  const column = [
+    {
+      name: "data_school_name",
+      label: "สถาบันการศึกษา",
+      options: { 
+        filter: true },
+    },
+  ]
   _.map(props.data.Header, (head) => {
     column.push({
       name: head.activity_student_name,
@@ -124,7 +131,7 @@ export default function TableSchoolXAct(props) {
             return value
           }
         },
-        filter: false,
+        filter: true,
       },
     })
   })
