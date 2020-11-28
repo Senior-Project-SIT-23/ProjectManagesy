@@ -262,7 +262,7 @@ export default function CustomizedDialogs(props) {
                 <option value={"IT"}>เทคโนโลยีสารสนเทศ(IT)</option>
                 <option value={"CS"}>วิทยาการคอมพิวเตอร์(CS)</option>
                 <option value={"DSI"}>นวัตกรรมบริการดิจิตอล(DSI)</option>
-                <option value={"SIT"}>คณะเทคโนโลยีสารสนเทศ(SIT)</option>
+                {/* <option value={"SIT"}>คณะเทคโนโลยีสารสนเทศ(SIT)</option> */}
               </Select>
             </FormControl>
 

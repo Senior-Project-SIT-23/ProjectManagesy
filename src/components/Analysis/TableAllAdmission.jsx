@@ -65,28 +65,6 @@ export default function TableAllAdmission(props) {
     },
   ]
 
-  // const data = [
-  //   {
-  //     number: "1",
-  //     school: "Test Corp",
-  //     IT: "10",
-  //     CS: "4",
-  //     DSI: "1",
-  //     All: "12",
-  //   },
-  //   { number: "2", school: "Test Corp", IT: "2", CS: "4", DSI: "2", All: "12" },
-  //   { number: "3", school: "Test Corp", IT: "9", CS: "3", DSI: "2", All: "12" },
-  //   {
-  //     number: "4",
-  //     school: "Test Corp",
-  //     IT: "3",
-  //     CS: "2",
-  //     DSI: "1",
-  //     All: "12",
-  //   },
-  //   { number: "5", school: "Test Corp", IT: "5", CS: "4", DSI: "1", All: "12" },
-  // ]
-
   const options = {
     filterType: "checkbox",
     selectableRowsHeader: false,

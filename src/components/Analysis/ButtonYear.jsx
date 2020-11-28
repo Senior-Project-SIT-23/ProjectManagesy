@@ -20,6 +20,14 @@ const yearOptions = [
     value: '2560',
     label: 'ปีการศึกษา 2560'
   },
+  {
+    value: '2559',
+    label: 'ปีการศึกษา 2559'
+  },
+  {
+    value: '2558',
+    label: 'ปีการศึกษา 2558'
+  },
 ]
 
 const groupStyles = {

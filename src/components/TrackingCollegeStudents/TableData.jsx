@@ -153,6 +153,9 @@ export default function EnhancedTable(props) {
                       <b className="font-athiti text-gray-600">ชื่อกิจกรรม</b>
                     </TableCell>
                     <TableCell>
+                      <b className="font-athiti text-gray-600">สาขาที่จัดกิจกรรม</b>
+                    </TableCell>
+                    <TableCell>
                       <b className="font-athiti text-gray-600">ปีที่จัดกิจกรรม</b>
                     </TableCell>
                   </TableRow>
@@ -162,6 +165,9 @@ export default function EnhancedTable(props) {
                   <TableRow>
                     <TableCell component="th" scope="row">
                        {data.activity_student_name}
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                       {data.activity_student_major}
                     </TableCell>
                 <TableCell>{data.activity_student_year}</TableCell>
                   </TableRow>

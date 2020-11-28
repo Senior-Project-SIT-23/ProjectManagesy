@@ -42,23 +42,13 @@ export default function FullPageAnalysis(props) {
           </div>
         </Grid>
       </Grid>
-      
-      {/* <Grid container spacing={3}>
-        <Grid item xs={12} >
-          <DonutChart 
-          className={classes.paper} 
-          data={[300, 268, 455,625,365]}/>
-        </Grid>
-      </Grid> */}
+  
       <Grid container spacing={3}>
         <Grid item xs={3}>
         <Card
             className={classes.paper}
             title={"นักศึกษาสาขาเทคโนโลยีสารสนเทศ"}
             icon={
-              // <CheckCircleIcon
-              //   style={{ fontSize: 60, marginRight: 10, color: "40DC9A" }}
-              // />
               <img src="IT.png" style={{ marginRight: 10,width: 60, height:60 }}/>
             }
             count={props.data.num_of_it_student}
@@ -82,9 +72,7 @@ export default function FullPageAnalysis(props) {
             className={classes.paper}
             title={"นักศึกษาสาขานวัตกรรมบริการดิจิตัล"}
             icon={
-              // <CheckCircleIcon
-              //   style={{ fontSize: 60, marginRight: 10, color: "40DC9A" }}
-              // />
+             
               <img src="DSI.png" style={{ marginRight: 10,width: 60, height:60 }}/>
             }
             count={props.data.num_of_dsi_student}
@@ -95,9 +83,6 @@ export default function FullPageAnalysis(props) {
             className={classes.paper}
             title={"นักศึกษาคณะเทคโนโลยีสารเทศทั้งหมด"}
             icon={
-              // <CheckCircleIcon
-              //   style={{ fontSize: 60, marginRight: 10, color: "40DC9A" }}
-              // />
               <img src="All.png" style={{ marginRight: 10,width: 60, height:60 }}/>
             }
             count={props.data.num_of_sit_student}

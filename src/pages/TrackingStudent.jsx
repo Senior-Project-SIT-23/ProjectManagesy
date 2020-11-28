@@ -33,49 +33,11 @@ export default function Test(props) {
     setIndexTab(index)
   }
   //Table
-  // const [selected, setSelected] = React.useState([])
-
-  // const handleSelectAllClick = (event) => {
-  //   if (event.target.checked) {
-  //     const newSelecteds = rows.map((n) => n.activity_id)
-  //     setSelected(newSelecteds)
-  //     return
-  //   }
-  //   setSelected([])
-  // }
-
-  // const handleClick = (event, name) => {
-  //   const selectedIndex = selected.indexOf(name)
-  //   let newSelected = []
-
-  //   if (selectedIndex === -1) {
-  //     newSelected = newSelected.concat(selected, name)
-  //   } else if (selectedIndex === 0) {
-  //     newSelected = newSelected.concat(selected.slice(1))
-  //   } else if (selectedIndex === selected.length - 1) {
-  //     newSelected = newSelected.concat(selected.slice(0, -1))
-  //   } else if (selectedIndex > 0) {
-  //     newSelected = newSelected.concat(
-  //       selected.slice(0, selectedIndex),
-  //       selected.slice(selectedIndex + 1)
-  //     )
-  //   }
-
-  //   setSelected(newSelected)
-  // }
 
   const [topic, setTopic] = useState()
 
   const [rows, setrows] = useState([])
 
-  // const handleDelete = async () => {
-  //   const formData = getActivityIdsFormData(selected)
-  //   //เรียก api
-  //   console.log("delete", formData)
-  //   await apiDeleteActivities(formData)
-  //   setSelected([])
-  //   await fetchActivities()
-  // }
 
   //Dialog
   const [open, setOpen] = React.useState(false)
@@ -101,14 +63,9 @@ export default function Test(props) {
   }
   const handleSubmit = async (event) => {
     event.preventDefault()
-    // const delete_file_id =
-    //   event.target.upload_file.files.length !== 0
-    //     ? event.target.delete_file_id.value
-    //     : null
-    // setDataFileName(rows[event.target.id.value].activity_file_name)
+    
     const data = {
       id: event.target.id.value,
-      // delete_file_id: delete_file_id,
       activityName: event.target.activityName.value,
       year: event.target.yearofActivity.value,
       major: event.target.major.value,
@@ -126,10 +83,11 @@ export default function Test(props) {
         await apiEditActivity(formData)
         fetchActivities()
         handleClose()
+        fetchData()
         // window.location.reload()
       } catch (error) {
         console.log("test", error)
-        // setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+        
         alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
       }
     } else {
@@ -137,13 +95,14 @@ export default function Test(props) {
         await apiCreateActivity(formData)
         fetchActivities()
         handleClose()
+        fetchData()
         // window.location.reload()
       } catch (error) {
         console.log("test", error)
-        // setErrorMessage("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+        
         alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
         if (!data.file) {
-          // return setErrorMessage("กรุณา upload ไฟล์")
+          
           return alert("กรุณา upload ไฟล์")
         }
       }
@@ -152,10 +111,7 @@ export default function Test(props) {
 
   const fetchActivities = useCallback(async () => {
     const response = await apiFetchActivities()
-    // const dataMatch = {
-    //   ...response.data,
-    //   all_activity:
-    // }
+
     console.log("response.data", response.data)
     setrows(response.data)
   }, [])
@@ -200,13 +156,6 @@ export default function Test(props) {
 
     setSelectedAdmission(newSelected)
   }
-  // const handleDeleteAdmission = async () => {
-  //   const formData = getAdmissionIdsFormData(selectedAdmission)
-  //   //เรียก api
-  //   await apiDeteteAdmission(formData)
-  //   setSelectedAdmission([])
-  //   await fetchAdmission()
-  // }
 
   //Dialog
   const [openAdmission, setOpenAdmission] = React.useState(false)
@@ -230,19 +179,14 @@ export default function Test(props) {
   }
   const handleSubmitAdmission = async (event) => {
     event.preventDefault()
-    // const delete_admission_file_id =
-    //   event.target.upload_file_admission.files.length !== 0
-    //     ? event.target.delete_admission_file_id?.value
-    //     : null
 
     const data = {
       id: event.target.id.value,
-      // delete_admission_file_id: delete_admission_file_id,
+     
       admissionName: event.target.admissionName.value,
       round: event.target.round.value,
       year: event.target.year.value,
       major: event.target.major.value,
-      // file: event.target.upload_file_admission.files[0] || null,
       file: dataFileAdmission,
       fileName: dataFileNameAdmission,
     }
@@ -255,6 +199,7 @@ export default function Test(props) {
         await apiEditAdmission(formDataAdmission)
         fetchAdmission()
         handleCloseAdmission()
+        fetchData()
       } catch (error) {
         console.log("test", error)
         alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
@@ -263,8 +208,8 @@ export default function Test(props) {
       try {
         await apiCreateAdmission(formDataAdmission)
         fetchAdmission()
-
         handleCloseAdmission()
+        fetchData()
       } catch (error) {
         console.log("test", error)
         alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
@@ -273,10 +218,6 @@ export default function Test(props) {
         }
       }
     }
-    // } catch (error) {
-    //   console.log("test", error)
-    //   alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
-    // }
   }
   const fetchAdmission = useCallback(async () => {
     const response = await apiFetchAdmission()
@@ -320,19 +261,14 @@ export default function Test(props) {
       <div className="flex flex-col flex-1 px-1 py-8 mx-auto max-w-screen-lg min-h-screen">
         {indexTab === 0 && (
           <TableActivity
-            // handleSelectAllClick={handleSelectAllClick}
-            // handleClick={handleClick}
             rows={rows}
             handleClickEdit={handleClickEdit}
             openEdit={openEdit}
-            // selected={selected}
-            // setSelected={setSelected}
             open={open}
             setOpen={setOpen}
             handleClickOpen={handleClickOpen}
             handleClose={handleClose}
             handleSubmit={handleSubmit}
-            // handleDelete={handleDelete}
             topic={topic}
             setTopic={setTopic}
             setDataFile={setDataFile}

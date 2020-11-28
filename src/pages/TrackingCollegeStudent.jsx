@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useCallback, useState } from "react"
-// import TableData from "../components/TrackingStudents/TableActivity"
+import React, { useEffect, useCallback, useState } from "react"
 import Header from "../components/TrackingCollegeStudents/Header"
 import TableData from "../components/TrackingCollegeStudents/TableData"
 import TableImportData from "../components/TrackingCollegeStudents/TableImportData"
@@ -60,6 +59,7 @@ export default function TrackingCollageStudent() {
       await apiEditDataCollegeStudent(formData)
       fetchDataCollegeStudent()
       handleClose()
+      fetchData()
     }catch(error){
       console.log("error",error)
       alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
@@ -69,9 +69,10 @@ export default function TrackingCollageStudent() {
       await apiImportData(formData)
       fetchDataCollegeStudent()
       handleClose()
+      fetchData()
     }catch (error){
       console.log("error",error)
-      alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
+      alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง หรือ ข้อมูลรายชื่อในไฟล์ไม่มีในข้อมูลรายชื่อการสมัครสอบ")
       if(!data.file) {
         return alert("กรุณา upload ไฟล์")
       }
