@@ -218,7 +218,7 @@ export default function CustomizedDialogs(props) {
               <p>
                 {" "}
                 format ไฟล์:{" "}
-                <a href="/format.csv" download className={classes.format}>
+                <a href="/formatDataCollegeStudent.csv" download className={classes.format}>
                   format.csv{" "}
                 </a>
               </p>

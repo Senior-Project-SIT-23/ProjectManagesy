@@ -60,7 +60,12 @@ export default function Login() {
     <div className='flex w-full h-screen'>
       <div className='my-auto ml-20 '>
       <h1 className={`${classes.title} `}>M A N A G E S Y</h1>
-           <a href="http://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=PYXjbgDs&redirect_uri=http://localhost:3000/CallBack&state=Managesy" style={{textDecoration: 'none'}}>
+           {/* <a href="http://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=PYXjbgDs&redirect_uri=http://localhost:3000/CallBack&state=Managesy" style={{textDecoration: 'none'}}>
+             <Button variant="contained" color="primary" className={`${classes.button}`}>
+             Login via SSO         
+             </Button>
+           </a> */}
+           <a href="http://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=PYXjbgDs&redirect_uri=https://managesy.netlify.app/CallBack&state=Managesy" style={{textDecoration: 'none'}}>
              <Button variant="contained" color="primary" className={`${classes.button}`}>
              Login via SSO         
              </Button>
