@@ -3,8 +3,9 @@ import CommonCard from "../components/Common/Card"
 import Header from "../components/Analysis/Header"
 import FullPageAnalysis from "../components/Analysis/FullPageAnalysis"
 import { apiFetchAnalyze } from "../service/analyze"
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from "@material-ui/core/CircularProgress"
 import Loading from "../components/Analysis/Loading"
+import AnalysisChart from "../components/Analysis/AnalysisChart"
 
 export default function Test(props) {
   const [indexTab, setIndexTab] = useState(0)
@@ -18,7 +19,7 @@ export default function Test(props) {
   const fetchDataAnalyse = useCallback(async () => {
     setIsFetch(true)
     const response = await apiFetchAnalyze(2563)
-    
+
     console.log("response.data", response.data)
     console.log("num", response.data.num_of_activity_student)
     setData(response.data)
@@ -29,18 +30,29 @@ export default function Test(props) {
   }, [fetchDataAnalyse])
 
   if (isFetch) {
-    return <Loading/>
+    return <Loading />
   }
 
-  const handleChangeYear = async(year) => {
-    const {data} = await apiFetchAnalyze(year)
+  const handleChangeYear = async (year) => {
+    const { data } = await apiFetchAnalyze(year)
     setData(data)
   }
   return (
     <>
       <Header handleChangeTab={handleChangeTab} indexTab={indexTab} />
       <div className="flex flex-col flex-1 p-12 mx-auto max-w-screen-lg min-h-screen">
-        {data && <FullPageAnalysis data={data} handleChangeYear={handleChangeYear}/>}
+        {data && (
+          <>
+            {indexTab === 0 && <AnalysisChart data={data}
+                handleChangeYear={handleChangeYear}/>}
+            {indexTab === 1 && (
+              <FullPageAnalysis
+                data={data}
+                handleChangeYear={handleChangeYear}
+              />
+            )}
+          </>
+        )}
       </div>
     </>
   )
