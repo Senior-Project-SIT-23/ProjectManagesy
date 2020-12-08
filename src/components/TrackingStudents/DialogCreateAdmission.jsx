@@ -1,26 +1,27 @@
-import React from "react"
-import { withStyles } from "@material-ui/core/styles"
-import Button from "@material-ui/core/Button"
-import Dialog from "@material-ui/core/Dialog"
-import MuiDialogTitle from "@material-ui/core/DialogTitle"
-import MuiDialogContent from "@material-ui/core/DialogContent"
-import MuiDialogActions from "@material-ui/core/DialogActions"
-import IconButton from "@material-ui/core/IconButton"
-import CloseIcon from "@material-ui/icons/Close"
-import Typography from "@material-ui/core/Typography"
-import AddBoxIcon from "@material-ui/icons/AddBox"
-import TextField from "@material-ui/core/TextField"
+import React from "react";
+import { withStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import MuiDialogTitle from "@material-ui/core/DialogTitle";
+import MuiDialogContent from "@material-ui/core/DialogContent";
+import MuiDialogActions from "@material-ui/core/DialogActions";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
+import Typography from "@material-ui/core/Typography";
+import AddBoxIcon from "@material-ui/icons/AddBox";
+import TextField from "@material-ui/core/TextField";
 import {
   makeStyles,
   createMuiTheme,
   ThemeProvider,
-} from "@material-ui/core/styles"
-import FormControl from "@material-ui/core/FormControl"
-import Select from "@material-ui/core/Select"
-import InputLabel from "@material-ui/core/InputLabel"
-import Tooltip from "@material-ui/core/Tooltip"
+} from "@material-ui/core/styles";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import Tooltip from "@material-ui/core/Tooltip";
 // import { round } from "lodash"
-import { CSVReader } from "react-papaparse"
+import { CSVReader } from "react-papaparse";
+import { navigate } from "@reach/router";
 
 const styles = (theme) => ({
   root: {
@@ -33,10 +34,10 @@ const styles = (theme) => ({
     top: theme.spacing(1),
     color: theme.palette.grey[500],
   },
-})
+});
 
 const DialogTitle = withStyles(styles)((props) => {
-  const { children, classes, onClose, ...other } = props
+  const { children, classes, onClose, ...other } = props;
   return (
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
       <Typography variant="h6">{children}</Typography>
@@ -50,23 +51,23 @@ const DialogTitle = withStyles(styles)((props) => {
         </IconButton>
       ) : null}
     </MuiDialogTitle>
-  )
-})
+  );
+});
 
 const DialogContent = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
   },
-}))(MuiDialogContent)
+}))(MuiDialogContent);
 
 const DialogActions = withStyles((theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(1),
   },
-}))(MuiDialogActions)
+}))(MuiDialogActions);
 
-const buttonRef = React.createRef()
+const buttonRef = React.createRef();
 
 export default function CustomizedDialogs(props) {
   const useStyles = makeStyles((theme) => ({
@@ -89,28 +90,27 @@ export default function CustomizedDialogs(props) {
       marginTop: theme.spacing(2),
     },
     formControl2: {
-      marginLeft: "20px",
       marginTop: theme.spacing(2),
     },
     upload: {
       marginTop: theme.spacing(1),
     },
-  }))
+  }));
 
-  const classes = useStyles()
+  const classes = useStyles();
   const [state, setState] = React.useState({
     round: "",
     major: "",
     year: "",
-  })
+  });
 
   const handleChangeAdmission = (event) => {
-    const name = event.target.name
+    const name = event.target.name;
     setState({
       ...state,
       [name]: event.target.value,
-    })
-  }
+    });
+  };
 
   const theme = createMuiTheme({
     palette: {
@@ -121,32 +121,32 @@ export default function CustomizedDialogs(props) {
     shape: {
       borderRadius: 30,
     },
-  })
+  });
 
   //uploadfile
   const handleOpenDialog = (e) => {
     // Note that the ref is set async, so it might be null at some point
     if (buttonRef.current) {
-      buttonRef.current.open(e)
+      buttonRef.current.open(e);
     }
-  }
+  };
 
   const handleOnFileLoad = (data) => {
-    const temp = []
+    const temp = [];
     for (let i = 0; i < data.length; i++) {
-      if(data[i].errors.length !== 0){
+      if (data[i].errors.length !== 0) {
         break;
       }
-      temp.push(data[i].data)
+      temp.push(data[i].data);
     }
-    console.log("temp",temp)
-    console.log("data", data)
-    props.setDataFileAdmission(temp)
-  }
+    console.log("temp", temp);
+    console.log("data", data);
+    props.setDataFileAdmission(temp);
+  };
 
   const handleOnError = (err, file, inputElem, reason) => {
-    console.log(err)
-  }
+    console.log(err);
+  };
 
   return (
     <div>
@@ -173,13 +173,13 @@ export default function CustomizedDialogs(props) {
       >
         <form
           onSubmit={async (event) => {
-            await props.handleSubmitAdmission(event)
+            await props.handleSubmitAdmission(event);
             setState({
               round: "",
               major: "",
               year: "",
-            })
-            props.setDataFileAdmission(null)
+            });
+            props.setDataFileAdmission(null);
           }}
         >
           <DialogTitle
@@ -201,7 +201,24 @@ export default function CustomizedDialogs(props) {
               defaultValue={[]}
               value={props.openEditAdmission?.admission_file_id}
             />
-            <div>
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel>รูปแบบการรับสมัคร</InputLabel>
+              <Select
+                native
+                onChange={handleChangeAdmission}
+                label="รอบที่รับสมัคร"
+                name="round"
+                id="round"
+                value={state.round || props.openEditAdmission?.round_name}
+              >
+                <option value={"รอบ 1"}>รอบ 1 </option>
+                <option value={"รอบ 2"}>รอบ 2 </option>
+                <option value={"รอบ 3"}>รอบ 3 </option>
+                <option value={"รอบ 4"}>รอบ 4 </option>
+                <option value={"รอบ 5"}>รอบ 5 </option>
+              </Select>
+            </FormControl>
+            <div className="mt-2">
               <TextField
                 required
                 id="admissionName"
@@ -213,6 +230,23 @@ export default function CustomizedDialogs(props) {
 
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel>รอบที่รับสมัคร</InputLabel>
+              <Select
+                native
+                onChange={handleChangeAdmission}
+                label="รอบที่รับสมัคร"
+                name="round"
+                id="round"
+                value={state.round || props.openEditAdmission?.round_name}
+              >
+                <option value={"รอบ 1"}>รอบ 1 </option>
+                <option value={"รอบ 2"}>รอบ 2 </option>
+                <option value={"รอบ 3"}>รอบ 3 </option>
+                <option value={"รอบ 4"}>รอบ 4 </option>
+                <option value={"รอบ 5"}>รอบ 5 </option>
+              </Select>
+            </FormControl>
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel>ชื่อโครงการที่รับสมัคร</InputLabel>
               <Select
                 native
                 onChange={handleChangeAdmission}
@@ -287,7 +321,9 @@ export default function CustomizedDialogs(props) {
                 accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
               /> */}
               {props.errorMessage && (
-              <p className="my-3 text-red-600">Alert : {props.errorMessage}</p>
+                <p className="my-3 text-red-600">
+                  Alert : {props.errorMessage}
+                </p>
               )}
 
               <CSVReader
@@ -357,6 +393,13 @@ export default function CustomizedDialogs(props) {
             </div>
           </DialogContent>
           <DialogActions>
+            <Button
+              autoFocus
+              color="primary"
+              onClick={() => navigate("/createentrance")}
+            >
+              <div>สร้างรูปแบบการรับสมัคร</div>
+            </Button>
             <Button autoFocus color="primary" type="submit">
               <div>บันทึก</div>
             </Button>
@@ -364,5 +407,5 @@ export default function CustomizedDialogs(props) {
         </form>
       </Dialog>
     </div>
-  )
+  );
 }
