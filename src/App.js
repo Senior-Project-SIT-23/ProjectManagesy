@@ -34,8 +34,8 @@ function App() {
   useEffect(() => {}, []);
   return (
     <Router>
-      <Login path="/"/>
-      <CallBack path="/CallBack"/>
+      {/* <Login path="/"/>
+      <CallBack path="/CallBack"/> */}
       <MainLayout title="นักเรียน" path="/TrackingStudents" component={TrackingStudent} />
       <MainLayout title="นักศึกษา"path="/TrackingCollegeStudents" component={TrackingCollegeStudent} />
       {/* <MainLayout title="กิจกรรม"path="/Activitys" component={Activity} /> */}

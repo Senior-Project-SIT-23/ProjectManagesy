@@ -41,35 +41,20 @@ export default function Login() {
   const classes = useStyles()
 
   return (
-    // <div
-    //   className={`flex content-center flex-wrap min-h-screen ${classes.root}`}
-    // >
-    //   <div className={`w-full `}>
-    //     <div className={`text-left`}>
-    //       <h1 className={`${classes.title} `}>M A N A G E S Y</h1>
-    //       <a href="http://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=PYXjbgDs&redirect_uri=http://localhost:3000/CallBack&state=Managesy" style={{textDecoration: 'none'}}>
-          
-    //         <Button variant="contained"  className={`${classes.button}`}>
-    //         Login via SSO         
-    //         </Button>
-    //       </a>
-    //     </div>
-    //   </div>
-    // </div>
     <div className={classes.root}>
     <div className='flex w-full h-screen'>
       <div className='my-auto ml-20 '>
       <h1 className={`${classes.title} `}>M A N A G E S Y</h1>
-           {/* <a href="http://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=PYXjbgDs&redirect_uri=http://localhost:3000/CallBack&state=Managesy" style={{textDecoration: 'none'}}>
-             <Button variant="contained" color="primary" className={`${classes.button}`}>
-             Login via SSO         
-             </Button>
-           </a> */}
-           <a href="http://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=PYXjbgDs&redirect_uri=https://managesy.netlify.app/CallBack&state=Managesy" style={{textDecoration: 'none'}}>
+           <a href="http://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=PYXjbgDs&redirect_uri=http://localhost:3000/CallBack&state=Managesy" style={{textDecoration: 'none'}}>
              <Button variant="contained" color="primary" className={`${classes.button}`}>
              Login via SSO         
              </Button>
            </a>
+           {/* <a href="http://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=PYXjbgDs&redirect_uri=https://managesy.netlify.app/CallBack&state=Managesy" style={{textDecoration: 'none'}}>
+             <Button variant="contained" color="primary" className={`${classes.button}`}>
+             Login via SSO         
+             </Button>
+           </a> */}
       </div>
     </div>
     </div>
