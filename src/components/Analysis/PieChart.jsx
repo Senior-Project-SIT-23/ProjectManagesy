@@ -12,23 +12,20 @@ export default function PieChart() {
         backgroundColor: ["#004680", "#FED880", "#15A3D3"],
         // hoverBackgroundColor: ["#A5C1D8", "#FFE8B5", "#9DDDE1"],
         hoverBorderColor: ["#004680", "#FED880", "#15A3D3"],
-        hoverBorderWidth: 10
+        hoverBorderWidth: 10,
       },
     ],
-    options: {
-        legend: {
-            display: true,
-            labels: {
-                position: 'right',
-                
-            }
-        }
-    }
+  }
+  const options = {
+    legend: {
+      display: true,
+      position: "bottom",
+    },
   }
 
   return (
     <div>
-      <Paper style={{ padding: 10 , height:315}}>
+      <Paper style={{ padding: 10, height: 315 }}>
         <Grid container>
           <Grid item container direction="column" spacing={2}>
             <Typography variant="subtitle1" style={{ textAlign: "center" }}>
@@ -36,11 +33,10 @@ export default function PieChart() {
                 <b>{"Pie Chart แสดงสัดส่วนนักศึกษา"}</b>
               </div>
             </Typography>
-            <Doughnut data={data}  height={180}/>
+            <Doughnut data={data} options={options} height={180} />
           </Grid>
         </Grid>
       </Paper>
-      
     </div>
   )
 }
