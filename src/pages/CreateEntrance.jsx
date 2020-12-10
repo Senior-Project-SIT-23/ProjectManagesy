@@ -111,7 +111,7 @@ export default function CreateEntrance() {
                                                   });
                                                 }}
                                               >
-                                                <AddCircleRoundedIcon />
+                                                <AddCircleRoundedIcon className="text-white"/>
                                               </IconButton>
                                             </Tooltip>
                                           </div>
