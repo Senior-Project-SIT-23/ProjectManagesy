@@ -42,9 +42,9 @@ export default function TableAnalysis(props) {
         <Grid item xs={3}>
           <CardAnalysis
             title={"IT"}
-            backgroundColor={`#004680`}
-            fontColor={`white`}
-            icon={<WcIcon style={{ fontSize: 60, color: "#ffff" }} />}
+            backgroundColor={``}
+            // fontColor={`white`}
+            icon={<WcIcon style={{ fontSize: 60, color: "#FF6384" }} />}
             percentBoy={"80%"}
             countBoy={"80 คน"}
             percentGirl={"20%"}
@@ -52,10 +52,10 @@ export default function TableAnalysis(props) {
           />
           <Grid className="mt-3">
             <CardAnalysis
-              title={"CS"}
-              backgroundColor={`#FED880`}
-              fontColor={`white`}
-              icon={<WcIcon style={{ fontSize: 60, color: "#ffff" }} />}
+              title={"DSI"}
+              backgroundColor={``}
+              // fontColor={`white`}
+              icon={<WcIcon style={{ fontSize: 60, color: "#4BC0C0" }} />}
               percentBoy={"80%"}
               countBoy={"80 คน"}
               percentGirl={"20%"}
@@ -65,10 +65,10 @@ export default function TableAnalysis(props) {
         </Grid>
         <Grid item xs={3}>
           <CardAnalysis
-            title={"DSI"}
-            backgroundColor={`#15A3D3`}
-            fontColor={`white`}
-            icon={<WcIcon style={{ fontSize: 60, color: "#ffff" }} />}
+            title={"CS"}
+            backgroundColor={``}
+            // fontColor={`white`}
+            icon={<WcIcon style={{ fontSize: 60, color: "#FED880" }} />}
             percentBoy={"80%"}
             countBoy={"80 คน"}
             percentGirl={"20%"}

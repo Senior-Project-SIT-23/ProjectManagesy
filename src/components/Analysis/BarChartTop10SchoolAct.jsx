@@ -5,7 +5,7 @@ import { HorizontalBar } from "react-chartjs-2"
 export default function BarChartTop10SchoolEntrance() {
   const data = {
     labels: [
-      "school 1 xxxxxxxxxxxx",
+      "school 1",
       "school 2",
       "school 3",
       "school 4 ",
@@ -19,8 +19,8 @@ export default function BarChartTop10SchoolEntrance() {
     datasets: [
       {
         label: "จำนวนนักเรียนที่มาเข้าร่วมกิจกรรม",
-        backgroundColor: ["#004680","#FED880","#004680","#FED880","#004680","#FED880","#004680","#FED880","#004680","#FED880"],
-        borderColor: ["#004680","#FED880","#004680","#FED880","#004680","#FED880","#004680","#FED880","#004680","#FED880"],
+        backgroundColor: ["#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED"],
+        borderColor: ["#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED"],
         borderWidth: 1,
         // hoverBackgroundColor: "rgba(255,99,132,0.4)",
         // hoverBorderColor: "rgba(255,99,132,1)",

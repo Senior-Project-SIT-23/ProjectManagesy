@@ -14,8 +14,8 @@ export default function BarChartEntrance() {
     datasets: [
       {
         label: "จำนวนนักศึกษา",
-        backgroundColor: "#004680",
-        borderColor: "#004680",
+        backgroundColor: "#D2D5D6",
+        borderColor: "#D2D5D6",
         borderWidth: 1,
         // hoverBackgroundColor: "rgba(255,99,132,0.4)",
         // hoverBorderColor: "rgba(255,99,132,1)",
@@ -24,8 +24,8 @@ export default function BarChartEntrance() {
       },
       {
         label: "IT",
-        backgroundColor: "#004680",
-        borderColor: "#004680",
+        backgroundColor: "#FF6384",
+        borderColor: "#FF6384",
         borderWidth: 1,
         stack: 1,
         // hoverBackgroundColor: "rgba(255,99,132,0.4)",
@@ -35,8 +35,8 @@ export default function BarChartEntrance() {
       },
       {
         label: "CS",
-        backgroundColor: "#FED880",
-        borderColor: "#FED880",
+        backgroundColor: "#FFCE56",
+        borderColor: "#FFCE56",
         borderWidth: 1,
         stack: 1,
         // hoverBackgroundColor: "rgba(255,99,132,0.4)",
@@ -46,8 +46,8 @@ export default function BarChartEntrance() {
       },
       {
         label: "DSI",
-        backgroundColor: "#15A3D3",
-        borderColor:"#15A3D3",
+        backgroundColor: "#4BC0C0",
+        borderColor:"#4BC0C0",
         borderWidth: 1,
         stack: 1,
         // hoverBackgroundColor: "rgba(255,99,132,0.4)",
