@@ -68,7 +68,7 @@ function App() {
         path="/ShowdataImport/:id/:name"
         component={ShowdataImport}
       />
-      <MainLayout title="สร้างรูปแบบการรับสมัคร" path="/createentrance" component={CreateEntrance} />
+      <MainLayout title="นักเรียน" path="/createentrance" component={CreateEntrance} />
     </Router>
   );
 }
