@@ -5,7 +5,7 @@ import { HorizontalBar } from "react-chartjs-2"
 export default function BarChartTop10SchoolAct() {
   const data = {
     labels: [
-      "school 1 xxxxxxxxxxxx",
+      "school 1",
       "school 2",
       "school 3",
       "school 4 ",
@@ -18,14 +18,34 @@ export default function BarChartTop10SchoolAct() {
     ],
     datasets: [
       {
-        label: "จำนวนนักเรียนที่นักเรียนเข้ามาเป็นนักศึกษา",
-        backgroundColor: ["#004680","#FED880","#004680","#FED880","#004680","#FED880","#004680","#FED880","#004680","#FED880"],
-        borderColor: ["#004680","#FED880","#004680","#FED880","#004680","#FED880","#004680","#FED880","#004680","#FED880"],
+        label: "IT",
+        backgroundColor: "#FF6384",
+        borderColor: "#FF6384",
         borderWidth: 1,
+        stack: 1,
         // hoverBackgroundColor: "rgba(255,99,132,0.4)",
         // hoverBorderColor: "rgba(255,99,132,1)",
-        data: [],
-        
+        data: [20,30,25,30,40,16,18,23,20,22],
+      },
+      {
+        label: "CS",
+        backgroundColor: "#FFCE56",
+        borderColor:"#FFCE56",
+        borderWidth: 1,
+        stack: 1,
+        // hoverBackgroundColor: "rgba(255,99,132,0.4)",
+        // hoverBorderColor: "rgba(255,99,132,1)",
+        data: [20,30,25,30,40,16,18,23,20,22],
+      },
+      {
+        label: "DSI",
+        backgroundColor: "#4BC0C0",
+        borderColor:"#4BC0C0",
+        borderWidth: 1,
+        stack: 1,
+        // hoverBackgroundColor: "rgba(255,99,132,0.4)",
+        // hoverBorderColor: "rgba(255,99,132,1)",
+        data: [20,30,25,30,40,16,18,23,20,22],
       },
     ],
 

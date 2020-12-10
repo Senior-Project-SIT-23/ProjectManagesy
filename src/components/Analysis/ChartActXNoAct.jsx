@@ -9,9 +9,9 @@ export default function ChartActXNoAct() {
           {
             data: [70, 30],
     
-            backgroundColor: ["#004680", "#FED880", "#15A3D3"],
+            backgroundColor: ["#4BC0C0", "#E7E9ED"],
             // hoverBackgroundColor: ["#A5C1D8", "#FFE8B5", "#9DDDE1"],
-            hoverBorderColor: ["#004680", "#FED880", "#15A3D3"],
+            hoverBorderColor: ["#4BC0C0", "#E7E9ED"],
             hoverBorderWidth: 10,
           },
         ],
@@ -25,10 +25,11 @@ export default function ChartActXNoAct() {
     
       return (
         <div>
-          <Paper style={{ padding: 10, height: 300 }} className="flex justify-center">
+          <Paper style={{ padding: 10, height: 342 }} >
             <Grid container>
-              <Grid item container direction="column" spacing={2}>
-                <Typography variant="subtitle1" style={{ textAlign: "center" }}>
+              <Grid item container direction="column" spacing={2} >
+                
+                <Typography variant="subtitle1" style={{ textAlign: "center"}}>
                   <div className="font-athiti ">
                     <b>{"กราฟแสดงสัดส่วนนักศึกษาที่เคยเข้าร่วมกิจกรรมของคณะต่อนักศึกษาที่ไม่เคยเข้าร่วมกิจกรรมของคณะ"}</b>
                   </div>

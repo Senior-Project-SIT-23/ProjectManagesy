@@ -22,12 +22,10 @@ export default function TableTop5Act() {
   return (
     <div>
      
-            <TableContainer component={Paper}>
+      <TableContainer component={Paper}>
+        <div className="font-athiti text-center"><b>5 อันดับกิจกรรมที่นักศึกษาเคยเข้าร่วมมากที่สุด</b></div>
       <Table  aria-label="simple table">
         <TableHead>
-            <div className="font-athiti text-center">
-                <b>5 อันดับกิจกรรมที่นักศึกษาเคยเข้าร่วมมากที่สุด</b>
-              </div>
           <TableRow>
             <TableCell>อันดับ</TableCell>
             <TableCell align="left">กิจกรรม</TableCell>
@@ -35,11 +33,11 @@ export default function TableTop5Act() {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
+            <TableRow key={row.name} >
+              <TableCell component="th" scope="row" width="10" padding="12px">
                 {row.id}
               </TableCell>
-              <TableCell align="left">{row.activity}</TableCell>
+              <TableCell align="left" padding="12px">{row.activity}</TableCell>
              
             </TableRow>
           ))}

@@ -37,7 +37,7 @@ export default function RegionChart() {
       }
     return (
         <div>
-            <Paper style={{ padding: 10, height: 300 }}>
+            <Paper style={{ padding: 10, height: 342 }}>
         <Grid container>
           <Grid item container direction="column" spacing={2}>
             <Typography variant="subtitle1" style={{ textAlign: "center" }}>
