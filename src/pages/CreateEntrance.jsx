@@ -4,6 +4,8 @@ import TextInput from "../components/Common/Input";
 import AddCircleRoundedIcon from "@material-ui/icons/AddCircleRounded";
 import _ from "lodash";
 import { Button, IconButton, Tooltip } from "@material-ui/core";
+import { apiCreteEntrance } from "../service/admission";
+import { navigate } from "@reach/router";
 
 export default function CreateEntrance() {
   const [entrance, setEntrance] = useState({
@@ -20,8 +22,13 @@ export default function CreateEntrance() {
     ],
   });
 
-  const handleSubmit = (data) => {
-    console.log(data);
+  const handleSubmit = async (data) => {
+    try {
+      await apiCreteEntrance(JSON.stringify(data));
+      navigate("/TrackingStudents");
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <div className="max-w-screen-xl mx-auto min-h-screen">
@@ -111,7 +118,7 @@ export default function CreateEntrance() {
                                                   });
                                                 }}
                                               >
-                                                <AddCircleRoundedIcon className="text-white"/>
+                                                <AddCircleRoundedIcon className="text-white" />
                                               </IconButton>
                                             </Tooltip>
                                           </div>
