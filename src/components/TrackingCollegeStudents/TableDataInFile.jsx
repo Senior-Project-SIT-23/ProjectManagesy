@@ -16,12 +16,25 @@ export default function TableDataInFile(props) {
     //   },
     // },
     {
+      name: "data_entrance_year",
+      label: "ปีการศึกษา",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
+    {
       name: "data_id",
       label: "รหัสบัตรประชาชน",
       options: {
+        download: true,
+        display: false,
         filter: false,
-        sort: true,
-        
+        sort: false,
+        viewColumns: false
       },
     },
     {
@@ -51,6 +64,17 @@ export default function TableDataInFile(props) {
       },
     },
     {
+      name: "data_gender",
+      label: "เพศ",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
+    {
       name: "data_major",
       label: "สาขา",
       options: {
@@ -67,22 +91,7 @@ export default function TableDataInFile(props) {
         sort: true,
       },
     },
-    // {
-    //   name: "data_degree",
-    //   label: "ระดับชั้น",
-    //   options: {
-    //     filter: true,
-    //     sort: true,
-    //   },
-    // },
-    // {
-    //   name: "data_programme",
-    //   label: "แผนการเรียน",
-    //   options: {
-    //     filter: true,
-    //     sort: true,
-    //   },
-    // },
+   
     {
       name: "data_school_name",
       label: "โรงเรียน",
@@ -91,22 +100,18 @@ export default function TableDataInFile(props) {
         sort: true,
       },
     },
-    // {
-    //   name: "data_email",
-    //   label: "email",
-    //   options: {
-    //     filter: false,
-    //     sort: true,
-    //   },
-    // },
-    // {
-    //   name: "data_tel",
-    //   label: "เบอร์ติดต่อ",
-    //   options: {
-    //     filter: false,
-    //     sort: true,
-    //   },
-    // },
+    {
+      name: "data_province",
+      label: "จังหวัดของโรงเรียน",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
+  
     {
         name: "data_admission",
         label: "โครงการที่สมัครเข้า",
@@ -114,7 +119,29 @@ export default function TableDataInFile(props) {
           filter: false,
           sort: true,
         },
+    },
+    {
+      name: "data_tel",
+      label: "เบอร์ติดต่อ",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
       },
+    },
+    {
+      name: "data_email",
+      label: "email",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
   ]
 
   const options = {

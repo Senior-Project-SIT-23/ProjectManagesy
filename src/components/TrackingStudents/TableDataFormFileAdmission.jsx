@@ -7,7 +7,50 @@ import Grid from "@material-ui/core/Grid"
 
 export default function EnhancedTable(props) {
   const columns = [
-    
+    {
+      name: "data_year",
+      label: "ปีที่สมัครสอบ",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
+    {
+      name: "admission_categories",
+      label: "รูปแบบการรับสมัคร",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
+    {
+      name: "admission_name",
+      label: "ชื่อโครงการสมัครสอบ",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
+    {
+      name: "admission_major",
+      label: "สาขาที่สมัครสอบ",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
     {
       name: "data_id",
       label: "รหัสบัตรประชาชน",
@@ -30,6 +73,17 @@ export default function EnhancedTable(props) {
       options: {
         filter: false,
         sort: true,
+      },
+    },
+    {
+      name: "data_gender",
+      label: "เพศ",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
       },
     },
     {
@@ -57,6 +111,28 @@ export default function EnhancedTable(props) {
       },
     },
     {
+      name: "data_province",
+      label: "จังหวัดของโรงเรียน",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
+    {
+      name: "data_education",
+      label: "จังหวัดของโรงเรียน",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
+    {
       name: "data_email",
       label: "email",
       options: {
@@ -64,7 +140,6 @@ export default function EnhancedTable(props) {
         sort: true,
       },
     },
-   
     {
       name: "data_tel",
       label: "เบอร์ติดต่อ",
@@ -74,15 +149,6 @@ export default function EnhancedTable(props) {
       },
     },
   ]
-
-  // const data = [
-  //   ["รวิสรา เกตุแก้ว", "ม.4","3.4", "xxxxxx@gmail.com", "08xxxxxxxx","อัสสัมชัญศึกษา"],
-  //   ["อินทิรา ตั้งนิรามัย", "ม.5","3.5",  "xxxxxx@gmail.com", "08xxxxxxxx","นาคประสิทธิ์"],
-  //   ["ธนัชชา พิพม์ศิริกุล", "ม.4", "3.25", "xxxxxx@gmail.com", "08xxxxxxxx","อุดรพิทยานุกูล"],
-  //   ["ธัญวรัตน์ ดวงสีหา", "ม.6", "2.94", "xxxxxx@gmail.com", "08xxxxxxxx","ดัดดรุณี"],
-  //   ["อิทธิเดช ชาญสาธิต", "ม.6", "3.12", "xxxxxx@gmail.com", "08xxxxxxxx","เตรียมอุดมศึกษาน้อมเกล้า"],
-  //   ["สุภาวรรณ ชูเชิด", "ม.5", "3.89", "xxxxxx@gmail.com", "08xxxxxxxx","พระหฤทัยคอนแวนต์"],
-  // ]
 
   const options = {
     filterType: "checkbox",

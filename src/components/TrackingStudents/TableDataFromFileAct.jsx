@@ -16,6 +16,17 @@ export default function EnhancedTable(props) {
     //   },
     // },
     {
+      name: "data_year",
+      label: "ปีที่เข้าร่วมกิจกรรม",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
+    {
       name: "data_id",
       label: "รหัสบัตรประชาชน",
       options: {

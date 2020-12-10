@@ -195,13 +195,16 @@ export default function TableMatched(props) {
                       <p className="font-athiti text-gray-600">ชื่อโครงการที่สมัครสอบ</p>
                     </TableCell>
                     <TableCell>
-                      <p className="font-athiti text-gray-600">สาขา</p>
-                    </TableCell>
-                    <TableCell>
                       <p className="font-athiti text-gray-600">รอบที่สมัครสอบ</p>
                     </TableCell>
                     <TableCell>
                       <p className="font-athiti text-gray-600">ปีที่สมัครสอบ</p>
+                    </TableCell>
+                    <TableCell>
+                      <p className="font-athiti text-gray-600">สาขา</p>
+                    </TableCell>
+                    <TableCell>
+                      <p className="font-athiti text-gray-600">สถานะล่าสุด</p>
                     </TableCell>
                   </TableRow>
                 </TableHead>

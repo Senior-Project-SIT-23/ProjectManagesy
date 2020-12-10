@@ -2,23 +2,24 @@ import React from "react"
 import { Grid, Paper, Typography } from "@material-ui/core"
 import { Bar } from "react-chartjs-2"
 
+
 export default function BarChartEntrance() {
   const data = {
     labels: [
-      "school 1 xxxxxxxxxxxx",
-      "school 2 xxxxxxxxxxxx",
-      "school 3 xxxxxxxxxxxx",
-      "school 4 xxxxxxxxxxxx",
-      "school 5 xxxxxxxxxxxx",
+      "โครงการ 1 xxxxxxxxxxxx",
+      "โครงการ 2 xxxxxxxxxxxx",
+      "โครงการ 3 xxxxxxxxxxxx",
+      "โครงการ 4 xxxxxxxxxxxx",
+      "โครงการ 5 xxxxxxxxxxxx",
     ],
     datasets: [
       {
-        label: "จำนวนนักศึกษา",
+        label: "จำนวนนักเรียนที่สมัครสอบ",
         backgroundColor: "#D2D5D6",
         borderColor: "#D2D5D6",
         borderWidth: 1,
-        // hoverBackgroundColor: "rgba(255,99,132,0.4)",
-        // hoverBorderColor: "rgba(255,99,132,1)",
+        hoverBackgroundColor: "#D2D5D6",
+        hoverBorderColor: "#D2D5D6",
         data: [100, 80, 70, 55, 45],
         barPercentage: 0.4,
       },
@@ -56,6 +57,7 @@ export default function BarChartEntrance() {
         barPercentage: 0.4,
       },
     ],
+    
   }
   return (
     <div className=" mx-2">
@@ -86,9 +88,11 @@ export default function BarChartEntrance() {
                         //   ? props.data.borrowTime[0] + 1
                         //   : null,
                       },
+                      
                     },
                   ],
                 },
+               
               }}
             />
           </Grid>

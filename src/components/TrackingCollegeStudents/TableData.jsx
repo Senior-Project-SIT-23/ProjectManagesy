@@ -20,6 +20,28 @@ export default function EnhancedTable(props) {
     //     },
     //   },
     {
+      name: "data_entrance_year",
+      label: "ปีการศึกษา",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
+    {
+      name: "data_id",
+      label: "รหัสบัตรประชาชน",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
+    {
         name: "data_student_id",
         label: "รหัสนักศึกษา",
         options: {
@@ -44,6 +66,17 @@ export default function EnhancedTable(props) {
       },
     },
     {
+      name: "data_gender",
+      label: "เพศ",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
+    {
       name: "data_major",
       label: "สาขา",
       options: {
@@ -60,6 +93,28 @@ export default function EnhancedTable(props) {
       },
     },
     {
+      name: "data_tel",
+      label: "เบอร์ติดต่อ",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
+    {
+      name: "data_email",
+      label: "email",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
+    {
       name: "data_school_name",
       label: "โรงเรียนเดิม",
       options: {
@@ -67,14 +122,17 @@ export default function EnhancedTable(props) {
         sort: true,
       },
     },
-    // {
-    //   name: "tel",
-    //   label: "เบอร์ติดต่อ",
-    //   options: {
-    //     filter: true,
-    //     sort: true,
-    //   },
-    // },
+    {
+      name: "data_province",
+      label: "จังหวัดของโรงเรียน",
+      options: {
+        download: true,
+        display: false,
+        filter: false,
+        sort: false,
+        viewColumns: false
+      },
+    },
     {
       name: "data_admission",
       label: "โครงการที่สอบเข้า",
@@ -161,7 +219,7 @@ export default function EnhancedTable(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                {_.map(rowData[8],(data,index) =>(
+                {_.map(rowData[14],(data,index) =>(
                   <TableRow>
                     <TableCell component="th" scope="row">
                        {data.activity_student_name}
