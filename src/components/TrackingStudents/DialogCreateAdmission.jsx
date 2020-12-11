@@ -150,6 +150,7 @@ export default function CustomizedDialogs(props) {
 
   return (
     <div>
+      {console.log('prosp ->>>>',props.entrance)}
       <Tooltip title="เพิ่มโครงการสมัครสอบ">
         <ThemeProvider theme={theme}>
           <Button

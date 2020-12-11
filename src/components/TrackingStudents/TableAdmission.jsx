@@ -1,22 +1,18 @@
-import React from "react"
+import React from "react";
 
-import IconButton from '@material-ui/core/IconButton';
+import IconButton from "@material-ui/core/IconButton";
 
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import DialogCreateAdmission from "./DialogCreateAdmission";
 
-import EditOutlinedIcon from "@material-ui/icons/EditOutlined"
-import DialogCreateAdmission from "./DialogCreateAdmission"
-
-
-import MUIDataTable from "mui-datatables"
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
-import Grid from "@material-ui/core/Grid"
-import {apiDeteteAdmission,} from "../../service/admission"
-import { Link, navigate } from "@reach/router"
+import MUIDataTable from "mui-datatables";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import { apiDeteteAdmission } from "../../service/admission";
+import { Link, navigate } from "@reach/router";
 import { CSVLink } from "react-csv";
 
-
 export default function EnhancedTable(props) {
-
   // function showDataInFile(id,name) {
   //   navigate(`/ShowDataFileAdmission/${id}/${name}`)
   // }
@@ -39,7 +35,7 @@ export default function EnhancedTable(props) {
           },
         },
       },
-    })
+    });
 
   const columns = () => {
     return [
@@ -51,7 +47,8 @@ export default function EnhancedTable(props) {
             <a
               // onClick={() => showDataInFile(tableMeta.rowData[11],tableMeta.rowData[0])}
               // style={{ cursor: "pointer" }}
-              href={`/ShowDataFileAdmission/${tableMeta.rowIndex}/${tableMeta.rowData[0]}`} target="_blank"
+              href={`/ShowDataFileAdmission/${tableMeta.rowIndex}/${tableMeta.rowData[0]}`}
+              target="_blank"
             >
               {value}
             </a>
@@ -74,8 +71,8 @@ export default function EnhancedTable(props) {
           //   // >
           //   //   {value}
           //   // </a>
-          //   <CSVLink 
-          //   data={tableMeta.tableData[tableMeta.rowIndex].admission_file} 
+          //   <CSVLink
+          //   data={tableMeta.tableData[tableMeta.rowIndex].admission_file}
           //   filename={value}
           //   >
           //     {value}
@@ -92,8 +89,10 @@ export default function EnhancedTable(props) {
             <IconButton>
               <EditOutlinedIcon
                 onClick={() => {
-                  console.log(tableMeta.rowData)
-                  props.handleClickEditAdmission(changeValue(tableMeta.rowData))
+                  console.log(tableMeta.rowData);
+                  props.handleClickEditAdmission(
+                    changeValue(tableMeta.rowData)
+                  );
                 }}
               />
             </IconButton>
@@ -101,72 +100,120 @@ export default function EnhancedTable(props) {
           filter: false,
         },
       },
-      { name: "admission_file", options: { display: false, filter: false ,viewColumns: false,download:false} },
-      { name: "updated_at", options: { display: false, filter: false ,viewColumns: false,download:false} },
-      { name: "keep_file_name", options: { display: false, filter: false ,viewColumns: false,download:false} },
-      { name: "created_at", options: { display: false, filter: false ,viewColumns: false,download:false} },
-      { name: "admission_file_id", options: { display: false, filter: false ,viewColumns: false,download:false} },
-      { name: "admission_id", options: { display: false, filter: false ,viewColumns: false,download:false} },
-     
-    ]
-  }
+      {
+        name: "admission_file",
+        options: {
+          display: false,
+          filter: false,
+          viewColumns: false,
+          download: false,
+        },
+      },
+      {
+        name: "updated_at",
+        options: {
+          display: false,
+          filter: false,
+          viewColumns: false,
+          download: false,
+        },
+      },
+      {
+        name: "keep_file_name",
+        options: {
+          display: false,
+          filter: false,
+          viewColumns: false,
+          download: false,
+        },
+      },
+      {
+        name: "created_at",
+        options: {
+          display: false,
+          filter: false,
+          viewColumns: false,
+          download: false,
+        },
+      },
+      {
+        name: "admission_file_id",
+        options: {
+          display: false,
+          filter: false,
+          viewColumns: false,
+          download: false,
+        },
+      },
+      {
+        name: "admission_id",
+        options: {
+          display: false,
+          filter: false,
+          viewColumns: false,
+          download: false,
+        },
+      },
+    ];
+  };
 
-  const data = props.rowsAdmissions
- 
+  const data = props.rowsAdmissions;
+
   const changeValue = (data) => {
-    console.log(data)
+    console.log(data);
     const dataRes = {
-      
       admission_name: data[0],
-      round_name:data[1],
+      round_name: data[1],
       admission_major: data[2],
       admission_year: data[3],
       admission_file_name: data[4],
-      
+
       admission_file: data[6],
       updated_at: data[7],
       keep_file_name: data[8],
       created_at: data[9],
       admission_file_id: data[10],
-      admission_id: data[11]
-    }
-    console.log(dataRes)
-    return dataRes
-  }
+      admission_id: data[11],
+    };
+    console.log(dataRes);
+    return dataRes;
+  };
 
   const options = {
     filterType: "checkbox",
     onRowsDelete: async (deleted) => {
-      console.log(data)
-      console.log(deleted.data)
-      let Id = []
+      console.log(data);
+      console.log(deleted.data);
+      let Id = [];
       for (let i = 0; i < deleted.data.length; i++) {
-        let n = deleted.data[i].index
+        let n = deleted.data[i].index;
 
-        Id.push(data[n].admission_id)
+        Id.push(data[n].admission_id);
       }
 
-      const datRes = { admission_id: Id }
-      await apiDeteteAdmission(datRes)
+      const datRes = { admission_id: Id };
+      await apiDeteteAdmission(datRes);
     },
     download: false,
-    print: false
-  }
+    print: false,
+  };
   // const classes = useStyles();
 
   const clickedit = () => {
-    props.handleClickEditAdmission()
-  }
+    props.handleClickEditAdmission();
+  };
 
-  
   return (
     <div>
-
       <Grid container direction="row" justify="flex-end" alignItems="center">
         <div className={"mb-2"}>
-         
-          <DialogCreateAdmission {...props} setDataFileAdmission={props.setDataFileAdmission}
-            setDataFileNameAdmission={props.setDataFileNameAdmission} edit={true}/>
+          <DialogCreateAdmission
+            {...props}
+            setDataFileAdmission={props.setDataFileAdmission}
+            setDataFileNameAdmission={props.setDataFileNameAdmission}
+            edit={true}
+            entrance={props.entrance}
+          />
         </div>
       </Grid>
       <MuiThemeProvider theme={getMuiTheme()}>
@@ -178,5 +225,5 @@ export default function EnhancedTable(props) {
         />
       </MuiThemeProvider>
     </div>
-  )
+  );
 }

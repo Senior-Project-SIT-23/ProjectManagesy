@@ -1,15 +1,18 @@
 import { Field, Formik, Form, FieldArray } from "formik";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import TextInput from "../components/Common/Input";
 import AddCircleRoundedIcon from "@material-ui/icons/AddCircleRounded";
 import _ from "lodash";
-import { Button, IconButton, Tooltip } from "@material-ui/core";
+import { Button, IconButton, InputLabel, Tooltip } from "@material-ui/core";
 import { apiCreteEntrance } from "../service/admission";
 import { navigate } from "@reach/router";
+import Select from "react-select";
+import moment from "moment";
 
 export default function CreateEntrance() {
   const [entrance, setEntrance] = useState({
     entrance_name: "",
+    entrance_year: 0,
     round: [
       {
         round_name: "",
@@ -21,6 +24,32 @@ export default function CreateEntrance() {
       },
     ],
   });
+  const [year, setYear] = useState([]);
+
+  const fetchData = useCallback(async () => {
+    const tmp = [];
+    const year = parseInt(moment().format("YYYY")) + 543;
+    for (let i = 0; i < 5; i++) {
+      tmp.push(year + i);
+    }
+    for (let i = 0; i < 5; i++) {
+      tmp.push(year - i);
+    }
+    const unique = new Set(tmp);
+    const array = [...unique].sort();
+    const data = [];
+    _.map(array, (arr, index) => {
+      data.push({
+        value: arr,
+        label: arr,
+      });
+    });
+    setYear(data);
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const handleSubmit = async (data) => {
     try {
@@ -34,10 +63,11 @@ export default function CreateEntrance() {
     <div className="max-w-screen-xl mx-auto min-h-screen">
       <div className="p-6">
         <div className="shadow border rounded p-6">
+          {console.log("en", entrance)}
           <Formik initialValues={entrance} onSubmit={handleSubmit}>
             {(formikProps) => (
               <Form className="overflow-y-auto">
-                <div className="p-3 w-full overflow-hidden py-4 rounded mx-auto">
+                <div className="p-3 w-full overflow-hidden py-4 rounded mx-auto min-h-full">
                   <div className="text-right">
                     <Button
                       autoFocus
@@ -48,6 +78,30 @@ export default function CreateEntrance() {
                       <div>สร้าง</div>
                     </Button>
                   </div>
+                  <Field name="entrance_year">
+                    {({ field, meta }) => (
+                      <>
+                        <InputLabel>ปีการศึกษาที่รับสมัคร</InputLabel>
+                        <Select
+                          // value={
+                          //   year
+                          //     ? year.find(
+                          //         (option) => option.value === option.value
+                          //       )
+                          //     : ""
+                          // }
+                          options={year}
+                          defaultValue={year && year[0]}
+                          onChange={(option) =>
+                            setEntrance({
+                              ...entrance,
+                              entrance_year: option.value,
+                            })
+                          }
+                        />
+                      </>
+                    )}
+                  </Field>
 
                   <Field name="entrance_name">
                     {({ field, meta }) => (

@@ -22,3 +22,7 @@ export async function apiReadFileAdmission(admission_id) {
 export async function apiCreteEntrance(data) {
   return await axios.post("/entrance", data);
 }
+
+export async function apiFetchEntrance() {
+  return await axios.get("/entrance");
+}
