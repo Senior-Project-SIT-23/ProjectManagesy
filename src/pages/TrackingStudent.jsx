@@ -27,6 +27,7 @@ import {
 import TableMatched from "../components/TrackingStudents/TableMatched";
 import { readString } from "react-papaparse";
 import { apiFetchDataMatch, apiMatching } from "../service/analyze";
+import moment from "moment";
 
 export default function Test(props) {
   const [indexTab, setIndexTab] = useState(0);
@@ -162,6 +163,7 @@ export default function Test(props) {
   const [dataFileAdmission, setDataFileAdmission] = React.useState();
   const [dataFileNameAdmission, setDataFileNameAdmission] = React.useState();
   const [entrance, setEntrance] = React.useState();
+  const [year, setYear] = React.useState([]);
 
   const handleClickOpenCreateAdmission = () => {
     setOpenAdmission(true);
@@ -221,7 +223,25 @@ export default function Test(props) {
   };
   const fetchAdmission = useCallback(async () => {
     const response = await apiFetchAdmission();
-    const entrance = await apiFetchEntrance();
+    const tmp = [];
+    const year = parseInt(moment().format("YYYY")) + 543;
+    for (let i = 0; i < 5; i++) {
+      tmp.push(year + i);
+    }
+    for (let i = 0; i < 5; i++) {
+      tmp.push(year - i);
+    }
+    const unique = new Set(tmp);
+    const array = [...unique].sort();
+    const data = [];
+    _.map(array, (arr, index) => {
+      data.push({
+        value: arr,
+        label: arr,
+      });
+    });
+    setYear(data);
+    const entrance = await apiFetchEntrance(array[0]);
     setEntrance(entrance.data);
     setrowsAdmissions(response.data);
   }, []);
@@ -229,6 +249,12 @@ export default function Test(props) {
   useEffect(() => {
     fetchAdmission();
   }, [fetchAdmission]);
+
+  const handleEntrance = async (year) => {
+    console.log(year)
+    // const entrance = await apiFetchEntrance(year);
+    // setEntrance(entrance.data);
+  };
 
   //MatchData
   const [dataMatch, setDataMatch] = useState();
@@ -301,6 +327,8 @@ export default function Test(props) {
             errorMessage={errorMessage}
             fetchAdmission={fetchAdmission}
             entrance={entrance}
+            handleEntrance={handleEntrance}
+            year={year}
           />
         )}
         {indexTab === 2 && <TableMatched dataMatch={dataMatch} />}

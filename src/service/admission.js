@@ -23,6 +23,6 @@ export async function apiCreteEntrance(data) {
   return await axios.post("/entrance", data);
 }
 
-export async function apiFetchEntrance() {
-  return await axios.get("/entrance");
+export async function apiFetchEntrance(year) {
+  return await axios.get(`/entrance/${year}`);
 }

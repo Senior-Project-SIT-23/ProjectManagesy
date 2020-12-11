@@ -213,6 +213,8 @@ export default function EnhancedTable(props) {
             setDataFileNameAdmission={props.setDataFileNameAdmission}
             edit={true}
             entrance={props.entrance}
+            handleEntrance={props.handleEntrance}
+            year={props.year}
           />
         </div>
       </Grid>

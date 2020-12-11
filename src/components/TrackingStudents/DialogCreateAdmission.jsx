@@ -19,9 +19,9 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import Tooltip from "@material-ui/core/Tooltip";
-// import { round } from "lodash"
 import { CSVReader } from "react-papaparse";
 import { navigate } from "@reach/router";
+import _ from "lodash";
 
 const styles = (theme) => ({
   root: {
@@ -110,6 +110,9 @@ export default function CustomizedDialogs(props) {
       ...state,
       [name]: event.target.value,
     });
+    if (name === "year") {
+      props.handleEntrance(event.target.value);
+    }
   };
 
   const theme = createMuiTheme({
@@ -150,7 +153,7 @@ export default function CustomizedDialogs(props) {
 
   return (
     <div>
-      {console.log('prosp ->>>>',props.entrance)}
+      {console.log("prosp ->>>>", props.entrance)}
       <Tooltip title="เพิ่มโครงการสมัครสอบ">
         <ThemeProvider theme={theme}>
           <Button
@@ -202,6 +205,29 @@ export default function CustomizedDialogs(props) {
               defaultValue={[]}
               value={props.openEditAdmission?.admission_file_id}
             />
+            <FormControl variant="outlined" className={classes.formControl2}>
+              <InputLabel>ปีการศึกษา</InputLabel>
+              <Select
+                native
+                required
+                label="ปีการศึกษา"
+                onChange={handleChangeAdmission}
+                value={state.year || props.openEditAdmission?.admission_year}
+                name="year"
+                id="year"
+              >
+                {props.year &&
+                  _.map(props.year, (data, index) => (
+                    <option value={data.value}>{data.label}</option>
+                  ))}
+                {/* <option aria-label="None" value="" /> */}
+                {/* <option value={"2563"}>2563</option>
+                <option value={"2562"}>2562</option>
+                <option value={"2561"}>2561</option>
+                <option value={"2560"}>2560</option>
+                <option value={"2559"}>2559</option> */}
+              </Select>
+            </FormControl>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel>รูปแบบการรับสมัคร</InputLabel>
               <Select
@@ -263,25 +289,7 @@ export default function CustomizedDialogs(props) {
                 <option value={"รอบ 5"}>รอบ 5 </option>
               </Select>
             </FormControl>
-            <FormControl variant="outlined" className={classes.formControl2}>
-              <InputLabel>ปีการศึกษา</InputLabel>
-              <Select
-                native
-                required
-                label="ปีการศึกษา"
-                onChange={handleChangeAdmission}
-                value={state.year || props.openEditAdmission?.admission_year}
-                name="year"
-                id="year"
-              >
-                {/* <option aria-label="None" value="" /> */}
-                <option value={"2563"}>2563</option>
-                <option value={"2562"}>2562</option>
-                <option value={"2561"}>2561</option>
-                <option value={"2560"}>2560</option>
-                <option value={"2559"}>2559</option>
-              </Select>
-            </FormControl>
+
             <br></br>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel>สาขา</InputLabel>
