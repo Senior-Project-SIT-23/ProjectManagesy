@@ -84,14 +84,12 @@ export default function CustomizedDialogs(props) {
     },
     formControl: {
       marginTop: theme.spacing(2),
-      minWidth: 120,
+      minWidth: 380,
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
-    formControl2: {
-      marginTop: theme.spacing(2),
-    },
+
     upload: {
       marginTop: theme.spacing(1),
     },
@@ -102,6 +100,8 @@ export default function CustomizedDialogs(props) {
     round: "",
     major: "",
     year: "",
+    entrance: "",
+    program: "",
   });
 
   const handleChangeAdmission = (event) => {
@@ -205,7 +205,7 @@ export default function CustomizedDialogs(props) {
               defaultValue={[]}
               value={props.openEditAdmission?.admission_file_id}
             />
-            <FormControl variant="outlined" className={classes.formControl2}>
+            <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel>ปีการศึกษา</InputLabel>
               <Select
                 native
@@ -220,22 +220,18 @@ export default function CustomizedDialogs(props) {
                   _.map(props.year, (data, index) => (
                     <option value={data.value}>{data.label}</option>
                   ))}
-                {/* <option aria-label="None" value="" /> */}
-                {/* <option value={"2563"}>2563</option>
-                <option value={"2562"}>2562</option>
-                <option value={"2561"}>2561</option>
-                <option value={"2560"}>2560</option>
-                <option value={"2559"}>2559</option> */}
               </Select>
             </FormControl>
+            <br />
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel>รูปแบบการรับสมัคร</InputLabel>
               <Select
                 native
+                required
                 onChange={handleChangeAdmission}
-                label="รอบที่รับสมัคร"
-                name="round"
-                id="round"
+                label="รูปแบบการรับสมัคร"
+                name="entrance"
+                id="entrance"
                 value={state.round || props.openEditAdmission?.round_name}
               >
                 <option value={"รอบ 1"}>รอบ 1 </option>
@@ -245,20 +241,12 @@ export default function CustomizedDialogs(props) {
                 <option value={"รอบ 5"}>รอบ 5 </option>
               </Select>
             </FormControl>
-            <div className="mt-2">
-              <TextField
-                required
-                id="admissionName"
-                label="ชื่อโครงการ"
-                variant="outlined"
-                defaultValue={props.openEditAdmission?.admission_name}
-              />
-            </div>
-
+            <br />
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel>รอบที่รับสมัคร</InputLabel>
               <Select
                 native
+                required
                 onChange={handleChangeAdmission}
                 label="รอบที่รับสมัคร"
                 name="round"
@@ -272,17 +260,19 @@ export default function CustomizedDialogs(props) {
                 <option value={"รอบ 5"}>รอบ 5 </option>
               </Select>
             </FormControl>
+            <br />
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel>ชื่อโครงการที่รับสมัคร</InputLabel>
               <Select
                 native
+                required
                 onChange={handleChangeAdmission}
-                label="รอบที่รับสมัคร"
-                name="round"
-                id="round"
+                label="ชื่อโครงการที่รับสมัคร"
+                name="program"
+                id="program"
                 value={state.round || props.openEditAdmission?.round_name}
               >
-                <option value={"รอบ 1"}>รอบ 1 </option>
+                <option value={"รอบ 1"}>รอบ 1</option>
                 <option value={"รอบ 2"}>รอบ 2 </option>
                 <option value={"รอบ 3"}>รอบ 3 </option>
                 <option value={"รอบ 4"}>รอบ 4 </option>
@@ -300,7 +290,7 @@ export default function CustomizedDialogs(props) {
                 onChange={handleChangeAdmission}
                 label="major"
                 name="major"
-                id="majorAdmission"
+                id="major"
               >
                 <option value={"IT"}>เทคโนโลยีสารสนเทศ(IT)</option>
                 <option value={"CS"}>วิทยาการคอมพิวเตอร์(CS)</option>
