@@ -40,23 +40,29 @@ export default function EnhancedTable(props) {
   const columns = () => {
     return [
       {
-        name: "admission_name",
+        name: "entrance",
         label: "ชื่อโครงการสมัครสอบ",
         options: {
           customBodyRender: (value, tableMeta) => (
             <a
-              // onClick={() => showDataInFile(tableMeta.rowData[11],tableMeta.rowData[0])}
-              // style={{ cursor: "pointer" }}
               href={`/ShowDataFileAdmission/${tableMeta.rowIndex}/${tableMeta.rowData[0]}`}
               target="_blank"
             >
-              {value}
+              {console.log(tableMeta)}
+              {value[0].program_name}
             </a>
           ),
           filter: false,
         },
       },
-      { name: "round_name", label: "รอบ" },
+      {
+        name: "entrance",
+        label: "รอบ",
+        options: {
+          customBodyRender: (value, tableMeta) => <p>{value[0].round_name}</p>,
+          filter: false,
+        },
+      },
       { name: "admission_major", label: "สาขา" },
       { name: "admission_year", label: "ปีการศึกษา" },
       {
@@ -160,7 +166,7 @@ export default function EnhancedTable(props) {
   const data = props.rowsAdmissions;
 
   const changeValue = (data) => {
-    console.log(data);
+    console.log("testtt", data);
     const dataRes = {
       admission_name: data[0],
       round_name: data[1],
@@ -215,10 +221,12 @@ export default function EnhancedTable(props) {
             entrance={props.entrance}
             handleEntrance={props.handleEntrance}
             year={props.year}
+            defaultValue={props.defaultValue}
           />
         </div>
       </Grid>
       <MuiThemeProvider theme={getMuiTheme()}>
+        {console.log("1234", data)}
         <MUIDataTable
           title={"โครงการสมัครสอบ"}
           data={data}

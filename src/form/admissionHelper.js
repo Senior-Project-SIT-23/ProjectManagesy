@@ -1,4 +1,4 @@
-import _ from "lodash"
+import _ from "lodash";
 
 export function getAdmissionFormData(data) {
   // const formDataAds = new FormData()
@@ -15,25 +15,26 @@ export function getAdmissionFormData(data) {
   // )
 
   const dataTemp = {
-    admission_id:_.get(data, "id", null),
-    admission_name:_.get(data, "admissionName", null),
-    round_name: _.get(data, "round", null),
+    admission_id: _.get(data, "id", null),
+    admission_name: _.get(data, "admissionName", null),
+    round_id: _.get(data, "round_id", null),
+    program_id: _.get(data, "program_id", null),
+    entrance_id: _.get(data, "entrance_id", null),
     admission_major: _.get(data, "major", null),
-    admission_year: _.get(data,"year",null),
-    admission_file: _.get(data, "file",null),
-    admission_file_name: _.get(data, "fileName",null)
-  }
-  return JSON.stringify(dataTemp)
-
+    admission_year: _.get(data, "year", null),
+    admission_file: _.get(data, "file", null),
+    admission_file_name: _.get(data, "fileName", null),
+  };
+  return JSON.stringify(dataTemp);
 }
 
 export function getAdmissionIdsFormData(data) {
-    // const formDataAds = new FormData()
-    // formDataAds.append("admission_id[]", data)
-    // return formDataAds
-    const formDataAds = {
-      admission_id: data,
-    }
-    
-    return JSON.stringify(formDataAds)
-  }
+  // const formDataAds = new FormData()
+  // formDataAds.append("admission_id[]", data)
+  // return formDataAds
+  const formDataAds = {
+    admission_id: data,
+  };
+
+  return JSON.stringify(formDataAds);
+}

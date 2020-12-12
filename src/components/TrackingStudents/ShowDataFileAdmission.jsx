@@ -1,21 +1,22 @@
-import React,{useCallback, useEffect, useState} from "react"
-import { navigate, useParams } from "@reach/router"
+import React, { useCallback, useEffect, useState } from "react";
+import { navigate, useParams } from "@reach/router";
 // import ArrowBackSharpIcon from "@material-ui/icons/ArrowBackSharp"
 // import Fab from "@material-ui/core/Fab"
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles";
 
-import HeaderFileAdmission from '../TrackingStudents/HeaderFileAdmission'
+import HeaderFileAdmission from "../TrackingStudents/HeaderFileAdmission";
 
-import TableDataFormFileAdmission from "./TableDataFormFileAdmission"
-import { apiFetchAdmission, apiReadFileAdmission } from "../../service/admission"
-
+import TableDataFormFileAdmission from "./TableDataFormFileAdmission";
+import {
+  apiFetchAdmission,
+  apiReadFileAdmission,
+} from "../../service/admission";
 
 const useStylesTable = makeStyles({
   table: {
     minWidth: 800,
   },
-})
-
+});
 
 const useStylesGrid = makeStyles((theme) => ({
   root: {
@@ -28,13 +29,13 @@ const useStylesGrid = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
-}))
+}));
 
 export default function ShowDataInFileActivity(props) {
-  const { id,name } = useParams()
-  const classesGrid = useStylesGrid()
-  const [indexTab, setIndexTab] = useState(0)
-  const [data , setData] = useState()
+  const { id, name } = useParams();
+  const classesGrid = useStylesGrid();
+  const [indexTab, setIndexTab] = useState(0);
+  const [data, setData] = useState();
   // const [data, setdata] = useState()
   //Button
   // const handleBack = (index) => {
@@ -42,23 +43,23 @@ export default function ShowDataInFileActivity(props) {
   //   setIndexTab(index)
   //   navigate(`/`)
   // }
- const fetchAdmission = useCallback(async () => {
-  //  const {data} = await apiReadFileAdmission(id)
-  //  const tmp = []
-  //   for(let i = 0; i < data.length;i++ ){
-  //     tmp.push({index: i+1, ...data[i]})
-  //   }
-  //   setData(tmp)
-   const response = await apiFetchAdmission()
-   setData(response.data[props.id].admission_file)
- },[props.id])
+  const fetchAdmission = useCallback(async () => {
+    const { data } = await apiReadFileAdmission(id);
+    const tmp = [];
+    for (let i = 0; i < data.length; i++) {
+      tmp.push({ index: i + 1, ...data[i] });
+    }
+    setData(tmp);
+    //  const response = await apiFetchAdmission()
+    //  setData(response.data[props.id].admission_file)
+  }, []);
 
- useEffect(() => {
-   fetchAdmission()
- },[fetchAdmission])
+  useEffect(() => {
+    fetchAdmission();
+  }, [fetchAdmission]);
 
   function handleChangeTab(index) {
-    setIndexTab(index)
+    setIndexTab(index);
   }
 
   // const useStyles = makeStyles((theme) => ({
@@ -72,9 +73,12 @@ export default function ShowDataInFileActivity(props) {
   // const classes = useStylesTable()
   return (
     <>
-    <HeaderFileAdmission handleChangeTab={handleChangeTab} indexTab={indexTab} />
-    <div className="flex flex-col flex-1 px-1 py-8 mx-auto max-w-screen-lg min-h-screen">
-      {/* <div className={classesGrid.root}>
+      <HeaderFileAdmission
+        handleChangeTab={handleChangeTab}
+        indexTab={indexTab}
+      />
+      <div className="flex flex-col flex-1 px-1 py-8 mx-auto max-w-screen-lg min-h-screen">
+        {/* <div className={classesGrid.root}>
         <Grid container spacing={3}>
          
           <Grid item>
@@ -87,12 +91,12 @@ export default function ShowDataInFileActivity(props) {
           </Grid>
          
           <Grid item> */}
-            <TableDataFormFileAdmission title={props.name} data={data}/>
-          {/* </Grid>
+        <TableDataFormFileAdmission title={props.name} data={data} />
+        {/* </Grid>
         </Grid>
        
       </div> */}
       </div>
     </>
-  )
+  );
 }

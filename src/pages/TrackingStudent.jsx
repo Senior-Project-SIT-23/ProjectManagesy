@@ -184,9 +184,11 @@ export default function Test(props) {
 
     const data = {
       id: event.target.id.value,
+      entrance_id: event.target.entrance_id.value,
+      program_id: event.target.program_id.value,
 
-      admissionName: event.target.admissionName.value,
-      round: event.target.round.value,
+      // admissionName: event.target.admissionName.value,
+      round_id: event.target.round_id.value,
       year: event.target.year.value,
       major: event.target.major.value,
       file: dataFileAdmission,
@@ -241,7 +243,8 @@ export default function Test(props) {
       });
     });
     setYear(data);
-    const entrance = await apiFetchEntrance(array[0]);
+    const entrance = await apiFetchEntrance(parseInt(moment().format("YYYY")) + 543);
+    console.log("adsasdasdasd",entrance.data)
     setEntrance(entrance.data);
     setrowsAdmissions(response.data);
   }, []);
@@ -251,9 +254,9 @@ export default function Test(props) {
   }, [fetchAdmission]);
 
   const handleEntrance = async (year) => {
-    console.log(year)
-    // const entrance = await apiFetchEntrance(year);
-    // setEntrance(entrance.data);
+    // console.log(year)
+    const entrance = await apiFetchEntrance(year);
+    setEntrance(entrance.data);
   };
 
   //MatchData
@@ -329,6 +332,7 @@ export default function Test(props) {
             entrance={entrance}
             handleEntrance={handleEntrance}
             year={year}
+            defaultValue={parseInt(moment().format("YYYY")) + 543}
           />
         )}
         {indexTab === 2 && <TableMatched dataMatch={dataMatch} />}

@@ -97,11 +97,11 @@ export default function CustomizedDialogs(props) {
 
   const classes = useStyles();
   const [state, setState] = React.useState({
-    round: "",
+    round_id: 1,
     major: "",
     year: "",
-    entrance: "",
-    program: "",
+    entrance_id: 1,
+    program_id: 1,
   });
 
   const handleChangeAdmission = (event) => {
@@ -179,9 +179,11 @@ export default function CustomizedDialogs(props) {
           onSubmit={async (event) => {
             await props.handleSubmitAdmission(event);
             setState({
-              round: "",
+              round_id: 1,
               major: "",
               year: "",
+              entrance_id: 1,
+              program_id: 1,
             });
             props.setDataFileAdmission(null);
           }}
@@ -213,6 +215,7 @@ export default function CustomizedDialogs(props) {
                 label="ปีการศึกษา"
                 onChange={handleChangeAdmission}
                 value={state.year || props.openEditAdmission?.admission_year}
+                defaultValue={props && props.defaultValue}
                 name="year"
                 id="year"
               >
@@ -230,15 +233,18 @@ export default function CustomizedDialogs(props) {
                 required
                 onChange={handleChangeAdmission}
                 label="รูปแบบการรับสมัคร"
-                name="entrance"
-                id="entrance"
+                name="entrance_id"
+                id="entrance_id"
                 value={state.round || props.openEditAdmission?.round_name}
               >
-                <option value={"รอบ 1"}>รอบ 1 </option>
-                <option value={"รอบ 2"}>รอบ 2 </option>
-                <option value={"รอบ 3"}>รอบ 3 </option>
-                <option value={"รอบ 4"}>รอบ 4 </option>
-                <option value={"รอบ 5"}>รอบ 5 </option>
+                {props.entrance &&
+                  _.map(props.entrance, (data, index) => (
+                    <option value={data.entrance_id}>
+                      {data.entrance_name}
+                    </option>
+                  ))}
+                {/* <option value={1}>รอบ 1 </option>
+                <option value={2}>รอบ 2 </option> */}
               </Select>
             </FormControl>
             <br />
@@ -249,15 +255,17 @@ export default function CustomizedDialogs(props) {
                 required
                 onChange={handleChangeAdmission}
                 label="รอบที่รับสมัคร"
-                name="round"
-                id="round"
+                name="round_id"
+                id="round_id"
                 value={state.round || props.openEditAdmission?.round_name}
               >
-                <option value={"รอบ 1"}>รอบ 1 </option>
-                <option value={"รอบ 2"}>รอบ 2 </option>
-                <option value={"รอบ 3"}>รอบ 3 </option>
-                <option value={"รอบ 4"}>รอบ 4 </option>
-                <option value={"รอบ 5"}>รอบ 5 </option>
+                {props.entrance &&
+                  _.map(
+                    props.entrance[state.entrance_id - 1].round,
+                    (data, index) => (
+                      <option value={data.round_id}>{data.round_name}</option>
+                    )
+                  )}
               </Select>
             </FormControl>
             <br />
@@ -268,15 +276,21 @@ export default function CustomizedDialogs(props) {
                 required
                 onChange={handleChangeAdmission}
                 label="ชื่อโครงการที่รับสมัคร"
-                name="program"
-                id="program"
+                name="program_id"
+                id="program_id"
                 value={state.round || props.openEditAdmission?.round_name}
               >
-                <option value={"รอบ 1"}>รอบ 1</option>
-                <option value={"รอบ 2"}>รอบ 2 </option>
-                <option value={"รอบ 3"}>รอบ 3 </option>
-                <option value={"รอบ 4"}>รอบ 4 </option>
-                <option value={"รอบ 5"}>รอบ 5 </option>
+                {props.entrance &&
+                  _.map(
+                    props.entrance[state.entrance_id - 1].round[
+                      state.round_id - 1
+                    ].program,
+                    (data, index) => (
+                      <option value={data.program_id}>
+                        {data.program_name}
+                      </option>
+                    )
+                  )}
               </Select>
             </FormControl>
 
