@@ -11,6 +11,7 @@ import {
   apiFetchAdmission,
   apiReadFileAdmission,
 } from "../../service/admission";
+import ChangeStatusFileAdmission from "./ChangeStatusFileAdmission";
 
 const useStylesTable = makeStyles({
   table: {
@@ -91,7 +92,10 @@ export default function ShowDataInFileActivity(props) {
           </Grid>
          
           <Grid item> */}
-        <TableDataFormFileAdmission title={props.name} data={data} />
+        {indexTab === 0 && (
+          <TableDataFormFileAdmission title={props.name} data={data} />
+        )}
+        {indexTab === 1 && <ChangeStatusFileAdmission id={id} />}
         {/* </Grid>
         </Grid>
        

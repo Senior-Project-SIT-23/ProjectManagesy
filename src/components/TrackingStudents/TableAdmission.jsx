@@ -45,7 +45,7 @@ export default function EnhancedTable(props) {
         options: {
           customBodyRender: (value, tableMeta) => (
             <a
-              href={`/ShowDataFileAdmission/${tableMeta.rowIndex}/${tableMeta.rowData[0]}`}
+              href={`/ShowDataFileAdmission/${value[0].admission_id}/${value[0].program_name}`}
               target="_blank"
             >
               {console.log(tableMeta)}

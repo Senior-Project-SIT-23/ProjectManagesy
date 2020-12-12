@@ -26,3 +26,7 @@ export async function apiCreteEntrance(data) {
 export async function apiFetchEntrance(year) {
   return await axios.get(`/entrance/${year}`);
 }
+
+export async function apiChangeStatus(data) {
+  return await axios.put("/status", data);
+}
