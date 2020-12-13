@@ -60,7 +60,7 @@ export default function ChangeStatusFileAdmission(props) {
         data_id: dataInFile,
       }
       await apiChangeStatus(JSON.stringify(data))
-      window.location.reload()
+      // window.location.reload()
     } catch (err) {
       console.error(err)
     }

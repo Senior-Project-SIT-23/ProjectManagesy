@@ -14,7 +14,7 @@ export default function RegionChart() {
         label: "My dataset", // for legend
       },
     ],
-    labels: ["ภาคเหนือ", "ภาคกลาง", "ภาคใต้", "ภาคอีสาน","xxxxxx"],
+    labels: ["xxxxxxx", "xxxxxx", "xxxxx", "xxxxxxx","xxxxxx"],
   }
   const options = {
     legend: {

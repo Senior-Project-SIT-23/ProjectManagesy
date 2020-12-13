@@ -7,7 +7,7 @@ export default function PieChart(props) {
     labels: ["IT", "CS", "DSI"],
     datasets: [
       {
-        data: [props.num_of_it_student, props.num_of_cs_student, props.num_of_dsi_student],
+        data: [props.data.num_of_it_student, props.data.num_of_cs_student, props.data.num_of_dsi_student],
 
         backgroundColor: ["#FF6384", "#FFCE56", "#4BC0C0"],
         // hoverBackgroundColor: ["#A5C1D8", "#FFE8B5", "#9DDDE1"],

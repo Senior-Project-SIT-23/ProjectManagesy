@@ -29,7 +29,7 @@ const formatGroupLabel = (data) => (
 
 export default (props) => (
   <Select
-    defaultValue={props.year && props.year[0]}
+    defaultValue={props.year && props.year[4]}
     options={props.year && props.year}
     formatGroupLabel={formatGroupLabel}
     onChange={(option) => props.handleChangeYear(option.value)}

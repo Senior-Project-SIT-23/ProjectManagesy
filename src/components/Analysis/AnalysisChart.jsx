@@ -27,8 +27,9 @@ const useStyles = makeStyles((theme) => ({
 export default function TableAnalysis(props) {
   const classes = useStyles()
 
-  console.log("props.data",props.data.school_activity)
+  console.log("props.data",props.data)
 
+  
   
   
   return (
@@ -42,7 +43,7 @@ export default function TableAnalysis(props) {
       </Grid>
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <PieChart />
+          <PieChart data={props.data}/>
         </Grid>
         <Grid item xs={3}>
           <CardAnalysis
@@ -50,10 +51,10 @@ export default function TableAnalysis(props) {
             backgroundColor={``}
             // fontColor={`white`}
             icon={<WcIcon style={{ fontSize: 60, color: "#FF6384" }} />}
-            percentBoy={"80%"}
-            countBoy={"80 คน"}
-            percentGirl={"20%"}
-            countGirl={"20 คน"}
+            percentBoy={((props.data.gender[0].Male*100)/props.data.gender[0].Total).toFixed(2) + "%"}
+            countBoy={props.data.gender[0].Male + " คน"}
+            percentGirl={((props.data.gender[0].Female*100)/props.data.gender[0].Total).toFixed(2) + "%"}
+            countGirl={props.data.gender[0].Female + " คน"}
           />
           <Grid className="mt-3">
             <CardAnalysis
@@ -61,10 +62,10 @@ export default function TableAnalysis(props) {
               backgroundColor={``}
               // fontColor={`white`}
               icon={<WcIcon style={{ fontSize: 60, color: "#4BC0C0" }} />}
-              percentBoy={"80%"}
-              countBoy={"80 คน"}
-              percentGirl={"20%"}
-              countGirl={"20 คน"}
+              percentBoy={((props.data.gender[2].Male*100)/props.data.gender[2].Total).toFixed(2) + "%"}
+              countBoy={props.data.gender[2].Male + " คน"}
+              percentGirl={((props.data.gender[2].Female*100)/props.data.gender[2].Total).toFixed(2) + "%"}
+              countGirl={props.data.gender[2].Female + " คน"}
             />
           </Grid>
         </Grid>
@@ -74,20 +75,20 @@ export default function TableAnalysis(props) {
             backgroundColor={``}
             // fontColor={`white`}
             icon={<WcIcon style={{ fontSize: 60, color: "#FED880" }} />}
-            percentBoy={"80%"}
-            countBoy={"80 คน"}
-            percentGirl={"20%"}
-            countGirl={"20 คน"}
+            percentBoy={((props.data.gender[1].Male*100)/props.data.gender[1].Total).toFixed(2) + "%"}
+            countBoy={props.data.gender[1].Male + " คน"}
+            percentGirl={((props.data.gender[1].Female*100)/props.data.gender[1].Total).toFixed(2) + "%"}
+            countGirl={props.data.gender[1].Female + " คน"}
           />
           <Grid className="mt-3">
             <CardAnalysis
               title={"ALL"}
               backgroundColor={``}
               icon={<WcIcon style={{ fontSize: 60, color: "#e85d04" }} />}
-              percentBoy={"80%"}
-              countBoy={"80 คน"}
-              percentGirl={"20%"}
-              countGirl={"20 คน"}
+              percentBoy={((props.data.gender[3].Male*100)/props.data.gender[3].Total).toFixed(2) + "%"}
+              countBoy={props.data.gender[3].Male + " คน"}
+              percentGirl={((props.data.gender[3].Female*100)/props.data.gender[3].Total).toFixed(2) + "%"}
+              countGirl={props.data.gender[3].Female + " คน"}
             />
           </Grid>
         </Grid>
@@ -97,7 +98,7 @@ export default function TableAnalysis(props) {
           <RegionChart />
         </Grid>
         <Grid item xs={4}>
-          <ChartActXNoAct />
+          <ChartActXNoAct data={props.data.compare_activity}/>
         </Grid>
         
         <Grid item xs={4}>
@@ -109,7 +110,7 @@ export default function TableAnalysis(props) {
           <BarChartTop10SchoolAct />
         </Grid>
         <Grid item xs={6}>
-          <BarChartTop10SchoolEntrance />
+          <BarChartTop10SchoolEntrance data={props.data.school_admission}/>
         </Grid>
       </Grid>
       <Grid container spacing={3}>

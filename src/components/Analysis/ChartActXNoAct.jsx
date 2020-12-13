@@ -2,12 +2,14 @@ import React from 'react'
 import { Doughnut, Pie } from "react-chartjs-2"
 import { Grid, Paper, Typography } from "@material-ui/core"
 
-export default function ChartActXNoAct() {
+export default function ChartActXNoAct(props) {
+
+    console.log("data",props.data)
     const data = {
         labels: ["นักศึกษาที่เคยเข้าร่วมกิจกรรม","นักศึกษาที่ไม่เคยเข้าร่วมกิจกรรม"],
         datasets: [
           {
-            data: [70, 30],
+            data: [props.data[0].activity, props.data[0].non_activity],
     
             backgroundColor: ["#4BC0C0", "#E7E9ED"],
             // hoverBackgroundColor: ["#A5C1D8", "#FFE8B5", "#9DDDE1"],

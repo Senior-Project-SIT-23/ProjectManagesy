@@ -2,19 +2,19 @@ import React from "react"
 import { Grid, Paper, Typography } from "@material-ui/core"
 import { HorizontalBar } from "react-chartjs-2"
 
-export default function BarChartTop10SchoolAct() {
+export default function BarChartTop10SchoolAct(props) {
   const data = {
     labels: [
-      "school 1",
-      "school 2",
-      "school 3",
-      "school 4 ",
-      "school 5",
-      "school 6",
-      "school 7",
-      "school 8",
-      "school 9",
-      "school 10",
+      props.data[0].data_school_name,
+      props.data[1].data_school_name,
+      props.data[2].data_school_name,
+      // props.data[3].data_school_name,
+      // props.data[4].data_school_name,
+      // props.data[5].data_school_name,
+      // props.data[6].data_school_name,
+      // props.data[7].data_school_name,
+      // props.data[8].data_school_name,
+      // props.data[9].data_school_name,
     ],
     datasets: [
       {
@@ -25,7 +25,7 @@ export default function BarChartTop10SchoolAct() {
         stack: 1,
         // hoverBackgroundColor: "rgba(255,99,132,0.4)",
         // hoverBorderColor: "rgba(255,99,132,1)",
-        data: [20,30,25,30,40,16,18,23,20,22],
+        data: [props.data[0].IT,props.data[1].IT,props.data[2].IT,30,40,16,18,23,20,22],
       },
       {
         label: "CS",
@@ -35,7 +35,7 @@ export default function BarChartTop10SchoolAct() {
         stack: 1,
         // hoverBackgroundColor: "rgba(255,99,132,0.4)",
         // hoverBorderColor: "rgba(255,99,132,1)",
-        data: [20,30,25,30,40,16,18,23,20,22],
+        data: [props.data[0].CS,props.data[1].CS,props.data[2].CS,30,40,16,18,23,20,22],
       },
       {
         label: "DSI",
@@ -45,7 +45,7 @@ export default function BarChartTop10SchoolAct() {
         stack: 1,
         // hoverBackgroundColor: "rgba(255,99,132,0.4)",
         // hoverBorderColor: "rgba(255,99,132,1)",
-        data: [20,30,25,30,40,16,18,23,20,22],
+        data: [props.data[0].DSI,props.data[1].DSI,props.data[2].DSI,30,40,16,18,23,20,22],
       },
     ],
 
