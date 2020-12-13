@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography"
 import { Table } from "@material-ui/core"
 import TableBody from "@material-ui/core/TableBody"
 import TableHead from "@material-ui/core/TableHead"
-import _ from 'lodash'
+import _ from "lodash"
 
 export default function TableMatched(props) {
   const columns = [
@@ -17,7 +17,7 @@ export default function TableMatched(props) {
       options: {
         filter: false,
         sort: true,
-        display: true
+        display: true,
       },
     },
     {
@@ -92,7 +92,7 @@ export default function TableMatched(props) {
         sort: false,
         display: false,
         download: false,
-        viewColumns: false
+        viewColumns: false,
       },
     },
     {
@@ -103,7 +103,7 @@ export default function TableMatched(props) {
         sort: false,
         display: false,
         download: false,
-        viewColumns: false
+        viewColumns: false,
       },
     },
 
@@ -114,7 +114,7 @@ export default function TableMatched(props) {
         filter: false,
         sort: false,
         display: false,
-        viewColumns: false
+        viewColumns: false,
       },
     },
 
@@ -125,7 +125,7 @@ export default function TableMatched(props) {
         filter: false,
         sort: false,
         display: false,
-        viewColumns: false
+        viewColumns: false,
       },
     },
   ]
@@ -140,7 +140,7 @@ export default function TableMatched(props) {
     expandableRowsHeader: false,
     expandableRowsOnClick: true,
     print: false,
-   
+
     renderExpandableRow: (rowData, rowMeta) => {
       const colSpan = rowData.length + 1
       console.log("ddd", rowData)
@@ -149,7 +149,12 @@ export default function TableMatched(props) {
         <>
           <TableRow>
             <TableCell colSpan={colSpan}>
-              <Typography gutterBottom component="div" className="font-athiti" style={{color:"#104976"}}>
+              <Typography
+                gutterBottom
+                component="div"
+                className="font-athiti"
+                style={{ color: "#104976" }}
+              >
                 รายชื่อกิจกรรมที่เข้าร่วม
               </Typography>
               <Table>
@@ -159,10 +164,14 @@ export default function TableMatched(props) {
                       <b className="font-athiti text-gray-600">ชื่อกิจกรรม</b>
                     </TableCell>
                     <TableCell>
-                      <b className="font-athiti text-gray-600">สาขาที่จัดกิจกรรม</b>
+                      <b className="font-athiti text-gray-600">
+                        สาขาที่จัดกิจกรรม
+                      </b>
                     </TableCell>
                     <TableCell>
-                      <b className="font-athiti text-gray-600">ปีที่จัดกิจกรรม</b>
+                      <b className="font-athiti text-gray-600">
+                        ปีที่จัดกิจกรรม
+                      </b>
                     </TableCell>
                   </TableRow>
                 </TableHead>
@@ -184,7 +193,7 @@ export default function TableMatched(props) {
                 gutterBottom
                 component="div"
                 className="font-athiti mt-2"
-                style={{color:"#104976"}}
+                style={{ color: "#104976" }}
               >
                 รายชื่อโครงการที่สมัครสอบ
               </Typography>
@@ -192,10 +201,14 @@ export default function TableMatched(props) {
                 <TableHead className="font-bold">
                   <TableRow>
                     <TableCell>
-                      <p className="font-athiti text-gray-600">ชื่อโครงการที่สมัครสอบ</p>
+                      <p className="font-athiti text-gray-600">
+                        ชื่อโครงการที่สมัครสอบ
+                      </p>
                     </TableCell>
                     <TableCell>
-                      <p className="font-athiti text-gray-600">รอบที่สมัครสอบ</p>
+                      <p className="font-athiti text-gray-600">
+                        รอบที่สมัครสอบ
+                      </p>
                     </TableCell>
                     <TableCell>
                       <p className="font-athiti text-gray-600">ปีที่สมัครสอบ</p>
@@ -204,23 +217,39 @@ export default function TableMatched(props) {
                       <p className="font-athiti text-gray-600">สาขา</p>
                     </TableCell>
                     <TableCell>
-                      <p className="font-athiti text-gray-600">สถานะล่าสุด</p>
+                      <p className="font-athiti text-gray-600">สถานะสิ้นสุด</p>
                     </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                {_.map(rowData[10], (data, index) => (
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      {data.admission_name}
-                    </TableCell>
-                    <TableCell component="th" scope="row">
-                      {data.admission_major}
-                    </TableCell>
-                    <TableCell>{data.round_name}</TableCell>
-                    <TableCell>{data.admission_year}</TableCell>
-                  </TableRow>
-                ))}
+                  {_.map(rowData[10], (data, index) => (
+                    <TableRow>
+                      <TableCell component="th" scope="row">
+                        {data.admission_name}
+                      </TableCell>
+                      <TableCell>{data.admission_categories}</TableCell>
+                      <TableCell>{data.admission_year}</TableCell>
+                      <TableCell component="th" scope="row">
+                        {data.admission_major}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        {/* {data.status === 1?"ยื่นสมัครสอบ": "1" || data.status === 2 ? "มีสิทธิ์สอบสัมภาษณ์" : "2"
+                      || data.status === 3 ? "มีสิทธิ์เข้าศึกษาต่อ" : "3" || data.status === 4 ? "ยืนยันเข้าศึกษาต่อ" : "4"
+                      || data.status === 5 ? "ยืนยันการชำระเงิน" : "5"} */}
+                        {data.status === 1
+                          ? "ยื่นสมัครสอบ"
+                          : data.status === 2
+                          ? "มีสิทธิ์สอบสัมภาษณ์"
+                          : data.status === 3
+                          ? "มีสิทธิ์เข้าศึกษาต่อ"
+                          : data.status === 4
+                          ? "ยืนยันเข้าศึกษาต่อ"
+                          : data.status === 5
+                          ? "ยืนยันการชำระเงิน"
+                          : ""}
+                      </TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </TableCell>

@@ -241,12 +241,10 @@ export default function CustomizedDialogs(props) {
                 name="year"
                 id="yearofActivity"
               >
-                <option value={"2563"}>2563</option>
-                <option value={"2562"}>2562</option>
-                <option value={"2561"}>2561</option>
-                <option value={"2560"}>2560</option>
-                <option value={"2559"}>2559</option>
-                <option value={"2558"}>2558</option>
+                 {props.year &&
+                  _.map(props.year, (data, index) => (
+                    <option value={data.value}>{data.label}</option>
+                  ))}
               </Select>
             </FormControl>
 

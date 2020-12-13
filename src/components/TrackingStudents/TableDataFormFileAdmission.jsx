@@ -148,6 +148,27 @@ export default function EnhancedTable(props) {
         sort: true,
       },
     },
+    {
+      name: "status",
+      label: "สถานะ",
+      options: {
+        filter: false,
+        sort: true,
+        customBodyRender: (value, tableMeta) => {
+          if (value === 1) {
+            return "ยื่นสมัครสอบ"
+          }else if(value === 2) {
+            return "มีสิทธิ์สอบสัมภาษณ์"
+          }else if(value === 3){
+            return "มีสิทธิ์เข้าศึกษา"
+          }else if(value === 4){
+            return "ยืนยันเข้าศึกษาต่อ"
+          }else if(value === 5){
+            return "ยืนยันการชำระเงิน"
+          }
+        },
+      },
+    },
   ]
 
   const options = {

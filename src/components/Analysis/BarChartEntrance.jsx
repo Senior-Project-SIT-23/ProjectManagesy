@@ -13,48 +13,39 @@ export default function BarChartEntrance() {
       "โครงการ 5 xxxxxxxxxxxx",
     ],
     datasets: [
-      {
-        label: "จำนวนนักเรียนที่สมัครสอบ",
-        backgroundColor: "#D2D5D6",
-        borderColor: "#D2D5D6",
-        borderWidth: 1,
-        hoverBackgroundColor: "#D2D5D6",
-        hoverBorderColor: "#D2D5D6",
-        data: [100, 80, 70, 55, 45],
-        barPercentage: 0.4,
-      },
+    
       {
         label: "IT",
         backgroundColor: "#FF6384",
         borderColor: "#FF6384",
         borderWidth: 1,
-        stack: 1,
+        
         // hoverBackgroundColor: "rgba(255,99,132,0.4)",
         // hoverBorderColor: "rgba(255,99,132,1)",
         data: [80, 52, 68, 72, 40],
-        barPercentage: 0.4,
+        
       },
       {
         label: "CS",
         backgroundColor: "#FFCE56",
         borderColor: "#FFCE56",
         borderWidth: 1,
-        stack: 1,
+        
         // hoverBackgroundColor: "rgba(255,99,132,0.4)",
         // hoverBorderColor: "rgba(255,99,132,1)",
         data: [80, 52, 68, 72, 40],
-        barPercentage: 0.4,
+        
       },
       {
         label: "DSI",
         backgroundColor: "#4BC0C0",
         borderColor:"#4BC0C0",
         borderWidth: 1,
-        stack: 1,
+        
         // hoverBackgroundColor: "rgba(255,99,132,0.4)",
         // hoverBorderColor: "rgba(255,99,132,1)",
         data: [80, 52, 68, 72, 40],
-        barPercentage: 0.4,
+        
       },
     ],
     

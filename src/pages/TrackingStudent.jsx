@@ -108,10 +108,27 @@ export default function Test(props) {
       }
     }
   };
-
+  const [year,setYear] = useState([])
   const fetchActivities = useCallback(async () => {
     const response = await apiFetchActivities();
-
+    const tmp = [];
+    const year = parseInt(moment().format("YYYY")) + 543;
+    for (let i = 0; i < 5; i++) {
+      tmp.push(year + i);
+    }
+    for (let i = 0; i < 5; i++) {
+      tmp.push(year - i);
+    }
+    const unique = new Set(tmp);
+    const array = [...unique].sort();
+    const data = [];
+    _.map(array, (arr, index) => {
+      data.push({
+        value: arr,
+        label: "ปีการศึกษา "+arr,
+      });
+    });
+    setYear(data);
     console.log("response.data", response.data);
     setrows(response.data);
   }, []);
@@ -163,7 +180,7 @@ export default function Test(props) {
   const [dataFileAdmission, setDataFileAdmission] = React.useState();
   const [dataFileNameAdmission, setDataFileNameAdmission] = React.useState();
   const [entrance, setEntrance] = React.useState();
-  const [year, setYear] = React.useState([]);
+  // const [year, setYear] = React.useState([]);
 
   const handleClickOpenCreateAdmission = () => {
     setOpenAdmission(true);
@@ -306,6 +323,7 @@ export default function Test(props) {
             setDataFileName={setDataFileName}
             errorMessage={errorMessage}
             fetchActivities={fetchActivities}
+            year={year}
           />
         )}
         {indexTab === 1 && (

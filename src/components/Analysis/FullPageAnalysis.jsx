@@ -28,6 +28,7 @@ export default function FullPageAnalysis(props) {
   const classes = useStyles()
   
   
+  
   console.log("props.data",props.data)
   if(props){
     console.log("numstudent",props.data.num_of_activity_student)
@@ -38,7 +39,7 @@ export default function FullPageAnalysis(props) {
       <Grid container direction="row" justify="flex-end">
         <Grid item xs={2}>
           <div className={"mb-2"}>
-            <ButtonYear handleChangeYear={props.handleChangeYear}/>
+            <ButtonYear handleChangeYear={props.handleChangeYear} year={props.year}/>
           </div>
         </Grid>
       </Grid>
@@ -141,11 +142,6 @@ export default function FullPageAnalysis(props) {
         </Grid>
       </Grid>
 
-      {/* <Grid container spacing={6}>
-        <Grid item xs={12}>
-          
-        </Grid>
-      </Grid> */}
     </div>
   )
 }

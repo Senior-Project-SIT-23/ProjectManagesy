@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import _ from "lodash";
-import { Button } from "@material-ui/core";
-import { CSVReader } from "react-papaparse";
-import { apiChangeStatus } from "../../service/admission";
+import React, { useState } from "react"
+import _ from "lodash"
+import { Button } from "@material-ui/core"
+import { CSVReader } from "react-papaparse"
+import { apiChangeStatus } from "../../service/admission"
 
-const buttonRef = React.createRef();
+const buttonRef = React.createRef()
 
 export default function ChangeStatusFileAdmission(props) {
   const [stageButton, setStageButton] = useState([
@@ -12,45 +12,45 @@ export default function ChangeStatusFileAdmission(props) {
     { stage_id: 3, label: "มีสิทธิ์เข้าศึกษา" },
     { stage_id: 4, label: "ที่ยืนยันเข้าศึกษา" },
     { stage_id: 5, label: "ที่ทำการชำระเงิน" },
-  ]);
+  ])
 
-  const [dataInFile, setDataInFile] = useState();
+  const [dataInFile, setDataInFile] = useState()
 
   const handleOpenDialog = (e) => {
     // Note that the ref is set async, so it might be null at some point
     if (buttonRef.current) {
-      buttonRef.current.open(e);
+      buttonRef.current.open(e)
     }
-  };
+  }
 
   const handleOnFileLoad = (data) => {
-    console.log("upload", data);
-    const temp = [];
+    console.log("upload", data)
+    const temp = []
     for (let i = 1; i < data.length; i++) {
       if (data[i].errors.length !== 0) {
-        break;
+        break
       }
-      temp.push(data[i].data[4]);
+      temp.push(data[i].data[4])
     }
-    setDataInFile(temp);
-  };
+    setDataInFile(temp)
+  }
 
   const handleOnError = (err, file, inputElem, reason) => {
-    console.log(err);
-  };
+    console.log(err)
+  }
 
   const handleOnRemoveFile = (data) => {
-    console.log("---------------------------");
-    console.log(data);
-    console.log("---------------------------");
-  };
+    console.log("---------------------------")
+    console.log(data)
+    console.log("---------------------------")
+  }
 
   const handleRemoveFile = (e) => {
     // Note that the ref is set async, so it might be null at some point
     if (buttonRef.current) {
-      buttonRef.current.removeFile(e);
+      buttonRef.current.removeFile(e)
     }
-  };
+  }
 
   const handleClickButton = async (status) => {
     try {
@@ -58,13 +58,13 @@ export default function ChangeStatusFileAdmission(props) {
         admission_id: parseInt(props.id),
         status: status,
         data_id: dataInFile,
-      };
-      await apiChangeStatus(JSON.stringify(data));
-      window.location.reload();
+      }
+      await apiChangeStatus(JSON.stringify(data))
+      window.location.reload()
     } catch (err) {
-      console.error(err);
+      console.error(err)
     }
-  };
+  }
 
   return (
     <div className="shadow rounded border bg-white p-6">
@@ -94,6 +94,10 @@ export default function ChangeStatusFileAdmission(props) {
                 width: "40%",
                 paddingLeft: 0,
                 paddingRight: 0,
+                marginTop: 5,
+                marginBottom: 5,
+                backgroundColor: "#104976",
+                color: "white",
               }}
             >
               Browe file
@@ -121,6 +125,10 @@ export default function ChangeStatusFileAdmission(props) {
                 marginRight: 0,
                 paddingLeft: 20,
                 paddingRight: 20,
+                marginTop: 5,
+                marginBottom: 5,
+                backgroundColor: "#b71c1c",
+                color: "white",
               }}
               onClick={handleRemoveFile}
             >
@@ -142,5 +150,5 @@ export default function ChangeStatusFileAdmission(props) {
         </div>
       ))}
     </div>
-  );
+  )
 }

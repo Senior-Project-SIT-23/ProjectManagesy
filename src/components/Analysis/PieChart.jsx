@@ -2,12 +2,12 @@ import { Grid, Paper, Typography } from "@material-ui/core"
 import React from "react"
 import { Doughnut, Pie } from "react-chartjs-2"
 
-export default function PieChart() {
+export default function PieChart(props) {
   const data = {
     labels: ["IT", "CS", "DSI"],
     datasets: [
       {
-        data: [10, 20, 30],
+        data: [props.num_of_it_student, props.num_of_cs_student, props.num_of_dsi_student],
 
         backgroundColor: ["#FF6384", "#FFCE56", "#4BC0C0"],
         // hoverBackgroundColor: ["#A5C1D8", "#FFE8B5", "#9DDDE1"],

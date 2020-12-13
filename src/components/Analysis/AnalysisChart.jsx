@@ -26,12 +26,17 @@ const useStyles = makeStyles((theme) => ({
 }))
 export default function TableAnalysis(props) {
   const classes = useStyles()
+
+  console.log("props.data",props.data.school_activity)
+
+  
+  
   return (
     <div className={classes.root}>
       <Grid container direction="row" justify="flex-end">
         <Grid item xs={2}>
           <div className={"mb-3"}>
-            <ButtonYear handleChangeYear={props.handleChangeYear} />
+            <ButtonYear handleChangeYear={props.handleChangeYear} year={props.year}/>
           </div>
         </Grid>
       </Grid>

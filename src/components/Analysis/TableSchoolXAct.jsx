@@ -4,7 +4,7 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles"
 import _ from "lodash"
 
 export default function TableSchoolXAct(props) {
-  let response
+  // let response
   const getMuiTheme = () =>
     createMuiTheme({
       overrides: {
