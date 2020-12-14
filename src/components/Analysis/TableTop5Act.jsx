@@ -7,7 +7,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-function createData(id, activity) {
+
+export default function TableTop5Act(props) {
+  function createData(id, activity) {
     return { id, activity };
   }
   
@@ -18,7 +20,6 @@ function createData(id, activity) {
     createData(4,'Cupcake'),
     createData(5,'Gingerbread'),
   ];
-export default function TableTop5Act() {
   return (
     <div>
      

@@ -102,12 +102,12 @@ export default function TableAnalysis(props) {
         </Grid>
         
         <Grid item xs={4}>
-          <TableTop5Act />
+          <TableTop5Act data={props.data5Act}/>
         </Grid>
       </Grid>
       <Grid container spacing={3}>
       <Grid item xs={6}>
-          <BarChartTop10SchoolAct />
+          <BarChartTop10SchoolAct data={props.dataSchoolAct}/>
         </Grid>
         <Grid item xs={6}>
           <BarChartTop10SchoolEntrance data={props.dataForGraphSchoolAd}/>
@@ -115,7 +115,7 @@ export default function TableAnalysis(props) {
       </Grid>
       <Grid container spacing={3}>
       <Grid item xs={12}>
-          <BarChartEntrance />
+          <BarChartEntrance data={props.dataAdmCollege}/>
         </Grid>
       </Grid>
     </div>

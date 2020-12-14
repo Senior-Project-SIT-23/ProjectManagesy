@@ -1,36 +1,69 @@
-import React from "react"
+import React, { useState,useCallback,useEffect } from "react"
 import { Grid, Paper, Typography } from "@material-ui/core"
 import { HorizontalBar } from "react-chartjs-2"
+import _ from 'lodash'
 
-export default function BarChartTop10SchoolEntrance() {
-  const data = {
-    labels: [
-      "school 1",
-      "school 2",
-      "school 3",
-      "school 4 ",
-      "school 5",
-      "school 6",
-      "school 7",
-      "school 8",
-      "school 9",
-      "school 10",
-    ],
-    datasets: [
-      {
-        label: "จำนวนนักเรียนที่มาเข้าร่วมกิจกรรม",
+export default function BarChartTop10SchoolEntrance(props) {
+
+  const [data, setData] = useState()
+
+  const fetchData = useCallback(async () => {
+    const tempLabel = [];
+    const tempDataset = [];
+    const tempCount = []
+    _.map(props.data, (d, i) => {
+      tempLabel.push(d.data_school_name);
+      tempCount.push(d.SUM)
+    });
+    tempDataset.push({
+      label: "จำนวนนักเรียนที่มาเข้าร่วมกิจกรรม",
         backgroundColor: ["#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED"],
         borderColor: ["#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED"],
         borderWidth: 1,
         // hoverBackgroundColor: "rgba(255,99,132,0.4)",
         // hoverBorderColor: "rgba(255,99,132,1)",
-        data: [100, 80, 70, 55, 45, 30, 25, 20, 20, 10],
-        
-      },
-    ],
-    xAxisID: "จำนวนนักศึกษา"
+        data: tempCount,
+    });
+    setData({
+      labels: tempLabel,
+      datasets: tempDataset,
+    });
 
-  }
+    
+  });
+
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+  // const data = {
+  //   labels: [
+  //     "school 1",
+  //     "school 2",
+  //     "school 3",
+  //     "school 4 ",
+  //     "school 5",
+  //     "school 6",
+  //     "school 7",
+  //     "school 8",
+  //     "school 9",
+  //     "school 10",
+  //   ],
+  //   datasets: [
+  //     {
+  //       label: "จำนวนนักเรียนที่มาเข้าร่วมกิจกรรม",
+  //       backgroundColor: ["#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED"],
+  //       borderColor: ["#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED"],
+  //       borderWidth: 1,
+  //       // hoverBackgroundColor: "rgba(255,99,132,0.4)",
+  //       // hoverBorderColor: "rgba(255,99,132,1)",
+  //       data: [100, 80, 70, 55, 45, 30, 25, 20, 20, 10],
+        
+  //     },
+  //   ],
+  //   xAxisID: "จำนวนนักศึกษา"
+
+  
 
   return (
     <div>

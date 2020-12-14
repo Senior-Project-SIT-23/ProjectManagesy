@@ -14,48 +14,61 @@ export default function BarChartTop10SchoolAct(props) {
   const fetchData = useCallback(async () => {
     const tempLabel = [];
     const tempDataset = [];
+    const tempIT =[];
+    const tempCS = [];
+    const tempDSI = [];
     _.map(props.data, (d, i) => {
       tempLabel.push(d.data_school_name);
-      if (d.label === "IT") {
-        tempDataset.push({
-          label: "IT",
-          backgroundColor: "#FF6384",
-          borderColor: "#FF6384",
-          borderWidth: 1,
-          stack: 1,
-          // hoverBackgroundColor: "rgba(255,99,132,0.4)",
-          // hoverBorderColor: "rgba(255,99,132,1)",
-          data: d.IT,
-        });
-      } else if (d.label === "CS") {
-        tempDataset.push({
-          label: "CS",
-          backgroundColor: "#FFCE56",
-          borderColor: "#FFCE56",
-          borderWidth: 1,
-          stack: 1,
-          // hoverBackgroundColor: "rgba(255,99,132,0.4)",
-          // hoverBorderColor: "rgba(255,99,132,1)",
-          data: d.CS,
-        });
-      } else if (d.label === "DSI") {
-        tempDataset.push({
-          label: "DSI",
-          backgroundColor: "#4BC0C0",
-          borderColor: "#4BC0C0",
-          borderWidth: 1,
-          stack: 1,
-          // hoverBackgroundColor: "rgba(255,99,132,0.4)",
-          // hoverBorderColor: "rgba(255,99,132,1)",
-          data: d.DSI,
-        });
+      if(d.IT > 0){
+        tempIT.push(d.IT)
+      }else if(d.CS > 0){
+        tempCS.push(d.CS)
+      }else if(d.DSI > 0){
+        tempDSI.push(d.DSI)
       }
+       
+      
+    });
+    tempDataset.push({
+      label: "IT",
+      backgroundColor: "#FF6384",
+      borderColor: "#FF6384",
+      borderWidth: 1,
+      stack: 1,
+      // hoverBackgroundColor: "rgba(255,99,132,0.4)",
+      // hoverBorderColor: "rgba(255,99,132,1)",
+      data: tempIT,
+    });
+
+    tempDataset.push({
+      label: "CS",
+      backgroundColor: "#FFCE56",
+      borderColor: "#FFCE56",
+      borderWidth: 1,
+      stack: 1,
+      // hoverBackgroundColor: "rgba(255,99,132,0.4)",
+      // hoverBorderColor: "rgba(255,99,132,1)",
+      data: tempCS,
+    });
+ 
+    tempDataset.push({
+      label: "DSI",
+      backgroundColor: "#4BC0C0",
+      borderColor: "#4BC0C0",
+      borderWidth: 1,
+      stack: 1,
+      // hoverBackgroundColor: "rgba(255,99,132,0.4)",
+      // hoverBorderColor: "rgba(255,99,132,1)",
+      data: tempDSI,
     });
     setData({
       labels: tempLabel,
       datasets: tempDataset,
     });
+
+    
   });
+
 
   useEffect(() => {
     fetchData();

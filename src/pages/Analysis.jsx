@@ -16,6 +16,9 @@ export default function Test(props) {
   const [year,setYear] = useState([])
   const [dataForGraphSchoolAd,setDataForGraphSchoolAd] = useState()
   const [dataProvince, setDataProvince] = useState()
+  const [dataSchoolAct, setDataSchoolAct] = useState()
+  const [dataAdmCollege, setdataAdmCollege] = useState()
+  const [data5Act, setData5Act] = useState()
 
   function handleChangeTab(index) {
     setIndexTab(index)
@@ -48,17 +51,22 @@ export default function Test(props) {
     });
 
     //Graph
-    // const sortSchoolAd = response.data.school_admission.sort((a, b) => b.SUM - a.SUM);
-    // const sortProvince = response.data.most_of_province.sort((a,b) => b.num_of_province - a.num_of_province)
-    const sortSchoolAd = response.data.school_admission
-    const sortProvince = response.data.most_of_province
+    const sortSchoolAd = response.data.college_student.sort((a, b) => b.SUM - a.SUM);
+    const sortProvince = response.data.most_of_province.sort((a,b) => b.num_of_province - a.num_of_province)
+    const sortSchoolAct = response.data.school_activity.sort((a, b) => b.SUM - a.SUM)
+    const sortAdmCollege = response.data.school_admission_name.sort((a,b) => b.SUM - a.SUM)
+    const sort5Act = response.data.most_of_activity.sort((a,b) => b.Total - a.Total)
     
     console.log("ffffffff", sortSchoolAd.slice(0, 10))
     console.log("province", sortProvince.slice(0,5))
     
+    
+    setYear(data);
+    setData5Act(sort5Act.slice(0,5))
+    setdataAdmCollege(sortAdmCollege.slice(0,5))
     setDataProvince(sortProvince.slice(0,5))
     setDataForGraphSchoolAd(sortSchoolAd.slice(0, 10))
-    setYear(data);
+    setDataSchoolAct(sortSchoolAct.slice(0,10))
     setIsFetch(false)
   }, [])
   useEffect(() => {
@@ -67,12 +75,17 @@ export default function Test(props) {
 
   if (isFetch) {
     return <Loading />
+    
   }
 
   const handleChangeYear = async (year) => {
+    setData5Act([])
+    setdataAdmCollege([])
+    setDataSchoolAct([])
+    setDataProvince([])
+    setDataForGraphSchoolAd([])
     const { data } = await apiFetchAnalyze(year)
     setData(data)
-    
   }
   
  
@@ -89,6 +102,9 @@ export default function Test(props) {
                 year={year}
                 dataForGraphSchoolAd={dataForGraphSchoolAd}
                 dataProvince={dataProvince}
+                dataSchoolAct={dataSchoolAct}
+                dataAdmCollege={dataAdmCollege}
+                data5Act={data5Act}
                 />}
             {indexTab === 1 && (
               <FullPageAnalysis
