@@ -14,6 +14,8 @@ export default function Test(props) {
   const [data, setData] = useState()
   const [isFetch, setIsFetch] = useState(false)
   const [year,setYear] = useState([])
+  const [dataForGraphSchoolAd,setDataForGraphSchoolAd] = useState()
+  const [dataProvince, setDataProvince] = useState()
 
   function handleChangeTab(index) {
     setIndexTab(index)
@@ -44,6 +46,18 @@ export default function Test(props) {
         label: "ปีการศึกษา "+arr,
       });
     });
+
+    //Graph
+    // const sortSchoolAd = response.data.school_admission.sort((a, b) => b.SUM - a.SUM);
+    // const sortProvince = response.data.most_of_province.sort((a,b) => b.num_of_province - a.num_of_province)
+    const sortSchoolAd = response.data.school_admission
+    const sortProvince = response.data.most_of_province
+    
+    console.log("ffffffff", sortSchoolAd.slice(0, 10))
+    console.log("province", sortProvince.slice(0,5))
+    
+    setDataProvince(sortProvince.slice(0,5))
+    setDataForGraphSchoolAd(sortSchoolAd.slice(0, 10))
     setYear(data);
     setIsFetch(false)
   }, [])
@@ -58,6 +72,7 @@ export default function Test(props) {
   const handleChangeYear = async (year) => {
     const { data } = await apiFetchAnalyze(year)
     setData(data)
+    
   }
   
  
@@ -68,9 +83,13 @@ export default function Test(props) {
       <div className="flex flex-col flex-1 p-12 mx-auto max-w-screen-lg min-h-screen">
         {data && (
           <>
-            {indexTab === 0 && <AnalysisChart data={data}
+            {indexTab === 0 && <AnalysisChart 
+                data={data}
                 handleChangeYear={handleChangeYear}
-                year={year}/>}
+                year={year}
+                dataForGraphSchoolAd={dataForGraphSchoolAd}
+                dataProvince={dataProvince}
+                />}
             {indexTab === 1 && (
               <FullPageAnalysis
                 data={data}

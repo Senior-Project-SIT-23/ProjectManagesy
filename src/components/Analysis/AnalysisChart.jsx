@@ -30,7 +30,7 @@ export default function TableAnalysis(props) {
   console.log("props.data",props.data)
 
   
-  
+  console.log("props.dataForGraphSchoolAd",props.dataForGraphSchoolAd)
   
   return (
     <div className={classes.root}>
@@ -95,7 +95,7 @@ export default function TableAnalysis(props) {
       </Grid>
       <Grid container spacing={3}>
       <Grid item xs={4}>
-          <RegionChart />
+          <RegionChart data={props.dataProvince}/>
         </Grid>
         <Grid item xs={4}>
           <ChartActXNoAct data={props.data.compare_activity}/>
@@ -110,7 +110,7 @@ export default function TableAnalysis(props) {
           <BarChartTop10SchoolAct />
         </Grid>
         <Grid item xs={6}>
-          <BarChartTop10SchoolEntrance data={props.data.school_admission}/>
+          <BarChartTop10SchoolEntrance data={props.dataForGraphSchoolAd}/>
         </Grid>
       </Grid>
       <Grid container spacing={3}>

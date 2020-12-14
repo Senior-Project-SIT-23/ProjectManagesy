@@ -2,7 +2,7 @@ import React from "react"
 import { Polar } from "react-chartjs-2"
 import { Grid, Paper, Typography } from "@material-ui/core"
 
-export default function RegionChart() {
+export default function RegionChart(props) {
   const data = {
     datasets: [
       {
@@ -14,7 +14,7 @@ export default function RegionChart() {
         label: "My dataset", // for legend
       },
     ],
-    labels: ["xxxxxxx", "xxxxxx", "xxxxx", "xxxxxxx","xxxxxx"],
+    labels: [],
   }
   const options = {
     legend: {
@@ -22,6 +22,21 @@ export default function RegionChart() {
       position: "bottom",
     },
   }
+
+  props.data.map((dataArray) => {
+    data.labels.push(dataArray.data_province)
+    // data.datasets.data.push(dataArray.num_of_province)
+    // data.datasets.map((dataset) => {
+    //   if(dataset.label === "IT"){
+    //     dataset.data.push(dataArray.IT)
+    //   }else if(dataset.label === "CS"){
+    //     dataset.data.push(dataArray.CS)
+    //   }else if(dataset.label === "DSI"){
+    //     dataset.data.push(dataArray.DSI)
+    //   }
+    // })
+  })
+
   return (
     <div>
       <Paper style={{ padding: 10, height: 342 }}>

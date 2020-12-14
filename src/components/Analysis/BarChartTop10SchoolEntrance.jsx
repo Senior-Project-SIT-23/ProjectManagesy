@@ -1,58 +1,72 @@
-import React from "react"
+import React, { useState,useCallback,useEffect } from "react"
 import { Grid, Paper, Typography } from "@material-ui/core"
 import { HorizontalBar } from "react-chartjs-2"
+import _ from 'lodash'
 
 export default function BarChartTop10SchoolAct(props) {
-  const data = {
-    labels: [
-      props.data[0].data_school_name,
-      props.data[1].data_school_name,
-      props.data[2].data_school_name,
-      // props.data[3].data_school_name,
-      // props.data[4].data_school_name,
-      // props.data[5].data_school_name,
-      // props.data[6].data_school_name,
-      // props.data[7].data_school_name,
-      // props.data[8].data_school_name,
-      // props.data[9].data_school_name,
-    ],
-    datasets: [
-      {
-        label: "IT",
-        backgroundColor: "#FF6384",
-        borderColor: "#FF6384",
-        borderWidth: 1,
-        stack: 1,
-        // hoverBackgroundColor: "rgba(255,99,132,0.4)",
-        // hoverBorderColor: "rgba(255,99,132,1)",
-        data: [props.data[0].IT,props.data[1].IT,props.data[2].IT,30,40,16,18,23,20,22],
-      },
-      {
-        label: "CS",
-        backgroundColor: "#FFCE56",
-        borderColor:"#FFCE56",
-        borderWidth: 1,
-        stack: 1,
-        // hoverBackgroundColor: "rgba(255,99,132,0.4)",
-        // hoverBorderColor: "rgba(255,99,132,1)",
-        data: [props.data[0].CS,props.data[1].CS,props.data[2].CS,30,40,16,18,23,20,22],
-      },
-      {
-        label: "DSI",
-        backgroundColor: "#4BC0C0",
-        borderColor:"#4BC0C0",
-        borderWidth: 1,
-        stack: 1,
-        // hoverBackgroundColor: "rgba(255,99,132,0.4)",
-        // hoverBorderColor: "rgba(255,99,132,1)",
-        data: [props.data[0].DSI,props.data[1].DSI,props.data[2].DSI,30,40,16,18,23,20,22],
-      },
-    ],
+  
+  
+  // console.log("props.data", props.data)
 
-  }
+  const [data, setData] = useState();
 
+  
+  const fetchData = useCallback(async () => {
+    const tempLabel = [];
+    const tempDataset = [];
+    _.map(props.data, (d, i) => {
+      tempLabel.push(d.data_school_name);
+      if (d.label === "IT") {
+        tempDataset.push({
+          label: "IT",
+          backgroundColor: "#FF6384",
+          borderColor: "#FF6384",
+          borderWidth: 1,
+          stack: 1,
+          // hoverBackgroundColor: "rgba(255,99,132,0.4)",
+          // hoverBorderColor: "rgba(255,99,132,1)",
+          data: d.IT,
+        });
+      } else if (d.label === "CS") {
+        tempDataset.push({
+          label: "CS",
+          backgroundColor: "#FFCE56",
+          borderColor: "#FFCE56",
+          borderWidth: 1,
+          stack: 1,
+          // hoverBackgroundColor: "rgba(255,99,132,0.4)",
+          // hoverBorderColor: "rgba(255,99,132,1)",
+          data: d.CS,
+        });
+      } else if (d.label === "DSI") {
+        tempDataset.push({
+          label: "DSI",
+          backgroundColor: "#4BC0C0",
+          borderColor: "#4BC0C0",
+          borderWidth: 1,
+          stack: 1,
+          // hoverBackgroundColor: "rgba(255,99,132,0.4)",
+          // hoverBorderColor: "rgba(255,99,132,1)",
+          data: d.DSI,
+        });
+      }
+    });
+    setData({
+      labels: tempLabel,
+      datasets: tempDataset,
+    });
+  });
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+  
+
+  
+  
   return (
     <div>
+      {/* {console.log("data",data)} */}
       <Paper style={{ padding: 10, height: 350 }}>
         <Grid container>
           <Grid item container direction="column" spacing={2}>
