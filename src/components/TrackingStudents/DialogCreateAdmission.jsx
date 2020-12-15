@@ -84,7 +84,7 @@ export default function CustomizedDialogs(props) {
     },
     formControl: {
       marginTop: theme.spacing(2),
-      minWidth: 380,
+      minWidth: 480,
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
@@ -235,7 +235,7 @@ export default function CustomizedDialogs(props) {
                 label="รูปแบบการรับสมัคร"
                 name="entrance_id"
                 id="entrance_id"
-                value={state.round || props.openEditAdmission?.round_name}
+                value={props.openEditAdmission?.entrance[0].entrance_id || state.entrance_id  }
               >
                 {props.entrance &&
                   _.map(props.entrance, (data, index) => (
@@ -257,7 +257,7 @@ export default function CustomizedDialogs(props) {
                 label="รอบที่รับสมัคร"
                 name="round_id"
                 id="round_id"
-                value={state.round || props.openEditAdmission?.round_name}
+                value={props.openEditAdmission?.entrance[0].round_id ||state.round_id  }
               >
                 {props.entrance &&
                   _.map(
@@ -269,6 +269,7 @@ export default function CustomizedDialogs(props) {
               </Select>
             </FormControl>
             <br />
+            {console.log("edit adm" ,props.openEditAdmission)}
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel>ชื่อโครงการที่รับสมัคร</InputLabel>
               <Select
@@ -278,7 +279,7 @@ export default function CustomizedDialogs(props) {
                 label="ชื่อโครงการที่รับสมัคร"
                 name="program_id"
                 id="program_id"
-                value={state.round || props.openEditAdmission?.round_name}
+                value={ props.openEditAdmission?.entrance[0].program_id|| state.program_id}
               >
                 {props.entrance &&
                   _.map(

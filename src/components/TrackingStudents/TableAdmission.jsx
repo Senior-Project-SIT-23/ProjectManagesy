@@ -57,12 +57,21 @@ export default function EnhancedTable(props) {
       },
       {
         name: "entrance",
+        label: "รูปแบบโครงการ",
+        options: {
+          customBodyRender: (value, tableMeta) => <p>{value[0].entrance_name}</p>,
+          filter: false,
+        },
+      },
+      {
+        name: "entrance",
         label: "รอบ",
         options: {
           customBodyRender: (value, tableMeta) => <p>{value[0].round_name}</p>,
           filter: false,
         },
       },
+      
       { name: "admission_major", label: "สาขา" },
       { name: "admission_year", label: "ปีการศึกษา" },
       {
@@ -160,6 +169,7 @@ export default function EnhancedTable(props) {
           download: false,
         },
       },
+      
     ];
   };
 
@@ -167,9 +177,10 @@ export default function EnhancedTable(props) {
 
   const changeValue = (data) => {
     console.log("testtt", data);
+    console.log("props.rowAdm",props.rowsAdmissions)
     const dataRes = {
       admission_name: data[0],
-      round_name: data[1],
+      entrance: data[1],
       admission_major: data[2],
       admission_year: data[3],
       admission_file_name: data[4],

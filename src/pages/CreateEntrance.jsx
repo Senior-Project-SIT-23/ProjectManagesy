@@ -10,6 +10,7 @@ import Select from "react-select";
 import moment from "moment";
 
 export default function CreateEntrance() {
+  const [entranceYear, setEntranceYear] = useState()
   const [entrance, setEntrance] = useState({
     entrance_name: "",
     entrance_year: 0,
@@ -53,8 +54,11 @@ export default function CreateEntrance() {
 
   const handleSubmit = async (data) => {
     try {
-      await apiCreteEntrance(JSON.stringify(data));
-      navigate("/TrackingStudents");
+      const temp = {
+        ...data, entrance_year: entranceYear
+      }
+      await apiCreteEntrance(JSON.stringify(temp));
+      // navigate("/TrackingStudents");
     } catch (error) {
       console.error(error);
     }
@@ -93,10 +97,9 @@ export default function CreateEntrance() {
                           options={year}
                           defaultValue={year && year[0]}
                           onChange={(option) =>
-                            setEntrance({
-                              ...entrance,
-                              entrance_year: option.value,
-                            })
+                            setEntranceYear(
+                              option.value,
+                            )
                           }
                         />
                       </>

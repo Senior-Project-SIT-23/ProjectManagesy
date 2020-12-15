@@ -191,7 +191,7 @@ export default function Test(props) {
     setOpenEditAdmission(null);
   };
   const handleClickEditAdmission = (row) => {
-    console.log(row);
+    console.log("openEditAdmission",row);
     setOpenEditAdmission(row);
     handleClickOpenCreateAdmission();
     setTopicAdmission("แก้ไขโครงการสมัครสอบ");
@@ -272,8 +272,16 @@ export default function Test(props) {
 
   const handleEntrance = async (year) => {
     // console.log(year)
-    const entrance = await apiFetchEntrance(year);
+    try{
+      const entrance = await apiFetchEntrance(year);
     setEntrance(entrance.data);
+    }catch (error){
+      window.alert("ไม่พบปีที่ท่านเลือก")
+      setTimeout(() => {
+        window.location.reload()
+      }, 2000);
+    }
+    
   };
 
   //MatchData
