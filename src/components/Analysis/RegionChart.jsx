@@ -6,7 +6,7 @@ import { useEffect , useState,useCallback} from "react"
 export default function RegionChart(props) {
   
 
-  // console.log("ddddd",props.data)
+  
   const [data, setData] = useState()
 
   const fetchData = useCallback(async () => {
@@ -37,7 +37,7 @@ export default function RegionChart(props) {
       datasets: tempDataset,
     });
 
-  })
+  },[props.data])
   useEffect(() => {
     fetchData();
   }, [fetchData])
@@ -68,7 +68,8 @@ export default function RegionChart(props) {
 
 
   return (
-    <div>      
+    <div>  
+        
       <Paper style={{ padding: 10, height: 342 }}>
         <Grid container>
           <Grid item container direction="column" spacing={2}>

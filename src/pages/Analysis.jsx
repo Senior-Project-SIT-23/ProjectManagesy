@@ -79,6 +79,7 @@ export default function Test(props) {
   }
 
   const handleChangeYear = async (year) => {
+    
     setData5Act([])
     setdataAdmCollege([])
     setDataSchoolAct([])
@@ -86,6 +87,19 @@ export default function Test(props) {
     setDataForGraphSchoolAd([])
     const { data } = await apiFetchAnalyze(year)
     setData(data)
+
+    const sortSchoolAd = data.college_student.sort((a, b) => b.SUM - a.SUM);
+    const sortProvince = data.most_of_province.sort((a,b) => b.num_of_province - a.num_of_province)
+    const sortSchoolAct = data.school_activity.sort((a, b) => b.SUM - a.SUM)
+    const sortAdmCollege =data.school_admission_name.sort((a,b) => b.SUM - a.SUM)
+    const sort5Act = data.most_of_activity.sort((a,b) => b.Total - a.Total)
+    
+    setData5Act(sort5Act.slice(0,5))
+    setdataAdmCollege(sortAdmCollege.slice(0,5))
+    setDataProvince(sortProvince.slice(0,5))
+    setDataForGraphSchoolAd(sortSchoolAd.slice(0, 10))
+    setDataSchoolAct(sortSchoolAct.slice(0,10))
+    
   }
   
  

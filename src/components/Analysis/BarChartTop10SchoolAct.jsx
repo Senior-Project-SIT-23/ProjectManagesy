@@ -20,8 +20,6 @@ export default function BarChartTop10SchoolEntrance(props) {
         backgroundColor: ["#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED"],
         borderColor: ["#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED"],
         borderWidth: 1,
-        // hoverBackgroundColor: "rgba(255,99,132,0.4)",
-        // hoverBorderColor: "rgba(255,99,132,1)",
         data: tempCount,
     });
     setData({
@@ -30,43 +28,16 @@ export default function BarChartTop10SchoolEntrance(props) {
     });
 
     
-  });
+  },[props.data]);
 
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
-  // const data = {
-  //   labels: [
-  //     "school 1",
-  //     "school 2",
-  //     "school 3",
-  //     "school 4 ",
-  //     "school 5",
-  //     "school 6",
-  //     "school 7",
-  //     "school 8",
-  //     "school 9",
-  //     "school 10",
-  //   ],
-  //   datasets: [
-  //     {
-  //       label: "จำนวนนักเรียนที่มาเข้าร่วมกิจกรรม",
-  //       backgroundColor: ["#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED"],
-  //       borderColor: ["#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED","#FFCE56","#E7E9ED"],
-  //       borderWidth: 1,
-  //       // hoverBackgroundColor: "rgba(255,99,132,0.4)",
-  //       // hoverBorderColor: "rgba(255,99,132,1)",
-  //       data: [100, 80, 70, 55, 45, 30, 25, 20, 20, 10],
-        
-  //     },
-  //   ],
-  //   xAxisID: "จำนวนนักศึกษา"
-
   
-
   return (
     <div>
+      {console.log("props.data",props.data)}
       <Paper style={{ padding: 10, height: 350 }}>
         <Grid container>
           <Grid item container direction="column" spacing={2}>

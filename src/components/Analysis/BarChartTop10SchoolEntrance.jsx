@@ -67,7 +67,7 @@ export default function BarChartTop10SchoolAct(props) {
     });
 
     
-  });
+  },[props.data]);
 
 
   useEffect(() => {

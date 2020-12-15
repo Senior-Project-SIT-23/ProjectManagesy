@@ -55,7 +55,7 @@ export default function BarChartEntrance(props) {
       labels: tempLabel,
       datasets: tempDataset,
     })
-  })
+  },[props.data])
 
   useEffect(() => {
     fetchData()

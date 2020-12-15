@@ -35,15 +35,7 @@ export default function TableTop5Act(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {/* {rows.map((row) => (
-            <TableRow key={row.name} >
-              <TableCell component="th" scope="row" width="10" padding="12px">
-                {row.id}
-              </TableCell>
-              <TableCell align="left" padding="12px">{row.activity}</TableCell>
-             
-            </TableRow>
-          ))} */}
+          
             {_.map(props.data, (d, i) => (
               <TableRow >
                 
