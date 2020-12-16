@@ -190,6 +190,7 @@ export default function Test(props) {
   const handleCloseAdmission = () => {
     setOpenAdmission(false);
     setOpenEditAdmission(null);
+    window.location.reload()
   };
   const handleClickEditAdmission = (row) => {
     console.log("openEditAdmission",row);

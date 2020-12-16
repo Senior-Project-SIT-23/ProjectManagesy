@@ -22,6 +22,7 @@ import Tooltip from "@material-ui/core/Tooltip"
 import { CSVReader } from "react-papaparse"
 import { navigate } from "@reach/router"
 import _ from "lodash"
+import { useState } from "react"
 
 const styles = (theme) => ({
   root: {
@@ -106,10 +107,19 @@ export default function CustomizedDialogs(props) {
 
   const handleChangeAdmission = (event) => {
     const name = event.target.name
-    setState({
-      ...state,
-      [name]: event.target.value,
-    })
+    if (name == "entrance_id") {
+      setState({
+        ...state,
+        round_id: 1,
+        program_id: 1,
+        [name]: event.target.value,
+      })
+    } else {
+      setState({
+        ...state,
+        [name]: event.target.value,
+      })
+    }
     if (name === "year") {
       props.handleEntrance(event.target.value)
     }
@@ -134,7 +144,6 @@ export default function CustomizedDialogs(props) {
       buttonRef.current.open(e)
     }
   }
-
   const handleOnFileLoad = (data) => {
     const temp = []
     for (let i = 0; i < data.length; i++) {
@@ -401,19 +410,18 @@ export default function CustomizedDialogs(props) {
                         width: "60%",
                       }}
                     >
-                      {file ?  (
+                      {file ? (
                         <>
                           {file && props.setDataFileNameAdmission(file.name)}
                           {file && file.name}
                         </>
-                      ): (
+                      ) : (
                         <>
-                          { props.openEditAdmission && props.setDataFileNameAdmission(
-                            props.openEditAdmission.admission_file_name
-                          )}
-                          {
-                            props.openEditAdmission?.admission_file_name
-                          }
+                          {props.openEditAdmission &&
+                            props.setDataFileNameAdmission(
+                              props.openEditAdmission.admission_file_name
+                            )}
+                          {props.openEditAdmission?.admission_file_name}
                         </>
                       )}
                     </div>
@@ -423,9 +431,9 @@ export default function CustomizedDialogs(props) {
               <p className={classes.col}>
                 **กรุณาอัปโหลดเป็นไฟล์ .CSV UTF-8 เท่านั้น
               </p>
-              <p className="my-3">
+              {/* <p className="my-3">
                 Current :{props.openEditAdmission?.admission_file_name}
-              </p>
+              </p> */}
             </div>
           </DialogContent>
           <DialogActions>
