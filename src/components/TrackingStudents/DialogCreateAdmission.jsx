@@ -408,11 +408,11 @@ export default function CustomizedDialogs(props) {
                         </>
                       ): (
                         <>
-                          {props.setDataFileNameAdmission(
+                          { props.openEditAdmission && props.setDataFileNameAdmission(
                             props.openEditAdmission.admission_file_name
                           )}
                           {
-                            props.openEditAdmission.admission_file_name
+                            props.openEditAdmission?.admission_file_name
                           }
                         </>
                       )}
