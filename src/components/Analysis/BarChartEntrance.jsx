@@ -15,13 +15,11 @@ export default function BarChartEntrance(props) {
     _.map(props.data, (d, i) => {
       tempLabel.push(d.admission_name)
 
-      if (d.IT > 0) {
-        tempIT.push(d.IT)
-      } else if (d.CS > 0) {
-        tempCS.push(d.CS)
-      } else if (d.DSI > 0) {
-        tempDSI.push(d.DSI)
-      }
+      console.log("d", d);
+
+      tempIT.push(d.IT)
+      tempCS.push(d.CS)
+      tempDSI.push(d.DSI)
     })
     tempDataset.push({
       label: "IT",
@@ -36,8 +34,6 @@ export default function BarChartEntrance(props) {
       backgroundColor: "#FFCE56",
       borderColor: "#FFCE56",
       borderWidth: 1,
-      // hoverBackgroundColor: "rgba(255,99,132,0.4)",
-      // hoverBorderColor: "rgba(255,99,132,1)",
       data: tempCS,
     })
 
@@ -46,15 +42,17 @@ export default function BarChartEntrance(props) {
       backgroundColor: "#4BC0C0",
       borderColor: "#4BC0C0",
       borderWidth: 1,
-      // hoverBackgroundColor: "rgba(255,99,132,0.4)",
-      // hoverBorderColor: "rgba(255,99,132,1)",
       data: tempDSI,
     })
 
-    setData({
+    const x = {
       labels: tempLabel,
       datasets: tempDataset,
-    })
+    };
+
+    console.log("x", x);
+
+    setData(x)
   },[props.data])
 
   useEffect(() => {
