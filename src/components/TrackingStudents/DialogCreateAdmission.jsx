@@ -1,27 +1,27 @@
-import React from "react";
-import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import MuiDialogTitle from "@material-ui/core/DialogTitle";
-import MuiDialogContent from "@material-ui/core/DialogContent";
-import MuiDialogActions from "@material-ui/core/DialogActions";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
-import Typography from "@material-ui/core/Typography";
-import AddBoxIcon from "@material-ui/icons/AddBox";
-import TextField from "@material-ui/core/TextField";
+import React from "react"
+import { withStyles } from "@material-ui/core/styles"
+import Button from "@material-ui/core/Button"
+import Dialog from "@material-ui/core/Dialog"
+import MuiDialogTitle from "@material-ui/core/DialogTitle"
+import MuiDialogContent from "@material-ui/core/DialogContent"
+import MuiDialogActions from "@material-ui/core/DialogActions"
+import IconButton from "@material-ui/core/IconButton"
+import CloseIcon from "@material-ui/icons/Close"
+import Typography from "@material-ui/core/Typography"
+import AddBoxIcon from "@material-ui/icons/AddBox"
+import TextField from "@material-ui/core/TextField"
 import {
   makeStyles,
   createMuiTheme,
   ThemeProvider,
-} from "@material-ui/core/styles";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
-import Tooltip from "@material-ui/core/Tooltip";
-import { CSVReader } from "react-papaparse";
-import { navigate } from "@reach/router";
-import _ from "lodash";
+} from "@material-ui/core/styles"
+import FormControl from "@material-ui/core/FormControl"
+import Select from "@material-ui/core/Select"
+import InputLabel from "@material-ui/core/InputLabel"
+import Tooltip from "@material-ui/core/Tooltip"
+import { CSVReader } from "react-papaparse"
+import { navigate } from "@reach/router"
+import _ from "lodash"
 
 const styles = (theme) => ({
   root: {
@@ -34,10 +34,10 @@ const styles = (theme) => ({
     top: theme.spacing(1),
     color: theme.palette.grey[500],
   },
-});
+})
 
 const DialogTitle = withStyles(styles)((props) => {
-  const { children, classes, onClose, ...other } = props;
+  const { children, classes, onClose, ...other } = props
   return (
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
       <Typography variant="h6">{children}</Typography>
@@ -51,23 +51,23 @@ const DialogTitle = withStyles(styles)((props) => {
         </IconButton>
       ) : null}
     </MuiDialogTitle>
-  );
-});
+  )
+})
 
 const DialogContent = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
   },
-}))(MuiDialogContent);
+}))(MuiDialogContent)
 
 const DialogActions = withStyles((theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(1),
   },
-}))(MuiDialogActions);
+}))(MuiDialogActions)
 
-const buttonRef = React.createRef();
+const buttonRef = React.createRef()
 
 export default function CustomizedDialogs(props) {
   const useStyles = makeStyles((theme) => ({
@@ -93,27 +93,28 @@ export default function CustomizedDialogs(props) {
     upload: {
       marginTop: theme.spacing(1),
     },
-  }));
+  }))
 
-  const classes = useStyles();
+  const classes = useStyles()
   const [state, setState] = React.useState({
     round_id: 1,
     major: "",
     year: "",
     entrance_id: 1,
-    program_id: 1,
-  });
+    program_id: props.openEditAdmission?.entrance[0].program_id,
+  })
 
   const handleChangeAdmission = (event) => {
-    const name = event.target.name;
+    const name = event.target.name
     setState({
       ...state,
       [name]: event.target.value,
-    });
+    })
     if (name === "year") {
-      props.handleEntrance(event.target.value);
+      props.handleEntrance(event.target.value)
     }
-  };
+    console.log("props.editads", props.openEditAdmission)
+  }
 
   const theme = createMuiTheme({
     palette: {
@@ -124,32 +125,32 @@ export default function CustomizedDialogs(props) {
     shape: {
       borderRadius: 30,
     },
-  });
+  })
 
   //uploadfile
   const handleOpenDialog = (e) => {
     // Note that the ref is set async, so it might be null at some point
     if (buttonRef.current) {
-      buttonRef.current.open(e);
+      buttonRef.current.open(e)
     }
-  };
+  }
 
   const handleOnFileLoad = (data) => {
-    const temp = [];
+    const temp = []
     for (let i = 0; i < data.length; i++) {
       if (data[i].errors.length !== 0) {
-        break;
+        break
       }
-      temp.push(data[i].data);
+      temp.push(data[i].data)
     }
-    console.log("temp", temp);
-    console.log("data", data);
-    props.setDataFileAdmission(temp);
-  };
+    console.log("temp", temp)
+    console.log("data", data)
+    props.setDataFileAdmission(temp)
+  }
 
   const handleOnError = (err, file, inputElem, reason) => {
-    console.log(err);
-  };
+    console.log(err)
+  }
 
   return (
     <div>
@@ -177,15 +178,15 @@ export default function CustomizedDialogs(props) {
       >
         <form
           onSubmit={async (event) => {
-            await props.handleSubmitAdmission(event);
+            await props.handleSubmitAdmission(event)
             setState({
               round_id: 1,
               major: "",
               year: "",
               entrance_id: 1,
               program_id: 1,
-            });
-            props.setDataFileAdmission(null);
+            })
+            props.setDataFileAdmission(null)
           }}
         >
           <DialogTitle
@@ -235,7 +236,10 @@ export default function CustomizedDialogs(props) {
                 label="รูปแบบการรับสมัคร"
                 name="entrance_id"
                 id="entrance_id"
-                value={props.openEditAdmission?.entrance[0].entrance_id || state.entrance_id  }
+                value={
+                  state.entrance_id ||
+                  props.openEditAdmission?.entrance[0].entrance_id
+                }
               >
                 {props.entrance &&
                   _.map(props.entrance, (data, index) => (
@@ -257,7 +261,10 @@ export default function CustomizedDialogs(props) {
                 label="รอบที่รับสมัคร"
                 name="round_id"
                 id="round_id"
-                value={props.openEditAdmission?.entrance[0].round_id ||state.round_id  }
+                value={
+                  state.round_id ||
+                  props.openEditAdmission?.entrance[0].round_id
+                }
               >
                 {props.entrance &&
                   _.map(
@@ -269,7 +276,6 @@ export default function CustomizedDialogs(props) {
               </Select>
             </FormControl>
             <br />
-            {console.log("edit adm" ,props.openEditAdmission)}
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel>ชื่อโครงการที่รับสมัคร</InputLabel>
               <Select
@@ -279,8 +285,12 @@ export default function CustomizedDialogs(props) {
                 label="ชื่อโครงการที่รับสมัคร"
                 name="program_id"
                 id="program_id"
-                value={ props.openEditAdmission?.entrance[0].program_id|| state.program_id}
+                value={
+                  state.program_id ||
+                  props.openEditAdmission?.entrance[0].program_id
+                }
               >
+                {console.log("edit adm", props.openEditAdmission)}
                 {props.entrance &&
                   _.map(
                     props.entrance[state.entrance_id - 1].round[
@@ -313,7 +323,6 @@ export default function CustomizedDialogs(props) {
                 {/* <option value={"SIT"}>คณะเทคโนโลยีสารสนเทศ(SIT)</option> */}
               </Select>
             </FormControl>
-
             <div className="my-4">
               <p>
                 {" "}
@@ -392,8 +401,21 @@ export default function CustomizedDialogs(props) {
                         width: "60%",
                       }}
                     >
-                      {file && props.setDataFileNameAdmission(file.name)}
-                      {file && file.name}
+                      {file ?  (
+                        <>
+                          {file && props.setDataFileNameAdmission(file.name)}
+                          {file && file.name}
+                        </>
+                      ): (
+                        <>
+                          {props.setDataFileNameAdmission(
+                            props.openEditAdmission.admission_file_name
+                          )}
+                          {
+                            props.openEditAdmission.admission_file_name
+                          }
+                        </>
+                      )}
                     </div>
                   </aside>
                 )}
@@ -421,5 +443,5 @@ export default function CustomizedDialogs(props) {
         </form>
       </Dialog>
     </div>
-  );
+  )
 }

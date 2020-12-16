@@ -180,6 +180,7 @@ export default function Test(props) {
   const [dataFileAdmission, setDataFileAdmission] = React.useState();
   const [dataFileNameAdmission, setDataFileNameAdmission] = React.useState();
   const [entrance, setEntrance] = React.useState();
+  
   // const [year, setYear] = React.useState([]);
 
   const handleClickOpenCreateAdmission = () => {
@@ -193,6 +194,7 @@ export default function Test(props) {
   const handleClickEditAdmission = (row) => {
     console.log("openEditAdmission",row);
     setOpenEditAdmission(row);
+    
     handleClickOpenCreateAdmission();
     setTopicAdmission("แก้ไขโครงการสมัครสอบ");
   };
@@ -203,7 +205,7 @@ export default function Test(props) {
       id: event.target.id.value,
       entrance_id: event.target.entrance_id.value,
       program_id: event.target.program_id.value,
-
+      
       // admissionName: event.target.admissionName.value,
       round_id: event.target.round_id.value,
       year: event.target.year.value,
@@ -343,6 +345,7 @@ export default function Test(props) {
             setSelectedAdmission={setSelectedAdmission}
             handleClickEditAdmission={handleClickEditAdmission}
             openEditAdmission={openEditAdmission}
+            setOpenEditAdmission={setOpenEditAdmission}
             openAdmission={openAdmission}
             setOpenAdmission={setOpenAdmission}
             handleClickOpenCreateAdmission={handleClickOpenCreateAdmission}

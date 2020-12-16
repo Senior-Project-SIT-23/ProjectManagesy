@@ -179,18 +179,20 @@ export default function EnhancedTable(props) {
     console.log("testtt", data);
     console.log("props.rowAdm",props.rowsAdmissions)
     const dataRes = {
-      admission_name: data[0],
-      entrance: data[1],
-      admission_major: data[2],
-      admission_year: data[3],
-      admission_file_name: data[4],
+      // admission_name: data[0],
+      // entrance: data[1],
+      admission_major: data[3],
+      admission_year: data[4],
+      admission_file_name: data[5],
 
-      admission_file: data[6],
-      updated_at: data[7],
-      keep_file_name: data[8],
-      created_at: data[9],
-      admission_file_id: data[10],
-      admission_id: data[11],
+      admission_file: data[7],
+      // updated_at: data[8],
+      // keep_file_name: data[9],
+      // created_at: data[10],
+      // admission_file_id: data[11],
+      admission_id: data[12],
+      entrance: data[0]
+
     };
     console.log(dataRes);
     return dataRes;
@@ -233,6 +235,7 @@ export default function EnhancedTable(props) {
             handleEntrance={props.handleEntrance}
             year={props.year}
             defaultValue={props.defaultValue}
+            setOpenEditAdmission={props.setOpenEditAdmission}
           />
         </div>
       </Grid>

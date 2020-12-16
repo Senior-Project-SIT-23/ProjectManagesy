@@ -8,6 +8,7 @@ import { apiCreteEntrance } from "../service/admission";
 import { navigate } from "@reach/router";
 import Select from "react-select";
 import moment from "moment";
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 
 export default function CreateEntrance() {
   const [entranceYear, setEntranceYear] = useState()
@@ -58,7 +59,7 @@ export default function CreateEntrance() {
         ...data, entrance_year: entranceYear
       }
       await apiCreteEntrance(JSON.stringify(temp));
-      // navigate("/TrackingStudents");
+      navigate("/TrackingStudents");
     } catch (error) {
       console.error(error);
     }
@@ -167,6 +168,15 @@ export default function CreateEntrance() {
                                             )}
                                           </Field>
                                           <div className="text-center">
+                                          <Tooltip title="ลบโครงการที่รับสมัคร">
+                                              <IconButton
+                                                onClick={() => {
+                                                  program_array.pop()
+                                                }}
+                                              >
+                                                <RemoveCircleIcon className="text-white" />
+                                              </IconButton>
+                                            </Tooltip>
                                             <Tooltip title="เพิ่มโครงการที่รับสมัคร">
                                               <IconButton
                                                 onClick={() => {
@@ -178,6 +188,7 @@ export default function CreateEntrance() {
                                                 <AddCircleRoundedIcon className="text-white" />
                                               </IconButton>
                                             </Tooltip>
+
                                           </div>
                                         </>
                                       )}
@@ -190,6 +201,18 @@ export default function CreateEntrance() {
                         </Field>
 
                         <div className="text-center">
+                          
+                        <Tooltip title="ลบรอบที่รับสมัคร">
+                            <IconButton
+                              onClick={() => {
+                                round_array.pop()
+                                  
+                                
+                              }}
+                            >
+                              <RemoveCircleIcon  />
+                            </IconButton>
+                          </Tooltip>
                           <Tooltip title="เพิ่มรอบที่รับสมัคร">
                             <IconButton
                               onClick={() => {
@@ -202,6 +225,7 @@ export default function CreateEntrance() {
                               <AddCircleRoundedIcon />
                             </IconButton>
                           </Tooltip>
+
                         </div>
                       </>
                     )}
