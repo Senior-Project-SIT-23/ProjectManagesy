@@ -3,7 +3,7 @@ import { storesContext } from "../context"
 import * as queryString from "query-string"
 import fetchUserDataByAuthCode from "../service/auth"
 import Cookie from "js-cookie"
-// import setCurrentUser from '../context/AuthenticationStore'
+import setCurrentUser from '../context/AuthenticationStore'
 import * as AuthenticationStore from "../context/AuthenticationStore"
 import { navigate } from "@reach/router"
 
@@ -39,7 +39,7 @@ export default function CallBack(props) {
       }
     } catch (error) {
       console.log(error)
-      //  alert(error)
+      alert(error)
     }
   }, [props.location.search])
 

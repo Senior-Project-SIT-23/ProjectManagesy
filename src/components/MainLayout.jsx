@@ -167,7 +167,7 @@ const styles = {
 }
 
 function MainLayout(props) {
-  // const { authenticationStore } = useContext(storesContext)
+  const { authenticationStore } = useContext(storesContext)
 
   const { classes } = props
   const [mobileOpen, setMobileOpen] = React.useState(false)
@@ -178,15 +178,15 @@ function MainLayout(props) {
   }
   const [preFetch, setPreFetch] = useState(true)
 
-  // const checkLogin = useCallback(async () => {
-  //   setPreFetch(true)
-  //   await authenticationStore.me()
-  //   setPreFetch(false)
-  // }, [authenticationStore])
-  // useEffect(() => {
-  //   checkLogin()
-  // }, [checkLogin])
-  // if (!preFetch) {
+  const checkLogin = useCallback(async () => {
+    setPreFetch(true)
+    await authenticationStore.me()
+    setPreFetch(false)
+  }, [authenticationStore])
+  useEffect(() => {
+    checkLogin()
+  }, [checkLogin])
+  if (!preFetch) {
     return (
       <ThemeProvider theme={theme}>
         <div className={classes.root}>
@@ -194,7 +194,7 @@ function MainLayout(props) {
           <nav className={classes.drawer}>
             <Hidden smUp implementation="js">
               <Navigator
-                // user={authenticationStore.currentUser}
+                user={authenticationStore.currentUser}
                 PaperProps={{ style: { width: drawerWidth } }}
                 variant="temporary"
                 open={mobileOpen}
@@ -203,7 +203,7 @@ function MainLayout(props) {
             </Hidden>
             <Hidden xsDown implementation="css">
               <Navigator
-                // user={authenticationStore.currentUser}
+                user={authenticationStore.currentUser}
                 title={props.title}
                 PaperProps={{ style: { width: drawerWidth } }}
               />
@@ -221,9 +221,9 @@ function MainLayout(props) {
         </div>
       </ThemeProvider>
     )
-  // } else {
-  //   return <></>
-  // }
+  } else {
+    return <></>
+  }
 }
 
 MainLayout.propTypes = {

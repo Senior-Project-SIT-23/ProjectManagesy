@@ -35,8 +35,8 @@ function App() {
   useEffect(() => {}, []);
   return (
     <Router>
-      {/* <Login path="/"/>
-      <CallBack path="/CallBack"/> */}
+      <Login path="/"/>
+      <CallBack path="/CallBack"/>
       <MainLayout
         title="นักเรียน"
         path="/TrackingStudents"
