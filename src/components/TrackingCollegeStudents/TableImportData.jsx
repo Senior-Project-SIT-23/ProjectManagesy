@@ -72,7 +72,7 @@ export default function EnhancedTable(props) {
    ];
    
    const data =  props.rows
-   console.log(data)
+ 
   
 
   const changeValue = (data) => {
@@ -90,17 +90,16 @@ export default function EnhancedTable(props) {
      filterType: 'checkbox',
      print: false,
      onRowsDelete: async (deleted) => {
-      console.log(deleted)
-      console.log(deleted.data)
+  
 
       let Id = []
       for (let i = 0; i < deleted.data.length; i++) {
         let n = deleted.data[i].index
-        console.log(n)
+       
 
         Id.push(data[n].college_student_id)
       }
-      console.log(Id)
+    
       const datRes = { college_student_id: Id }
       await apiDeleteImportData(datRes)
       // await window.location.reload()

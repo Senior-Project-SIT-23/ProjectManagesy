@@ -34,7 +34,7 @@ export default function ShowdataImport(props) {
 
       const fetchDataCollegeStudent = useCallback(async () => {
         const response = await apiFetchDataCollegeStudent()
-        console.log("response",response.data)
+    
         setData(response.data[props.id].college_student_file)
       },[props.id])
     

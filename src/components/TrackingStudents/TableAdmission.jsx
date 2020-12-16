@@ -48,7 +48,7 @@ export default function EnhancedTable(props) {
               href={`/ShowDataFileAdmission/${value[0].admission_id}/${value[0].program_name}`}
               target="_blank"
             >
-              {console.log(tableMeta)}
+           
               {value[0].program_name}
             </a>
           ),
@@ -104,7 +104,7 @@ export default function EnhancedTable(props) {
             <IconButton>
               <EditOutlinedIcon
                 onClick={() => {
-                  console.log(tableMeta.rowData);
+               
                   props.handleClickEditAdmission(
                     changeValue(tableMeta.rowData)
                   );
@@ -176,8 +176,7 @@ export default function EnhancedTable(props) {
   const data = props.rowsAdmissions;
 
   const changeValue = (data) => {
-    console.log("testtt", data);
-    console.log("props.rowAdm",props.rowsAdmissions)
+  
     const dataRes = {
       // admission_name: data[0],
       // entrance: data[1],
@@ -194,15 +193,14 @@ export default function EnhancedTable(props) {
       entrance: data[0]
 
     };
-    console.log(dataRes);
+  
     return dataRes;
   };
 
   const options = {
     filterType: "checkbox",
     onRowsDelete: async (deleted) => {
-      console.log(data);
-      console.log(deleted.data);
+     
       let Id = [];
       for (let i = 0; i < deleted.data.length; i++) {
         let n = deleted.data[i].index;
@@ -240,7 +238,7 @@ export default function EnhancedTable(props) {
         </div>
       </Grid>
       <MuiThemeProvider theme={getMuiTheme()}>
-        {console.log("1234", data)}
+        
         <MUIDataTable
           title={"โครงการสมัครสอบ"}
           data={data}

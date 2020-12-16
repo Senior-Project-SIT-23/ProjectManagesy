@@ -52,7 +52,7 @@ export default function Test(props) {
     setTopic("สร้างกิจกรรม");
   };
   const handleClickEdit = (row) => {
-    console.log(row);
+   
     setOpenEdit(row);
     handleClickOpen();
     setTopic("แก้ไขกิจกรรม");
@@ -73,7 +73,7 @@ export default function Test(props) {
       file: dataFile,
       fileName: dataFileName,
     };
-    console.log("-->", data);
+   
     // if(!data.fileName & !data.file){
     //   return setErrorMessage("กรุณา upload ไฟล์")
     // }
@@ -129,7 +129,7 @@ export default function Test(props) {
       });
     });
     setYear(data);
-    console.log("response.data", response.data);
+  
     setrows(response.data);
   }, []);
 
@@ -193,7 +193,7 @@ export default function Test(props) {
     window.location.reload()
   };
   const handleClickEditAdmission = (row) => {
-    console.log("openEditAdmission",row);
+    
     setOpenEditAdmission(row);
     
     handleClickOpenCreateAdmission();
@@ -214,7 +214,7 @@ export default function Test(props) {
       file: dataFileAdmission,
       fileName: dataFileNameAdmission,
     };
-    console.log("dataAds", data);
+  
 
     const formDataAdmission = getAdmissionFormData(data);
     // try {
@@ -264,7 +264,7 @@ export default function Test(props) {
     });
     setYear(data);
     const entrance = await apiFetchEntrance(parseInt(moment().format("YYYY")) + 543);
-    console.log("adsasdasdasd",entrance.data)
+   
     setEntrance(entrance.data);
     setrowsAdmissions(response.data);
   }, []);
@@ -274,7 +274,7 @@ export default function Test(props) {
   }, [fetchAdmission]);
 
   const handleEntrance = async (year) => {
-    // console.log(year)
+    
     try{
       const entrance = await apiFetchEntrance(year);
     setEntrance(entrance.data);
@@ -309,7 +309,7 @@ export default function Test(props) {
       });
     });
     setDataMatch(temp);
-    console.log("response0", temp);
+   
   }, []);
   useEffect(() => {
     fetchData();

@@ -15,8 +15,7 @@ export default function TableSchoolXAct(props) {
         },
       },
     })
-  console.log("sss", props.data.school_activity)
-
+ 
   const options = {
     filterType: "checkbox",
     selectableRowsHeader: false,
@@ -36,7 +35,7 @@ export default function TableSchoolXAct(props) {
     },
   }
 
-  console.log("54564654", props.data)
+
 
   const column = [
     {

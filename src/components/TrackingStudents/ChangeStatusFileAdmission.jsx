@@ -24,7 +24,7 @@ export default function ChangeStatusFileAdmission(props) {
   }
 
   const handleOnFileLoad = (data) => {
-    console.log("upload", data)
+  
     const temp = []
     for (let i = 1; i < data.length; i++) {
       if (data[i].errors.length !== 0) {

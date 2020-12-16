@@ -143,8 +143,7 @@ export default function TableMatched(props) {
 
     renderExpandableRow: (rowData, rowMeta) => {
       const colSpan = rowData.length + 1
-      console.log("ddd", rowData)
-      console.log("props.dataMatch", props.dataMatch)
+  
       return (
         <>
           <TableRow>

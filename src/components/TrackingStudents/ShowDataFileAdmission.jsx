@@ -40,7 +40,7 @@ export default function ShowDataInFileActivity(props) {
   // const [data, setdata] = useState()
   //Button
   // const handleBack = (index) => {
-  //   console.log(index)
+ 
   //   setIndexTab(index)
   //   navigate(`/`)
   // }

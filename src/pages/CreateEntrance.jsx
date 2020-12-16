@@ -68,7 +68,7 @@ export default function CreateEntrance() {
     <div className="max-w-screen-xl mx-auto min-h-screen">
       <div className="p-6">
         <div className="shadow border rounded p-6">
-          {console.log("en", entrance)}
+         
           <Formik initialValues={entrance} onSubmit={handleSubmit}>
             {(formikProps) => (
               <Form className="overflow-y-auto">

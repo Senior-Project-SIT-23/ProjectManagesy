@@ -37,7 +37,7 @@ export default function BarChartTop10SchoolEntrance(props) {
   
   return (
     <div>
-      {console.log("props.data",props.data)}
+     
       <Paper style={{ padding: 10, height: 350 }}>
         <Grid container>
           <Grid item container direction="column" spacing={2}>

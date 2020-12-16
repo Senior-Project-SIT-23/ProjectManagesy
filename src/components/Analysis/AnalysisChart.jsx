@@ -27,10 +27,10 @@ const useStyles = makeStyles((theme) => ({
 export default function TableAnalysis(props) {
   const classes = useStyles()
 
-  console.log("props.data",props.data)
+  // console.log("props.data",props.data)
 
   
-  console.log("props.dataForGraphSchoolAd",props.dataForGraphSchoolAd)
+  // console.log("props.dataForGraphSchoolAd",props.dataForGraphSchoolAd)
   
   return (
     <div className={classes.root}>

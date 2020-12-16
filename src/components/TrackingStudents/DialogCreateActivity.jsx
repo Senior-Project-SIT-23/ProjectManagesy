@@ -106,7 +106,7 @@ export default function CustomizedDialogs(props) {
 
   const handleChange = (event) => {
     const name = event.target.name
-    console.log(name)
+ 
     setState({
       ...state,
       [name]: event.target.value,
@@ -140,8 +140,7 @@ export default function CustomizedDialogs(props) {
       }
       temp.push(data[i].data)
     }
-    console.log(temp)
-    console.log(data)
+ 
     props.setDataFile(temp)
 
    

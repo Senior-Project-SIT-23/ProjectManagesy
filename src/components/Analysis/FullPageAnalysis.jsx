@@ -29,11 +29,8 @@ export default function FullPageAnalysis(props) {
   
   
   
-  console.log("props.data",props.data)
-  if(props){
-    console.log("numstudent",props.data.num_of_activity_student)
-    console.log("props.data.school_activity",props.data.school_activity)
-  }
+  
+  
   return (
     <div className={classes.root}>
       <Grid container direction="row" justify="flex-end">

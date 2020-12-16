@@ -123,7 +123,7 @@ export default function CustomizedDialogs(props) {
     if (name === "year") {
       props.handleEntrance(event.target.value)
     }
-    console.log("props.editads", props.openEditAdmission)
+   
   }
 
   const theme = createMuiTheme({
@@ -152,8 +152,7 @@ export default function CustomizedDialogs(props) {
       }
       temp.push(data[i].data)
     }
-    console.log("temp", temp)
-    console.log("data", data)
+  
     props.setDataFileAdmission(temp)
   }
 
@@ -163,7 +162,7 @@ export default function CustomizedDialogs(props) {
 
   return (
     <div>
-      {console.log("prosp ->>>>", props.entrance)}
+    
       <Tooltip title="เพิ่มโครงการสมัครสอบ">
         <ThemeProvider theme={theme}>
           <Button
@@ -299,7 +298,7 @@ export default function CustomizedDialogs(props) {
                   props.openEditAdmission?.entrance[0].program_id
                 }
               >
-                {console.log("edit adm", props.openEditAdmission)}
+             
                 {props.entrance &&
                   _.map(
                     props.entrance[state.entrance_id - 1].round[

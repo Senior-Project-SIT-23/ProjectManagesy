@@ -4,7 +4,7 @@ import { Grid, Paper, Typography } from "@material-ui/core"
 
 export default function ChartActXNoAct(props) {
 
-    console.log("data",props.data)
+    
     const data = {
         labels: ["นักศึกษาที่เคยเข้าร่วมกิจกรรม","นักศึกษาที่ไม่เคยเข้าร่วมกิจกรรม"],
         datasets: [

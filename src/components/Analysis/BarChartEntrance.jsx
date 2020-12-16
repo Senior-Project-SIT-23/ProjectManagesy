@@ -15,7 +15,7 @@ export default function BarChartEntrance(props) {
     _.map(props.data, (d, i) => {
       tempLabel.push(d.admission_name)
 
-      console.log("d", d);
+     
 
       tempIT.push(d.IT)
       tempCS.push(d.CS)
@@ -50,7 +50,7 @@ export default function BarChartEntrance(props) {
       datasets: tempDataset,
     };
 
-    console.log("x", x);
+   
 
     setData(x)
   },[props.data])

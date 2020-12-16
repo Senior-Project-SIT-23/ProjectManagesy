@@ -29,7 +29,7 @@ export default function TrackingCollageStudent() {
   }
 
   const handleClickEdit = (row) => {
-    console.log(row)
+   
     setOpenEdit(row)
     handleClickOpen()
     setTopic("แก้ไขข้อมูล")
@@ -49,7 +49,7 @@ export default function TrackingCollageStudent() {
       file: dataFile,
       fileName: dataFileName,
     }
-    console.log("data",data)
+   
   
 
   const formData = getCollegeStudent(data)
@@ -61,7 +61,7 @@ export default function TrackingCollageStudent() {
       handleClose()
       fetchData()
     }catch(error){
-      console.log("error",error)
+      
       alert("format ของไฟล์ที่อัพโหลด ไม่ถูกต้อง")
     }
   }else {
@@ -81,7 +81,7 @@ export default function TrackingCollageStudent() {
 }
   const fetchDataCollegeStudent = useCallback(async () => {
     const response = await apiFetchDataCollegeStudent()
-    console.log("response",response.data)
+   
     setRows(response.data)
   },[])
 
@@ -109,7 +109,7 @@ export default function TrackingCollageStudent() {
     })
 
     setAlldata(temp)
-    console.log("res",response)
+  
   },[])
   useEffect(() => {
       fetchData()

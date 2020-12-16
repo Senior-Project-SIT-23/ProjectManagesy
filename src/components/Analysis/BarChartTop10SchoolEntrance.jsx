@@ -6,7 +6,7 @@ import _ from 'lodash'
 export default function BarChartTop10SchoolAct(props) {
   
   
-  // console.log("props.data", props.data)
+  
 
   const [data, setData] = useState();
 
@@ -79,7 +79,7 @@ export default function BarChartTop10SchoolAct(props) {
   
   return (
     <div>
-      {/* {console.log("data",data)} */}
+      
       <Paper style={{ padding: 10, height: 350 }}>
         <Grid container>
           <Grid item container direction="column" spacing={2}>

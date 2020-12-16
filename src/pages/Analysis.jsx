@@ -28,8 +28,7 @@ export default function Test(props) {
     setIsFetch(true)
     const response = await apiFetchAnalyze(2563)
 
-    console.log("response.data", response.data)
-    console.log("num", response.data.num_of_activity_student)
+   
     setData(response.data)
 
     const tmp = [];
@@ -57,8 +56,7 @@ export default function Test(props) {
     const sortAdmCollege = response.data.school_admission_name.sort((a,b) => b.SUM - a.SUM)
     const sort5Act = response.data.most_of_activity.sort((a,b) => b.Total - a.Total)
     
-    console.log("ffffffff", sortSchoolAd.slice(0, 10))
-    console.log("province", sortProvince.slice(0,5))
+ 
     
     
     setYear(data);

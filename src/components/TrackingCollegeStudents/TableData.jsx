@@ -180,7 +180,7 @@ export default function EnhancedTable(props) {
   //   ["60130500104", "อิทธิเดช ชาญสาธิต", "DSI",  "3.24", "08xxxxxxxx","21"],
   //   ["60130500099", "สุภาวรรณ ชูเชิด", "DSI",  "3.50", "08xxxxxxxx","23"],
   // ]
-  console.log("props",props.allData)
+  
 
 
 
@@ -196,7 +196,7 @@ export default function EnhancedTable(props) {
       
     renderExpandableRow: (rowData, rowMeta) => {
       const colSpan = rowData.length + 1
-      console.log("rowData",rowData)
+     
       return (
         <>
           <TableRow>
